@@ -1,51 +1,69 @@
-# Código Rosa — La última vuelta (3D)
+# Código Rosa — La última vuelta
 
-Juego de navegador basado en las fotos del conductor y del buggy amarillo de emergencias.
+Morro de São Paulo, 05:47 AM. Salió de la disco, vio una ambulancia y dijo «yo manejo». Sátira de una anécdota entre amigos, convertida en un arcade de conducción 3D al amanecer.
 
 ## Jugar
 
-Descomprimí todos los archivos y abrí `index.html`. También se entrega un HTML independiente con gráficos y juego incorporados. No necesitás instalar nada. El navegador debe permitir WebGL (gráficos 3D). La canción enlazada necesita internet; si no carga, suena la pista local original.
+Abrí **index.html** con la carpeta completa. No hay instalación, compilación ni backend. También funciona en alojamiento estático, como GitHub Pages. Se necesita WebGL.
 
-Tenés 90 segundos para recoger al paciente en la Segunda Praia y llevarlo al puesto de salud. Detené el buggy dentro del círculo durante 1,3 segundos para recoger o entregar. La línea verde del minimapa marca una ruta por las calles; la flecha junto al destino indica hacia dónde doblar respecto de la dirección del buggy.
+La primera partida tiene una introducción de siete segundos. **Omitir**, **Enter** o **Espacio** llevan directamente al volante. El reloj de 90 segundos y la patrulla empiezan después. Los reintentos omiten la historia; **Ver historia** permite repetirla desde el inicio.
 
-- **Flechas / WASD:** acelerar, frenar/retroceder y girar con los controles originales.
-- **Espacio:** sirena durante 2,2 segundos; recarga de 7 segundos. Aparta peatones y ralentiza carritos de equipaje cercanos.
-- **C / botón Cámara:** alternar entre la vista frontal original (vista inicial) y seguimiento desde atrás. La cámara pequeña muestra al conductor durante la partida.
-- **P / Escape / Pausa:** pausar y continuar.
-- **Celular:** botones táctiles. Se recomienda horizontal.
+Recogé al paciente en Segunda Praia y llevalo al puesto de salud. Detené la ambulancia dentro del círculo durante 1,3 segundos para recoger o entregar. La barra indica el avance; la flecha y el minimapa comparten una ruta comprobada contra los edificios.
 
-Una patrulla ficticia te sigue durante ambas etapas, se ve en el minimapa y cambia su ruta para perseguirte. Si te alcanza, perdés 12% de resistencia y 3 segundos; después retrocede y tarda 2,8 segundos en volver a golpear. Los choques dañan el buggy. Atropellar descuenta 8 segundos y 5% de resistencia, sin violencia gráfica. Perdés al agotar el tiempo o la resistencia. Se pausa al cambiar de pestaña. El récord se guarda localmente, cuando el navegador permite almacenamiento. Al iniciar, el juego pide reproducir “Magalenha (Frankie G Rio Dub)” desde el reproductor oficial de SoundCloud; puede requerir tocar ▶ si el navegador bloquea la reproducción automática. El botón Magalenha silencia la música y se pausa con el juego. Si el reproductor no está disponible, suena la pista original sintetizada.
+- **WASD / flechas:** acelerar, frenar/retroceder y girar.
+- **Espacio:** sirena durante 2,2 segundos, con recarga de siete segundos. Aparta peatones y ralentiza carritos cercanos.
+- **C / Cámara:** alternar seguimiento trasero y vista frontal.
+- **Ver conductor:** abrir o plegar el primer plano. En alta aparece brevemente al iniciar y ante reacciones; en baja empieza cerrado.
+- **P / Escape / Pausa:** pausar o continuar, también durante la introducción. Cambiar de pestaña pausa el juego.
+- **Celular:** botones táctiles; se puede acelerar y girar a la vez. Soltar o cancelar un contacto libera el control. Funciona vertical y horizontal.
 
-La página de SoundCloud de thedjfrankieg marca la grabación como [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Se acredita y enlaza al artista en el juego. La pista es un remix de “Magalenha”, atribuida a Sérgio Mendes en esa página; esa licencia del remix no permite concluir por sí sola que todos los derechos de la composición o grabación original estén liberados. Por eso el juego usa el reproductor oficial y no incluye ni redistribuye el archivo de audio.
+La patrulla conserva la persecución del juego original: sus impactos descuentan 12% de resistencia y tres segundos, con 2,8 segundos entre golpes. Los atropellos descuentan ocho segundos y 5% de resistencia, sin violencia gráfica. Tiempo o resistencia agotados producen derrota, incluso si coinciden con la entrega.
 
-La puntuación al ganar es tiempo restante × 100 + resistencia × 20 + 1500 − atropellos × 500, con mínimo cero. Tres estrellas: cero atropellos y 85% o más de resistencia. Dos: cero atropellos y 50% o más.
+Puntos al ganar: `max(0, redondear(tiempo × 100 + resistencia × 20 + 1500 − atropellos × 500))`. Tres estrellas: cero atropellos y al menos 85% de resistencia; dos: cero atropellos y al menos 50%. El récord se guarda localmente cuando el navegador permite almacenamiento.
 
-## GitHub Pages
+## Dirección visual y calidad
 
-1. Subí el contenido de esta carpeta a la raíz de tu repositorio, incluyendo las carpetas `assets` y `vendor`. No subas el ZIP sin descomprimir.
-2. En Settings → Pages, elegí Deploy from a branch.
-3. Seleccioná tu rama (por ejemplo `main`) y /(root), y guardá.
+El protagonista usa una malla facial continua con nariz, pómulos y mandíbula propios, mapa facial generado desde las referencias, rulos y anteojos tridimensionales. Las manos acompañan el volante. La ambulancia toma el frente amarillo, defensa negra, parabrisas, ruedas, cartel espejado y baliza roja de la foto aportada. El mundo mantiene el trazado original, con fachadas, vegetación, empedrado, mar animado y luz cálida al amanecer.
 
-Documentación oficial: https://docs.github.com/es/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+- **Automática:** baja con puntero táctil y alta en escritorio.
+- **Alta:** resolución de render limitada a 1,5 veces la pantalla, sombras de 1024 y hasta 48 partículas de polvo.
+- **Baja:** resolución limitada a 1, sombras de 512 y hasta 18 partículas. El recuadro del conductor comienza cerrado.
 
-## Ambientación: Morro de São Paulo, Bahia
+La elección manual se guarda localmente. La preferencia del sistema de **movimiento reducido** omite la introducción, las oscilaciones de cámara/vehículo y los efectos ambientales móviles. Los recursos gráficos y la música alternativa son locales. El atlas facial está embebido para permitir apertura con `file://`.
 
-Interpretación arcade inspirada en la Segunda Praia y la vila: mar turquesa, arena, pasarela de madera, palmeras, pousadas de colores, faro sobre una elevación, pasajes angostos y colinas transitables. El buggy y la patrulla acompañan las pendientes, y los edificios se apoyan sobre el terreno. El trazado y las distancias se adaptan al juego. El luau y el puesto de salud son ficticios; el mapa no sirve para orientarse en el destino real.
+## Revisar los resultados
 
-Referencias consultadas:
-- https://www.morrodesaopaulobrasil.com.br/segunda-praia/
-- https://viagemeturismo.abril.com.br/destinos/morro-de-sao-paulo/
-- https://www.pousadavilanova.com.br/informacoes-uteis
+- [Comparación del personaje: frente, tres cuartos y perfil](artifacts/character.html).
+- [Capturas y resultados de las pruebas](artifacts/README.md).
+- [Origen de los recursos](ASSETS.md) y [prompt del atlas facial](assets/IMAGE-PROMPTS.md).
 
-## Diseño e implementación
+La forma facial es una interpretación modelada a partir de las referencias; no es un escaneo. Las fotografías originales de perfil y ambulancia se consultaron en la conversación y no se incluyen como recursos del juego.
 
-- Mundo, buggy, personajes y cámaras en 3D mediante Three.js / WebGL. Arena, empedrado, estuco, tejas, madera, vegetación y agua usan texturas generadas dentro del juego; no requieren descargas externas.
-- Buggy amarillo, cabina abierta, ruedas grandes y cartel AMBULANCIA inspirados en la foto.
-- El parecido facial utiliza un retrato generado a partir de las fotos como textura frontal sobre un cuerpo 3D. Es una representación híbrida; el rostro no es un escaneo ni un modelo facial tridimensional completo.
-- Cámara cercana del conductor siempre visible durante la partida.
-- Una misión, dos etapas, peatones, carritos de equipaje, minimapa, sirena, colisiones y puntuación.
-- Sin cuentas, analíticas, compilación ni backend. El reproductor oficial de SoundCloud y su API son los únicos recursos externos; los gráficos y la pista alternativa están incluidos. No se publicaron estos archivos automáticamente.
+## Música
 
-Archivos: `index.html` (interfaz y reproductor), `style.css` (diseño), `game.js` (escena y lógica), `track.js` (control de SoundCloud y respaldo), `music.js` (pista alternativa sintetizada), `assets/driver.png` (retrato), `assets/driver-texture.js` (textura autocontenida para apertura local), `vendor/three.min.js` (Three.js r160, licencia MIT en THREE-LICENSE.txt).
+Al jugar se intenta reproducir **Magalenha (Frankie G Rio Dub)** mediante el reproductor oficial de SoundCloud. Si no está disponible, suena la pista original sintetizada de `music.js`. **Música** silencia o activa música y efectos; el panel **La banda sonora** contiene reproductor y créditos. Puede ser necesario pulsar reproducir por las restricciones del navegador.
 
-Pruebas: comprobación de sintaxis y simulación de la lógica de giro, cámara inicial, recogida, entrega, victoria, pausa y ruta. La experiencia visual y la velocidad final dependen del navegador y del dispositivo.
+La página de SoundCloud de thedjfrankieg marca el remix como CC BY 3.0. Se conserva el crédito y el enlace original. Esa indicación no permite concluir que los derechos de la composición o grabación original estén liberados: el juego enlaza el reproductor oficial y no distribuye su audio.
+
+## Desarrollo y verificación
+
+`visuals.js` construye y anima modelos, materiales, iluminación, instancias y efectos. `game.js` conserva simulación, misión, navegación, cámaras y controles. `index.html` y `style.css` contienen la presentación. Three.js r160 se conserva en `vendor`, con licencia MIT incluida.
+
+No hay dependencias de desarrollo. Con **Node.js 24 y Chrome**:
+
+```bash
+node --check visuals.js
+node --check game.js
+node tests/browser.cjs
+node tests/browser.cjs --benchmark
+```
+
+El último comando añade un recorrido de 60 segundos. Las pruebas lanzan Chrome temporal, bloquean SoundCloud para verificar el respaldo, prueban apertura local y HTTP y regeneran las capturas. Las funciones de inspección se inyectan en memoria por las pruebas; no se exponen en el juego distribuido. `CHROME_PATH` permite seleccionar el ejecutable y `CHROME_DEBUG_URL` reutilizar una instancia de depuración.
+
+El entorno automatizado utiliza **SwiftShader, renderizado por software**, y emulación móvil. Los presupuestos de llamadas de dibujo se comprueban automáticamente. Los objetivos de 60 FPS en PC y 30 FPS en teléfono necesitan medición con GPU y dispositivo reales; el benchmark de software no los certifica. Los valores medidos están en `artifacts/verification.json`.
+
+## Publicar en GitHub Pages
+
+Subí los archivos y las carpetas `assets` y `vendor` a la raíz del repositorio; activá Pages desde la rama y la carpeta raíz. No hace falta compilar. No se publicó automáticamente esta renovación.
+
+El trazado, los personajes secundarios, el luau y la misión son ficticios. La ambientación se inspira en Morro de São Paulo; este mapa no sirve para orientarse en el destino real.

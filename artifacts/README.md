@@ -9,6 +9,14 @@
 - [Celular vertical](after-mobile-portrait.png) y [horizontal](after-mobile-landscape.png).
 - [Informe automático completo](verification.json).
 
+## Revisión de parecido con fotos adicionales
+
+La comparación del personaje y el primer plano de la introducción muestran la revisión v2: nueva malla de cara ancha, mandíbula y nariz, atlas de identidad actualizado, orejas y cuello ajustados, rulos compactos y gafas de `driver.png`. Las tres vistas usan el mismo modelo del juego. La hoja inferior está generada y se identifica como tal.
+
+La comprobación focalizada en Chrome pasó sin excepciones JavaScript ni errores de shader. Se verificaron apertura `file://` con recursos externos bloqueados, las cámaras de estudio e introducción, geometría y animación facial con valores finitos y renderizado en Alta/Baja: **207 / 118 llamadas** en la escena inicial de conducción, dentro de 300 / 150. [Resultado de esta revisión](identity-review.json).
+
+La revisión v2 no repitió el recorrido de rendimiento de 60 segundos. Las comprobaciones generales y el benchmark que siguen corresponden a la renovación anterior; se conservan como registro histórico.
+
 ## Verificación automática
 
 37 comprobaciones pasaron. Sin excepciones JavaScript ni errores de shaders registrados.

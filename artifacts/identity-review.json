@@ -1,0 +1,16 @@
+{
+  "result": {
+    "calls": 207,
+    "glasses": "Gafas de driver.png",
+    "vertices": 7469,
+    "finite": true,
+    "smile": 0.004183707885479063,
+    "low": {
+      "calls": 118,
+      "pixelRatio": 1
+    }
+  },
+  "errors": [],
+  "scope": "Revisión visual de identidad, apertura file:// sin recursos externos.",
+  "date": "2026-10-23T03:07:50.204Z"
+}

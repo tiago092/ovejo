@@ -3,6 +3,7 @@
 ## Referencias aportadas
 
 - `assets/driver.png`: retrato frontal existente, conservado sin modificar. Referencia de identidad, barba, anteojos negros y remera rosa; también se usa en el inicio.
+- Tres fotos adicionales adjuntas: frontal, tres cuartos sonriendo y foto pequeña con gorra, para corregir cara ancha, mejillas, mandíbula y patrón de bigote/perilla. Se mantiene la remera rosa y las gafas de `driver.png`, sin gorra.
 - Foto de perfil adjunta en la conversación: referencia de nariz, frente, oreja, mandíbula y pelo rizado.
 - Foto de ambulancia adjunta en la conversación: referencia de capó amarillo ancho, defensa negra, parabrisas, ruedas, cartel y baliza roja.
 
@@ -10,11 +11,11 @@ Las fotos adjuntas se consultaron como referencias y no se incluyen como archivo
 
 ## Atlas generado
 
-`assets/driver-atlas.png` se generó con la herramienta integrada de imágenes a partir de las referencias de identidad y perfil. Presenta frente, tres cuartos y perfil con iluminación suave, sin anteojos para permitir que los anteojos 3D se superpongan al rostro. El prompt íntegro está en `assets/IMAGE-PROMPTS.md`.
+`assets/driver-atlas-v2.png` es el atlas activo, generado con la herramienta integrada de imágenes a partir de `driver.png` y las tres fotos adicionales. `assets/driver-atlas.png` conserva la primera versión. Presenta frente, tres cuartos y perfil con iluminación suave, sin anteojos para permitir que los anteojos 3D se superpongan al rostro. El prompt íntegro está en `assets/IMAGE-PROMPTS.md`.
 
-`assets/driver-texture.js` contiene una copia del mismo PNG como data URI. El juego carga esa copia para evitar las restricciones de texturas WebGL al abrir el HTML directamente. Para actualizar el atlas y conservar esta compatibilidad, regenerar también el archivo embebido.
+`assets/driver-texture.js` contiene una copia de `driver-atlas-v2.png` como data URI. El juego carga esa copia para evitar las restricciones de texturas WebGL al abrir el HTML directamente. Para actualizar el atlas y conservar esta compatibilidad, regenerar también el archivo embebido.
 
-El mapa se proyecta y mezcla sobre una malla cerrada de cabeza en `visuals.js`; frente, mejillas, nariz y mandíbula tienen geometría propia. Rulos, anteojos, orejas y cuello son tridimensionales. Las imágenes generadas no son modelos 3D ni escaneos. La página `artifacts/character.html` permite contrastar el resultado desde tres ángulos.
+El mapa se proyecta y mezcla sobre una malla cerrada de cabeza en `visuals.js`; frente, mejillas, nariz y mandíbula tienen geometría propia. La revisión v2 usa secciones de cráneo más anchas, mejillas llenas, mandíbula redondeada, nariz integrada y proyección frontal/lateral calibrada para el nuevo atlas. Rulos cortos, anteojos, orejas y cuello son tridimensionales. El pelo combina una textura procedural local con dos conjuntos de instancias pequeñas para evitar los bucles sobredimensionados de la versión anterior. Las imágenes generadas no son modelos 3D ni escaneos. La página `artifacts/character.html` permite contrastar el resultado desde tres ángulos.
 
 Las gafas se modelaron tomando `assets/driver.png` como referencia: montura negra brillante, lentes rectangulares con esquinas redondeadas y borde inferior levemente trapezoidal, puente curvo y patillas anchas que se apoyan sobre las orejas. Los cristales oscuros tienen reflejos suaves generados localmente; no se modificó el retrato de referencia.
 

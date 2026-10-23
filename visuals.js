@@ -246,51 +246,111 @@ window.RosaVisuals = (() => {
   }
 
   function createHead(){
-    const group=new T.Group(), rng=seeded(81), positions=[],uvs=[],indices=[];
-    const rows=48,cols=72;
-    // One closed surface. Cheek, jaw and nose profiles share vertices and normals.
+    const group=new T.Group(),rng=seeded(81),positions=[],uvs=[],sideUvs=[],frontWeights=[],indices=[];
+    // Cross-sections measured against the identity sheet: full cheeks and a broad,
+    // softly squared jaw. All facial features belong to the same closed surface.
+    // y, half width, forehead/cheek depth, back depth.
+    const sections=[
+      [-.55,0,.25,.0],[-.52,.12,.34,.07],[-.48,.24,.43,.15],
+      [-.40,.35,.47,.23],[-.30,.412,.485,.28],[-.18,.448,.49,.32],
+      [-.06,.46,.465,.35],[.06,.455,.445,.375],[.18,.443,.435,.39],
+      [.30,.442,.448,.395],[.42,.43,.429,.38],[.52,.393,.38,.35],
+      [.60,.30,.30,.28],[.66,.17,.18,.18],[.70,0,0,0]
+    ];
+    function section(y){
+      let k=1;while(k<sections.length-1&&sections[k][0]<y)k++;
+      const a=sections[k-1],b=sections[k],t=clamp((y-a[0])/(b[0]-a[0]),0,1);
+      return a.map((v,i)=>T.MathUtils.lerp(v,b[i],t));
+    }
+    const bump=(x,y,cx,cy,sx,sy)=>Math.exp(-(((x-cx)/sx)**2)-(((y-cy)/sy)**2));
+    function features(x,y){
+      return .065*bump(x,y,0,.12,.073,.18) // nasal bridge
+        +.10*bump(x,y,0,.015,.089,.073) // rounded nose tip
+        +.035*bump(Math.abs(x),y,.079,-.027,.034,.043) // nose wings
+        +.027*bump(x,y,0,-.17,.19,.075) // lips and muzzle
+        +.045*bump(x,y,0,-.385,.24,.105); // broad chin
+    }
+    const rows=76,cols=96;
     for(let j=0;j<=rows;j++){
-      const v=j/rows,phi=v*Math.PI,originalY=Math.cos(phi)*.56,y=Math.max(-.45,originalY);
-      const jaw=1-.06*Math.exp(-(((y+.34)/.19)**2)),width=.445*Math.sin(phi)*jaw;
+      const y=T.MathUtils.lerp(-.55,.70,j/rows),[,width,depth,back]=section(y);
       for(let i=0;i<=cols;i++){
-        const theta=i/cols*Math.PI*2,xx=Math.sin(theta)*width,front=Math.max(0,Math.cos(theta));
-        let zz=Math.cos(theta)*Math.sin(phi)*.365;
-        if(front>0){zz+=.055*Math.exp(-(((y-.28)/.25)**2))*front;
-          zz+=.16*Math.exp(-((xx/.085)**2)-((y+.015)/.16)**2)*front;
-          zz+=.025*Math.exp(-(((Math.abs(xx)-.065)/.04)**2)-((y+.07)/.05)**2)*front;
-          zz+=.062*Math.exp(-((xx/.17)**2)-((y+.245)/.10)**2)*front;
-          zz+=.10*Math.exp(-((xx/.24)**2)-((y+.40)/.12)**2)*front;
-        }
-        positions.push(xx,y,zz);uvs.push(.159+xx*.265,.51+originalY*.56);
+        const theta=i/cols*Math.PI*2,c=Math.cos(theta),x=Math.sin(theta)*width;
+        // Flatten cheek planes instead of stretching a spherical face texture.
+        const z=j===0?.10:j===rows?0:c>=0?depth*Math.pow(c,.62)+features(x,y)*Math.pow(c,.5):-back*Math.pow(-c,.9);
+        positions.push(x,y,z);uvs.push(323/1942+x*.239,.5+y*.625);
+        sideUvs.push(.864-z*.32,.5+y*.625);
+        frontWeights.push(c);
       }
     }
-    for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const a=j*(cols+1)+i,b=a+cols+1;indices.push(a,b,a+1,a+1,b,b+1);}
-    const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new T.Float32BufferAttribute(uvs,2));geo.setIndex(indices);geo.computeVertexNormals();
+    // Rows run from chin to crown, so winding is the reverse of a polar sphere.
+    for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const a=j*(cols+1)+i,b=a+cols+1;indices.push(a,a+1,b,a+1,b+1,b);}
+    const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new T.Float32BufferAttribute(uvs,2));geo.setAttribute('sideUv',new T.Float32BufferAttribute(sideUvs,2));geo.setAttribute('faceFront',new T.Float32BufferAttribute(frontWeights,1));geo.setIndex(indices);geo.computeVertexNormals();
     const smiling=positions.slice();
-    for(let i=0;i<positions.length;i+=3){const xx=positions[i],yy=positions[i+1],zz=positions[i+2];if(zz>.2){const w=Math.exp(-(((Math.abs(xx)-.105)/.075)**2)-((yy+.22)/.075)**2);smiling[i+1]+=w*.022;smiling[i+2]+=w*.008;}}
+    for(let i=0;i<positions.length;i+=3){const x=positions[i],y=positions[i+1],z=positions[i+2];if(z>.2){const w=bump(Math.abs(x),y,.13,-.175,.072,.061);smiling[i+1]+=w*.022;smiling[i+2]+=w*.006;}}
     geo.morphAttributes.position=[new T.Float32BufferAttribute(smiling,3)];
-    const faceMaterial=new T.MeshStandardMaterial({color:'#eed3b6',roughness:.91});
-    if(window.ROSA_DRIVER_ATLAS){const tx=new T.TextureLoader().load(window.ROSA_DRIVER_ATLAS);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=4;faceMaterial.map=tx;faceMaterial.color.set('#ffffff');
-      faceMaterial.onBeforeCompile=s=>{s.vertexShader='varying vec3 vFacePosition;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvFacePosition=position;');
-        s.fragmentShader='varying vec3 vFacePosition;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>',`vec4 frontColor=texture2D(map,vMapUv);vec2 sideUv=vec2(.863-vFacePosition.z*.32,.51+vFacePosition.y*.56);vec4 sideColor=texture2D(map,sideUv);float frontMix=smoothstep(.02,.28,vFacePosition.z);diffuseColor*=mix(sideColor,frontColor,frontMix);`);
+    const faceMaterial=new T.MeshStandardMaterial({color:'#d69b7c',roughness:.96});
+    if(window.ROSA_DRIVER_ATLAS){
+      const tx=new T.TextureLoader().load(window.ROSA_DRIVER_ATLAS);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=4;faceMaterial.map=tx;faceMaterial.color.set('#ffffff');
+      faceMaterial.onBeforeCompile=s=>{
+        s.vertexShader='attribute vec2 sideUv; attribute float faceFront; varying vec2 vSideUv; varying float vFaceFront;\n'+s.vertexShader;
+        s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSideUv=sideUv;vFaceFront=faceFront;');
+        s.fragmentShader='varying vec2 vSideUv; varying float vFaceFront;\n'+s.fragmentShader;
+        s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>',`
+          vec4 frontColor=texture2D(map,vMapUv);
+          vec2 sideUv=vec2(min(vSideUv.x,1878.0/1942.0),vSideUv.y);
+          vec4 sideColor=texture2D(map,sideUv);
+          // Remove the painted ear beneath the separate, textured 3D ear.
+          float earMask=smoothstep(1638.0,1660.0,sideUv.x*1942.0)
+            *(1.0-smoothstep(1748.0,1772.0,sideUv.x*1942.0))
+            *smoothstep(.38,.42,sideUv.y)*(1.0-smoothstep(.59,.62,sideUv.y));
+          vec4 cheekColor=texture2D(map,vec2(.22,.54));
+          sideColor=mix(sideColor,cheekColor,earMask);
+          float frontMix=smoothstep(.12,.72,vFaceFront);
+          diffuseColor*=mix(sideColor,frontColor,frontMix);
+        `);
       };
+      faceMaterial.customProgramCacheKey=()=> 'rosa-identity-v2';
     }
     const face=mesh(group,geo,faceMaterial);face.castShadow=true;face.userData.keep=true;
-    sphere(group,0,-.58,-.02,.19,.25,.18,palette.skin);
-    for(const s of [-1,1]){const ear=sphere(group,s*.425,-.015,-.08,.08,.13,.07,palette.skin);ear.rotation.z=s*-.12;sphere(group,s*.443,-.01,-.03,.038,.078,.018,'#b57960');}
-    // Dense curls share two instanced draw calls.
-    const scalpGeo=new T.SphereGeometry(1,24,12,0,Math.PI*2,0,Math.PI/2);
-    const scalpPos=scalpGeo.attributes.position;
-    for(let i=0;i<scalpPos.count;i++){const xx=scalpPos.getX(i),yy=scalpPos.getY(i),zz=scalpPos.getZ(i);scalpPos.setXYZ(i,xx*.43,.3+yy*.37+Math.max(0,zz)*.2,zz*.37-.045);}scalpGeo.computeVertexNormals();mesh(group,scalpGeo,material('#30271f'));
-    const curls=new T.InstancedMesh(new T.TorusGeometry(.046,.020,6,12),material('#30271f'),155);
-    const core=new T.InstancedMesh(new T.IcosahedronGeometry(1,1),material('#322820'),100),dummy=new T.Object3D();
-    for(let i=0;i<155;i++){
-      const a=i*2.39996,r=Math.sqrt((i+.5)/155),yy=.3+Math.sqrt(1-r*r)*.37+Math.max(0,Math.cos(a))*r*.2;
-      dummy.position.set(Math.sin(a)*r*.43,yy,Math.cos(a)*r*.36-.045);dummy.rotation.set(rng()*3,rng()*3,rng()*3);dummy.scale.setScalar(.8+rng()*.6);dummy.updateMatrix();curls.setMatrixAt(i,dummy.matrix);
+    const neckGeo=new T.CylinderGeometry(.205,.245,.32,28),neckUv=neckGeo.attributes.uv,np=neckGeo.attributes.position;
+    for(let i=0;i<np.count;i++)neckUv.setXY(i,323/1942+np.getX(i)*.239,.5+(np.getY(i)-.59)*.625);
+    const skinMaterial=new T.MeshStandardMaterial({map:faceMaterial.map,color:faceMaterial.map?'#ffffff':'#d69b7c',roughness:.96});
+    mesh(group,neckGeo,skinMaterial,0,-.59,-.035);
+    for(const s of [-1,1]){
+      const earGeo=new T.SphereGeometry(1,20,16),ep=earGeo.attributes.position,eu=earGeo.attributes.uv;
+      for(let i=0;i<ep.count;i++)eu.setXY(i,(1709-ep.getZ(i)*53)/1942,1-(399-ep.getY(i)*85)/809);
+      const ear=mesh(group,earGeo,skinMaterial,s*.457,.035,-.055,.058,.118,.067);ear.rotation.z=s*-.09;
     }
-    for(let i=0;i<100;i++){const a=i*2.39996,r=Math.sqrt((i+.5)/100);dummy.position.set(Math.sin(a)*r*.4,.3+Math.sqrt(1-r*r)*.34+Math.max(0,Math.cos(a))*r*.2,Math.cos(a)*r*.34-.07);dummy.rotation.set(rng()*3,rng()*3,0);dummy.scale.set(.055,.055,.055);dummy.updateMatrix();core.setMatrixAt(i,dummy.matrix);}
-    group.add(core,curls);
-    const glasses=createSunglasses();group.add(glasses);
+    // Short dense curls follow the skull, including temples and nape. A local
+    // procedural curl pattern avoids projecting the atlas background onto hair.
+    function scalpPoint(phi,theta){
+      const c=Math.cos(theta),boundary=.12+.36*Math.max(c,0)-.36*Math.max(-c,0);
+      const y=boundary+(.715-boundary)*Math.cos(phi),[,width,depth,back]=section(y),lift=.022*Math.sin(phi);
+      return new T.Vector3(Math.sin(theta)*(width+lift),y,c>=0?(depth+features(0,y)+lift)*Math.pow(c,.62):-(back+lift)*Math.pow(-c,.9));
+    }
+    const hairTexture=texture((q,s)=>{
+      q.fillStyle='#171310';q.fillRect(0,0,s,s);const random=seeded(93);
+      for(let i=0;i<1600;i++){
+        const x=random()*s,y=random()*s,r=2+random()*4;
+        q.strokeStyle=i%3?'#26201b':'#382d23';q.lineWidth=.7+random();q.beginPath();q.ellipse(x,y,r,r*.62,random()*6,0,Math.PI*1.65);q.stroke();
+      }
+    },512);
+    const scalpGeo=new T.SphereGeometry(1,48,24,0,Math.PI*2,0,Math.PI/2),p=scalpGeo.attributes.position;
+    for(let i=0;i<p.count;i++){
+      const phi=Math.acos(clamp(p.getY(i),0,1)),theta=Math.atan2(p.getX(i),p.getZ(i)),v=scalpPoint(phi,theta);p.setXYZ(i,v.x,v.y,v.z);
+    }
+    scalpGeo.computeVertexNormals();mesh(group,scalpGeo,new T.MeshStandardMaterial({map:hairTexture,roughness:.94}));
+    const count=780,tufts=new T.InstancedMesh(new T.SphereGeometry(1,7,5),material('#ffffff',{roughness:.96}),count);
+    const curls=new T.InstancedMesh(new T.TorusGeometry(.015,.006,5,9,Math.PI*1.7),material('#ffffff',{roughness:.9}),count),dummy=new T.Object3D(),color=new T.Color(),up=new T.Vector3(0,0,1),normal=new T.Vector3();
+    for(let i=0;i<count;i++){
+      const phi=Math.acos(1-(i+.5)/count),theta=i*2.39996323,v=scalpPoint(phi,theta),size=.018+rng()*.008;
+      dummy.position.copy(v);dummy.rotation.set(rng()*3,rng()*3,rng()*3);dummy.scale.set(size,size*.8,size);dummy.updateMatrix();tufts.setMatrixAt(i,dummy.matrix);
+      color.set('#1c1713').multiplyScalar(.7+rng()*.5);tufts.setColorAt(i,color);
+      normal.set(v.x/.44,Math.cos(phi)*1.7,(v.z+.018)/.38).normalize();dummy.position.addScaledVector(normal,size*.6);dummy.quaternion.setFromUnitVectors(up,normal);dummy.rotateZ(rng()*6.28);dummy.scale.setScalar(.75+rng()*.5);dummy.updateMatrix();curls.setMatrixAt(i,dummy.matrix);
+      color.set('#30271f').multiplyScalar(.6+rng()*.5);curls.setColorAt(i,color);
+    }
+    tufts.castShadow=true;curls.castShadow=true;group.add(tufts,curls);
+    const glasses=createSunglasses();glasses.position.set(0,.162,.423);glasses.scale.set(1.075,1.035,1);group.add(glasses);
     group.userData={face,glasses};return group;
   }
 
@@ -335,7 +395,7 @@ window.RosaVisuals = (() => {
     const driver=new T.Group();driver.position.set(-.59,0,-.08);body.add(driver);
     sphere(driver,0,1.58,0,.38,.40,.25,palette.pink);sphere(driver,0,1.82,.015,.40,.18,.24,palette.pink);
     for(const s of [-1,1]){const leg=box(driver,s*.2,1.09,.25,.32,.27,.95,'#365667');leg.rotation.x=.1;box(driver,s*.2,.98,.7,.3,.18,.4,'#efe7cf');}
-    const head=createHead();head.position.set(0,2.54,.035);head.scale.setScalar(.9);driver.add(head);
+    const head=createHead();head.position.set(0,2.43,.035);head.scale.setScalar(.86);driver.add(head);
     const steering=new T.Group();steering.position.set(-.59,1.74,.83);steering.rotation.x=-.32;body.add(steering);
     mesh(steering,new T.TorusGeometry(.31,.025,8,32),material('#27383d'));for(let i=0;i<3;i++){const a=i*Math.PI*2/3;rod(steering,[0,0,0],[Math.sin(a)*.29,Math.cos(a)*.29,0],.012,'#6a7776');}
     const hands=[],forearms=[];

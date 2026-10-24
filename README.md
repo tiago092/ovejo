@@ -70,8 +70,4 @@ El entorno automatizado utiliza **SwiftShader, renderizado por software**, y emu
 
 ## Publicar en GitHub Pages
 
-Para alojar Godot como prueba en `/godot-preview/` y conservar Three.js en la raíz, seguir [la guía de Pages](docs/GITHUB-PAGES.md). El workflow nuevo se ejecuta manualmente; el paquete local se prepara con `python3 scripts/prepare_pages.py`.
-
-Subí los archivos y las carpetas `assets` y `vendor` a la raíz del repositorio; activá Pages desde la rama y la carpeta raíz. No hace falta compilar. No se publicó automáticamente esta renovación.
-
-El trazado, los personajes secundarios, el luau y la misión son ficticios. La ambientación se inspira en Morro de São Paulo; este mapa no sirve para orientarse en el destino real.
+GitHub Pages publicará únicamente Godot en la dirección principal. Seguir [la guía de Pages](docs/GITHUB-PAGES.md): el workflow se ejecuta manualmente y el paquete local se prepara con `python3 scripts/prepare_pages.py`. No utilizar la publicación desde la raíz de la rama, porque allí permanece el HTML histórico de Three.js.

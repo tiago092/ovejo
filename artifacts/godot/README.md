@@ -53,7 +53,7 @@ Firefox se puede iniciar con `firefox --headless --remote-debugging-port 9229 --
 2. Probar Chrome Android y Safari iPhone reales: audio tras gesto, giro de pantalla, multitáctil/cancelación, cambio de pestaña, safe areas, preferencias y memoria. Registrar modelo, sistema, navegador y calidad.
 3. En escritorio con GPU y cada teléfono, medir tres recorridos de 60 s por perfil y recuadro abierto/cerrado después del calentamiento. Registrar promedio, p95, llamadas, primitivas y memoria observable. Objetivos ≥58/29 FPS y p95 ≤33,3/50 ms; 300/150 llamadas. No reducir la población para cumplirlos.
 4. Comprobar el reproductor externo real disponible, bloqueado y lento; verificar una sola fuente musical y prioridad de pausa/silencio. La pista local ya permite jugar sin el servicio.
-5. Publicar una prueba HTTPS separada, repetir caché fría a 20 Mbit/s y 100 ms, comprobar cabeceras/MIME y aprobar antes de sustituir el enlace principal.
+5. Publicar Godot como único juego en la dirección principal, según la decisión del usuario; repetir caché fría a 20 Mbit/s y 100 ms y comprobar cabeceras/MIME.
 
 F0/F1 cuentan con evidencia técnica y el parecido presentado cuenta con aprobación del usuario. El cierre de las tareas restantes depende de los criterios anteriores y de los resultados detallados del informe; no se presupone acceso a dispositivos físicos.
 
@@ -76,4 +76,4 @@ La primera medición de Baja alcanzaba 181 llamadas. Agrupar las piezas por geom
 
 ## Alojamiento de prueba preparado
 
-Se preparó un [workflow manual para GitHub Pages](../../docs/GITHUB-PAGES.md). `pages-package.json` registra el sitio local: Three.js en la raíz y Godot en `godot-preview/`. La publicación HTTPS continúa pendiente; este paquete no constituye un despliegue remoto.
+Se preparó un [workflow manual para GitHub Pages](../../docs/GITHUB-PAGES.md). `pages-package.json` registra el sitio local: únicamente Godot en la raíz. La publicación HTTPS continúa pendiente; este paquete no constituye un despliegue remoto.

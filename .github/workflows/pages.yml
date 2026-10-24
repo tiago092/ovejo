@@ -1,4 +1,4 @@
-name: Publicar prueba Godot en Pages
+name: Publicar Godot en Pages
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
         run: python3 scripts/setup_tools.py
       - name: Importar, probar y exportar Godot
         run: python3 scripts/build_godot.py
-      - name: Conservar Three.js y preparar la ruta de prueba
+      - name: Preparar Godot en la raíz del sitio
         run: python3 scripts/prepare_pages.py
       - uses: actions/upload-pages-artifact@v4
         with:

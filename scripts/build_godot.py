@@ -18,9 +18,10 @@ for script in ['tests/godot/host.cjs']:
 godot(['--editor','--import'],'import.log')
 godot(['--script','tests/simulation_test.gd'],'simulation.log')
 godot(['--script','tests/presentation_test.gd'],'presentation.log')
+godot(['--script','tests/hud_test.gd'],'hud.log')
 godot(['--script','tests/route_drive_test.gd'],'route-drive.log')
 godot(['--script','tests/route_drive_test.gd','--','--population'],'route-drive-population.log')
-for name in ['host','simulation','presentation','route-drive','route-drive-population']:
+for name in ['host','simulation','presentation','hud','route-drive','route-drive-population']:
  path=logs/(name+'.json');report=json.loads(path.read_text());report['runtime_source_sha256']=runtime_fingerprint();path.write_text(json.dumps(report,indent=2)+'\n')
 for verification in ([True,False] if args.all else [args.verification]):
  out=ROOT/'dist'/('godot-test' if verification else 'godot');out.mkdir(parents=True,exist_ok=True)

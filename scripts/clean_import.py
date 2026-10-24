@@ -4,6 +4,7 @@ import hashlib,json,shutil,subprocess,tempfile
 from pathlib import Path
 from runtime_fingerprint import runtime_fingerprint
 ROOT=Path(__file__).resolve().parents[1]
+source_id=runtime_fingerprint()
 with tempfile.TemporaryDirectory(prefix='rosa-clean-') as folder:
  project=Path(folder)/'godot'
  shutil.copytree(ROOT/'godot',project,ignore=shutil.ignore_patterns('.godot'))
@@ -19,7 +20,7 @@ with tempfile.TemporaryDirectory(prefix='rosa-clean-') as folder:
   (ROOT/'artifacts/godot/clean-export.log').write_text(export_log)
   export_passed=exported.returncode==0 and 'ERROR:' not in export_log
   if export_passed:package_hash=hashlib.sha256((Path(folder)/'dist/godot/index.pck').read_bytes()).hexdigest()
- passed=passed and export_passed
- (ROOT/'artifacts/godot/clean-import.json').write_text(json.dumps({'runtime_source_sha256':runtime_fingerprint(),'passed':passed,'returncode':result.returncode,'cache_present_before':False,'clean_export_passed':export_passed,'clean_package_sha256':package_hash,'matches_previous_package_bytes':package_hash==hashlib.sha256((ROOT/'dist/godot/index.pck').read_bytes()).hexdigest(),'engine':'4.7.2.stable.official.ed1daf0bf'},indent=2)+'\n')
+ passed=passed and export_passed and runtime_fingerprint()==source_id
+ (ROOT/'artifacts/godot/clean-import.json').write_text(json.dumps({'runtime_source_sha256':source_id,'passed':passed,'returncode':result.returncode,'cache_present_before':False,'clean_export_passed':export_passed,'clean_package_sha256':package_hash,'matches_previous_package_bytes':package_hash==hashlib.sha256((ROOT/'dist/godot/index.pck').read_bytes()).hexdigest(),'engine':'4.7.2.stable.official.ed1daf0bf'},indent=2)+'\n')
  print('Clean import:', 'PASSED' if passed else 'FAILED')
  if not passed:print(log);raise SystemExit(1)

@@ -142,7 +142,7 @@ func make_ui() -> void:
 	var condition:=VBoxContainer.new();condition.size_flags_horizontal=Control.SIZE_EXPAND_FILL;top.add_child(condition)
 	health_label=label("",13,condition);health_bar=ProgressBar.new();health_bar.show_percentage=false;health_bar.custom_minimum_size=Vector2(100,8);condition.add_child(health_bar)
 	health_bar.add_theme_stylebox_override("background",bar_style("304b56"));health_bar.add_theme_stylebox_override("fill",bar_style("78cbb8"))
-	destination=label("",15,v);destination.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	destination=label("",15,v);destination.autowrap_mode=TextServer.AUTOWRAP_OFF
 	siren_label=label("",12,v);siren_label.add_theme_color_override("font_color",Color("91ddce"))
 	mission_bar=ProgressBar.new();mission_bar.show_percentage=false;mission_bar.max_value=1.3;mission_bar.custom_minimum_size.y=5;mission_bar.add_theme_stylebox_override("fill",bar_style("eb8eb5"));v.add_child(mission_bar)
 	controls=HBoxContainer.new();controls.add_theme_constant_override("separation",6);canvas.add_child(controls)
@@ -453,12 +453,15 @@ func update_hud() -> void:
 	intro_label.text="MORRO. SALIDA DE LA DISCO." if sim.cinematic_time<2.2 else ("«YO MANEJO»." if sim.cinematic_time<4.6 else "TRANQUILO. DIJO QUE SABÍA.")
 	if sim.state==Sim.ENDING:intro_label.text=ending_line()
 	notice_label.visible=story.remaining>0 and sim.state==Sim.PLAYING;touch_controls.visible=touch and sim.state==Sim.PLAYING
+	# Autowrap can grow the hidden panel before its labels receive their width.
+	# Refit after each text update so the first live start also collapses it.
+	hud.size=Vector2(minf(last_size.x-24,440),0)
 	touch_buttons.siren.text="ACTIVA" if sim.siren_left>0 else (str(ceili(sim.cooldown))+" s" if sim.cooldown>0 else "SIRENA")
 
 func test_snapshot() -> Dictionary:
 	var data: Dictionary=sim.snapshot();data["low"]=low;data["panel_open"]=panel_open;data["inset_rendering"]=inset.render_target_update_mode!=SubViewport.UPDATE_DISABLED;data["quality"]=quality;data["best"]=best;data["legacy_best"]=legacy_best;data["touch"]=touch;data["reduced"]=reduced
 	data["ui_size"]=[last_size.x,last_size.y];data["inputs"]=sim.keys.duplicate();data["touch_inputs"]=touch_pointers.duplicate();data["music_local"]=music.playing if music else false
-	data["presentation"]={"panel_manual":panel_manual,"panel_remaining":panel_remaining,"notice":notice_label.text,"settings_visible":settings_panel.visible,"suspension":vehicle.model.position.y,"braking_pitch":vehicle.model.rotation.x,"objective_visible":objective_label.visible,"camera_position":[camera.position.x,camera.position.y,camera.position.z],"camera_fov":camera.fov,"story_speaker":story.speaker,"story_remaining":story.remaining,"story_queue":story.queue.size(),"pickup_visual_progress":sim.load_progress/1.3}
+	data["presentation"]={"panel_manual":panel_manual,"panel_remaining":panel_remaining,"notice":notice_label.text,"settings_visible":settings_panel.visible,"suspension":vehicle.model.position.y,"braking_pitch":vehicle.model.rotation.x,"objective_visible":objective_label.visible,"camera_position":[camera.position.x,camera.position.y,camera.position.z],"camera_fov":camera.fov,"story_speaker":story.speaker,"story_remaining":story.remaining,"story_queue":story.queue.size(),"hud_rect":[hud.position.x,hud.position.y,hud.size.x,hud.size.y],"pickup_visual_progress":sim.load_progress/1.3}
 	data["audio"]={}
 	for name in driving_audio.players:
 		var player: AudioStreamPlayer=driving_audio.players[name];data["audio"][name]={"playing":player.playing,"pitch":player.pitch_scale,"db":player.volume_db}

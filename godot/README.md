@@ -92,3 +92,16 @@ node scripts/capture_tropical.cjs
 ```
 
 Ejecutar en secuencia sobre la misma sesión CDP. Las pruebas específicas comprueban reacciones, fijado/cierre, sonido según superficie, pausa/silencio y movimiento reducido.
+
+### Firefox de prueba
+
+Firefox 158 requiere permitir la automatización de ventana. Usar un perfil dedicado:
+
+```bash
+mkdir -p /tmp/rosa-firefox-test
+.tools/firefox/firefox --headless --no-remote -remote-allow-system-access --remote-debugging-port 9229 --profile /tmp/rosa-firefox-test about:blank
+# En otra terminal:
+node scripts/firefox_godot.cjs
+```
+
+El corredor acepta `FIREFOX_DEBUG_URL` para otra instancia BiDi. Esta configuración corresponde solo al navegador de pruebas.

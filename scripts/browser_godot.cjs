@@ -9,10 +9,14 @@ const check=(name,ok)=>{checks.push({name,passed:!!ok});if(!ok)console.error('FA
 const command=async message=>c.evaluate(`__rosa.command(${JSON.stringify(message)})`);
 const snapshot=()=>c.evaluate('__rosa.snapshot()');
 const shot=async name=>{await c.sleep(700);await c.shot(path.join(out,(process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png'));captures.push((process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png');};
-const load=async()=>{await c.call('Page.navigate',{url:base});let ready=false;for(let i=0;i<120;i++){ready=await c.evaluate('!!window.__rosa?.snapshot()');if(ready)break;await c.sleep(500);}if(!ready)throw Error('Godot failed to initialize');await command({command:'freeze',value:true});};
+const load=async(freeze=true)=>{await c.call('Page.navigate',{url:base});let ready=false;for(let i=0;i<120;i++){ready=await c.evaluate('!!window.__rosa?.snapshot()');if(ready)break;await c.sleep(500);}if(!ready)throw Error('Godot failed to initialize');if(freeze)await command({command:'freeze',value:true});};
 try{
  await c.call('Network.enable');await c.call('Network.setBlockedURLs',{urls:['*soundcloud.com*']});
- await c.call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});await load();check('export initializes',true);await shot('menu-desktop');
+ await c.call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});await load(false);check('export initializes',true);
+ await c.call('Input.dispatchMouseEvent',{type:'mousePressed',x:950,y:474,button:'left',clickCount:1});await c.call('Input.dispatchMouseEvent',{type:'mouseReleased',x:950,y:474,button:'left',clickCount:1});await c.sleep(700);
+ await c.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await c.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await c.sleep(2200);
+ const first=await snapshot();check('first live start keeps compact HUD',first.state==='playing'&&first.presentation.hud_rect[3]<180);await shot('first-live-start');
+ await command({command:'menu'});await command({command:'freeze',value:true});await shot('menu-desktop');
  if(part!=='screens'){
  await command({command:'start',story:true,reduced:false});check('intro precedes timer',(await snapshot()).state==='cinematic'&&(await snapshot()).time===150);
  await command({command:'advance',dt:3});await shot('intro-closeup');await command({command:'pause'});await command({command:'advance',dt:20});check('intro pause',(await snapshot()).cinematic_time===3);

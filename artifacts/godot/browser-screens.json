@@ -1,0 +1,144 @@
+{
+  "part": "screens",
+  "package_sha256": "6710223c61d500a31a09ea780933c056886833ced1227fa05d3ce89fcc178a7d",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.47",
+    "revision": "@1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.19"
+  },
+  "backend": "SwiftShader (software; not physical-device performance)",
+  "checks": [
+    {
+      "name": "export initializes",
+      "passed": true
+    },
+    {
+      "name": "draw budget coast high",
+      "passed": true
+    },
+    {
+      "name": "draw budget club high",
+      "passed": true
+    },
+    {
+      "name": "draw budget hospital high",
+      "passed": true
+    },
+    {
+      "name": "draw budget coast low",
+      "passed": true
+    },
+    {
+      "name": "draw budget club low",
+      "passed": true
+    },
+    {
+      "name": "draw budget hospital low",
+      "passed": true
+    },
+    {
+      "name": "low inset draw budget",
+      "passed": true
+    },
+    {
+      "name": "closed inset stops rendering",
+      "passed": true
+    },
+    {
+      "name": "quality persists",
+      "passed": true
+    },
+    {
+      "name": "auto low on touch 390",
+      "passed": true
+    },
+    {
+      "name": "no page overflow 390",
+      "passed": true
+    },
+    {
+      "name": "multitouch throttle and turn 390",
+      "passed": true
+    },
+    {
+      "name": "touch cancel no scroll 390",
+      "passed": true
+    },
+    {
+      "name": "auto low on touch 844",
+      "passed": true
+    },
+    {
+      "name": "no page overflow 844",
+      "passed": true
+    },
+    {
+      "name": "multitouch throttle and turn 844",
+      "passed": true
+    },
+    {
+      "name": "touch cancel no scroll 844",
+      "passed": true
+    },
+    {
+      "name": "DPR3 keeps CSS-sized input coordinates",
+      "passed": true
+    }
+  ],
+  "counts": [
+    {
+      "scene": "coast",
+      "quality": "high",
+      "calls": 149,
+      "primitives": 215808
+    },
+    {
+      "scene": "club",
+      "quality": "high",
+      "calls": 133,
+      "primitives": 221882
+    },
+    {
+      "scene": "hospital",
+      "quality": "high",
+      "calls": 115,
+      "primitives": 169468
+    },
+    {
+      "scene": "coast",
+      "quality": "low",
+      "calls": 102,
+      "primitives": 133276
+    },
+    {
+      "scene": "club",
+      "quality": "low",
+      "calls": 93,
+      "primitives": 106356
+    },
+    {
+      "scene": "hospital",
+      "quality": "low",
+      "calls": 78,
+      "primitives": 93256
+    }
+  ],
+  "captures": [
+    "menu-desktop.png",
+    "coast-high.png",
+    "club-high.png",
+    "hospital-high.png",
+    "coast-low.png",
+    "club-low.png",
+    "hospital-low.png",
+    "desktop-1920.png",
+    "mobile-390x844.png",
+    "mobile-844x390.png",
+    "mobile-dpr3.png",
+    "character-three-views.png"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "name": "import legacy keys once",
+      "passed": true
+    },
+    {
+      "name": "release has no test API",
+      "passed": true
+    },
+    {
+      "name": "save versioned preferences",
+      "passed": true
+    },
+    {
+      "name": "widget readiness cannot start music without active game",
+      "passed": true
+    },
+    {
+      "name": "active widget replaces local music only after PLAY",
+      "passed": true
+    },
+    {
+      "name": "repeated audio synchronization does not restart song",
+      "passed": true
+    },
+    {
+      "name": "widget failure selects fallback",
+      "passed": true
+    },
+    {
+      "name": "late PLAY after mute is rejected",
+      "passed": true
+    },
+    {
+      "name": "late READY and FINISH cannot restart paused music",
+      "passed": true
+    },
+    {
+      "name": "visibility emits pause",
+      "passed": true
+    },
+    {
+      "name": "touch cancellation releases input",
+      "passed": true
+    },
+    {
+      "name": "blocked storage retains session preferences",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

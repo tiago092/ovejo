@@ -1,0 +1,19 @@
+{
+  "approved": true,
+  "recorded_at_utc": "2026-10-24T01:38:23.843897+00:00",
+  "scope": "Parecido del protagonista presentado en las comparativas de volumen, identidad e integración. No aprueba pruebas técnicas pendientes ni publicación.",
+  "source": "Respuesta explícita del usuario en esta conversación a la solicitud de revisión del protagonista.",
+  "user_response": "Me parece correcto todo",
+  "comparison": "comparison.html",
+  "asset_sha256": {
+    "art-source/driver.blend": "5365dca9581d8e48016c47d635bc93246a2f0386741fbfeb1cb528d28339315a",
+    "godot/assets/driver.glb": "f751ba8107b1d61dd8fdece92242a4a12b825e751808e47d3dc5ceddc9fec597",
+    "godot/assets/driver-low.glb": "6ba72766abc4330f28f03f125c2c87ad8387b6aeedbb523b5163f75025d29581",
+    "godot/assets/driver-skin.png": "ecf8e6c060a35779368e74df27f28b90657eacd2a237274852460216e4e0c9f1",
+    "assets/driver.png": "6fd70107fe714d072209fd0873bef931943f8c7ea0369c0fc95504964532cf48",
+    "artifacts/godot/character-volume.png": "9b37d4f21be36fe3f14d2b12610347df932f8ea803ead14b013aa7fdf2d2e415",
+    "artifacts/godot/character-three-views.png": "127f4ea9e0849347299438324be4597434e847eca83162d384ece3425c4934df",
+    "artifacts/godot/intro-closeup.png": "ce37f51447f130b01d226bd08e37d9bde13fa74ae30fdfc828a8f2cfbde71f55",
+    "artifacts/godot/result.png": "24fb5476f512d8bfbeb92cb33952000ed0bd0de4790e0c05086add7849f80f8d"
+  }
+}

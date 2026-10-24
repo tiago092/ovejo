@@ -1,0 +1,60 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ambulance.glb-fec0da5091a6e4a9d85cfbc0a047292c.scn[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/ambulance.glb.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/DejaVuSans.ttf-762234438454d583c0104d205bde2047.fontdata[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/DejaVuSans.ttf.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/driver-low.glb-cbd10bc2805ed8d830a8f89bd8d6ed83.scn[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/driver-low.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/driver-low_driver-skin.png-f7e1faee440533962186272a7703f69c.ctex[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/driver-low_driver-skin.png.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/driver-skin.png-fd06ff6901e87c4c0e8d8896e3ab14b8.ctex[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/driver-skin.png.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/driver.glb-bf0647b93214ce3b4fe85299a702ee59.scn[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/driver.glb.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/driver_driver-skin.png-de97497ffec8827337c1e1eb5928bd97.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/driver_driver-skin.png.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hit.wav-094de5d7e9ff6457899262f6412d21e8.sample[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/hit.wav.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/music.wav-3bbc0079c777e2a4c2cd00e62e06bb6a.sample[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/music.wav.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/siren.wav-561b954d08b3d0c2c07df59e718b1a09.sample[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/siren.wav.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/win.wav-924761e11ca98d70704cf88deb10fe22.sample[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/win.wav.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://data/balance.json[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://data/world.json[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://licenses/Godot-third-party.json[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://scripts/world_visual.gdc[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://scripts/actors_visual.gdc[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/minimap.gdc[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/simulation.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/world_data.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicle_visual.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/web_bridge.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/world_visual.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/actors_visual.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/minimap.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/simulation.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/world_data.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicle_visual.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/web_bridge.gd.remap[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m

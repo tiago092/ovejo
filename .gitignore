@@ -1,0 +1,7 @@
+.tools/
+godot/.godot/
+dist/
+art-source/*.blend1
+__pycache__/
+
+artifacts/godot/*.zip

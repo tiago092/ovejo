@@ -1,0 +1,91 @@
+{
+  "generated_utc": "2026-10-24T01:42:21.510361+00:00",
+  "base_commit": "aa4418e79118ab8187a2514cab1a78a8f22ac0ac",
+  "working_tree": "uncommitted implementation; exact source hashes in source-manifest.json",
+  "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "cpu": "AMD Ryzen 7 7735HS with Radeon Graphics",
+  "physical_gpu_available": false,
+  "tools": "4.7.2.stable.official.ed1daf0bf",
+  "checks": [
+    {
+      "check": "Distribución y alturas del escenario original",
+      "status": "aprobada",
+      "evidence": "layout.json"
+    },
+    {
+      "check": "Reglas y trazas 30/60/120 FPS",
+      "status": "aprobada",
+      "evidence": "simulation.json"
+    },
+    {
+      "check": "Persistencia y prioridad del audio externo",
+      "status": "aprobada",
+      "evidence": "host.json"
+    },
+    {
+      "check": "Chrome: flujo, capturas y controles emulados",
+      "status": "aprobada",
+      "evidence": "browser.json"
+    },
+    {
+      "check": "Firefox: arranque y primer fotograma de juego",
+      "status": "aprobada",
+      "evidence": "firefox.json"
+    },
+    {
+      "check": "Paquete de distribución y fallos de carga",
+      "status": "aprobada",
+      "evidence": "distribution.json"
+    },
+    {
+      "check": "Importación desde fuentes sin caché",
+      "status": "aprobada",
+      "evidence": "clean-import.json"
+    },
+    {
+      "check": "Descarga comprimida ≤25 MiB",
+      "status": "aprobada",
+      "evidence": "release-build.json"
+    },
+    {
+      "check": "Presupuesto de dibujo durante recorrido diagnóstico",
+      "status": "aprobada",
+      "evidence": "benchmark.json"
+    },
+    {
+      "check": "Parecido del protagonista presentado en las comparativas: revisión del usuario",
+      "status": "aprobada",
+      "evidence": "art-review.json",
+      "matches_reviewed_assets": true
+    },
+    {
+      "check": "Incorporación de fotografías originales adicionales a las fuentes de autoría",
+      "status": "pendiente"
+    },
+    {
+      "check": "Android Chrome e iPhone Safari: controles, audio y compatibilidad reales",
+      "status": "pendiente"
+    },
+    {
+      "check": "GPU física: tres recorridos de 60 s por perfil y recuadro abierto/cerrado",
+      "status": "pendiente"
+    },
+    {
+      "check": "Objetivos físicos 58/29 FPS y p95 33,3/50 ms",
+      "status": "pendiente"
+    },
+    {
+      "check": "Reproductor real SoundCloud disponible y red lenta (el puente está probado con eventos simulados)",
+      "status": "pendiente"
+    },
+    {
+      "check": "Publicación de prueba HTTPS y aceptación antes de sustituir el enlace principal",
+      "status": "pendiente"
+    },
+    {
+      "check": "Runtime y retrato originales conservados",
+      "status": "aprobada"
+    }
+  ],
+  "complete": false
+}

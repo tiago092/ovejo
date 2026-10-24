@@ -1,0 +1,10 @@
+{
+  "platform": "linux-x86_64",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "blender": "4.5.3 LTS 67807e1800cc",
+  "archives": [
+    {"file":"godot.zip","url":"https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip","sha256":"cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"},
+    {"file":"templates.tpz","url":"https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz","sha256":"f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"},
+    {"file":"blender.tar.xz","url":"https://download.blender.org/release/Blender4.5/blender-4.5.3-linux-x64.tar.xz","sha256":"975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845"}
+  ]
+}

@@ -45,6 +45,12 @@ Al jugar se intenta reproducir **Magalenha (Frankie G Rio Dub)** mediante el rep
 
 La página de SoundCloud de thedjfrankieg marca el remix como CC BY 3.0. Se conserva el crédito y el enlace original. Esa indicación no permite concluir que los derechos de la composición o grabación original estén liberados: el juego enlaza el reproductor oficial y no distribuye su audio.
 
+## Migración a Godot
+
+La implementación paralela está en [godot/](godot/README.md), con fuentes editables de Blender, simulación GDScript y exportación web. Ejecutá `python3 scripts/build_godot.py` y `python3 scripts/serve_godot.py` para abrir `http://127.0.0.1:8767/dist/godot/`. Las herramientas locales se preparan con `python3 scripts/setup_tools.py` si faltan.
+
+El [plan y estado de migración](docs/MIGRACION-GODOT.md) y las [evidencias](artifacts/godot/README.md) distinguen lo comprobado de lo pendiente: parecido aprobado y pruebas físicas móviles pendientes. Esta versión Three.js sigue disponible para jugar, comparar y volver atrás.
+
 ## Desarrollo y verificación
 
 `visuals.js` construye y anima modelos, materiales, iluminación, instancias y efectos. `game.js` conserva simulación, misión, navegación, cámaras y controles. `index.html` y `style.css` contienen la presentación. Three.js r160 se conserva en `vendor`, con licencia MIT incluida.
@@ -63,6 +69,8 @@ El último comando añade un recorrido de 60 segundos. Las pruebas lanzan Chrome
 El entorno automatizado utiliza **SwiftShader, renderizado por software**, y emulación móvil. Los presupuestos de llamadas de dibujo se comprueban automáticamente. Los objetivos de 60 FPS en PC y 30 FPS en teléfono necesitan medición con GPU y dispositivo reales; el benchmark de software no los certifica. Los valores medidos están en `artifacts/verification.json`.
 
 ## Publicar en GitHub Pages
+
+Para alojar Godot como prueba en `/godot-preview/` y conservar Three.js en la raíz, seguir [la guía de Pages](docs/GITHUB-PAGES.md). El workflow nuevo se ejecuta manualmente; el paquete local se prepara con `python3 scripts/prepare_pages.py`.
 
 Subí los archivos y las carpetas `assets` y `vendor` a la raíz del repositorio; activá Pages desde la rama y la carpeta raíz. No hace falta compilar. No se publicó automáticamente esta renovación.
 

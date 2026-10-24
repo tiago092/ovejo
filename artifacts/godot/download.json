@@ -1,0 +1,20 @@
+{
+  "load_seconds": 9.218,
+  "network": {
+    "mbps": 20,
+    "latency_ms": 100,
+    "cold_cache": true
+  },
+  "download": [
+    {
+      "name": "index.wasm",
+      "encoded": 10054758,
+      "decoded": 39514754
+    },
+    {
+      "name": "index.pck",
+      "encoded": 5464913,
+      "decoded": 5523048
+    }
+  ]
+}

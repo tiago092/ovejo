@@ -24,3 +24,12 @@ Las gafas se modelaron tomando `assets/driver.png` como referencia: montura negr
 Ambulancia, patrulla, peatones, carritos, fachadas y vegetación se construyen localmente con Three.js. Los elementos repetidos usan instancias con color por instancia. Arena, empedrado, madera y sombra de contacto usan texturas Canvas locales; el cielo y el mar usan shaders propios. No hay modelos descargados de terceros ni servicios de gráficos en tiempo de ejecución.
 
 Three.js r160 conserva su licencia MIT en `vendor/THREE-LICENSE.txt`. `music.js` contiene la pista alternativa sintetizada. Magalenha se reproduce mediante el reproductor oficial de SoundCloud, con los créditos de la versión anterior; su audio no se incluye en el proyecto.
+
+## Recursos de la migración a Godot
+
+- `art-source/driver.blend` y `ambulance.blend`: modelos editables creados para este proyecto con Blender 4.5.3. `scripts/build_art.py` conserva la receta de autoría inicial; `scripts/export_art.py` exporta los retoques guardados sin sobrescribirlos.
+- `godot/assets/driver.glb`, `driver-low.glb`, `ambulance.glb`: modelos de ejecución con articulaciones; cabeza continua y expresión de sonrisa. El parecido permanece pendiente de revisión humana.
+- `godot/assets/driver-skin.png`: horneado a UV convencionales del atlas generado ya documentado arriba. No modifica `assets/driver.png` ni convierte las imágenes generadas en referencia de identidad.
+- `godot/assets/music.wav`: bucle de la música original de `music.js`, renderizado con OfflineAudioContext a PCM mono de 22.050 Hz; `scripts/render_audio.cjs` documenta el procedimiento. Sirena, golpe y resultado son muestras sintetizadas locales. No se incluye audio descargado de SoundCloud.
+- `godot/assets/DejaVuSans.ttf`: tipografía DejaVu Sans; licencia Bitstream Vera y cambios DejaVu en dominio público, incluidos en `godot/licenses/DejaVu.txt`.
+- Godot Engine y dependencias: textos de licencia en `godot/licenses/`, copiados al paquete exportado. Blender se usa como herramienta de autoría; su ejecutable no se incluye en la distribución web.

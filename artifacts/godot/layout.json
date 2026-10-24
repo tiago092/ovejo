@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "obstacles": 12,
+  "road_nodes": 12,
+  "height_samples": 42,
+  "source_sha256": "27165f1ab89c41e6802aa773534a2d512584fd63270d65da8c7fa64ccf77e593"
+}

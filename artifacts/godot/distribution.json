@@ -1,0 +1,44 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.47",
+    "revision": "@1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.19"
+  },
+  "checks": [
+    {
+      "name": "HTTP subdirectory loads without SoundCloud",
+      "passed": true
+    },
+    {
+      "name": "cold gzip load <=15s (software environment)",
+      "passed": true
+    },
+    {
+      "name": "release does not register instrumented API",
+      "passed": true
+    },
+    {
+      "name": "runs without cross-origin isolation",
+      "passed": true
+    },
+    {
+      "name": "runtime served compressed",
+      "passed": true
+    },
+    {
+      "name": "release loads when localStorage is denied",
+      "passed": true
+    },
+    {
+      "name": "missing WebGL2 shows readable error",
+      "passed": true
+    },
+    {
+      "name": "missing package shows readable error",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

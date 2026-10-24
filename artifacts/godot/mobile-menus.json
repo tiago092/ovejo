@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "height": 844,
+      "state": "menu"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "state": "menu"
+    }
+  ],
+  "passed": true,
+  "note": "Menu screenshots require visual review; page overflow alone cannot detect a canvas UI overlap."
+}

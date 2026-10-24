@@ -1,0 +1,68 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.47",
+    "revision": "@1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.19"
+  },
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "resolution": [
+    1280,
+    720
+  ],
+  "route": "Scripted presentation path with active agents; verification resets health/time, not a gameplay balance test.",
+  "physical_mobile_verified": false,
+  "memory_note": "JS heap is observable in Chrome; it does not account for total WASM or GPU memory.",
+  "counter": "RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME (all views and shadow passes); primitives sampled every second.",
+  "runs": [
+    {
+      "quality": "low",
+      "panel": false,
+      "seconds": 60.54469999999998,
+      "frames": 134,
+      "fps": 2.21324079564355,
+      "p95_ms": 551.2,
+      "max_calls": 169,
+      "mean_calls": 126.55970149253731,
+      "max_primitives_sampled": 129814,
+      "js_heap_bytes": 21633218
+    },
+    {
+      "quality": "low",
+      "panel": true,
+      "seconds": 60.36329999999999,
+      "frames": 128,
+      "fps": 2.1204937437151385,
+      "p95_ms": 559.6999999999999,
+      "max_calls": 181,
+      "mean_calls": 138.6328125,
+      "max_primitives_sampled": 152674,
+      "js_heap_bytes": 22799562
+    },
+    {
+      "quality": "high",
+      "panel": false,
+      "seconds": 60.739299999999986,
+      "frames": 127,
+      "fps": 2.090903253741812,
+      "p95_ms": 557.6999999999999,
+      "max_calls": 214,
+      "mean_calls": 162.37007874015748,
+      "max_primitives_sampled": 206938,
+      "js_heap_bytes": 24215259
+    },
+    {
+      "quality": "high",
+      "panel": true,
+      "seconds": 60.72140000000001,
+      "frames": 108,
+      "fps": 1.7786151175697527,
+      "p95_ms": 675.4,
+      "max_calls": 224,
+      "mean_calls": 175.59259259259258,
+      "max_primitives_sampled": 224000,
+      "js_heap_bytes": 26158211
+    }
+  ]
+}

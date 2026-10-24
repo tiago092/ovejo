@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "returncode": 0,
+  "cache_present_before": false,
+  "clean_export_passed": true,
+  "clean_package_sha256": "f6281019fbf6807f542f94990dd44955ddce03455eacbe983feb6ee55354f84e",
+  "matches_previous_package_bytes": false,
+  "engine": "4.7.2.stable.official.ed1daf0bf"
+}

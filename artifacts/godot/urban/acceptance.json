@@ -1,6 +1,6 @@
 {
-  "branch": "feat/compact-village",
-  "base_commit": "c34e6625cd0f313109135cc97d74d5c143dcb9c4",
+  "branch": "master",
+  "base_commit": "399f6c4581385b4283ec3336887fbd844f52b992",
   "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
   "urban_extent": "complete",
   "checks": [
@@ -96,7 +96,7 @@
     },
     {
       "check": "Publicación final y auditoría HTTPS",
-      "status": "pendiente",
+      "status": "aprobada",
       "evidence": "../pages-audit.json"
     },
     {

@@ -52,3 +52,5 @@ Pendientes externos: GPU física, Chrome Android y Safari iPhone reales, y cinco
 `urban-before/`, `urban-spaced/` y `urban-reference/` conservan las etapas visuales anteriores. La aprobación del rostro permanece en `art-review.json`; la dirección y continuación del escenario se registran en `urban/review.json`.
 
 La primera importación limpia de esta revisión terminó con SIGABRT del editor, sin errores de importación registrados. La repetición aislada completó importación y exportación. Se conservan `clean-import-first-attempt.json` y su log; `clean-import.json` corresponde a la ejecución aprobada.
+
+Publicación verificada desde `399f6c4`: paquete Godot actual en la raíz de Pages, 80 edificios y estilo costero completo. El arranque público sin caché observado fue de 6.65 s en esta conexión sin limitar ancho de banda; no equivale al ensayo de 20 Mbit/s ni a una medición de GPU física.

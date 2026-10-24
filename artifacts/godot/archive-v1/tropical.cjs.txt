@@ -1,0 +1,33 @@
+/* Presentation contracts: software rendering verifies behavior, never physical FPS. */
+const fs=require('node:fs'),path=require('node:path'),connect=require('../../scripts/cdp.cjs');
+(async()=>{
+ const c=await connect(),checks=[];let failure;const out=path.resolve(__dirname,'../../artifacts/godot');
+ const cmd=message=>c.evaluate(`__rosa.command(${JSON.stringify(message)})`),snap=()=>c.evaluate('__rosa.snapshot()');
+ const check=(name,passed)=>{checks.push({name,passed:!!passed});if(!passed)console.error('FAIL',name);};
+ const until=async predicate=>{for(let i=0;i<35;i++){if(await predicate())return true;await c.sleep(250);}return false;};
+ try{
+  await c.call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});
+  await c.call('Page.navigate',{url:'http://127.0.0.1:8767/dist/godot-test/index.html'});
+  if(!await until(()=>c.evaluate('!!window.__rosa?.snapshot()')))throw Error('No verification game');
+  await cmd({command:'freeze',value:true});await cmd({command:'quality',value:'high'});await cmd({command:'mute',value:false});await cmd({command:'reduced',value:false});await cmd({command:'start'});
+  check('driver inset starts closed',!(await snap()).panel_open);
+  check('local driving sound beds active',await until(async()=>Object.values((await snap()).audio).every(p=>p.playing)));
+  const idle=(await snap()).audio.engine.pitch;await cmd({command:'set',values:{speed:20}});await c.sleep(450);check('engine pitch follows speed',(await snap()).audio.engine.pitch>idle+.5);
+  await cmd({command:'set',values:{x:-60,z:-110}});await c.sleep(900);const road=await snap();await cmd({command:'set',values:{x:-78,z:-92}});await c.sleep(900);const sand=await snap();check('road and sand switch beds',road.audio.road.db>road.audio.sand.db&&sand.audio.sand.db>sand.audio.road.db);
+  await cmd({command:'siren'});check('reaction opens automatically',await until(async()=>(await snap()).panel_open));check('reaction explains first siren',(await snap()).presentation.notice.includes('prioridad'));
+  check('automatic reaction closes',await until(async()=>!(await snap()).panel_open));
+  await cmd({command:'pin',value:true});await c.sleep(3600);check('pinned inset stays open',(await snap()).panel_open&&(await snap()).inset_rendering);
+  await cmd({command:'panel',value:false});await c.sleep(450);check('closed inset stops its viewport',!(await snap()).inset_rendering);
+  const poseBeforePause=(await snap()).presentation;await cmd({command:'pause'});check('pause stops all driving beds',await until(async()=>Object.values((await snap()).audio).every(p=>!p.playing)));
+  const time=(await snap()).time;await c.sleep(600);const posePaused=(await snap()).presentation;check('pause preserves camera and suspension',JSON.stringify(posePaused.camera_position)===JSON.stringify(poseBeforePause.camera_position)&&posePaused.suspension===poseBeforePause.suspension&&posePaused.braking_pitch===poseBeforePause.braking_pitch);check('pause preserves mission clock',(await snap()).time===time);await cmd({command:'pause'});
+  await cmd({command:'mute',value:true});check('mute stops every local bed',await until(async()=>Object.values((await snap()).audio).every(p=>!p.playing)));
+  await cmd({command:'reduced',value:true});await cmd({command:'set',values:{speed:18,impact:1}});await c.sleep(300);const calm=await snap();check('reduced motion removes suspension and pitch',calm.presentation.suspension===0&&calm.presentation.braking_pitch===0);
+  await cmd({command:'set',values:{x:-28,z:-110,speed:0,vx:0,vz:0,load_progress:.6}});await c.sleep(300);check('pickup progress appears at objective',(await snap()).presentation.objective_visible);
+  await cmd({command:'start'});const reset=await snap();check('restart clears presentation reactions',!reset.panel_open&&!reset.presentation.panel_manual&&!reset.presentation.objective_visible);
+  await cmd({command:'menu'});check('menu stops driving beds',await until(async()=>Object.values((await snap()).audio).every(p=>!p.playing)));
+ }catch(e){failure=String(e);console.error(e)}
+ const errors=c.messages.filter(m=>m.method==='Runtime.exceptionThrown'||m.method==='Runtime.consoleAPICalled'&&m.params.type==='error');
+ const report={package_sha256:JSON.parse(fs.readFileSync(path.join(out,'verification-build.json'))).files['index.pck'].sha256,checks,errors,failure,passed:!failure&&!errors.length&&checks.every(x=>x.passed)};
+ fs.writeFileSync(path.join(out,'tropical-tests.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:report.passed,checks:checks.length,errors:errors.length,failure}));
+ await c.call('Page.navigate',{url:'about:blank'});c.close();if(!report.passed)process.exitCode=1;
+})().catch(e=>{console.error(e);process.exitCode=1});

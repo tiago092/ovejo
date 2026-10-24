@@ -20,3 +20,15 @@ El controlador visual monta el personaje a escala 0,78 y ajusta brazos/manos hac
 El parecido de las comparativas actuales está aprobado. Sigue pendiente incorporar los originales adicionales al archivo de referencias de autoría. Los futuros cambios del personaje requieren una nueva revisión; el informe comprueba los hashes para evitar trasladar automáticamente esta aprobación a otra versión. Ver la escena `godot/scenes/study.tscn` y las capturas de `artifacts/godot/`.
 
 La lámina de volumen neutro se reproduce con `blender --background --threads 2 --python scripts/render_volume.py`. Importa el GLB de ejecución, elimina las texturas para esa renderización y oculta las gafas desmontables; no guarda cambios en `.blend` ni `.glb`. La lámina de identidad de Godot conserva gafas, materiales y geometría del juego.
+
+## Kit tropical
+
+`tropical-kit.blend` contiene plantillas locales de caja redondeada, esfera, cilindro, extremidad, techo y casco de embarcación. `godot/assets/tropical-kit.glb` conserva sus nombres estables (`SoftBox`, `Round`, `Pole`, `Limb`, `Roof`, `Hull`, `Ring`). Godot utiliza las mallas como plantillas de instancias con colores por pieza. Las fachadas y sus posiciones se componen en el módulo visual; la distribución lógica procede de los datos existentes.
+
+Para reconstruir explícitamente este kit: `blender --background --threads 2 --python scripts/build_tropical_art.py`. Sobrescribe únicamente la fuente y exportación del kit. Después de retocar el `.blend` manualmente, exportar el GLB directamente manteniendo nombres, tamaños unitarios y ejes; no ejecutar el generador sobre esos retoques.
+
+La revisión tropical de la ambulancia añade tapicería, costuras, estribos, defensa, reflectores y placa médica trasera. `scripts/refine_ambulance.py` aplica esa revisión a la fuente existente y vuelve a exportarla; no carga ni guarda el protagonista. Los modelos `.blend` y `.glb` del protagonista aprobado permanecen intactos.
+
+## Escenario «Yo manejo»
+
+El nuevo pueblo reutiliza las mallas editables de `tropical-kit.blend` y la ambulancia revisada. Las posiciones, trazado y dimensiones se editan en `scripts/build_story_layout.py`, que produce el único `world.json` compartido por presentación y simulación. No ejecutar el generador de personaje para modificar el mundo. El kit incorpora `Ring`, un aro de 24×6 segmentos para la fuente. La extensión artística está implementada; la revisión humana del mundo sigue pendiente.

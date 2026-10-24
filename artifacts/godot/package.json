@@ -1,9 +1,12 @@
 {
   "file": "codigo-rosa-web.zip",
-  "bytes": 31297433,
-  "sha256": "713e5b9f2336f6323fe9cc6143d85b5168a21fe55a39c48ba730b60ea507f1dd",
+  "bytes": 31823065,
+  "sha256": "f35a4ab50fcec41bc80e40058c5412f32f2c6f494d32d6babe17fa6f104b014b",
   "runtime_manifest": {
+    "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf",
     "engine": "4.7.2.stable.official.ed1daf0bf",
+    "rules_version": 2,
+    "art_extent": "complete",
     "verification": false,
     "files": {
       "index.wasm": {
@@ -22,14 +25,14 @@
         "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
       },
       "index.html": {
-        "bytes": 3847,
-        "gzip_bytes": 1976,
-        "sha256": "941a0e8fca410c5cb232709005cab64c61e2248ec57681375c8dd5e68e7afee0"
+        "bytes": 3900,
+        "gzip_bytes": 2017,
+        "sha256": "001fd156339d82529e3c675eb4a394f1199aaeffd82a682dcf8cefea317148b0"
       },
       "index.pck": {
-        "bytes": 5523048,
-        "gzip_bytes": 5464913,
-        "sha256": "50322b3adde150e7b0931b7f3f55bbfe2818c36a372d65235a0899c2398a982f"
+        "bytes": 5826824,
+        "gzip_bytes": 5727504,
+        "sha256": "53e618fb224e37b370ed42b2be7359d19e57e86159405e0bef67264620c11e17"
       },
       "index.audio.worklet.js": {
         "bytes": 7298,
@@ -42,12 +45,12 @@
         "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"
       },
       "host.js": {
-        "bytes": 3987,
-        "gzip_bytes": 1593,
-        "sha256": "72b39e0fc154bd035db52dfed9e8ee7637b743e16ecdb01c752ffc32274ce2d3"
+        "bytes": 4470,
+        "gzip_bytes": 1727,
+        "sha256": "bc3fa3b9b44d34a8a84bc737835797439e95b9815691adf7f777093df15ae196"
       }
     },
-    "gzip_mib": 14.891046524047852
+    "gzip_mib": 15.141639709472656
   },
   "note": "ZIP includes normal and precompressed alternatives; the network budget counts the gzip transfer, not both copies."
 }

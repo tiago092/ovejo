@@ -1,0 +1,17 @@
+{
+  "active_seconds": 108.233333333346,
+  "bumps": 1,
+  "health": 96.0,
+  "minimum_health": 96.0,
+  "note": "Input-driven route with pedestrians/carts removed to isolate geometry. Neither mode certifies five-player balance.",
+  "passed": true,
+  "pedestrian_hits": 0,
+  "population": false,
+  "position": [
+    147.644775390625,
+    205.298065185547
+  ],
+  "progress": 952.092568874359,
+  "state": "won",
+  "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf"
+}

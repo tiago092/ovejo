@@ -1,6 +1,6 @@
 {
-  "part": "combined",
-  "package_sha256": "6710223c61d500a31a09ea780933c056886833ced1227fa05d3ce89fcc178a7d",
+  "part": "all",
+  "package_sha256": "d1c011d0c45e5edba0eeeb0066331e65709cb24dd227a49565f61334d406de06",
   "browser": {
     "protocolVersion": "1.3",
     "product": "Chrome/156.0.8078.47",
@@ -59,6 +59,26 @@
       "passed": true
     },
     {
+      "name": "six-second ending begins",
+      "passed": true
+    },
+    {
+      "name": "ending pauses",
+      "passed": true
+    },
+    {
+      "name": "ending completes",
+      "passed": true
+    },
+    {
+      "name": "ending skip Enter",
+      "passed": true
+    },
+    {
+      "name": "ending skip Space",
+      "passed": true
+    },
+    {
       "name": "reset 0",
       "passed": true
     },
@@ -79,15 +99,15 @@
       "passed": true
     },
     {
-      "name": "export initializes",
-      "passed": true
-    },
-    {
       "name": "draw budget coast high",
       "passed": true
     },
     {
       "name": "draw budget club high",
+      "passed": true
+    },
+    {
+      "name": "draw budget plaza high",
       "passed": true
     },
     {
@@ -100,6 +120,10 @@
     },
     {
       "name": "draw budget club low",
+      "passed": true
+    },
+    {
+      "name": "draw budget plaza low",
       "passed": true
     },
     {
@@ -159,56 +183,69 @@
     {
       "scene": "coast",
       "quality": "high",
-      "calls": 149,
-      "primitives": 215808
+      "calls": 164,
+      "primitives": 149722
     },
     {
       "scene": "club",
       "quality": "high",
-      "calls": 133,
-      "primitives": 221882
+      "calls": 144,
+      "primitives": 148108
+    },
+    {
+      "scene": "plaza",
+      "quality": "high",
+      "calls": 142,
+      "primitives": 134502
     },
     {
       "scene": "hospital",
       "quality": "high",
-      "calls": 115,
-      "primitives": 169468
+      "calls": 133,
+      "primitives": 130890
     },
     {
       "scene": "coast",
       "quality": "low",
-      "calls": 102,
-      "primitives": 133276
+      "calls": 111,
+      "primitives": 65456
     },
     {
       "scene": "club",
       "quality": "low",
-      "calls": 93,
-      "primitives": 106356
+      "calls": 102,
+      "primitives": 64270
+    },
+    {
+      "scene": "plaza",
+      "quality": "low",
+      "calls": 96,
+      "primitives": 50582
     },
     {
       "scene": "hospital",
       "quality": "low",
-      "calls": 78,
-      "primitives": 93256
+      "calls": 91,
+      "primitives": 47052
     }
   ],
   "captures": [
-    "menu-desktop.png",
-    "intro-closeup.png",
-    "result.png",
-    "menu-desktop.png",
-    "coast-high.png",
-    "club-high.png",
-    "hospital-high.png",
-    "coast-low.png",
-    "club-low.png",
-    "hospital-low.png",
-    "desktop-1920.png",
-    "mobile-390x844.png",
-    "mobile-844x390.png",
-    "mobile-dpr3.png",
-    "character-three-views.png"
+    "story-menu-desktop.png",
+    "story-intro-closeup.png",
+    "story-result.png",
+    "story-coast-high.png",
+    "story-club-high.png",
+    "story-plaza-high.png",
+    "story-hospital-high.png",
+    "story-coast-low.png",
+    "story-club-low.png",
+    "story-plaza-low.png",
+    "story-hospital-low.png",
+    "story-desktop-1920.png",
+    "story-mobile-390x844.png",
+    "story-mobile-844x390.png",
+    "story-mobile-dpr3.png",
+    "story-character-three-views.png"
   ],
   "errors": [],
   "passed": true

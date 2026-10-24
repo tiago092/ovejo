@@ -1,7 +1,7 @@
 {
   "checks": [
     {
-      "name": "import legacy keys once",
+      "name": "import legacy preferences without mixing records",
       "passed": true
     },
     {
@@ -47,7 +47,20 @@
     {
       "name": "blocked storage retains session preferences",
       "passed": true
+    },
+    {
+      "name": "v1 imports preferences and preserves original record",
+      "passed": true
+    },
+    {
+      "name": "existing v2 record survives reload",
+      "passed": true
+    },
+    {
+      "name": "corrupt v2 storage recovers v1 settings",
+      "passed": true
     }
   ],
-  "passed": true
+  "passed": true,
+  "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf"
 }

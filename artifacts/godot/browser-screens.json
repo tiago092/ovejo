@@ -1,6 +1,6 @@
 {
   "part": "screens",
-  "package_sha256": "6710223c61d500a31a09ea780933c056886833ced1227fa05d3ce89fcc178a7d",
+  "package_sha256": "edea626d3346a3bc6d8f58be76ea46c8cb07f95e4b06cd5b984d81e7794f0ebb",
   "browser": {
     "protocolVersion": "1.3",
     "product": "Chrome/156.0.8078.47",
@@ -91,53 +91,53 @@
     {
       "scene": "coast",
       "quality": "high",
-      "calls": 149,
-      "primitives": 215808
+      "calls": 171,
+      "primitives": 169522
     },
     {
       "scene": "club",
       "quality": "high",
-      "calls": 133,
-      "primitives": 221882
+      "calls": 150,
+      "primitives": 208446
     },
     {
       "scene": "hospital",
       "quality": "high",
-      "calls": 115,
-      "primitives": 169468
+      "calls": 136,
+      "primitives": 165496
     },
     {
       "scene": "coast",
       "quality": "low",
-      "calls": 102,
-      "primitives": 133276
+      "calls": 119,
+      "primitives": 84990
     },
     {
       "scene": "club",
       "quality": "low",
-      "calls": 93,
-      "primitives": 106356
+      "calls": 105,
+      "primitives": 96792
     },
     {
       "scene": "hospital",
       "quality": "low",
-      "calls": 78,
-      "primitives": 93256
+      "calls": 95,
+      "primitives": 81776
     }
   ],
   "captures": [
-    "menu-desktop.png",
-    "coast-high.png",
-    "club-high.png",
-    "hospital-high.png",
-    "coast-low.png",
-    "club-low.png",
-    "hospital-low.png",
-    "desktop-1920.png",
-    "mobile-390x844.png",
-    "mobile-844x390.png",
-    "mobile-dpr3.png",
-    "character-three-views.png"
+    "tropical-menu-desktop.png",
+    "tropical-coast-high.png",
+    "tropical-club-high.png",
+    "tropical-hospital-high.png",
+    "tropical-coast-low.png",
+    "tropical-club-low.png",
+    "tropical-hospital-low.png",
+    "tropical-desktop-1920.png",
+    "tropical-mobile-390x844.png",
+    "tropical-mobile-844x390.png",
+    "tropical-mobile-dpr3.png",
+    "tropical-character-three-views.png"
   ],
   "errors": [],
   "passed": true

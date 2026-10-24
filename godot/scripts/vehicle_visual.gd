@@ -10,6 +10,9 @@ var arms: Array=[]
 var arm_rig: Array=[]
 var low := false
 var wheel_phase:=0.0
+var previous_speed:=0.0
+var suspension:=0.0
+var braking_pitch:=0.0
 var beacon: MeshInstance3D
 var beacon_material: StandardMaterial3D
 func build(is_low: bool) -> void:
@@ -43,16 +46,30 @@ func load_driver() -> void:
 				var cylinder:=CylinderMesh.new();cylinder.top_radius=1;cylinder.bottom_radius=1;cylinder.height=1;cylinder.radial_segments=12;mesh=cylinder
 			var material:=StandardMaterial3D.new();material.albedo_color=Color("e74688" if j==0 else "c88964");material.roughness=.85;mesh.material=material;node.mesh=mesh;node.layers=5;driver.add_child(node);parts.append(node)
 		arm_rig.append(parts)
+func reset() -> void:
+	wheel_phase=0;previous_speed=0;suspension=0;braking_pitch=0
+	if steering:steering.rotation.z=0
+	for wheel in wheels:
+		if wheel:wheel.rotation=Vector3.ZERO
+	model.position.y=0;model.rotation.x=0
+
 func update(sim,dt: float,t: float,reduced: bool) -> void:
 	if beacon_material:
 		beacon_material.emission_energy_multiplier=(.7 if reduced else (.9 if int(sim.clock*8)%2 else .12)) if sim.siren_left>0 else 0.0
 	position=Vector3(sim.x,World.height_at(sim.x,sim.z)+.04,sim.z)
 	var slope: float=(World.height_at(sim.x+sin(sim.angle)*2,sim.z+cos(sim.angle)*2)-World.height_at(sim.x-sin(sim.angle)*2,sim.z-cos(sim.angle)*2))/4
 	var turn: int=int(sim.keys.left)-int(sim.keys.right)
-	rotation=Vector3(-atan(slope),sim.angle,0 if reduced else turn*clampf(sim.speed/24,0,1)*.035)
+	var acceleration: float=clampf((sim.speed-previous_speed)/maxf(dt,.001),-34,16) if dt>0 else 0.0
+	if dt>0:previous_speed=sim.speed
+	var bob: float=sin(t*11)*minf(absf(sim.speed)*.0018,.035)+sin(t*19)*sim.impact*.012
+	suspension=lerpf(suspension,bob,minf(dt*10,1));braking_pitch=lerpf(braking_pitch,-acceleration*.0018,minf(dt*7,1))
+	model.position.y=0 if reduced else suspension;model.rotation.x=0 if reduced else braking_pitch
+	rotation=Vector3(-atan(slope),sim.angle,0 if reduced else turn*clampf(sim.speed/24,0,1)*(.035+sim.drift_amount*.035))
 	wheel_phase+=sim.speed*dt/.58 if sim.state=="playing" else 0.0
 	for wheel in wheels:
-		if wheel:wheel.rotation.x=wheel_phase
+		if wheel:
+			wheel.rotation.x=wheel_phase
+			if str(wheel.name).begins_with("Front"):wheel.rotation.y=lerpf(wheel.rotation.y,turn*.32,minf(dt*9,1))
 	if steering:steering.rotation.z=lerpf(steering.rotation.z,-turn*.48,minf(1,dt*10))
 	if head:
 		head.rotation.x=0 if reduced else -sim.impact*.06

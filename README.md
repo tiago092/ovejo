@@ -1,73 +1,57 @@
-# Código Rosa — La última vuelta
+# Código Rosa · Yo manejo
 
-Morro de São Paulo, 05:47 AM. Salió de la disco, vio una ambulancia y dijo «yo manejo». Sátira de una anécdota entre amigos, convertida en un arcade de conducción 3D al amanecer.
+Morro de São Paulo, 05:47. Salió de la disco, vio una ambulancia y dijo «yo manejo». Un arcade de conducción con humor, amanecer tropical y 150 segundos para recoger al paciente y llegar al puesto de salud.
 
-## Jugar
+La versión actual se desarrolla en **Godot 4.7.2**, GDScript y Compatibility. El despliegue de GitHub Pages está configurado para distribuir únicamente el paquete Godot en la dirección principal. El HTML Three.js de la raíz se conserva como fuente histórica de las regresiones; abrir ese archivo muestra el juego anterior.
 
-Abrí **index.html** con la carpeta completa. No hay instalación, compilación ni backend. También funciona en alojamiento estático, como GitHub Pages. Se necesita WebGL.
-
-La primera partida tiene una introducción de siete segundos. **Omitir**, **Enter** o **Espacio** llevan directamente al volante. El reloj de 90 segundos y la patrulla empiezan después. Los reintentos omiten la historia; **Ver historia** permite repetirla desde el inicio.
-
-Recogé al paciente en Segunda Praia y llevalo al puesto de salud. Detené la ambulancia dentro del círculo durante 1,3 segundos para recoger o entregar. La barra indica el avance; la flecha y el minimapa comparten una ruta comprobada contra los edificios.
-
-- **WASD / flechas:** acelerar, frenar/retroceder y girar.
-- **Espacio:** sirena durante 2,2 segundos, con recarga de siete segundos. Aparta peatones y ralentiza carritos cercanos.
-- **C / Cámara:** alternar seguimiento trasero y vista frontal.
-- **Ver conductor:** abrir o plegar el primer plano. En alta aparece brevemente al iniciar y ante reacciones; en baja empieza cerrado.
-- **P / Escape / Pausa:** pausar o continuar, también durante la introducción. Cambiar de pestaña pausa el juego.
-- **Celular:** botones táctiles; se puede acelerar y girar a la vez. Soltar o cancelar un contacto libera el control. Funciona vertical y horizontal.
-
-La patrulla conserva la persecución del juego original: sus impactos descuentan 12% de resistencia y tres segundos, con 2,8 segundos entre golpes. Los atropellos descuentan ocho segundos y 5% de resistencia, sin violencia gráfica. Tiempo o resistencia agotados producen derrota, incluso si coinciden con la entrega.
-
-Puntos al ganar: `max(0, redondear(tiempo × 100 + resistencia × 20 + 1500 − atropellos × 500))`. Tres estrellas: cero atropellos y al menos 85% de resistencia; dos: cero atropellos y al menos 50%. El récord se guarda localmente cuando el navegador permite almacenamiento.
-
-## Dirección visual y calidad
-
-El protagonista usa una malla facial continua con nariz, pómulos y mandíbula propios, mapa facial generado desde las referencias, rulos y anteojos tridimensionales. Las manos acompañan el volante. La ambulancia toma el frente amarillo, defensa negra, parabrisas, ruedas, cartel espejado y baliza roja de la foto aportada. El mundo mantiene el trazado original, con fachadas, vegetación, empedrado, mar animado y luz cálida al amanecer.
-
-- **Automática:** baja con puntero táctil y alta en escritorio.
-- **Alta:** resolución de render limitada a 1,5 veces la pantalla, sombras de 1024 y hasta 48 partículas de polvo.
-- **Baja:** resolución limitada a 1, sombras de 512 y hasta 18 partículas. El recuadro del conductor comienza cerrado.
-
-La elección manual se guarda localmente. La preferencia del sistema de **movimiento reducido** omite la introducción, las oscilaciones de cámara/vehículo y los efectos ambientales móviles. Los recursos gráficos y la música alternativa son locales. El atlas facial está embebido para permitir apertura con `file://`.
-
-## Revisar los resultados
-
-- [Comparación del personaje: frente, tres cuartos y perfil](artifacts/character.html).
-- [Capturas y resultados de las pruebas](artifacts/README.md).
-- [Origen de los recursos](ASSETS.md) y [prompt del atlas facial](assets/IMAGE-PROMPTS.md).
-
-La forma facial es una interpretación modelada a partir de las referencias; no es un escaneo. Las fotografías originales de perfil y ambulancia se consultaron en la conversación y no se incluyen como recursos del juego.
-
-## Música
-
-Al jugar se intenta reproducir **Magalenha (Frankie G Rio Dub)** mediante el reproductor oficial de SoundCloud. Si no está disponible, suena la pista original sintetizada de `music.js`. **Música** silencia o activa música y efectos; el panel **La banda sonora** contiene reproductor y créditos. Puede ser necesario pulsar reproducir por las restricciones del navegador.
-
-La página de SoundCloud de thedjfrankieg marca el remix como CC BY 3.0. Se conserva el crédito y el enlace original. Esa indicación no permite concluir que los derechos de la composición o grabación original estén liberados: el juego enlaza el reproductor oficial y no distribuye su audio.
-
-## Migración a Godot
-
-La implementación paralela está en [godot/](godot/README.md), con fuentes editables de Blender, simulación GDScript y exportación web. Ejecutá `python3 scripts/build_godot.py` y `python3 scripts/serve_godot.py` para abrir `http://127.0.0.1:8767/dist/godot/`. Las herramientas locales se preparan con `python3 scripts/setup_tools.py` si faltan.
-
-El [plan y estado de migración](docs/MIGRACION-GODOT.md) y las [evidencias](artifacts/godot/README.md) distinguen lo comprobado de lo pendiente: parecido aprobado y pruebas físicas móviles pendientes. Esta versión Three.js sigue disponible para jugar, comparar y volver atrás.
-
-## Desarrollo y verificación
-
-`visuals.js` construye y anima modelos, materiales, iluminación, instancias y efectos. `game.js` conserva simulación, misión, navegación, cámaras y controles. `index.html` y `style.css` contienen la presentación. Three.js r160 se conserva en `vendor`, con licencia MIT incluida.
-
-No hay dependencias de desarrollo. Con **Node.js 24 y Chrome**:
+## Jugar y desarrollar
 
 ```bash
-node --check visuals.js
-node --check game.js
-node tests/browser.cjs
-node tests/browser.cjs --benchmark
+python3 scripts/setup_tools.py  # Solo si faltan las herramientas fijadas.
+python3 scripts/build_godot.py
+python3 scripts/serve_godot.py --port 8767
 ```
 
-El último comando añade un recorrido de 60 segundos. Las pruebas lanzan Chrome temporal, bloquean SoundCloud para verificar el respaldo, prueban apertura local y HTTP y regeneran las capturas. Las funciones de inspección se inyectan en memoria por las pruebas; no se exponen en el juego distribuido. `CHROME_PATH` permite seleccionar el ejecutable y `CHROME_DEBUG_URL` reutilizar una instancia de depuración.
+Abrir **http://127.0.0.1:8767/dist/godot/**. La versión Godot requiere HTTP/HTTPS, WebAssembly y WebGL 2. No usa backend. Para editar escenas y scripts: `scripts/godot.sh --editor`. [Instrucciones técnicas y pruebas](godot/README.md).
 
-El entorno automatizado utiliza **SwiftShader, renderizado por software**, y emulación móvil. Los presupuestos de llamadas de dibujo se comprueban automáticamente. Los objetivos de 60 FPS en PC y 30 FPS en teléfono necesitan medición con GPU y dispositivo reales; el benchmark de software no los certifica. Los valores medidos están en `artifacts/verification.json`.
+- **WASD / flechas:** acelerar, frenar/retroceder y girar.
+- **Espacio:** sirena de 2,2 s; recarga de siete segundos desde la activación.
+- **C / Cámara:** alternar seguimiento trasero y frontal.
+- **P / Escape / Pausa:** pausar; cambiar de pestaña también pausa y libera las entradas.
+- **Cara:** abrir/fijar o cerrar el recuadro del conductor. En Alta las reacciones duran tres segundos; Baja empieza cerrado. El recuadro tiene botones Fijar/Automático y cerrar.
+- **Ajustes:** calidad y audio. Movimiento reducido está disponible en el menú inicial.
+- **Celular:** controles simultáneos, orientación vertical y horizontal y cancelación de contactos.
 
-## Publicar en GitHub Pages
+La introducción dura siete segundos y se omite con botón, Enter o Espacio. El reloj y la persecución empiezan después. Reintentar lleva directamente al volante; Ver historia repite la introducción.
 
-GitHub Pages publicará únicamente Godot en la dirección principal. Seguir [la guía de Pages](docs/GITHUB-PAGES.md): el workflow se ejecuta con cada push a `master` o manualmente y el paquete local se prepara con `python3 scripts/prepare_pages.py`. No utilizar la publicación desde la raíz de la rama, porque allí permanece el HTML histórico de Three.js.
+Detenerse a menos de 4,6 m y a velocidad inferior a 2 durante 1,3 s recoge o entrega al paciente. La barra y el texto junto al objetivo muestran el progreso. Tiempo o resistencia agotados tienen prioridad sobre la entrega.
+
+Puntos: `max(0, redondear(tiempo × 100 + resistencia × 20 + 1500 − atropellos × 500))`. Tres estrellas requieren cero atropellos y resistencia ≥75%; dos requieren cero atropellos y resistencia ≥50%. Ajustes y récord se guardan localmente cuando el navegador lo permite.
+
+## «Yo manejo»: nueva partida
+
+Recorrido artesanal de 954,4 m y un desvío 60 m más largo; derrape automático al girar rápido, daños más perdonables y patrulla que empieza tras recoger al paciente. Diálogos de cuatro segundos y cierre omitible de seis. Los récords v2 se guardan separados del récord histórico. [Reglas, arquitectura y pruebas](docs/YO-MANEJO.md).
+
+El acabado se extendió al comercio, la plaza y el puesto después de revisar capturas y recorrido del primer tramo. La [galería](artifacts/godot/story-review.html) conserva esa referencia y muestra el mundo completo. La revisión artística del usuario y las pruebas en dispositivos reales siguen pendientes.
+
+## Renovación tropical
+
+Disco con entrada propia, madera y luces rosas; cuatro familias de fachadas, puesto identificable y costa con palmeras, vegetación, sombrillas cerradas y embarcaciones. Peatones redondeados, reacción a la sirena, suspensión visual y sonido de motor y rodadura según la superficie. El protagonista mantiene su rostro y sus gafas aprobados.
+
+- **Automática:** Baja con puntero táctil; Alta en escritorio.
+- **Alta:** resolución 3D hasta 1,5× CSS, sombras de 1024 y hasta 48 partículas.
+- **Baja:** resolución hasta 1× CSS, sombras de 512 y hasta 18 partículas; misma simulación.
+
+Movimiento reducido omite la introducción y desactiva oscilaciones y animación ambiental decorativa. Los recursos gráficos y sonidos son locales. SoundCloud es opcional y se carga al solicitarlo; su ausencia no bloquea el juego y solo hay una fuente musical activa.
+
+## Revisar y publicar
+
+- [Comparativa antes/después de la renovación tropical](artifacts/godot/tropical-comparison.html).
+- [Personaje y aprobación del parecido](artifacts/godot/comparison.html).
+- [Pruebas, mediciones y pendientes](artifacts/godot/README.md).
+- [Fuentes artísticas editables](art-source/README.md) y [recursos/licencias](ASSETS.md).
+- [Publicar Godot en GitHub Pages](docs/GITHUB-PAGES.md).
+
+El workflow publica al subir cambios a `master` o ejecutarlo manualmente; Pages debe usar **GitHub Actions** como fuente. `python3 scripts/prepare_pages.py` prepara únicamente Godot en `dist/pages/`.
+
+Las pruebas automatizadas de navegador utilizan SwiftShader y emulación móvil. No certifican los objetivos de 60 FPS en escritorio y 30 FPS en teléfono: esas mediciones requieren GPU y dispositivos reales.

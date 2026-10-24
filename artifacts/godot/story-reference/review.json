@@ -1,0 +1,20 @@
+{
+  "scope": "Technical and visual inspection of the first disco/coast slice before extending world art",
+  "reviewer": "implementation agent",
+  "approved_by_user": false,
+  "checks": [
+    "Rendered terrain/road winding corrected",
+    "Club sign no longer hidden by roof trim",
+    "Solid roadside palms share simulation footprints",
+    "Input-driven primary route completes without position/time/health resets"
+  ],
+  "images": {
+    "club.png": "6a247f3182e850eab2edbe421acb5875611796639db146dd8501763853fbc609",
+    "coast.png": "b510c9c42c9f95a810f56cd8074b8a70fbfd1a9cb9a7a2d7f71581182b5d9b8f"
+  },
+  "evidence": [
+    "captures.json",
+    "../route-drive.json"
+  ],
+  "human_review": "Still pending; the protagonist approval is separate."
+}

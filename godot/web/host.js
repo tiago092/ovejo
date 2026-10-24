@@ -1,11 +1,15 @@
 /* Browser boundary. No mission rules live here. */
 (()=>{'use strict';
- const KEY='codigo-rosa-godot-v1', media=matchMedia('(prefers-reduced-motion: reduce)'),coarse=matchMedia('(pointer: coarse)');
+ const KEY='codigo-rosa-godot-v2', media=matchMedia('(prefers-reduced-motion: reduce)'),coarse=matchMedia('(pointer: coarse)');
  let saved={},callback=null,active=false,playing=false,widget=null,ready=false,lastSnapshot=null;
- try{const raw=localStorage.getItem(KEY);if(raw)saved=JSON.parse(raw)||{};else{saved={version:1,quality:localStorage.getItem('codigo-rosa-quality')||'auto',best:Number(localStorage.getItem('codigo-rosa-3d-best'))||0};localStorage.setItem(KEY,JSON.stringify(saved));}}catch{}
+ const read=key=>{try{const raw=localStorage.getItem(key);const value=raw?JSON.parse(raw):null;return value&&typeof value==='object'&&!Array.isArray(value)?value:null;}catch{return null;}};
+ saved=read(KEY);
+ if(!saved){const previous=read('codigo-rosa-godot-v1')||{};let legacyQuality='auto',legacyBest=0;try{legacyQuality=localStorage.getItem('codigo-rosa-quality')||'auto';legacyBest=Number(localStorage.getItem('codigo-rosa-3d-best'))||0;}catch{}
+ saved={...previous,version:2,quality:previous.quality||legacyQuality,legacy_best:Number.isFinite(previous.best)?Math.max(0,previous.best):legacyBest,best:0};try{localStorage.setItem(KEY,JSON.stringify(saved));}catch{}}
  if(!saved||typeof saved!=='object'||Array.isArray(saved))saved={};
  if(!['auto','high','low'].includes(saved.quality))saved.quality='auto';
  saved.best=Number.isFinite(saved.best)?Math.max(0,saved.best):0;
+ saved.legacy_best=Number.isFinite(saved.legacy_best)?Math.max(0,saved.legacy_best):0;
  const emit=message=>callback?.(JSON.stringify(message));
  const audioStatus=value=>{if(playing===value)return;playing=value;emit({type:'audio',playing:value});};
  function connectWidget(){
@@ -20,7 +24,7 @@
  window.RosaHost={
   connectGame(cb,verification){callback=cb;connectWidget();if(verification)window.__rosa={command:message=>emit({type:'test',...message}),snapshot:()=>lastSnapshot};},
   preferences(){const safe=getComputedStyle(document.getElementById('safe'));return JSON.stringify({...saved,touch:coarse.matches,dpr:devicePixelRatio||1,safe:[safe.paddingTop,safe.paddingRight,safe.paddingBottom,safe.paddingLeft].map(v=>parseFloat(v)||0),reduced:saved.reduced_explicit?saved.reduced:media.matches});},
-  save(json){try{const next=JSON.parse(json);saved={...saved,...next,version:1};try{localStorage.setItem(KEY,JSON.stringify(saved));}catch{}}catch{}},
+  save(json){try{const next=JSON.parse(json);saved={...saved,...next,version:2};try{localStorage.setItem(KEY,JSON.stringify(saved));}catch{}}catch{}},
   announce(text){document.getElementById('announcement').textContent=text;},
   music(wanted){const changed=active!==wanted;active=!!wanted;if(!active){if(ready)widget.pause();audioStatus(false);}else if(changed&&ready)widget.play();},
   report(json){lastSnapshot=JSON.parse(json);},

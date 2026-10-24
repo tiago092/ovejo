@@ -23,5 +23,5 @@ try{
  fs.writeFileSync(path.join(__dirname,'../artifacts/godot/download.json'),JSON.stringify({load_seconds:loadSeconds,network:{mbps:20,latency_ms:100,cold_cache:true},download},null,2)+'\n');
 }catch(e){exception=String(e);console.error(e)}finally{
  await c.call('Network.setBlockedURLs',{urls:[]});await c.call('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
- const result={browser:await c.call('Browser.getVersion'),checks,exception,passed:!exception&&checks.every(c=>c.passed)};fs.writeFileSync(path.join(__dirname,'../artifacts/godot/distribution.json'),JSON.stringify(result,null,2)+'\n');console.log(result);c.close();if(!result.passed)process.exitCode=1;
+ const result={package_sha256:JSON.parse(fs.readFileSync(path.join(__dirname,'../artifacts/godot/release-build.json'))).files['index.pck'].sha256,browser:await c.call('Browser.getVersion'),checks,exception,passed:!exception&&checks.every(c=>c.passed)};fs.writeFileSync(path.join(__dirname,'../artifacts/godot/distribution.json'),JSON.stringify(result,null,2)+'\n');console.log(result);c.close();if(!result.passed)process.exitCode=1;
 }})().catch(e=>{console.error(e);process.exitCode=1});

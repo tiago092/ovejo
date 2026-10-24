@@ -1,0 +1,71 @@
+{
+  "art_extent": "reference-slice",
+  "records": [
+    {
+      "name": "club",
+      "x": -115,
+      "z": -210,
+      "angle": 3.141592653589793,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 130,
+        "primitives": 124252
+      }
+    },
+    {
+      "name": "coast",
+      "x": -140,
+      "z": -145,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 130,
+        "primitives": 124928
+      }
+    },
+    {
+      "name": "plaza",
+      "x": 125,
+      "z": 115,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 112,
+        "primitives": 116548
+      }
+    },
+    {
+      "name": "hospital",
+      "x": 150,
+      "z": 205,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 113,
+        "primitives": 114450
+      }
+    }
+  ],
+  "errors": [],
+  "package_sha256": "73ed1c582eec04bc35a39ff11cde79010e3f44a682d4bee55462b95abe3e9573"
+}

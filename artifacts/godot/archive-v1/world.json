@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "source": "visuals.js createWorld",
+  "bounds": [
+    -93,
+    117,
+    -162,
+    151
+  ],
+  "road_x": [
+    -60,
+    0,
+    60
+  ],
+  "road_z": [
+    -110,
+    -40,
+    30,
+    100
+  ],
+  "start": [
+    -78,
+    -112
+  ],
+  "pickup": [
+    -28,
+    -110
+  ],
+  "hospital": [
+    76,
+    100
+  ],
+  "buildings": [
+    {
+      "x": -30,
+      "z": -75,
+      "w": 46,
+      "d": 54,
+      "h": 6,
+      "color": "#e6b38a",
+      "title": "POUSADA DO MAR"
+    },
+    {
+      "x": 30,
+      "z": -75,
+      "w": 46,
+      "d": 54,
+      "h": 7,
+      "color": "#83b5aa",
+      "title": "AÇAÍ & COCO"
+    },
+    {
+      "x": -30,
+      "z": -5,
+      "w": 46,
+      "d": 54,
+      "h": 7,
+      "color": "#83b5aa",
+      "title": "AÇAÍ & COCO"
+    },
+    {
+      "x": 30,
+      "z": -5,
+      "w": 46,
+      "d": 54,
+      "h": 6,
+      "color": "#db9d95",
+      "title": "VILA DO MORRO"
+    },
+    {
+      "x": -30,
+      "z": 65,
+      "w": 46,
+      "d": 54,
+      "h": 6,
+      "color": "#db9d95",
+      "title": "VILA DO MORRO"
+    },
+    {
+      "x": 30,
+      "z": 65,
+      "w": 46,
+      "d": 54,
+      "h": 7,
+      "color": "#b8c39b",
+      "title": "ARTESANATO"
+    },
+    {
+      "x": -30,
+      "z": -140,
+      "w": 35,
+      "d": 32,
+      "h": 6,
+      "color": "#dc9b94",
+      "title": "LUAU DO MORRO"
+    },
+    {
+      "x": 85,
+      "z": 135,
+      "w": 42,
+      "d": 36,
+      "h": 7,
+      "color": "#e8e1c8",
+      "title": "POSTO DE SAÚDE"
+    },
+    {
+      "x": 96,
+      "z": -80,
+      "w": 26,
+      "d": 35,
+      "h": 6,
+      "color": "#e9c991",
+      "title": "POUSADA"
+    },
+    {
+      "x": 96,
+      "z": -10,
+      "w": 26,
+      "d": 35,
+      "h": 6,
+      "color": "#e9c991",
+      "title": "POUSADA"
+    },
+    {
+      "x": 96,
+      "z": 60,
+      "w": 26,
+      "d": 35,
+      "h": 6,
+      "color": "#e9c991",
+      "title": "POUSADA"
+    }
+  ],
+  "obstacles": [
+    {
+      "kind": "lighthouse_hill",
+      "x": -78,
+      "z": -151,
+      "w": 28,
+      "d": 22,
+      "h": 15
+    }
+  ]
+}

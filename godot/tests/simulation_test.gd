@@ -1,76 +1,88 @@
 extends SceneTree
-const Sim = preload("res://scripts/simulation.gd")
-const World = preload("res://scripts/world_data.gd")
-var checks: Array = []
-var failed := false
-func check(ok: bool, message: String) -> void:
-	checks.append({"name":message,"passed":ok})
-	if not ok: failed=true; printerr("FAIL: "+message)
+const Sim=preload("res://scripts/simulation.gd")
+const World=preload("res://scripts/world_data.gd")
+const Story=preload("res://scripts/story.gd")
+var checks: Array=[]
+func check(ok: bool,name: String) -> void:
+	checks.append({"name":name,"passed":ok})
+	if not ok:printerr("FAIL: "+name)
+func fresh():
+	var s=Sim.new();s.start(false,true,27);s.pedestrians.clear();s.carts.clear();return s
 func _init() -> void:
-	var fixtures: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://tests/reference.json"))
-	for test in fixtures.cases:
-		var s=Sim.new(); s.start(false,true,27)
-		for key in test.setup: s.set(key,test.setup[key])
-		for action in test.actions:
-			if action.siren: s.siren()
-			s.advance(action.dt,action.keys)
-		var actual: Dictionary=s.snapshot()
-		for key in ["state","phase","ped_hits","bumps","score","stars"]: check(actual[key]==test.expected[key],test.name+" "+key)
-		for key in ["x","z","angle","vx","vz","speed","time","health","cooldown","siren_left","impact","load"]:
-			check(absf(actual[key]-test.expected[key])<.001,test.name+" "+key)
-		check(absf(actual.police.x-test.expected.police.x)<.001 and absf(actual.police.z-test.expected.police.z)<.001,test.name+" patrol")
-		for i in range(30): check(absf(actual.pedestrians[i].x-test.expected.pedestrians[i].x)<.001 and absf(actual.pedestrians[i].z-test.expected.pedestrians[i].z)<.001,test.name+" pedestrian "+str(i))
-		for i in range(5): check(absf(actual.carts[i].x-test.expected.carts[i].x)<.001,test.name+" cart "+str(i))
-	var s=Sim.new(); s.start(true,false)
-	s.advance(3); s.pause(); s.advance(20)
-	check(s.cinematic_time==3 and s.time==90,"pause freezes introduction")
-	s.pause(); s.advance(4)
-	check(s.state==Sim.PLAYING and s.time==90,"intro seven active seconds")
-	s.start(true); s.skip_intro(); check(s.time==90 and s.siren_left==0,"skip preserves time and siren")
-	s.start(false,true); s.advance(5)
-	check(absf(s.time-85)<.001,"long frame retains wall time")
-	s.pause(); var before=s.time; s.advance(20); check(s.time==before,"pause freezes mission")
+	var s=fresh()
+	check(s.time==150 and s.health==100,"v2 initial balance")
+	check(World.data.route_length>930 and World.data.route_length<970,"main route 950m")
+	check(absf(World.data.bypass.extra_length-60)<.1,"bypass adds 60m")
+	for i in range(World.nodes().size()):
+		var point: Vector2=World.nodes()[i]
+		check(not World.blocked(point.x,point.y,2),"road node clearance "+str(i))
+	for edge in World.data.edges:
+		check(World.clear_segment(World.nodes()[edge.a],World.nodes()[edge.b]),"road edge clear %d/%d" % [edge.a,edge.b])
+	var path:=World.route(Vector2(World.data.start[0],World.data.start[1]),Vector2(World.data.hospital[0],World.data.hospital[1]))
+	check(absf(World.path_length(path)-World.data.route_length)<1,"navigation follows main route")
+	for rate in [30,60,120]:
+		s=fresh();s.angle=0;s.x=-20;s.z=-180
+		for _i in range(rate):s.advance(1.0/rate,{"up":true})
+		check(s.speed>13 and s.speed<15,"acceleration "+str(rate))
+		s.vx=0;s.vz=14;s.angle=0
+		for _i in range(int(rate*.5)):s.advance(1.0/rate,{"up":true,"left":true})
+		check(s.drift_amount>.9,"automatic drift enters "+str(rate))
+		var forward: float=s.vx*sin(s.angle)+s.vz*cos(s.angle);var lateral: float=s.vx*cos(s.angle)-s.vz*sin(s.angle)
+		check(absf(rad_to_deg(atan2(lateral,forward)))<=18.001,"slip limited "+str(rate))
+		for _i in range(int(ceil(rate*.36))):s.advance(1.0/rate,{"up":true,"left":false})
+		check(s.drift_amount==0,"grip recovers in .35s "+str(rate))
+		s=fresh();s.angle=0;s.x=-20;s.z=-180
+		for _i in range(rate):s.advance(1.0/rate,{"down":true})
+		check(s.vz<0 and s.vz>=-7,"reverse "+str(rate))
+		s.vz=20;s.speed=20
+		for _i in range(int(rate*.5)):s.advance(1.0/rate,{"down":true})
+		check(absf(s.vz)<5,"braking "+str(rate))
+	s=fresh();s.angle=0;s.vz=15;s.advance(.175,{"left":true});check(s.drift_amount==0,"drift requires .2 seconds")
+	s=fresh();s.angle=0;s.vz=6;s.advance(.25,{"left":true});check(s.drift_amount==0,"no low speed drift")
+	var garden: Dictionary=World.data.obstacles.filter(func(o):return o.kind=="plaza_garden")[0]
+	check(World.surface_at(Vector2(garden.x+10,garden.z))=="stone","plaza pavement uses shared surface")
+	for building in World.data.buildings:check(not (absf(building.x-garden.x)<building.w/2+7 and absf(building.z-garden.z)<building.d/2+7),"garden not hidden in building "+str(building.x))
+	check(World.blocked(garden.x,garden.z),"raised plaza has polygon collision")
+	var garden_hit:=World.move_circle(Vector2(garden.x+20,garden.z),Vector2(-40,0))
+	check(garden_hit.position.x>garden.x+8.4,"sweep hits plaza polygon before crossing")
+	var wall: Dictionary=World.data.buildings[0];var origin:=Vector2(wall.x,wall.z+wall.d/2+20)
+	var move:=World.move_circle(origin,Vector2(0,-100))
+	check(move.position.y>=wall.z+wall.d/2+1.599,"swept circle cannot tunnel")
+	move=World.move_circle(Vector2(wall.x-wall.w/2-4,wall.z+wall.d/2+5),Vector2(10,-20))
+	check(not World.blocked(move.position.x,move.position.y,1.59),"corner resolution leaves circle outside")
+	move=World.move_circle(Vector2(210,0),Vector2(100,30));check(move.position.x<=218.401 and move.position.y>20,"boundary collision slides")
+	s=Sim.new();s.start(true,false);s.advance(3);s.pause();s.advance(20);check(s.cinematic_time==3 and s.time==150,"pause freezes intro")
+	s.pause();s.advance(4);check(s.state==Sim.PLAYING and s.time==150,"intro seven seconds")
+	s.start(true,false);s.skip_intro();check(s.siren_left==0 and s.time==150,"intro skip consumes no siren or time")
+	s=fresh();var at:=Vector2(s.x,s.z);s.advance(5,{"up":true});check(absf(s.time-145)<.001 and at.distance_to(Vector2(s.x,s.z))<2,"long frame counts wall time without catchup")
+	s.pause();var before: float=s.time;s.advance(40);check(s.time==before,"pause freezes time")
 	for repeat in range(3):
-		s.start(false,true); s.x=-28; s.z=-110; s.impact=2
-		s.advance(.25); s.x=-60; s.advance(.025); check(s.load_progress==0,"interrupted pickup "+str(repeat))
-		s.x=-28
-		for i in range(54): s.step(.025)
+		s=fresh();s.x=World.data.pickup[0];s.z=World.data.pickup[1];s.advance(.25);s.x+=10;s.advance(.025);check(s.load_progress==0,"cancel pickup "+str(repeat))
+		s.x=World.data.pickup[0]
+		for _i in range(6):s.advance(.25)
 		check(s.phase==1,"pickup "+str(repeat))
-		s.x=76; s.z=100; s.vx=0; s.vz=0; s.impact=2
-		for i in range(54): s.step(.025)
-		check(s.state==Sim.WON and s.stars==3,"delivery "+str(repeat))
-		s.carts[0].stop=1; s.carts[0].next=.01; s.reset(27)
-		check(s.carts[0].stop==0 and s.carts[0].next==3 and s.police.cool==0 and s.pedestrians[0].cool==0,"reset actors "+str(repeat))
-	for kind in ["time","health","hit"]:
-		s.start(false,true); s.x=76; s.z=100; s.phase=1; s.load_progress=1.29
-		if kind=="time": s.time=.01
-		if kind=="health": s.health=0
-		if kind=="hit": s.health=10; s.carts[0].x=76; s.carts[0].z=100
-		s.step(.025); check(s.state==Sim.LOST,"loss before delivery: "+kind)
-	for hp in [100,85,84,50,49]:
-		s.start(false,true); s.time=12.345; s.health=hp; s.finish(true)
-		check(s.stars==(3 if hp>=85 else (2 if hp>=50 else 1)),"stars boundary "+str(hp))
-		check(s.score==int(floor(1234.5+hp*20+1500+.5)),"JS rounding "+str(hp))
-	s.start(false,true); s.damage(12); s.damage(15); check(s.health==88,"single immunity authority")
-	s.siren(); s.advance(.25); s.siren(); check(absf(s.cooldown-6.75)<.001,"siren cooldown not reset")
-	var route=World.route(Vector2(-60,-80),Vector2(76,100))
-	check(route.size()>2,"route avoids diagonal buildings")
-	for i in range(1,route.size()): check(World.clear_segment(route[i-1],route[i]),"route clear segment "+str(i))
-	for kind in ["building","cart","pedestrian","patrol"]:
-		s.start(false,true);s.pedestrians.clear();s.carts.clear()
-		match kind:
-			"building":s.x=-54.7;s.z=-80;s.angle=PI/2;s.vx=20
-			"cart":s.carts.append({"x":s.x,"z":s.z,"dir":1,"speed":1.1,"stop":0.0,"next":3.0})
-			"pedestrian":s.vz=5;s.pedestrians.append({"x":s.x,"z":s.z+.1,"dx":0.0,"dz":0.0,"change":1.0,"cool":0.0})
-			"patrol":s.police.x=s.x+1;s.police.z=s.z
-		s.step(.025)
-		var hp: float={"building":88,"cart":85,"pedestrian":95,"patrol":88}[kind]
-		var seconds: float={"building":89.975,"cart":89.975,"pedestrian":81.975,"patrol":86.975}[kind]
-		check(s.health==hp and absf(s.time-seconds)<.001,"explicit damage and penalty "+kind)
-	for sample in JSON.parse_string(FileAccess.get_file_as_string("res://tests/heights.json")):
-		check(absf(World.height_at(sample.x,sample.z)-sample.height)<.000001,"original ground height %s/%s" % [sample.x,sample.z])
-	check(World.blocked(-78,-151),"lighthouse hill blocks movement")
-	var output=FileAccess.open("res://../artifacts/godot/simulation.json",FileAccess.WRITE)
-	if output: output.store_string(JSON.stringify({"engine":Engine.get_version_info().string,"checks":checks,"passed":not failed},"  "))
-	print("Simulation: ",checks.size()," checks; ","FAILED" if failed else "PASSED")
-	quit(1 if failed else 0)
+		s.x=World.data.hospital[0];s.z=World.data.hospital[1];s.vx=0;s.vz=0
+		for _i in range(6):s.advance(.25)
+		check(s.state==Sim.WON and s.stars==3,"delivery reduced skips ending "+str(repeat))
+		s.reset(27);check(s.pedestrians.size()==30 and s.carts.size()==5 and s.police.cool==0 and s.drift_amount==0 and s.ending_time==0,"full reset "+str(repeat))
+	for kind in ["time","health"]:
+		s=fresh();s.phase=1;s.x=World.data.hospital[0];s.z=World.data.hospital[1];s.load_progress=1.29
+		if kind=="time":s.time=.01
+		else:s.health=0
+		s.advance(.025);check(s.state==Sim.LOST,"loss overrides delivery "+kind)
+	s=fresh();s.presentation_reduced=false;s.finish(true);check(s.state==Sim.ENDING,"ending before result");s.advance(3);s.pause();s.advance(20);check(s.ending_time==3,"pause freezes ending");s.pause();s.advance(3);check(s.state==Sim.WON,"ending lasts six seconds")
+	s=fresh();s.presentation_reduced=false;s.finish(false);s.skip_ending();s.skip_ending();check(s.take_events().filter(func(e):return e.type=="result").size()==1,"single terminal event and skip")
+	for hp in [100,75,74,50,49]:
+		s=fresh();s.health=hp;s.time=12.345;s.finish(true);check(s.stars==(3 if hp>=75 else (2 if hp>=50 else 1)),"star boundary "+str(hp));check(s.score==int(floor(1234.5+hp*20+1500+.5)),"score rounding "+str(hp))
+	s=fresh();s.damage(6);s.damage(8);check(s.health==94 and s.impact==1.5,"wall damage immunity")
+	s=fresh();s.damage(5,true);check(s.health==95 and s.time==146,"pedestrian penalty")
+	s=fresh();var police=s.police.duplicate();s.advance(.25);check(s.police==police,"patrol waits for pickup")
+	s.phase=1;s.police.x=s.x+1;s.police.z=s.z;s.advance(.025);check(s.health==96 and s.time>149.7,"patrol damage no time penalty")
+	s=fresh();s.siren();s.advance(.25);s.siren();check(absf(s.cooldown-6.75)<.001 and absf(s.siren_left-1.95)<.001,"siren unchanged")
+	var story=Story.new();story.consume({"type":"moment","id":"departure"});story.consume({"type":"moment","id":"departure"});story.update(0,true)
+	check(story.speaker=="Nico" and story.queue.is_empty(),"dialogue deduplicated")
+	story.consume({"type":"moment","id":"coast"});story.update(4,true);check(story.remaining==0 and story.queue.size()==1,"dialogue four seconds");story.update(5.9,true);check(story.queue.size()==1,"six second gap");story.update(.1,true);check(story.speaker=="Lau","next dialogue after gap")
+	story.consume({"type":"damage","text":"Peligro"});check(story.priority and story.text=="Peligro","danger preempts jokes");before=story.remaining;story.update(20,false);check(story.remaining==before,"dialogue freezes while paused");story.reset();check(story.seen.is_empty() and story.queue.is_empty(),"dialogue reset")
+	var passed: bool=checks.all(func(c):return c.passed)
+	var output=FileAccess.open("res://../artifacts/godot/simulation.json",FileAccess.WRITE);output.store_string(JSON.stringify({"rules_version":2,"checks":checks,"passed":passed},"  "))
+	print("Story simulation: ",checks.size()," checks; ","PASSED" if passed else "FAILED");quit(0 if passed else 1)

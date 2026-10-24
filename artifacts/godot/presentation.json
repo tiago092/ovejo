@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "name": "restart centres FrontLeft",
+      "passed": true
+    },
+    {
+      "name": "restart centres FrontRight",
+      "passed": true
+    },
+    {
+      "name": "restart centres RearLeft",
+      "passed": true
+    },
+    {
+      "name": "restart centres RearRight",
+      "passed": true
+    },
+    {
+      "name": "restart centres steering",
+      "passed": true
+    },
+    {
+      "name": "restart clears vehicle visual history",
+      "passed": true
+    },
+    {
+      "name": "vehicle presentation does not mutate simulation",
+      "passed": true
+    },
+    {
+      "name": "reduced motion removes secondary vehicle and head movement",
+      "passed": true
+    },
+    {
+      "name": "rounded actors do not mutate simulation",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf"
+}

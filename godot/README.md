@@ -1,3 +1,7 @@
+# Estado actual: «Yo manejo» v2
+
+Ver [reglas y entrega por etapas](../docs/YO-MANEJO.md). El recorrido y balance anteriores son referencias históricas; la versión activa usa 150 segundos, grafo artesanal, derrape y récord separado. Las capturas de pruebas usan el prefijo `story-` por defecto.
+
 # Código Rosa · Godot
 
 Proyecto editable en **Godot 4.7.2**, GDScript y Compatibility. La versión Three.js de la raíz se conserva intacta. El paquete web se genera en `dist/godot/`; requiere HTTP/HTTPS, no apertura directa del HTML.
@@ -11,7 +15,7 @@ Desde la raíz del repositorio:
 python3 scripts/setup_tools.py
 scripts/godot.sh --editor
 
-# Importa, ejecuta 1.056 comprobaciones de simulación y exporta.
+# Importa, ejecuta 1.056 comprobaciones de simulación y nueve de presentación, y exporta.
 python3 scripts/build_godot.py
 python3 scripts/serve_godot.py --port 8767
 ```
@@ -24,7 +28,7 @@ Para plataformas distintas de Linux x86_64, instalar el editor estándar y las p
 
 WASD/flechas para conducir, Espacio para sirena, C para cámara, P/Escape para pausa. En celular se puede acelerar y girar simultáneamente. La primera partida reproduce siete segundos de historia; botón Omitir, Enter y Espacio la terminan sin gastar tiempo. Reintentar entra directamente a conducir.
 
-Automática selecciona Baja con puntero táctil. Alta limita resolución 3D a 1,5× CSS y sombras a 1024; Baja usa 1× y 512, menos polvo y un conductor de menor detalle. Los cambios afectan presentación, no población ni balance. El recuadro cerrado no renderiza. Movimiento reducido omite introducción, oscilaciones y animación ambiental decorativa.
+Automática selecciona Baja con puntero táctil. Alta limita resolución 3D a 1,5× CSS y sombras a 1024; Baja usa 1× y 512, menos polvo y un conductor de menor detalle. Los cambios afectan presentación, no población ni balance. El recuadro comienza cerrado, las reacciones automáticas en Alta duran tres segundos y se puede fijar o cerrar manualmente. El recuadro cerrado no renderiza. Movimiento reducido omite introducción, oscilaciones y animación ambiental decorativa.
 
 El panel inferior reúne instrucciones, créditos y el reproductor opcional de SoundCloud. Se carga al solicitarlo; el juego utiliza la música propia local sin servicios externos. Pausar o silenciar tiene prioridad sobre eventos tardíos del reproductor.
 
@@ -34,6 +38,8 @@ Preferencias y récord usan `codigo-rosa-godot-v1` en `localStorage`. El primer 
 
 - `simulation.gd`: reglas puras, entradas, aleatoriedad reproducible y eventos; ninguna física de Godot decide colisiones o daño.
 - `world_data.gd` y `data/`: trazado, obstáculos, alturas y balance compartidos por simulación y presentación.
+- `visual_kit.gd`: plantillas de malla del kit editable Blender/GLB.
+- `driving_audio.gd`: motor, superficies y ambientes locales, sin modificar simulación.
 - `world_visual.gd`, `vehicle_visual.gd`, `actors_visual.gd`: geometría, instancias, modelos, expresiones y manos ligadas al volante.
 - `main.gd`: estados de presentación, cámaras, controles y HUD. `web_bridge.gd` y `web/`: integración de navegador, audio externo y persistencia.
 
@@ -73,3 +79,16 @@ GODOT_TEST_PART=screens node scripts/browser_godot.cjs
 Los informes se guardan en `artifacts/godot/`. Allí se distinguen resultados aprobados, fallidos y pendientes. El parecido de la versión revisada está aprobado. Safari/iPhone y Android reales, rendimiento físico y alojamiento HTTPS externo siguen pendientes como criterios de aceptación separados.
 
 Para exportar ambos presets con una sola pasada de importación/pruebas: `python3 scripts/build_godot.py --all`. El ZIP de ejecución se genera con `python3 scripts/package_godot.py`; el informe consolidado, con `python3 scripts/report_godot.py`. Ver [comparativas](../artifacts/godot/comparison.html) y [protocolo de aceptación](../artifacts/godot/README.md).
+
+## Renovación tropical
+
+[Comparación de escenarios](../artifacts/godot/tropical-comparison.html), con cámara anterior y semilla fija para separar cambios de arte y cámara. Las capturas nuevas utilizan el prefijo `tropical-` para conservar las comparativas del rostro aprobado.
+
+```bash
+GODOT_CAPTURE_PREFIX=tropical- GODOT_TEST_PART=flow node scripts/browser_godot.cjs
+GODOT_CAPTURE_PREFIX=tropical- GODOT_TEST_PART=screens node scripts/browser_godot.cjs
+node tests/godot/tropical.cjs
+node scripts/capture_tropical.cjs
+```
+
+Ejecutar en secuencia sobre la misma sesión CDP. Las pruebas específicas comprueban reacciones, fijado/cierre, sonido según superficie, pausa/silencio y movimiento reducido.

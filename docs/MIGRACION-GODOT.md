@@ -1,6 +1,10 @@
+# Evolución posterior: «Yo manejo»
+
+La propuesta histórica de migración que sigue no define el balance actual. El usuario autorizó rediseñar mapa, duración y manejo. La especificación vigente y los pendientes de revisión/publicación se documentan en [YO-MANEJO.md](YO-MANEJO.md). El parecido aprobado permanece intacto.
+
 # Código Rosa: migración a Godot con validación temprana
 
-Plan aprobado e implementación paralela. Base de comparación: Three.js del commit `aa4418e79118ab8187a2514cab1a78a8f22ac0ac`. La versión original se conserva. La aceptación completa requiere tanto las comprobaciones técnicas como la revisión del parecido y pruebas en dispositivos físicos.
+Plan aprobado e implementación Godot activa. Base de comparación: Three.js del commit `aa4418e79118ab8187a2514cab1a78a8f22ac0ac`. La versión original se conserva. La aceptación completa requiere tanto las comprobaciones técnicas como la revisión del parecido y pruebas en dispositivos físicos.
 
 ## 1. Objetivo y decisiones
 
@@ -97,4 +101,10 @@ Medir tres recorridos de 60 s tras calentamiento, con toda la población y recua
 
 Objetivos: 60 FPS escritorio / 30 celular; umbrales prácticos ≥58/29 FPS y p95 ≤33,3/50 ms. Presupuesto 300/150 llamadas incluyendo vistas y sombras. Descarga ≤25 MiB gzip y ≤15 s con caché fría, 20 Mbit/s y 100 ms de latencia. Verificar Chrome/Firefox escritorio, Chrome Android y Safari iPhone. SwiftShader y emulación no certifican esos objetivos físicos.
 
-La entrega incluye proyecto, fuentes Blender, GLB, scripts, paquete estático, licencias y evidencias. La sustitución del enlace principal queda para después de la aceptación; conservar Three.js permite comparar y volver atrás. Consultar [las instrucciones ejecutables](../godot/README.md) y [el estado verificable de aceptación](../artifacts/godot/README.md).
+La entrega incluye proyecto, fuentes Blender, GLB, scripts, paquete estático, licencias y evidencias. Por decisión posterior del usuario, el paquete de Pages publica únicamente Godot en la raíz. Three.js permanece como fuente histórica para regresiones y no se copia al sitio publicado. Las comprobaciones físicas pendientes se siguen registrando sin declararlas aprobadas. Consultar [las instrucciones ejecutables](../godot/README.md) y [el estado verificable de aceptación](../artifacts/godot/README.md).
+
+## Revisión tropical implementada
+
+La siguiente iteración conserva las reglas y el protagonista aprobado y renueva disco, fachadas, costa, puesto, peatones, materiales, cámara, suspensión visual, audio y HUD. El kit modular tiene fuente Blender y GLB locales. Las comparativas se guardan en [tropical-comparison.html](../artifacts/godot/tropical-comparison.html), aparte de las capturas aprobadas de identidad. La aprobación del rostro no se extiende automáticamente al escenario nuevo.
+
+Las pruebas añaden contratos de reinicio visual, presentación sin modificación de simulación, reacciones temporales/fijadas, superficies sonoras, pausa y silencio. Los informes de navegador y rendimiento se vinculan al hash del paquete que realmente se ejecutó; una medición anterior no se presenta como aprobación de una exportación nueva.

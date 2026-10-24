@@ -1,6 +1,6 @@
 /* Extract the original simulation in memory. Never rewrite the published game. */
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),source=fs.readFileSync(path.join(root,'game.js'),'utf8'),world=JSON.parse(fs.readFileSync(path.join(root,'godot/data/world.json')));
+const root=path.resolve(__dirname,'..'),source=fs.readFileSync(path.join(root,'game.js'),'utf8'),world=JSON.parse(fs.readFileSync(path.join(root,'artifacts/godot/archive-v1/world.json')));
 function fn(name){const start=source.indexOf('  function '+name+'(');if(start<0)throw Error(name);let end=source.indexOf('\n  function ',start+1);return source.slice(start,end<0?source.length:end);}
 function context(){
  const c=vm.createContext({world,Math,JSON});
@@ -35,4 +35,4 @@ for(const hz of [30,60,120])for(const name of ['accelerate','brake','reverse','t
  }
  cases.push({name:`${name}-${hz}`,setup,actions,expected:vm.runInContext('snapshot()',c)});
 }
-const out=path.join(root,'godot/tests/reference.json');fs.writeFileSync(out,JSON.stringify({source_sha256:require('node:crypto').createHash('sha256').update(source).digest('hex'),cases})+'\n');console.log(`Saved ${cases.length} original-engine traces`);
+const out=path.join(root,'godot/tests/archive-v1/reference.json');fs.writeFileSync(out,JSON.stringify({source_sha256:require('node:crypto').createHash('sha256').update(source).digest('hex'),cases})+'\n');console.log(`Saved ${cases.length} original-engine traces`);

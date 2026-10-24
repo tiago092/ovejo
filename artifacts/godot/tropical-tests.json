@@ -1,0 +1,75 @@
+{
+  "package_sha256": "af306048efdf45097bba2c60b33880ef0f49aa29398078d5d30f65b654f958b6",
+  "checks": [
+    {
+      "name": "driver inset starts closed",
+      "passed": true
+    },
+    {
+      "name": "local driving sound beds active",
+      "passed": true
+    },
+    {
+      "name": "engine pitch follows speed",
+      "passed": true
+    },
+    {
+      "name": "road and sand switch beds",
+      "passed": true
+    },
+    {
+      "name": "reaction opens automatically",
+      "passed": true
+    },
+    {
+      "name": "reaction explains first siren",
+      "passed": true
+    },
+    {
+      "name": "automatic reaction closes",
+      "passed": true
+    },
+    {
+      "name": "pinned inset stays open",
+      "passed": true
+    },
+    {
+      "name": "closed inset stops its viewport",
+      "passed": true
+    },
+    {
+      "name": "pause stops all driving beds",
+      "passed": true
+    },
+    {
+      "name": "pause preserves camera and suspension",
+      "passed": true
+    },
+    {
+      "name": "pause preserves mission clock",
+      "passed": true
+    },
+    {
+      "name": "mute stops every local bed",
+      "passed": true
+    },
+    {
+      "name": "reduced motion removes suspension and pitch",
+      "passed": true
+    },
+    {
+      "name": "pickup progress appears at objective",
+      "passed": true
+    },
+    {
+      "name": "restart clears presentation reactions",
+      "passed": true
+    },
+    {
+      "name": "menu stops driving beds",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,8 +1,9 @@
 {
+  "package_sha256": "d1c011d0c45e5edba0eeeb0066331e65709cb24dd227a49565f61334d406de06",
   "version": "158.0.1",
   "state": {
     "ready": true,
-    "status": "Preparando la última vuelta…"
+    "status": "Preparando «Yo manejo»…"
   },
   "errors": [],
   "passed": true

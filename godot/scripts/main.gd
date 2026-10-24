@@ -5,8 +5,13 @@ const WorldVisual=preload("res://scripts/world_visual.gd")
 const VehicleVisual=preload("res://scripts/vehicle_visual.gd")
 const ActorsVisual=preload("res://scripts/actors_visual.gd")
 const WebBridge=preload("res://scripts/web_bridge.gd")
+const DrivingAudio=preload("res://scripts/driving_audio.gd")
+const Story=preload("res://scripts/story.gd")
 const Minimap=preload("res://scripts/minimap.gd")
 var sim=Sim.new()
+var story=Story.new()
+var legacy_best:=0
+var last_announcement:=""
 var bridge=WebBridge.new()
 var world_art: Node3D
 var vehicle: Node3D
@@ -19,6 +24,17 @@ var canvas: Control
 var hud: PanelContainer
 var stats: Label
 var destination: Label
+var health_label: Label
+var health_bar: ProgressBar
+var siren_label: Label
+var mission_bar: ProgressBar
+var settings_panel: PanelContainer
+var inset_actions: HBoxContainer
+var pin_button: Button
+var objective_label: Label3D
+var driving_audio: Node
+var first_siren:=true
+var capture_legacy:=false
 var notice_label: Label
 var controls: HBoxContainer
 var menu_panel: PanelContainer
@@ -52,9 +68,9 @@ var touch:=false
 var best:=0
 var muted:=false
 var remote_music:=false
-var panel_open:=true
+var panel_open:=false
 var panel_manual:=false
-var panel_remaining:=2.6
+var panel_remaining:=0.0
 var camera_mode:=0
 var visual_time:=0.0
 var last_usec:=0
@@ -76,13 +92,13 @@ var last_size:=Vector2.ZERO
 var report_accum:=0.0
 
 func _ready() -> void:
-	bridge.setup(_host_message);prefs=bridge.preferences();quality=prefs.get("quality","auto");reduced=prefs.get("reduced",false);reduced_explicit=prefs.get("reduced_explicit",false);touch=prefs.get("touch",false);best=int(prefs.get("best",0));muted=prefs.get("muted",false)
+	bridge.setup(_host_message);prefs=bridge.preferences();quality=prefs.get("quality","auto");reduced=prefs.get("reduced",false);reduced_explicit=prefs.get("reduced_explicit",false);touch=prefs.get("touch",false);best=int(prefs.get("best",0));legacy_best=int(prefs.get("legacy_best",0));muted=prefs.get("muted",false)
 	low=quality=="low" or (quality=="auto" and touch)
 	get_window().content_scale_factor=float(prefs.get("dpr",1))
 	world_art=WorldVisual.new();add_child(world_art);world_art.build()
 	vehicle=VehicleVisual.new();add_child(vehicle);vehicle.build(low)
 	actors=ActorsVisual.new();add_child(actors)
-	camera=Camera3D.new();camera.fov=48;camera.near=.08;camera.far=600;add_child(camera);camera.current=true
+	camera=Camera3D.new();camera.fov=52;camera.near=.08;camera.far=600;add_child(camera);camera.current=true
 	make_marker();make_ui();make_audio();make_dust();apply_quality();layout()
 	get_viewport().size_changed.connect(layout)
 	update_visuals(0);update_camera(0,true);update_hud();refresh_menu();last_usec=Time.get_ticks_usec()
@@ -90,11 +106,13 @@ func _ready() -> void:
 func make_marker() -> void:
 	marker=MeshInstance3D.new();var mesh:=TorusMesh.new();mesh.inner_radius=4.5;mesh.outer_radius=4.8;mesh.rings=48;mesh.ring_segments=8;marker.mesh=mesh
 	marker_material=StandardMaterial3D.new();marker_material.albedo_color=Color("ed5598");marker_material.emission_enabled=true;marker_material.emission=Color("ed5598");marker.material_override=marker_material;add_child(marker)
+	objective_label=Label3D.new();objective_label.font_size=48;objective_label.pixel_size=.010;objective_label.billboard=BaseMaterial3D.BILLBOARD_ENABLED;objective_label.outline_size=8;objective_label.modulate=Color("fff0cd");add_child(objective_label)
 
 func make_audio() -> void:
 	music=AudioStreamPlayer.new();add_child(music);music.volume_db=-8
 	if ResourceLoader.exists("res://assets/music.wav"):music.stream=load("res://assets/music.wav")
 	effect=AudioStreamPlayer.new();effect.volume_db=-14;add_child(effect)
+	driving_audio=DrivingAudio.new();add_child(driving_audio);driving_audio.build()
 
 func make_dust() -> void:
 	dust=CPUParticles3D.new();dust.amount=48;dust.lifetime=.65;dust.emitting=false;dust.local_coords=false;dust.direction=Vector3(0,1,0);dust.spread=35;dust.initial_velocity_min=.2;dust.initial_velocity_max=.9;dust.gravity=Vector3(0,.1,0);dust.scale_amount_min=.06;dust.scale_amount_max=.2
@@ -102,6 +120,9 @@ func make_dust() -> void:
 
 func style(bg: String,border: String="38525c") -> StyleBoxFlat:
 	var s:=StyleBoxFlat.new();s.bg_color=Color(bg);s.border_color=Color(border);s.set_border_width_all(1);s.set_corner_radius_all(14);s.content_margin_left=18;s.content_margin_right=18;s.content_margin_top=14;s.content_margin_bottom=14;return s
+
+func bar_style(color: String) -> StyleBoxFlat:
+	var box:=StyleBoxFlat.new();box.bg_color=Color(color);box.set_corner_radius_all(4);return box
 
 func label(text: String,font_size: int,parent: Node) -> Label:
 	var l:=Label.new();l.text=text;l.add_theme_font_size_override("font_size",font_size);l.add_theme_color_override("font_color",Color("fff2d5"));parent.add_child(l);return l
@@ -116,13 +137,23 @@ func make_ui() -> void:
 		var button_style:=style("304b56" if state=="normal" else "52707b","ffcc66" if state=="focus" else "587981");button_style.content_margin_left=10;button_style.content_margin_right=10;theme.set_stylebox(state,"Button",button_style)
 	theme.set_color("font_color","Button",Color("fff2d5"));canvas.theme=theme
 	hud=PanelContainer.new();canvas.add_child(hud);var v:=VBoxContainer.new();hud.add_child(v)
-	stats=label("",24,v);destination=label("",16,v);destination.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	var top:=HBoxContainer.new();top.add_theme_constant_override("separation",16);v.add_child(top)
+	stats=label("",34,top);stats.add_theme_color_override("font_color",Color("ffcf79"));stats.custom_minimum_size.x=100
+	var condition:=VBoxContainer.new();condition.size_flags_horizontal=Control.SIZE_EXPAND_FILL;top.add_child(condition)
+	health_label=label("",13,condition);health_bar=ProgressBar.new();health_bar.show_percentage=false;health_bar.custom_minimum_size=Vector2(100,8);condition.add_child(health_bar)
+	health_bar.add_theme_stylebox_override("background",bar_style("304b56"));health_bar.add_theme_stylebox_override("fill",bar_style("78cbb8"))
+	destination=label("",15,v);destination.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	siren_label=label("",12,v);siren_label.add_theme_color_override("font_color",Color("91ddce"))
+	mission_bar=ProgressBar.new();mission_bar.show_percentage=false;mission_bar.max_value=1.3;mission_bar.custom_minimum_size.y=5;mission_bar.add_theme_stylebox_override("fill",bar_style("eb8eb5"));v.add_child(mission_bar)
 	controls=HBoxContainer.new();controls.add_theme_constant_override("separation",6);canvas.add_child(controls)
 	pause_button=button("Pausa",toggle_pause,controls);pause_button.tooltip_text="P / Escape · Pausa"
 	button("Cámara",func():camera_mode=1-camera_mode,controls)
 	driver_button=button("Cara",toggle_panel,controls)
-	sound_button=button("Audio",toggle_sound,controls)
-	quality_select=OptionButton.new();quality_select.add_item("Auto");quality_select.add_item("Alta");quality_select.add_item("Baja");quality_select.item_selected.connect(func(i):quality=["auto","high","low"][i];apply_quality();save_preferences());controls.add_child(quality_select)
+	button("Ajustes",func():settings_panel.visible=not settings_panel.visible,controls)
+	settings_panel=PanelContainer.new();canvas.add_child(settings_panel);settings_panel.visible=false
+	var settings:=VBoxContainer.new();settings_panel.add_child(settings);label("CALIDAD Y AUDIO",13,settings)
+	sound_button=button("Audio",toggle_sound,settings)
+	quality_select=OptionButton.new();quality_select.add_item("Auto");quality_select.add_item("Alta");quality_select.add_item("Baja");quality_select.item_selected.connect(func(i):quality=["auto","high","low"][i];apply_quality();save_preferences());settings.add_child(quality_select)
 	menu_panel=PanelContainer.new();canvas.add_child(menu_panel);menu_content=VBoxContainer.new();menu_content.add_theme_constant_override("separation",12);menu_panel.add_child(menu_content)
 	label("MORRO DE SÃO PAULO · 05:47",14,menu_content).add_theme_color_override("font_color",Color("80d6bf"))
 	menu_title=label("CÓDIGO ROSA",38,menu_content);menu_title.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -130,12 +161,15 @@ func make_ui() -> void:
 	menu_actions=VBoxContainer.new();menu_actions.add_theme_constant_override("separation",8);menu_content.add_child(menu_actions)
 	reduced_button=CheckButton.new();reduced_button.text="Movimiento reducido";reduced_button.button_pressed=reduced;reduced_button.toggled.connect(func(on):reduced=on;reduced_explicit=true;if_reduced_changed();save_preferences());menu_content.add_child(reduced_button)
 	intro_label=label("",28,canvas);intro_label.add_theme_color_override("font_outline_color",Color("172d38"));intro_label.add_theme_constant_override("outline_size",6);intro_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;intro_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-	skip_button=button("Omitir · Enter / Espacio",func():sim.skip_intro();clear_inputs();last_usec=Time.get_ticks_usec(),canvas)
+	skip_button=button("Omitir · Enter / Espacio",func():sim.skip_intro();sim.skip_ending();clear_inputs();last_usec=Time.get_ticks_usec(),canvas)
 	notice_label=label("",18,canvas);notice_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;notice_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;notice_label.add_theme_color_override("font_outline_color",Color("172d38"));notice_label.add_theme_constant_override("outline_size",5)
 	minimap=Minimap.new();minimap.sim=sim;canvas.add_child(minimap)
 	inset_container=SubViewportContainer.new();inset_container.stretch=true;inset_container.mouse_filter=Control.MOUSE_FILTER_IGNORE;canvas.add_child(inset_container)
 	inset=SubViewport.new();inset.size=Vector2i(240,180);inset.transparent_bg=false;inset.world_3d=get_world_3d();inset_container.add_child(inset)
 	inset_camera=Camera3D.new();inset_camera.fov=34;inset_camera.cull_mask=4;inset_camera.near=.05;inset.add_child(inset_camera);inset_camera.current=true
+	inset_actions=HBoxContainer.new();canvas.add_child(inset_actions)
+	pin_button=button("Fijar",func():panel_manual=not panel_manual;panel_remaining=3, inset_actions)
+	button("×",func():panel_open=false;panel_manual=true,inset_actions)
 	touch_controls=Control.new();touch_controls.mouse_filter=Control.MOUSE_FILTER_IGNORE;canvas.add_child(touch_controls)
 	for entry in [["left","◀"],["right","▶"],["down","FRENO"],["up","ACEL."],["siren","SIRENA"]]:
 		var b:=Button.new();b.text=entry[1];b.add_theme_font_size_override("font_size",12);b.focus_mode=Control.FOCUS_NONE;b.mouse_filter=Control.MOUSE_FILTER_IGNORE;touch_controls.add_child(b);touch_buttons[entry[0]]=b
@@ -147,21 +181,30 @@ func layout() -> void:
 	var margin:=maxf(12,maxf(safe[1],safe[3]))
 	menu_content.get_child(0).visible=not landscape
 	if sim.state==Sim.MENU:
-		menu_title.text="CÓDIGO ROSA" if landscape else "CÓDIGO ROSA\nLa última vuelta"
-		menu_description.text="Recogé al paciente y llegá al puesto en 90 segundos." if landscape else "Salió de la disco. Vio una ambulancia.\n«Yo manejo».\n\nRecogé al paciente y llegá al puesto en 90 segundos.\nWASD / flechas · Espacio: sirena · C: cámara"
-	hud.position=Vector2(margin,maxf(12,safe[0]));hud.size=Vector2(minf(screen.x-24,590),100 if narrow else 92)
-	stats.add_theme_font_size_override("font_size",21 if narrow else 25)
-	controls.position=Vector2(margin,116 if narrow else 110)
+		menu_title.text="CÓDIGO ROSA" if landscape else "CÓDIGO ROSA\nYo manejo"
+		menu_description.text="Recogé al paciente y llegá al puesto en 150 segundos." if landscape else "Salió de la disco. Vio una ambulancia.\n«Yo manejo».\n\nRecogé al paciente y llegá al puesto en 150 segundos.\nWASD / flechas · Espacio: sirena · C: cámara"
+	hud.position=Vector2(margin,maxf(12,safe[0]));hud.size=Vector2(minf(screen.x-24,440),0)
+	stats.add_theme_font_size_override("font_size",26 if landscape else (29 if narrow else 36))
+	var hud_style:=hud.get_theme_stylebox("panel").duplicate();hud_style.content_margin_top=8 if landscape else 14;hud_style.content_margin_bottom=8 if landscape else 14;hud.add_theme_stylebox_override("panel",hud_style)
+	destination.add_theme_font_size_override("font_size",12 if landscape else 14)
+	controls.position=Vector2(margin,158 if narrow else (129 if landscape else 156))
+	settings_panel.position=controls.position+Vector2(0,48);settings_panel.size=Vector2(210,0)
 	var mw:=minf(screen.x-32,570)
 	menu_panel.position=Vector2(screen.x-mw-32 if screen.x>=1100 else (screen.x-mw)/2,maxf(12,(screen.y-(300 if landscape else 385))/2));menu_panel.size=Vector2(mw,0)
 	menu_title.add_theme_font_size_override("font_size",26 if landscape else (32 if narrow else 40))
 	menu_description.add_theme_font_size_override("font_size",14 if landscape else 17)
 	intro_label.position=Vector2(20,screen.y-150);intro_label.size=Vector2(screen.x-40,55)
 	skip_button.position=Vector2(screen.x/2-135,screen.y-80);skip_button.size=Vector2(270,44)
-	notice_label.position=Vector2(12,162 if narrow else 158);notice_label.size=Vector2(screen.x-24,50)
-	minimap.position=Vector2(screen.x-(125 if narrow else 162)-12,screen.y-(175 if touch else 22)-(140 if narrow else 170));minimap.size=Vector2(125 if narrow else 162,140 if narrow else 170)
-	inset_container.position=Vector2(screen.x-(144 if narrow else 230)-12,218 if narrow else 16);inset_container.size=Vector2(144 if narrow else 230,112 if narrow else 172)
+	notice_label.position=Vector2(12,211 if narrow else (186 if landscape else screen.y-115));notice_label.size=Vector2(minf(680,screen.x-(200 if landscape else 24)),70)
+	notice_label.add_theme_font_size_override("font_size",14 if landscape else 16)
+	var map_width:=110 if landscape else (125 if narrow else 162)
+	var map_height:=100 if landscape else (140 if narrow else 170)
+	minimap.position=Vector2(screen.x-map_width-12,12 if landscape else screen.y-(175 if touch else 22)-map_height);minimap.size=Vector2(map_width,map_height)
+	var inset_width:=144 if narrow or landscape else 230
+	var inset_height:=100 if landscape else (112 if narrow else 172)
+	inset_container.position=Vector2(screen.x-inset_width-map_width-36 if landscape else screen.x-inset_width-12,12 if landscape else (265 if narrow else 16));inset_container.size=Vector2(inset_width,inset_height)
 	inset_container.stretch_shrink=2 if low else 1
+	inset_actions.position=inset_container.position+Vector2(0,inset_container.size.y+4)
 	touch_controls.position=Vector2(0,screen.y-158-safe[2]);touch_controls.size=Vector2(screen.x,158)
 	var bw:=clampf(screen.x*.16,55,84)
 	for key in touch_buttons:touch_buttons[key].size=Vector2(bw,64)
@@ -182,7 +225,7 @@ func apply_quality() -> void:
 	if quality_select:quality_select.select(["auto","high","low"].find(quality))
 	RenderingServer.directional_shadow_atlas_set_size(512 if low else 1024,true)
 	if world_art:world_art.quality(low)
-	panel_open=not low;panel_manual=false;panel_remaining=2.6
+	panel_open=false;panel_manual=false;panel_remaining=0
 	if dust:dust.amount=18 if low else 48
 	apply_resolution();layout_if_ready()
 
@@ -190,15 +233,16 @@ func layout_if_ready() -> void:
 	if inset_container:layout()
 
 func save_preferences() -> void:
-	bridge.save({"version":1,"quality":quality,"best":best,"reduced":reduced,"reduced_explicit":reduced_explicit,"muted":muted})
+	bridge.save({"version":2,"quality":quality,"best":best,"legacy_best":legacy_best,"reduced":reduced,"reduced_explicit":reduced_explicit,"muted":muted})
 
 func if_reduced_changed() -> void:
-	if reduced:sim.skip_intro()
+	sim.presentation_reduced=reduced
+	if reduced:sim.skip_intro();sim.skip_ending()
 	clear_inputs()
 
-func start_game(story: bool=false) -> void:
-	vehicle.wheel_phase=0;vehicle.steering.rotation.z=0
-	sim.start(story,reduced,int(Time.get_ticks_usec() & 0xffffffff));camera_mode=0;route_phase=-1;panel_open=not low;panel_manual=false;panel_remaining=2.6;visual_time=0;siren_tick=0;police_tick=0;clear_inputs();last_usec=Time.get_ticks_usec();update_visuals(0);update_camera(0,true);refresh_menu();sync_audio()
+func start_game(force_story: bool=false) -> void:
+	vehicle.reset();actors.reset();story.reset();first_siren=true;settings_panel.visible=false
+	sim.start(force_story,reduced,int(Time.get_ticks_usec() & 0xffffffff));camera_mode=0;route_phase=-1;panel_open=false;panel_manual=false;panel_remaining=0;visual_time=0;siren_tick=0;police_tick=0;clear_inputs();last_usec=Time.get_ticks_usec();update_visuals(0);update_camera(0,true);refresh_menu();sync_audio()
 
 func clear_inputs() -> void:
 	for key in keyboard:keyboard[key]=false
@@ -221,6 +265,7 @@ func sync_audio() -> void:
 			if not music.playing:music.play()
 		else:music.stop()
 	if not active and effect:effect.stop()
+	if driving_audio:driving_audio.update(sim,0,muted,remote_music)
 	if sound_button:sound_button.text="♫" if not muted else "× ♫"
 
 func play_effect(name: String) -> void:
@@ -231,11 +276,12 @@ func play_effect(name: String) -> void:
 func refresh_menu() -> void:
 	for child in menu_actions.get_children():menu_actions.remove_child(child);child.queue_free()
 	menu_panel.visible=sim.state in [Sim.MENU,Sim.PAUSED,Sim.WON,Sim.LOST]
+	if menu_panel.visible:settings_panel.visible=false
 	reduced_button.visible=sim.state==Sim.MENU
 	match sim.state:
 		Sim.MENU:
-			menu_title.text="CÓDIGO ROSA\nLa última vuelta"
-			menu_description.text="Salió de la disco. Vio una ambulancia.\n«Yo manejo».\n\nRecogé al paciente y llegá al puesto en 90 segundos.\nWASD / flechas · Espacio: sirena · C: cámara"
+			menu_title.text="CÓDIGO ROSA\nYo manejo"
+			menu_description.text="Salió de la disco. Vio una ambulancia.\n«Yo manejo».\n\nRecogé al paciente y llegá al puesto en 150 segundos.\nWASD / flechas · Espacio: sirena · C: cámara"
 			button("JUGAR →",func():start_game(true),menu_actions)
 			button("Ver historia",func():start_game(true),menu_actions)
 		Sim.PAUSED:
@@ -244,7 +290,7 @@ func refresh_menu() -> void:
 			button("VOLVER AL VOLANTE →",toggle_pause,menu_actions)
 		Sim.WON,Sim.LOST:
 			menu_title.text="DIJO «YO MANEJO».\nY LLEGÓ." if sim.state==Sim.WON else ("ERA PRESTADO…\nY LO ROMPISTE." if sim.health<=0 else "SE HIZO DE DÍA.")
-			menu_description.text="%s\n%d PUNTOS · %d CHOQUES · %d ATROPELLOS\nRécord: %d" % ["★".repeat(sim.stars)+"☆".repeat(3-sim.stars),sim.score,sim.bumps,sim.ped_hits,best]
+			menu_description.text="%s\n%d PUNTOS · %d s RESTANTES · %d%% RESISTENCIA\n%d CHOQUES · %d ATROPELLOS · Récord: %d" % ["★".repeat(sim.stars)+"☆".repeat(3-sim.stars),sim.score,ceili(sim.time),ceili(sim.health),sim.bumps,sim.ped_hits,best]
 			button("OTRA VUELTA ↻",func():start_game(),menu_actions)
 			button("Volver al inicio",func():sim.menu();clear_inputs();refresh_menu();sync_audio(),menu_actions)
 	if menu_panel.visible and menu_actions.get_child_count():menu_actions.get_child(0).grab_focus()
@@ -253,8 +299,8 @@ func refresh_menu() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.echo:
 		var code=event.physical_keycode
-		if event.pressed and sim.state==Sim.CINEMATIC and code in [KEY_ENTER,KEY_SPACE]:
-			sim.skip_intro();clear_inputs();last_usec=Time.get_ticks_usec();get_viewport().set_input_as_handled();return
+		if event.pressed and sim.state in [Sim.CINEMATIC,Sim.ENDING] and code in [KEY_ENTER,KEY_SPACE]:
+			sim.skip_intro();sim.skip_ending();clear_inputs();last_usec=Time.get_ticks_usec();get_viewport().set_input_as_handled();return
 		if event.pressed and code in [KEY_P,KEY_ESCAPE]:toggle_pause();get_viewport().set_input_as_handled();return
 		if sim.state!=Sim.PLAYING:return
 		var map={KEY_W:"up",KEY_UP:"up",KEY_S:"down",KEY_DOWN:"down",KEY_A:"left",KEY_LEFT:"left",KEY_D:"right",KEY_RIGHT:"right"}
@@ -275,14 +321,14 @@ func _input(event: InputEvent) -> void:
 
 func _notification(what: int) -> void:
 	if what==NOTIFICATION_APPLICATION_FOCUS_OUT and not OS.has_feature("web"):
-		if sim.state in [Sim.PLAYING,Sim.CINEMATIC]:toggle_pause()
+		if sim.state in [Sim.PLAYING,Sim.CINEMATIC,Sim.ENDING]:toggle_pause()
 
 func _host_message(message: Dictionary) -> void:
 	match message.get("type",""):
 		"release":clear_inputs();bridge.snapshot(test_snapshot())
 		"hidden","blur":
 			clear_inputs()
-			if sim.state in [Sim.PLAYING,Sim.CINEMATIC]:toggle_pause()
+			if sim.state in [Sim.PLAYING,Sim.CINEMATIC,Sim.ENDING]:toggle_pause()
 		"preferences":
 			var previous_touch:=touch
 			prefs=bridge.preferences();touch=prefs.get("touch",false)
@@ -310,13 +356,16 @@ func _process(_delta: float) -> void:
 		refresh_menu();sync_audio();update_camera(dt,true);bridge.announce("Turno en pausa" if sim.state==Sim.PAUSED else sim.state)
 		if sim.state in [Sim.WON,Sim.LOST]:play_effect("win" if sim.state==Sim.WON else "hit")
 	for event in sim.take_events():
-		if event.has("text"):
-			notice_label.text=event.text;notice_remaining=3;bridge.announce(event.text)
-		if event.type in ["damage","pickup","siren"]:
-			if not low and not panel_manual:panel_open=true;panel_remaining=2.6
+		story.consume(event)
+		if event.type in ["damage","pickup","siren","drift"]:
+			if not low and not panel_manual:panel_open=true;panel_remaining=3
 			if event.type=="damage":play_effect("hit")
+	story.update(raw,sim.state==Sim.PLAYING and not test_frozen)
+	if story.remaining>0:
+		notice_label.text=story.speaker+" · "+story.text
+		if notice_label.text!=last_announcement:bridge.announce(notice_label.text);last_announcement=notice_label.text
 	if sim.state==Sim.PLAYING:
-		panel_remaining-=dt;notice_remaining-=dt
+		panel_remaining-=raw
 		if panel_remaining<=0 and not panel_manual:panel_open=false
 		if sim.siren_left>0:
 			siren_tick-=dt
@@ -329,52 +378,63 @@ func _process(_delta: float) -> void:
 	if report_accum>.2:report_accum=0;bridge.snapshot(test_snapshot())
 
 func update_visuals(dt: float) -> void:
-	vehicle.update(sim,dt,visual_time,reduced)
-	actors.update(sim,visual_time,reduced)
-	world_art.animate(0 if reduced else visual_time)
+	if sim.state!=Sim.PAUSED:
+		vehicle.update(sim,dt,visual_time,reduced)
+		actors.update(sim,visual_time,reduced)
+		world_art.animate(0 if reduced else visual_time)
+	driving_audio.update(sim,dt,muted,remote_music)
 	var target: Array=World.data.hospital if sim.phase else World.data.pickup
 	marker.position=Vector3(target[0],World.height_at(target[0],target[1])+.22,target[1]);marker.visible=sim.state==Sim.PLAYING
 	marker_material.albedo_color=Color("79d6c0") if sim.phase else Color("ed5598");marker_material.emission=marker_material.albedo_color
 	inset_container.visible=panel_open and sim.state==Sim.PLAYING
+	inset_actions.visible=inset_container.visible;pin_button.text="Automático" if panel_manual else "Fijar"
+	objective_label.position=marker.position+Vector3(0,3.6,0);objective_label.visible=sim.state==Sim.PLAYING and Vector2(sim.x-target[0],sim.z-target[1]).length()<35
+	objective_label.text=("ENTREGANDO" if sim.phase else "SUBIENDO")+" · %d%%" % roundi(sim.load_progress/1.3*100) if sim.load_progress>0 else ("FRENÁ · PUESTO" if sim.phase else "FRENÁ · SEGUNDA PRAIA")
 	inset.render_target_update_mode=SubViewport.UPDATE_ALWAYS if inset_container.visible else SubViewport.UPDATE_DISABLED
 	var hp: Vector3=vehicle.head.global_position
 	inset_camera.global_position=hp+vehicle.global_basis*Vector3(.1,.13,2.0);inset_camera.look_at(hp+Vector3(0,.05,0))
 	if dust:
-		dust.position=vehicle.position+Vector3(0,.25,0);var sand:=true
-		for road_x in World.data.road_x:
-			if absf(sim.x-road_x)<5.4:sand=false
-		for road_z in World.data.road_z:
-			if absf(sim.z-road_z)<5.4:sand=false
-		dust.emitting=sim.state==Sim.PLAYING and not reduced and sim.speed>6 and sand
+		dust.position=vehicle.position+Vector3(0,.25,0)
+		var sand: bool=World.surface_at(Vector2(sim.x,sim.z))=="sand"
+		dust.emitting=sim.state==Sim.PLAYING and not reduced and sim.speed>6 and (sand or sim.drift_amount>0)
 		dust.speed_scale=0 if sim.state==Sim.PAUSED else 1
 
 func update_camera(dt: float,snap: bool=false) -> void:
-	if sim.state==Sim.PAUSED and not snap:return
+	if sim.state==Sim.PAUSED:return
 	var origin:=vehicle.global_position;var basis:=Basis(Vector3.UP,sim.angle);var desired: Vector3;var target: Vector3
 	var cinema: bool=sim.state==Sim.CINEMATIC
 	if cinema and sim.cinematic_time<2.2:
-		var t: float=sim.cinematic_time/2.2;desired=origin+Vector3(-20+t*4,10-t,20-t*4);target=Vector3(-51,World.height_at(-51,-128)+3,-128)
+		var t: float=sim.cinematic_time/2.2;desired=origin+Vector3(-20+t*4,10-t,20-t*4);target=Vector3(World.data.landmarks.club[0],World.height_at(World.data.landmarks.club[0],World.data.landmarks.club[1])+3,World.data.landmarks.club[1])
 	elif cinema and sim.cinematic_time<4.6:
 		target=vehicle.head.global_position+Vector3(0,.03,0);desired=target+basis*Vector3(.65,.2,2.6)
 	elif cinema:
 		var t: float=(sim.cinematic_time-4.6)/2.4;desired=origin+basis*Vector3(4*(1-t),lerpf(3.4,6,t),lerpf(4,-10,t));target=origin+Vector3(0,1.9,0)
+	elif sim.state==Sim.ENDING:
+		target=origin+Vector3(0,1.7,0) if sim.ending_time<3 else vehicle.head.global_position
+		desired=target+basis*(Vector3(7,3.4,7) if sim.ending_time<3 else Vector3(.65,.2,2.8))
 	elif sim.state in [Sim.MENU,Sim.WON,Sim.LOST]:
 		target=vehicle.head.global_position+Vector3(0,-.14,0);desired=target+basis*(Vector3(2.8,1.0,6.5) if sim.state==Sim.MENU else Vector3(.65,.2,2.8))
 		if last_size.x>=1100:target+=basis*Vector3(.9,0,0)
 	else:
 		var portrait_scale: float=1.35 if last_size.x<last_size.y else 1.0
-		desired=origin+basis*Vector3(0,5.7*portrait_scale,(10 if camera_mode else -10.5)*portrait_scale)
-		target=origin+basis*Vector3(0,1.9,0 if camera_mode else 4+minf(sim.speed*.15,3))
+		desired=origin+basis*Vector3(0,4.4*portrait_scale,(11.5 if camera_mode else -13.5)*portrait_scale)
+		target=origin+basis*Vector3(0,1.9,0 if camera_mode else 6+minf(sim.speed*.16,3))
+		if capture_legacy and OS.has_feature("verification"):
+			desired=origin+basis*Vector3(0,5.7,-10.5);target=origin+basis*Vector3(0,1.9,4+minf(sim.speed*.15,3))
 		var query:=PhysicsRayQueryParameters3D.create(origin+Vector3(0,2,0),desired,2)
 		var hit=get_world_3d().direct_space_state.intersect_ray(query)
 		if not hit.is_empty():desired=hit.position+hit.normal*.55
 		desired.y=maxf(desired.y,World.height_at(desired.x,desired.z)+.8)
-	camera.global_position=desired if snap or reduced or cinema else camera.global_position.lerp(desired,1-exp(-dt*6))
+	camera.fov=48 if capture_legacy and OS.has_feature("verification") else 52
+	camera.global_position=desired if snap or reduced or cinema or sim.state==Sim.ENDING else camera.global_position.lerp(desired,1-exp(-dt*6))
 	if camera.global_position.distance_to(target)>.01:camera.look_at(target)
 
 func update_hud() -> void:
 	var seconds:=ceili(sim.time)
-	stats.text=("%02d:%02d · %d%% · %d km/h" if last_size.x<650 else "%02d:%02d   ·   %d%% BUGGY   ·   %d km/h") % [seconds/60,seconds%60,ceili(sim.health),roundi(sim.speed*3.6)]
+	stats.text="%02d:%02d" % [seconds/60,seconds%60]
+	stats.add_theme_color_override("font_color",Color("f58da2") if seconds<=20 else Color("ffcf79"))
+	health_label.text="BUGGY %d%% · %d km/h" % [ceili(sim.health),roundi(sim.speed*3.6)];health_bar.value=sim.health
+	mission_bar.value=sim.load_progress;mission_bar.visible=sim.load_progress>0
 	var target: Array=World.data.hospital if sim.phase else World.data.pickup
 	var position2:=Vector2(sim.x,sim.z)
 	if position2.distance_to(route_position)>1.5 or sim.phase!=route_phase:
@@ -383,17 +443,25 @@ func update_hud() -> void:
 	if route.size()>1:
 		var point: Vector2=route[1];var bearing:=atan2(point.x-sim.x,point.y-sim.z);var relative:=atan2(sin(bearing-sim.angle),cos(bearing-sim.angle))
 		cue=["↑","↗","→","↘","↓","↙","←","↖"][posmod(roundi(relative/(PI/4)),8)]
-	destination.text="%s %s · %d m   |   SIRENA: %s" % [cue,"POSTO DE SAÚDE" if sim.phase else "SEGUNDA PRAIA",roundi(position2.distance_to(Vector2(target[0],target[1]))),"ACTIVA" if sim.siren_left>0 else (str(ceili(sim.cooldown))+" s" if sim.cooldown>0 else "LISTA")]
+	destination.text="%s %s · %d m" % [cue,"POSTO DE SAÚDE" if sim.phase else "SEGUNDA PRAIA",roundi(World.path_length(route))]
+	var maneuver:=World.next_maneuver(route,sim.angle)
+	destination.text="%s · %d m\n%s" % [maneuver.text,roundi(maneuver.distance),destination.text]
+	siren_label.text="SIRENA · "+("ACTIVA" if sim.siren_left>0 else ("RECARGA %d s" % ceili(sim.cooldown) if sim.cooldown>0 else "LISTA · ESPACIO"))
 	if sim.load_progress>0:destination.text=("ENTREGANDO" if sim.phase else "SUBIENDO")+" · "+str(roundi(sim.load_progress/1.3*100))+"%"
 	hud.visible=sim.state==Sim.PLAYING;controls.visible=sim.state==Sim.PLAYING;minimap.visible=sim.state==Sim.PLAYING;minimap.path=route;minimap.queue_redraw()
-	intro_label.visible=sim.state==Sim.CINEMATIC;skip_button.visible=intro_label.visible
-	intro_label.text="MORRO. SALIDA DE LA DISCO." if sim.cinematic_time<2.2 else ("«YO MANEJO»." if sim.cinematic_time<4.6 else "LA ÚLTIMA VUELTA.")
-	notice_label.visible=notice_remaining>0 and sim.state==Sim.PLAYING;touch_controls.visible=touch and sim.state==Sim.PLAYING
+	intro_label.visible=sim.state in [Sim.CINEMATIC,Sim.ENDING];skip_button.visible=intro_label.visible
+	intro_label.text="MORRO. SALIDA DE LA DISCO." if sim.cinematic_time<2.2 else ("«YO MANEJO»." if sim.cinematic_time<4.6 else "TRANQUILO. DIJO QUE SABÍA.")
+	if sim.state==Sim.ENDING:intro_label.text=ending_line()
+	notice_label.visible=story.remaining>0 and sim.state==Sim.PLAYING;touch_controls.visible=touch and sim.state==Sim.PLAYING
 	touch_buttons.siren.text="ACTIVA" if sim.siren_left>0 else (str(ceili(sim.cooldown))+" s" if sim.cooldown>0 else "SIRENA")
 
 func test_snapshot() -> Dictionary:
-	var data: Dictionary=sim.snapshot();data["low"]=low;data["panel_open"]=panel_open;data["inset_rendering"]=inset.render_target_update_mode!=SubViewport.UPDATE_DISABLED;data["quality"]=quality;data["best"]=best;data["touch"]=touch;data["reduced"]=reduced
+	var data: Dictionary=sim.snapshot();data["low"]=low;data["panel_open"]=panel_open;data["inset_rendering"]=inset.render_target_update_mode!=SubViewport.UPDATE_DISABLED;data["quality"]=quality;data["best"]=best;data["legacy_best"]=legacy_best;data["touch"]=touch;data["reduced"]=reduced
 	data["ui_size"]=[last_size.x,last_size.y];data["inputs"]=sim.keys.duplicate();data["touch_inputs"]=touch_pointers.duplicate();data["music_local"]=music.playing if music else false
+	data["presentation"]={"panel_manual":panel_manual,"panel_remaining":panel_remaining,"notice":notice_label.text,"settings_visible":settings_panel.visible,"suspension":vehicle.model.position.y,"braking_pitch":vehicle.model.rotation.x,"objective_visible":objective_label.visible,"camera_position":[camera.position.x,camera.position.y,camera.position.z],"camera_fov":camera.fov,"story_speaker":story.speaker,"story_remaining":story.remaining,"story_queue":story.queue.size(),"pickup_visual_progress":sim.load_progress/1.3}
+	data["audio"]={}
+	for name in driving_audio.players:
+		var player: AudioStreamPlayer=driving_audio.players[name];data["audio"][name]={"playing":player.playing,"pitch":player.pitch_scale,"db":player.volume_db}
 	data["benchmark"]={"active":benchmark_active,"elapsed":benchmark_elapsed,"frames":benchmark_frames if not benchmark_active else [],"calls":benchmark_calls if not benchmark_active else []}
 	data["render"]={"calls":RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME),"primitives":RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME)}
 	return data
@@ -402,13 +470,21 @@ func _test_command(message: Dictionary) -> void:
 	if not OS.has_feature("verification"):return
 	match message.get("command",""):
 		"benchmark":benchmark_active=true;benchmark_elapsed=-5;benchmark_frames.clear();benchmark_calls.clear();test_frozen=false;sim.start(false,true,27);clear_inputs()
+		"capture_legacy":capture_legacy=message.get("value",true)
+		"mute":muted=message.get("value",true);sync_audio()
+		"pin":panel_manual=message.get("value",true);panel_open=true;panel_remaining=3
+		"reduced":reduced=message.get("value",true);if_reduced_changed()
+		"menu":sim.menu();clear_inputs();refresh_menu();sync_audio()
 		"study":get_tree().change_scene_to_file("res://scenes/study.tscn");return
 		"freeze":test_frozen=message.get("value",true)
-		"start":sim.start(message.get("story",false),message.get("reduced",true),27);clear_inputs();refresh_menu();update_camera(0,true)
+		"start":sim.start(message.get("story",false),message.get("reduced",true),27);vehicle.reset();actors.reset();story.reset();first_siren=true;panel_open=false;panel_manual=false;panel_remaining=0;clear_inputs();refresh_menu();update_camera(0,true)
 		"set":
 			for key in message.values:sim.set(key,message.values[key])
-		"advance":sim.advance(message.dt,message.get("keys",{}))
-		"skip":sim.skip_intro()
+		"advance":
+			sim.advance(message.dt,message.get("keys",{}))
+			for event in sim.take_events():story.consume(event)
+			story.update(message.dt,sim.state==Sim.PLAYING)
+		"skip":sim.skip_intro();sim.skip_ending()
 		"pause":toggle_pause()
 		"siren":sim.siren()
 		"quality":quality=message.value;apply_quality();save_preferences()
@@ -424,7 +500,7 @@ func _benchmark_tick(dt: float) -> void:
 		benchmark_active=false;test_frozen=true;bridge.snapshot(test_snapshot());return
 	# Repeatable presentation route. Actors and collision code still run every step.
 	# Health/time are reset only in verification builds to prevent premature termination.
-	var points: Array=[Vector2(-78,-112),Vector2(-60,-110),Vector2(-60,-40),Vector2(0,-40),Vector2(0,30),Vector2(60,30),Vector2(60,100),Vector2(76,100),Vector2(60,100),Vector2(60,-110),Vector2(-60,-110)]
+	var points: Array=World.nodes().slice(0,World.data.main_route.size())
 	var total:=0.0
 	for i in range(1,points.size()):total+=points[i-1].distance_to(points[i])
 	var distance:=clampf(benchmark_elapsed/60,0,1)*total
@@ -434,4 +510,11 @@ func _benchmark_tick(dt: float) -> void:
 		var p: Vector2=points[i-1].lerp(points[i],distance/length)
 		var heading: Vector2=(points[i]-points[i-1]).normalized()
 		sim.x=p.x;sim.z=p.y;sim.angle=atan2(heading.x,heading.y);sim.vx=heading.x*16;sim.vz=heading.y*16;break
-	sim.time=90;sim.health=100;sim.state=Sim.PLAYING
+	sim.time=150;sim.health=100;sim.state=Sim.PLAYING;sim.phase=1 if benchmark_elapsed>15 else 0
+
+func ending_line() -> String:
+	if sim.outcome==Sim.LOST:
+		return "Lau · «Bueno. La próxima pedimos un taxi»." if sim.health<=0 else "Nico · «Se hizo de día y todavía estamos en la anécdota»."
+	if sim.stars==3:return "Fede · «Llegamos. Eso no significa que tuvieras permiso»."
+	if sim.health<50:return "Lau · «El paciente está bien. La ambulancia pide turno»."
+	return "Conductor · «¿Vieron? Yo les dije que manejaba»."

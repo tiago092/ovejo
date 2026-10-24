@@ -1,46 +1,72 @@
 {
-  "generated_utc": "2026-10-24T01:42:21.510361+00:00",
-  "base_commit": "aa4418e79118ab8187a2514cab1a78a8f22ac0ac",
-  "working_tree": "uncommitted implementation; exact source hashes in source-manifest.json",
+  "rules_version": 2,
+  "generated_utc": "2026-10-24T14:46:59.634735+00:00",
+  "base_commit": "a124df827bc0bacd561c0fc0f2dbc5a4de17d849",
+  "working_tree": "local implementation; source-manifest.json records exact hashes",
   "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
-  "cpu": "AMD Ryzen 7 7735HS with Radeon Graphics",
   "physical_gpu_available": false,
+  "art_extent": "complete",
   "tools": "4.7.2.stable.official.ed1daf0bf",
   "checks": [
     {
-      "check": "Distribución y alturas del escenario original",
+      "check": "Simulación v2: reglas, colisiones continuas y trazas 30/60/120 FPS",
       "status": "aprobada",
-      "evidence": "layout.json"
+      "evidence": "simulation.json",
+      "matches_current_package": true
     },
     {
-      "check": "Reglas y trazas 30/60/120 FPS",
+      "check": "Recorrido con entradas, sin teletransportes ni reposición",
       "status": "aprobada",
-      "evidence": "simulation.json"
+      "evidence": "route-drive.json",
+      "matches_current_package": true
     },
     {
-      "check": "Persistencia y prioridad del audio externo",
+      "check": "Recorrido con toda la población y entradas sin reposición",
       "status": "aprobada",
-      "evidence": "host.json"
+      "evidence": "route-drive-population.json",
+      "matches_current_package": true
     },
     {
-      "check": "Chrome: flujo, capturas y controles emulados",
+      "check": "Migración v2, récord separado y audio externo",
       "status": "aprobada",
-      "evidence": "browser.json"
+      "evidence": "host.json",
+      "matches_current_package": true
     },
     {
-      "check": "Firefox: arranque y primer fotograma de juego",
+      "check": "Presentación sin modificar simulación y reinicios",
       "status": "aprobada",
-      "evidence": "firefox.json"
+      "evidence": "presentation.json",
+      "matches_current_package": true
     },
     {
-      "check": "Paquete de distribución y fallos de carga",
+      "check": "Chrome: flujo y cuatro resoluciones",
       "status": "aprobada",
-      "evidence": "distribution.json"
+      "evidence": "browser.json",
+      "matches_current_package": true
     },
     {
-      "check": "Importación desde fuentes sin caché",
+      "check": "Audio, reacciones, pausa y animación de recogida",
       "status": "aprobada",
-      "evidence": "clean-import.json"
+      "evidence": "story-tests.json",
+      "matches_current_package": true
+    },
+    {
+      "check": "Firefox: arranque de la versión actual",
+      "status": "aprobada",
+      "evidence": "firefox.json",
+      "matches_current_package": true
+    },
+    {
+      "check": "Distribución sin API de pruebas y fallos de carga",
+      "status": "aprobada",
+      "evidence": "distribution.json",
+      "matches_current_package": true
+    },
+    {
+      "check": "Importación y exportación desde fuentes sin caché",
+      "status": "aprobada",
+      "evidence": "clean-import.json",
+      "matches_current_package": true
     },
     {
       "check": "Descarga comprimida ≤25 MiB",
@@ -48,43 +74,45 @@
       "evidence": "release-build.json"
     },
     {
-      "check": "Presupuesto de dibujo durante recorrido diagnóstico",
+      "check": "Presupuesto de render de la versión actual",
       "status": "aprobada",
-      "evidence": "benchmark.json"
+      "evidence": "benchmark.json",
+      "matches_current_package": true
     },
     {
-      "check": "Parecido del protagonista presentado en las comparativas: revisión del usuario",
+      "check": "Protagonista aprobado conservado exactamente",
       "status": "aprobada",
-      "evidence": "art-review.json",
-      "matches_reviewed_assets": true
+      "evidence": "art-review.json"
     },
     {
-      "check": "Incorporación de fotografías originales adicionales a las fuentes de autoría",
+      "check": "Extensión artística tras revisión técnica del primer tramo",
+      "status": "aprobada",
+      "evidence": "story/captures.json"
+    },
+    {
+      "check": "Revisión visual del usuario del mundo nuevo",
       "status": "pendiente"
     },
     {
-      "check": "Android Chrome e iPhone Safari: controles, audio y compatibilidad reales",
+      "check": "Cinco jugadores nuevos: ≥4 victorias iniciales; mediana 90–130 s",
       "status": "pendiente"
     },
     {
-      "check": "GPU física: tres recorridos de 60 s por perfil y recuadro abierto/cerrado",
+      "check": "Android Chrome e iPhone Safari reales",
       "status": "pendiente"
     },
     {
-      "check": "Objetivos físicos 58/29 FPS y p95 33,3/50 ms",
+      "check": "GPU física: tres recorridos por configuración y objetivos 58/29 FPS, p95 33,3/50 ms",
       "status": "pendiente"
     },
     {
-      "check": "Reproductor real SoundCloud disponible y red lenta (el puente está probado con eventos simulados)",
+      "check": "SoundCloud real disponible, bloqueado y lento",
       "status": "pendiente"
     },
     {
-      "check": "Publicación de prueba HTTPS y aceptación antes de sustituir el enlace principal",
-      "status": "pendiente"
-    },
-    {
-      "check": "Runtime y retrato originales conservados",
-      "status": "aprobada"
+      "check": "Publicación del paquete final en HTTPS, solo Godot en raíz de Pages",
+      "status": "pendiente",
+      "evidence": "pages-audit.json"
     }
   ],
   "complete": false

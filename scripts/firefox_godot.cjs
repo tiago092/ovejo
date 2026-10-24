@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path');
 (async()=>{
- const ws=new WebSocket('ws://127.0.0.1:9229/session');await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});let seq=0;const pending=new Map(),events=[];
+ const ws=new WebSocket((process.env.FIREFOX_DEBUG_URL||'ws://127.0.0.1:9229')+'/session');await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});let seq=0;const pending=new Map(),events=[];
  ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.type==='error'?p.reject(Error(JSON.stringify(m))):p.resolve(m.result);}else events.push(m)};
  const call=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
@@ -16,7 +16,7 @@ const fs=require('node:fs'),path=require('node:path');
  if(state.ready){await evaluate('__rosa.command({command:"freeze",value:true});__rosa.command({command:"start"});true');await sleep(1000)}
  const screen=await call('browsingContext.captureScreenshot',{context});fs.writeFileSync(path.join(__dirname,'../artifacts/godot/firefox.png'),Buffer.from(screen.data,'base64'));
  const errors=events.filter(e=>e.method==='log.entryAdded'&&e.params.level==='error');
- fs.writeFileSync(path.join(__dirname,'../artifacts/godot/firefox.json'),JSON.stringify({version:session.capabilities.browserVersion,state,errors,passed:state.ready&&errors.length===0},null,2)+'\n');console.log({state,errors});
+ fs.writeFileSync(path.join(__dirname,'../artifacts/godot/firefox.json'),JSON.stringify({package_sha256:JSON.parse(fs.readFileSync(path.join(__dirname,'../artifacts/godot/verification-build.json'))).files['index.pck'].sha256,version:session.capabilities.browserVersion,state,errors,passed:state.ready&&errors.length===0},null,2)+'\n');console.log({state,errors});
  await call('browsingContext.navigate',{context,url:'about:blank',wait:'complete'});await call('session.end');
  }finally{ws.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Comprobar que el tramo revisado se extendió al mundo final
+        run: python3 scripts/check_story_release.py
       - name: Descargar herramientas fijadas y verificar hashes
         run: python3 scripts/setup_tools.py
       - name: Importar, probar y exportar Godot

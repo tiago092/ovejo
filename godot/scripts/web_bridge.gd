@@ -18,7 +18,7 @@ func preferences() -> Dictionary:
 		if data is Dictionary:return data
 	var f=ConfigFile.new()
 	if f.load("user://settings.cfg")==OK:
-		return {"quality":f.get_value("game","quality","auto"),"best":f.get_value("game","best",0),"reduced":f.get_value("game","reduced",false),"reduced_explicit":f.get_value("game","reduced_explicit",false),"touch":false,"dpr":1.0}
+		return {"quality":f.get_value("game","quality","auto"),"version":2,"legacy_best":f.get_value("game","legacy_best",f.get_value("game","best",0)) if f.get_value("game","version",1)==1 else f.get_value("game","legacy_best",0),"best":f.get_value("game","best",0) if f.get_value("game","version",1)==2 else 0,"reduced":f.get_value("game","reduced",false),"reduced_explicit":f.get_value("game","reduced_explicit",false),"touch":false,"dpr":1.0}
 	return {"quality":"auto","best":0,"reduced":false,"touch":false,"dpr":1.0}
 func save(data: Dictionary) -> void:
 	if host:host.save(JSON.stringify(data));return

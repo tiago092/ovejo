@@ -2,39 +2,44 @@
 const fs=require('node:fs'),path=require('node:path'),connect=require('./cdp.cjs');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'artifacts/godot'),base=process.env.GODOT_TEST_URL||'http://127.0.0.1:8767/dist/godot-test/index.html';
 const part=process.env.GODOT_TEST_PART||'all';
+const world=JSON.parse(fs.readFileSync(path.join(root,'godot/data/world.json')));
+const [px,pz]=world.pickup,[hx,hz]=world.hospital;
 (async()=>{const c=await connect(),checks=[],captures=[],counts=[];let failure;
 const check=(name,ok)=>{checks.push({name,passed:!!ok});if(!ok)console.error('FAIL',name);};
 const command=async message=>c.evaluate(`__rosa.command(${JSON.stringify(message)})`);
 const snapshot=()=>c.evaluate('__rosa.snapshot()');
-const shot=async name=>{await c.sleep(700);await c.shot(path.join(out,name+'.png'));captures.push(name+'.png');};
+const shot=async name=>{await c.sleep(700);await c.shot(path.join(out,(process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png'));captures.push((process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png');};
 const load=async()=>{await c.call('Page.navigate',{url:base});let ready=false;for(let i=0;i<120;i++){ready=await c.evaluate('!!window.__rosa?.snapshot()');if(ready)break;await c.sleep(500);}if(!ready)throw Error('Godot failed to initialize');await command({command:'freeze',value:true});};
 try{
  await c.call('Network.enable');await c.call('Network.setBlockedURLs',{urls:['*soundcloud.com*']});
  await c.call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});await load();check('export initializes',true);await shot('menu-desktop');
  if(part!=='screens'){
- await command({command:'start',story:true,reduced:false});check('intro precedes timer',(await snapshot()).state==='cinematic'&&(await snapshot()).time===90);
+ await command({command:'start',story:true,reduced:false});check('intro precedes timer',(await snapshot()).state==='cinematic'&&(await snapshot()).time===150);
  await command({command:'advance',dt:3});await shot('intro-closeup');await command({command:'pause'});await command({command:'advance',dt:20});check('intro pause',(await snapshot()).cinematic_time===3);
- await command({command:'pause'});await command({command:'advance',dt:4});check('seven second intro',(await snapshot()).state==='playing'&&(await snapshot()).time===90);
+ await command({command:'pause'});await command({command:'advance',dt:4});check('seven second intro',(await snapshot()).state==='playing'&&(await snapshot()).time===150);
  for(const key of [{key:'Enter',code:'Enter',windowsVirtualKeyCode:13},{key:' ',code:'Space',windowsVirtualKeyCode:32}]){
-  await command({command:'start',story:true,reduced:false});await c.call('Input.dispatchKeyEvent',{type:'keyDown',...key});await c.call('Input.dispatchKeyEvent',{type:'keyUp',...key});for(let wait=0;wait<12;wait++){if((await snapshot()).state==='playing')break;await c.sleep(300);}const s=await snapshot();check(key.code+' skips without siren',s.state==='playing'&&s.time===90&&s.siren_left===0);
+  await command({command:'start',story:true,reduced:false});await c.call('Input.dispatchKeyEvent',{type:'keyDown',...key});await c.call('Input.dispatchKeyEvent',{type:'keyUp',...key});for(let wait=0;wait<12;wait++){if((await snapshot()).state==='playing')break;await c.sleep(300);}const s=await snapshot();check(key.code+' skips without siren',s.state==='playing'&&s.time===150&&s.siren_left===0);
  }
  await command({command:'start',story:true,reduced:false});await c.sleep(500);
  await c.call('Input.dispatchMouseEvent',{type:'mousePressed',x:640,y:662,button:'left',clickCount:1});await c.call('Input.dispatchMouseEvent',{type:'mouseReleased',x:640,y:662,button:'left',clickCount:1});await c.sleep(800);check('button skips without siren',(await snapshot()).state==='playing'&&(await snapshot()).siren_left===0);
  await command({command:'start',story:true,reduced:true});check('reduced motion skips introduction',(await snapshot()).state==='playing');
- await command({command:'set',values:{x:-28,z:-110,impact:3}});
+ await command({command:'set',values:{x:px,z:pz,impact:3}});
  for(let i=0;i<6;i++)await command({command:'advance',dt:.25});check('pickup',(await snapshot()).phase===1);
- await command({command:'set',values:{x:76,z:100,impact:3,vx:0,vz:0}});for(let i=0;i<6;i++)await command({command:'advance',dt:.25});check('delivery',(await snapshot()).state==='won');await shot('result');
+ await command({command:'set',values:{x:hx,z:hz,impact:3,vx:0,vz:0}});for(let i=0;i<6;i++)await command({command:'advance',dt:.25});check('delivery',(await snapshot()).state==='won');await shot('result');
  for(const values of [{time:.01,health:100},{time:30,health:0}]){
-  await command({command:'start'});await command({command:'set',values:{x:76,z:100,phase:1,load_progress:1.29,...values}});await command({command:'advance',dt:.025});check('defeat overrides delivery '+Object.keys(values).join('/'),(await snapshot()).state==='lost');
+  await command({command:'start'});await command({command:'set',values:{x:hx,z:hz,phase:1,load_progress:1.29,...values}});await command({command:'advance',dt:.025});check('defeat overrides delivery '+Object.keys(values).join('/'),(await snapshot()).state==='lost');
  }
- for(let i=0;i<3;i++){await command({command:'start'});const s=await snapshot();check('reset '+i,s.time===90&&s.health===100&&s.phase===0&&s.carts[0].stop===0&&s.carts[0].next===3&&s.police.cool===0);}
+ await command({command:'start',story:false,reduced:false});await command({command:'skip'});await command({command:'set',values:{x:hx,z:hz,phase:1,load_progress:1.29,vx:0,vz:0,impact:3}});await command({command:'advance',dt:.025});check('six-second ending begins',(await snapshot()).state==='ending');
+ await command({command:'advance',dt:3});await command({command:'pause'});await command({command:'advance',dt:20});check('ending pauses',(await snapshot()).ending_time===3);await command({command:'pause'});await command({command:'advance',dt:3});check('ending completes',(await snapshot()).state==='won');
+ for(const key of [{key:'Enter',code:'Enter',windowsVirtualKeyCode:13},{key:' ',code:'Space',windowsVirtualKeyCode:32}]){await command({command:'start',reduced:false});await command({command:'set',values:{time:.01}});await command({command:'advance',dt:.025});await c.call('Input.dispatchKeyEvent',{type:'keyDown',...key});await c.call('Input.dispatchKeyEvent',{type:'keyUp',...key});await c.sleep(500);check('ending skip '+key.code,(await snapshot()).state==='lost'&&(await snapshot()).siren_left===0);}
+ for(let i=0;i<3;i++){await command({command:'start'});const s=await snapshot();check('reset '+i,s.time===150&&s.health===100&&s.phase===0&&s.carts[0].stop===0&&s.carts[0].next===3&&s.police.cool===0);}
  await command({command:'start'});await c.evaluate('Object.defineProperty(document,"hidden",{configurable:true,get:()=>true});document.dispatchEvent(new Event("visibilitychange"));delete document.hidden;');for(let wait=0;wait<20;wait++){if((await snapshot()).state==='paused')break;await c.sleep(300);}check('hidden tab pauses',(await snapshot()).state==='paused');
  await command({command:'pause'});await command({command:'siren'});check('siren active',(await snapshot()).siren_left===2.2);
  }
  if(part!=='flow'){
  for(const quality of ['high','low']){
   await command({command:'quality',value:quality});await command({command:'start'});await command({command:'panel',value:quality==='high'});
-  for(const [name,x,z,angle] of [['coast',-78,-112,0],['club',-28,-110,Math.PI],['hospital',76,100,0]]){
+  for(const [name,x,z,angle] of [['coast',-140,-145,0],['club',...world.start,Math.PI],['plaza',...world.landmarks.plaza,0],['hospital',hx,hz,0]]){
    await command({command:'set',values:{x,z,angle}});await shot(name+'-'+quality);const s=await snapshot();counts.push({scene:name,quality,...s.render});check('draw budget '+name+' '+quality,s.render.calls<=(quality==='high'?300:150));
   }
  }

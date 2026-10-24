@@ -1,0 +1,87 @@
+{
+  "art_extent": "complete",
+  "records": [
+    {
+      "name": "club",
+      "x": -115,
+      "z": -210,
+      "angle": 3.141592653589793,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 128,
+        "primitives": 99974
+      }
+    },
+    {
+      "name": "coast",
+      "x": -140,
+      "z": -145,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 148,
+        "primitives": 101588
+      }
+    },
+    {
+      "name": "plaza",
+      "x": 125,
+      "z": 115,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 126,
+        "primitives": 86368
+      }
+    },
+    {
+      "name": "plaza-detail",
+      "x": 125,
+      "z": 115,
+      "angle": -1.6,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 154,
+        "primitives": 92482
+      }
+    },
+    {
+      "name": "hospital",
+      "x": 150,
+      "z": 205,
+      "angle": 0,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 121,
+        "primitives": 84138
+      }
+    }
+  ],
+  "errors": [],
+  "package_sha256": "d1c011d0c45e5edba0eeeb0066331e65709cb24dd227a49565f61334d406de06"
+}

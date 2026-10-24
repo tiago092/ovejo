@@ -1,0 +1,71 @@
+{
+  "package_sha256": "d1c011d0c45e5edba0eeeb0066331e65709cb24dd227a49565f61334d406de06",
+  "checks": [
+    {
+      "name": "inset initially closed",
+      "passed": true
+    },
+    {
+      "name": "siren opens three-second reaction",
+      "passed": true
+    },
+    {
+      "name": "reaction closes after three seconds",
+      "passed": true
+    },
+    {
+      "name": "pinned inset persists",
+      "passed": true
+    },
+    {
+      "name": "closed inset stops rendering",
+      "passed": true
+    },
+    {
+      "name": "engine pitch follows speed",
+      "passed": true
+    },
+    {
+      "name": "road/sand use shared graph",
+      "passed": true
+    },
+    {
+      "name": "pause stops all sound beds",
+      "passed": true
+    },
+    {
+      "name": "pause freezes camera and suspension",
+      "passed": true
+    },
+    {
+      "name": "pause freezes mission",
+      "passed": true
+    },
+    {
+      "name": "mute stops sound beds",
+      "passed": true
+    },
+    {
+      "name": "reduced removes secondary motion",
+      "passed": true
+    },
+    {
+      "name": "patient animation tied to logical progress",
+      "passed": true
+    },
+    {
+      "name": "leaving cancels patient animation",
+      "passed": true
+    },
+    {
+      "name": "restart clears narrative and handling",
+      "passed": true
+    },
+    {
+      "name": "menu stops beds",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

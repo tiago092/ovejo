@@ -19,7 +19,7 @@ El mapa se proyecta y mezcla sobre una malla cerrada de cabeza en `visuals.js`; 
 
 Las gafas se modelaron tomando `assets/driver.png` como referencia: montura negra brillante, lentes rectangulares con esquinas redondeadas y borde inferior levemente trapezoidal, puente curvo y patillas anchas que se apoyan sobre las orejas. Los cristales oscuros tienen reflejos suaves generados localmente; no se modificó el retrato de referencia.
 
-## Mundo, vehículo y audio
+## Mundo, vehículo y audio de la versión histórica Three.js
 
 Ambulancia, patrulla, peatones, carritos, fachadas y vegetación se construyen localmente con Three.js. Los elementos repetidos usan instancias con color por instancia. Arena, empedrado, madera y sombra de contacto usan texturas Canvas locales; el cielo y el mar usan shaders propios. No hay modelos descargados de terceros ni servicios de gráficos en tiempo de ejecución.
 
@@ -28,8 +28,19 @@ Three.js r160 conserva su licencia MIT en `vendor/THREE-LICENSE.txt`. `music.js`
 ## Recursos de la migración a Godot
 
 - `art-source/driver.blend` y `ambulance.blend`: modelos editables creados para este proyecto con Blender 4.5.3. `scripts/build_art.py` conserva la receta de autoría inicial; `scripts/export_art.py` exporta los retoques guardados sin sobrescribirlos.
-- `godot/assets/driver.glb`, `driver-low.glb`, `ambulance.glb`: modelos de ejecución con articulaciones; cabeza continua y expresión de sonrisa. El parecido permanece pendiente de revisión humana.
+- `godot/assets/driver.glb`, `driver-low.glb`, `ambulance.glb`: modelos de ejecución con articulaciones; cabeza continua y expresión de sonrisa. El parecido del protagonista está aprobado en la versión identificada por `artifacts/godot/art-review.json`; esa aprobación no se extiende al escenario nuevo.
 - `godot/assets/driver-skin.png`: horneado a UV convencionales del atlas generado ya documentado arriba. No modifica `assets/driver.png` ni convierte las imágenes generadas en referencia de identidad.
 - `godot/assets/music.wav`: bucle de la música original de `music.js`, renderizado con OfflineAudioContext a PCM mono de 22.050 Hz; `scripts/render_audio.cjs` documenta el procedimiento. Sirena, golpe y resultado son muestras sintetizadas locales. No se incluye audio descargado de SoundCloud.
 - `godot/assets/DejaVuSans.ttf`: tipografía DejaVu Sans; licencia Bitstream Vera y cambios DejaVu en dominio público, incluidos en `godot/licenses/DejaVu.txt`.
 - Godot Engine y dependencias: textos de licencia en `godot/licenses/`, copiados al paquete exportado. Blender se usa como herramienta de autoría; su ejecutable no se incluye en la distribución web.
+
+## Renovación tropical de Godot
+
+- `art-source/tropical-kit.blend` y `godot/assets/tropical-kit.glb`: kit modular original, creado localmente mediante `scripts/build_tropical_art.py`; fachadas, peatones y decoración utilizan sus piezas mediante instancias. No contiene modelos de terceros.
+- `scripts/refine_ambulance.py`: revisión de materiales y detalles sobre la fuente editable de la ambulancia. Conserva los pivotes de articulación y no modifica el modelo aprobado del protagonista.
+- `godot/assets/engine.wav`, `road.wav`, `sand.wav`, `surf.wav`, `club.wav`: sonidos originales sintetizados localmente mediante `scripts/render_driving_audio.py`, PCM mono de 22.050 Hz. La semilla y las fórmulas se incluyen en el script. El ambiente de disco es ruido no verbal; no contiene voces ni otra pista musical.
+- Las comparativas nuevas se guardan aparte de las capturas aprobadas del protagonista, en `artifacts/godot/tropical-*`.
+
+## Mundo «Yo manejo»
+
+Trazado, colocación y polígonos originales en `scripts/build_story_layout.py`. El kit Blender local añade `Ring`, aro de 24×6 segmentos para la fuente, sin modificar el protagonista aprobado. Grafo, superficies y sólidos comparten `godot/data/world.json`. No se descargaron recursos de terceros nuevos para esta etapa.

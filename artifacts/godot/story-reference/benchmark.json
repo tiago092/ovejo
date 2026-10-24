@@ -1,0 +1,69 @@
+{
+  "package_sha256": "73ed1c582eec04bc35a39ff11cde79010e3f44a682d4bee55462b95abe3e9573",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.47",
+    "revision": "@1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.19"
+  },
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "resolution": [
+    1280,
+    720
+  ],
+  "route": "Scripted presentation path with active agents; verification resets health/time, not a gameplay balance test.",
+  "physical_mobile_verified": false,
+  "memory_note": "JS heap is observable in Chrome; it does not account for total WASM or GPU memory.",
+  "counter": "RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME (all views and shadow passes); primitives sampled every second.",
+  "runs": [
+    {
+      "quality": "low",
+      "panel": false,
+      "seconds": 60.250499999999995,
+      "frames": 155,
+      "fps": 2.5725927585663193,
+      "p95_ms": 468.5,
+      "max_calls": 103,
+      "mean_calls": 91.67096774193548,
+      "max_primitives_sampled": 89130,
+      "js_heap_bytes": 33696763
+    },
+    {
+      "quality": "low",
+      "panel": true,
+      "seconds": 60.32520000000003,
+      "frames": 146,
+      "fps": 2.4202157638930317,
+      "p95_ms": 487.59999999999997,
+      "max_calls": 120,
+      "mean_calls": 107.74657534246575,
+      "max_primitives_sampled": 114380,
+      "js_heap_bytes": 35480747
+    },
+    {
+      "quality": "high",
+      "panel": false,
+      "seconds": 60.6352,
+      "frames": 154,
+      "fps": 2.5397788743172285,
+      "p95_ms": 457.4,
+      "max_calls": 134,
+      "mean_calls": 116.13636363636364,
+      "max_primitives_sampled": 127684,
+      "js_heap_bytes": 38073051
+    },
+    {
+      "quality": "high",
+      "panel": true,
+      "seconds": 60.491200000000006,
+      "frames": 135,
+      "fps": 2.2317295738884333,
+      "p95_ms": 539.3,
+      "max_calls": 150,
+      "mean_calls": 131.94814814814814,
+      "max_primitives_sampled": 173078,
+      "js_heap_bytes": 39605014
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "name": "club",
+      "x": -28,
+      "z": -110,
+      "angle": 3.141592653589793,
+      "fov": 48,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "legacy_follow_and_obstacle_query": true,
+      "render": {
+        "calls": 152,
+        "primitives": 213766
+      }
+    },
+    {
+      "name": "coast",
+      "x": -78,
+      "z": -112,
+      "angle": 0,
+      "fov": 48,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "legacy_follow_and_obstacle_query": true,
+      "render": {
+        "calls": 166,
+        "primitives": 171904
+      }
+    },
+    {
+      "name": "hospital",
+      "x": 76,
+      "z": 100,
+      "angle": 0,
+      "fov": 48,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "legacy_follow_and_obstacle_query": true,
+      "render": {
+        "calls": 136,
+        "primitives": 168236
+      }
+    }
+  ],
+  "errors": [],
+  "package_sha256": "af306048efdf45097bba2c60b33880ef0f49aa29398078d5d30f65b654f958b6"
+}

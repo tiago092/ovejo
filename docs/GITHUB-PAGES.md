@@ -1,3 +1,7 @@
+# Estado de «Yo manejo»
+
+El mundo completo de «Yo manejo» usa 150 segundos, grafo artesanal y derrape. El workflow comprueba `scripts/check_story_release.py` para impedir publicar una fase `reference-slice` provisional. La revisión técnica previa y la extensión del acabado se documentan en la galería. Se publica solo Godot en raíz; `scripts/audit_pages.py` compara por HTTPS el PCK real con el exportado. La revisión humana y las pruebas físicas se documentan por separado.
+
 # Godot en GitHub Pages
 
 Por decisión del usuario, el sitio publicará únicamente Godot en la dirección principal: `https://tiago092.github.io/ovejo/`. No se incluirá Three.js ni una ruta `godot-preview/` en el paquete publicado. Las fuentes históricas permanecen en el repositorio como referencia de las pruebas de migración.

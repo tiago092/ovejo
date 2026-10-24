@@ -5,13 +5,14 @@ const MENU = "menu"
 const CINEMATIC = "cinematic"
 const PLAYING = "playing"
 const PAUSED = "paused"
+const ENDING = "ending"
 const WON = "won"
 const LOST = "lost"
 var balance: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance.json"))
 var state := MENU
 var paused_from := PLAYING
 var phase := 0
-var time := 90.0
+var time := 150.0
 var health := 100.0
 var x := -78.0
 var z := -112.0
@@ -28,6 +29,14 @@ var ped_hits := 0
 var bumps := 0
 var cinematic_time := 0.0
 var intro_seen := false
+var ending_time := 0.0
+var outcome := ""
+var presentation_reduced := false
+var drift_hold := 0.0
+var drift_amount := 0.0
+var moments: Dictionary={}
+var police_path: Array=[]
+var police_route_timer := 0.0
 var score := 0
 var stars := 0
 var seed_value: int = 27
@@ -48,26 +57,36 @@ func random_between(a: float,b: float) -> float:
 func reset(seed_number: int = 27) -> void:
 	seed_value = seed_number
 	phase=0; time=balance.duration; health=balance.health
-	x=World.data.start[0]; z=World.data.start[1]; angle=0; vx=0; vz=0; speed=0
+	x=World.data.start[0]; z=World.data.start[1]; angle=World.data.start_angle; vx=0; vz=0; speed=0
 	clock=0; cooldown=0; siren_left=0; impact=0; load_progress=0; ped_hits=0; bumps=0
-	cinematic_time=0; score=0; stars=0; events.clear(); clear_input()
+	cinematic_time=0; ending_time=0; outcome=""; score=0; stars=0; drift_hold=0; drift_amount=0;moments.clear();police_path.clear();police_route_timer=0;events.clear();clear_input()
 	pedestrians.clear(); carts.clear()
 	for i in range(30):
-		var club := i < 18
-		pedestrians.append({"x":random_between(-46,-13) if club else World.data.road_x[i%3]+random_between(-5,5),"z":random_between(-121,-103) if club else World.data.road_z[i%4]+random_between(-5,5),"dx":random_between(-1,1),"dz":random_between(-1,1),"change":random_between(1,4),"cool":0.0,"club":club})
+		var at:=World.point_on_main(12+i*4 if i<12 else (World.data.route_length-4 if i>=28 else 260+(i-12)*34))
+		var point: Vector2=at.point+Vector2(cos(at.heading),-sin(at.heading))*(5.4 if i%2 else -5.4)
+		if i<3:point=Vector2(World.data.start[0]+6+i*1.5,World.data.start[1]+2+i*3)
+		pedestrians.append({"x":point.x,"z":point.y,"dx":random_between(-1,1),"dz":random_between(-1,1),"change":random_between(1,4),"cool":0.0,"club":i<12,"role":"friend" if i<3 else ("staff" if i>=28 else "walker")})
 	for i in range(5):
-		carts.append({"x":random_between(10,105),"z":float(World.data.road_z[i%4]+(4 if i%2 else -4)),"dir":-1 if i%2 else 1,"speed":1.1+i*.15,"stop":0.0,"next":float(3+i)})
-	police={"x":-60.0,"z":-150.0,"angle":0.0,"speed":0.0,"cool":0.0,"waypoint":0,"warning":false}
+		var at:=World.point_on_main(180+i*140)
+		carts.append({"x":at.point.x,"z":at.point.y,"angle":at.heading,"distance":180.0+i*140,"dir":-1 if i%2 else 1,"speed":1.1+i*.15,"stop":0.0,"next":float(3+i)})
+	var at:=World.point_on_main(210)
+	police={"x":at.point.x,"z":at.point.y,"angle":at.heading,"speed":0.0,"cool":0.0,"waypoint":at.node,"warning":false}
+
+func moment(id: String) -> void:
+	if moments.has(id):return
+	moments[id]=true;events.append({"type":"moment","id":id})
 
 func start(force_intro: bool = false, reduced: bool = false, seed_number: int = 27) -> void:
 	reset(seed_number)
+	presentation_reduced=reduced
 	if (force_intro or not intro_seen) and not reduced: state=CINEMATIC
 	else: begin_playing()
 	events.append({"type":"state","value":state})
 
 func begin_playing() -> void:
 	intro_seen=true; state=PLAYING; clear_input()
-	events.append({"type":"notice","text":"Frená en Segunda Praia para subir al paciente"})
+	events.append({"type":"notice","text":"Seguí la costa hasta Segunda Praia. Frená para subir al paciente."})
+	moment("departure")
 
 func skip_intro() -> void:
 	if state==CINEMATIC: begin_playing()
@@ -76,7 +95,7 @@ func clear_input() -> void:
 	for key in keys: keys[key]=false
 
 func pause() -> void:
-	if state==PLAYING or state==CINEMATIC:
+	if state in [PLAYING,CINEMATIC,ENDING]:
 		paused_from=state; state=PAUSED; clear_input()
 	elif state==PAUSED:
 		state=paused_from; clear_input()
@@ -91,6 +110,9 @@ func advance(raw_dt: float, inputs: Dictionary = {}) -> void:
 	if state==CINEMATIC:
 		cinematic_time=minf(7,cinematic_time+active)
 		if cinematic_time>=7: begin_playing()
+	elif state==ENDING:
+		ending_time=minf(6,ending_time+active)
+		if ending_time>=6:skip_ending()
 	elif state==PLAYING:
 		var remaining := minf(active,.25)
 		time=maxf(0,time-maxf(0,active-remaining))
@@ -101,7 +123,7 @@ func advance(raw_dt: float, inputs: Dictionary = {}) -> void:
 func siren() -> void:
 	if state!=PLAYING or cooldown>0: return
 	cooldown=balance.siren_cooldown; siren_left=balance.siren_duration
-	events.append({"type":"siren","text":"¡Paso al buggy!"})
+	events.append({"type":"siren","text":"¡Paso al buggy!"});moment("first_siren")
 
 func damage(amount: float, pedestrian: bool = false) -> void:
 	if impact>0: return
@@ -109,67 +131,40 @@ func damage(amount: float, pedestrian: bool = false) -> void:
 	if pedestrian:
 		ped_hits+=1; time=maxf(0,time-balance.ped_penalty)
 	else: bumps+=1
-	events.append({"type":"damage","text":"¡Cuidado con la gente! −8 segundos" if pedestrian else "¡Choque! −%d%% del buggy" % amount})
+	events.append({"type":"damage","text":"¡Cuidado con la gente! −4 segundos" if pedestrian else "¡Choque! −%d%% del buggy" % amount})
 
 func finish(win: bool) -> void:
-	if state!=PLAYING: return
-	state=WON if win else LOST; clear_input()
-	# Math.round for the original non-negative final result.
+	if state!=PLAYING:return
+	outcome=WON if win else LOST;clear_input();ending_time=0
 	score=maxi(0,int(floor(time*100+health*20+1500-ped_hits*500+.5))) if win else 0
-	stars=(3 if ped_hits==0 and health>=85 else (2 if ped_hits==0 and health>=50 else 1)) if win else 0
-	events.append({"type":"result","value":state,"score":score})
+	stars=(3 if ped_hits==0 and health>=balance.three_star_health else (2 if ped_hits==0 and health>=50 else 1)) if win else 0
+	state=ENDING
+	events.append({"type":"ending","value":outcome})
+	if presentation_reduced:skip_ending()
 
-func closest_node(px: float,pz: float) -> int:
-	var best := 0; var distance := INF
-	for i in range(route_nodes.size()):
-		var next: float = hypot(px-route_nodes[i].x,pz-route_nodes[i].y)
-		if next<distance: distance=next; best=i
-	return best
-
-func next_route_node(from: int,to: int) -> int:
-	if from==to: return from
-	var queue := [from]; var parents := {}; var seen := {from:true}; var i := 0
-	while i<queue.size():
-		var node: int=queue[i]; var row: int=node/3; var col: int=node%3
-		for n in [node-1 if col>0 else -1,node+1 if col<2 else -1,node-3 if row>0 else -1,node+3 if row<3 else -1]:
-			if n<0 or seen.has(n): continue
-			seen[n]=true; parents[n]=node; queue.append(n)
-		i+=1
-	if not seen.has(to): return from
-	var next:=to
-	while parents[next]!=from: next=parents[next]
-	return next
+func skip_ending() -> void:
+	if state!=ENDING:return
+	state=outcome;clear_input();events.append({"type":"result","value":state,"score":score})
 
 func update_police(dt: float) -> void:
-	police.cool=maxf(0,police.cool-dt)
-	if hypot(x-police.x,z-police.z)>115:
-		var n: Vector2=route_nodes[closest_node(x,z)]
-		police.x=n.x; police.z=n.y-18; police.waypoint=closest_node(police.x,police.z); police.speed=0.0
-	var at: Vector2=route_nodes[police.waypoint]
-	if hypot(police.x-at.x,police.z-at.y)<3.1: police.waypoint=next_route_node(police.waypoint,closest_node(x,z))
-	var destination_x: float=x if hypot(x-police.x,z-police.z)<17 else route_nodes[police.waypoint].x
-	var destination_z: float=z if hypot(x-police.x,z-police.z)<17 else route_nodes[police.waypoint].y
-	var desired:=atan2(destination_x-police.x,destination_z-police.z)
-	var delta_angle:=atan2(sin(desired-police.angle),cos(desired-police.angle))
-	if absf(absf(delta_angle)-PI)<1e-12: delta_angle=PI if desired-police.angle>=0 else -PI # Stable antipodal tie across JS/libm.
-	police.angle+=clampf(delta_angle,-1.75*dt,1.75*dt)
-	var slow:=clampf(hypot(destination_x-police.x,destination_z-police.z)*1.8,4,17 if phase else 14.5)
-	police.speed+=(slow-police.speed)*minf(1,dt*2.2)
-	var nx: float=police.x+sin(police.angle)*police.speed*dt
-	var nz: float=police.z+cos(police.angle)*police.speed*dt
-	if not World.blocked(nx,nz,1.35): police.x=nx; police.z=nz
-	elif not World.blocked(nx,police.z,1.35): police.x=nx
-	elif not World.blocked(police.x,nz,1.35): police.z=nz
-	else: police.speed=0.0; police.waypoint=closest_node(police.x,police.z)
+	if phase==0:return
+	police.cool=maxf(0,police.cool-dt);police_route_timer-=dt
+	if police_route_timer<=0 or police_path.is_empty():
+		police_path=World.route(Vector2(police.x,police.z),Vector2(x,z));police_route_timer=.5
+	while police_path.size()>1 and Vector2(police.x,police.z).distance_to(police_path[0])<2:police_path.pop_front()
+	var target: Vector2=police_path[0] if not police_path.is_empty() else Vector2(x,z)
+	var desired:=atan2(target.x-police.x,target.y-police.z)
+	police.angle+=clampf(wrapf(desired-police.angle,-PI,PI),-1.75*dt,1.75*dt)
+	police.speed+=(minf(14.5,target.distance_to(Vector2(police.x,police.z))*2)-police.speed)*minf(1,dt*2.2)
+	var move:=World.move_circle(Vector2(police.x,police.z),Vector2(sin(police.angle),cos(police.angle))*police.speed*dt,1.35)
+	police.x=move.position.x;police.z=move.position.y
 	var distance:=hypot(x-police.x,z-police.z)
-	if distance<20 and not police.warning:
-		police.warning=true; events.append({"type":"notice","text":"¡La patrulla te sigue!"})
+	if distance<24 and not police.warning:
+		police.warning=true;moment("patrol")
 	if distance<3.5 and police.cool<=0 and impact<=0:
-		police.cool=balance.police_cooldown; impact=balance.immunity; bumps+=1
-		health=maxf(0,health-balance.police_damage); time=maxf(0,time-balance.police_penalty)
-		var dx: float=(x-police.x)/maxf(distance,.1); var dz: float=(z-police.z)/maxf(distance,.1)
-		vx+=dx*5; vz+=dz*5; police.x-=dx*3.8; police.z-=dz*3.8
-		events.append({"type":"damage","text":"¡Te alcanzó la patrulla! −12% y −3 segundos"})
+		police.cool=balance.police_cooldown;damage(balance.police_damage)
+		var push:=Vector2(x-police.x,z-police.z).normalized()*3
+		vx+=push.x;vz+=push.y
 
 func step(dt: float) -> void:
 	if state!=PLAYING: return
@@ -181,27 +176,33 @@ func step(dt: float) -> void:
 	forward+=drive*(balance.braking if drive<0 and forward>0 else balance.acceleration)*dt
 	forward*=exp(-(balance.drag_drive if drive else balance.drag_coast)*dt)
 	forward=clampf(forward,balance.max_reverse,balance.max_forward)
-	var lateral: float=(vx*cos(angle)-vz*sin(angle))*exp(-balance.drag_lateral*dt)
+	if turn!=0 and forward>balance.drift_entry_speed:drift_hold+=dt
+	else:drift_hold=0
+	var wants_drift: bool=drift_hold>=balance.drift_hold and forward>balance.drift_exit_speed
+	var previous_drift:=drift_amount
+	drift_amount=move_toward(drift_amount,1.0 if wants_drift else 0.0,dt/(.2 if wants_drift else balance.drift_recovery))
+	if previous_drift==0 and drift_amount>0:events.append({"type":"drift","active":true});moment("first_drift")
+	if previous_drift>0 and drift_amount==0:events.append({"type":"drift","active":false})
+	var lateral: float=(vx*cos(angle)-vz*sin(angle))*exp(-lerpf(balance.drag_lateral,balance.drift_drag,drift_amount)*dt)
+	var limit: float=absf(forward)*tan(deg_to_rad(balance.drift_limit_degrees))
+	lateral=clampf(lateral,-limit,limit)
 	vx=forward*sin(angle)+lateral*cos(angle); vz=forward*cos(angle)-lateral*sin(angle); speed=hypot(vx,vz)
-	var nx:=x+vx*dt; var nz:=z+vz*dt
-	if not World.blocked(nx,z): x=nx
-	else:
-		if speed>3: damage(balance.wall_damage)
-		vx*=balance.bounce
-	if not World.blocked(x,nz): z=nz
-	else:
-		if speed>3: damage(balance.wall_damage)
-		vz*=balance.bounce
+	var move:=World.move_circle(Vector2(x,z),Vector2(vx,vz)*dt)
+	x=move.position.x;z=move.position.y
+	for normal in move.normals:
+		if speed>3:damage(balance.wall_damage)
+		var velocity:=Vector2(vx,vz);velocity-=normal*minf(0,velocity.dot(normal))*1.08;vx=velocity.x;vz=velocity.y
 	update_police(dt)
 	for t in carts:
 		t.next-=dt
 		if t.next<0: t.stop=random_between(.2,1.3); t.next=random_between(3,7)
 		t.stop=maxf(0,t.stop-dt)
-		t.x+=t.dir*t.speed*(.05 if t.stop>0 else 1)*(.2 if siren_left>0 and hypot(x-t.x,z-t.z)<20 else 1)*dt
-		if t.x>113: t.x=-85.0
-		if t.x< -85: t.x=113.0
+		t.distance=clampf(t.distance+t.dir*t.speed*(.05 if t.stop>0 else 1)*(.2 if siren_left>0 and hypot(x-t.x,z-t.z)<20 else 1)*dt,2,World.data.route_length-2)
+		if t.distance<=2 or t.distance>=World.data.route_length-2:t.dir=-t.dir
+		var at:=World.point_on_main(t.distance);var shoulder: Vector2=Vector2(cos(at.heading),-sin(at.heading))*2.6*t.dir
+		t.x=at.point.x+shoulder.x;t.z=at.point.y+shoulder.y;t.angle=at.heading+(PI if t.dir<0 else 0)
 		if absf(x-t.x)<2.4 and absf(z-t.z)<1.7:
-			damage(balance.cart_damage); vx*=balance.bounce; vz*=balance.bounce; z+= -.5 if z<t.z else .5
+			damage(balance.cart_damage); vx*=balance.bounce; vz*=balance.bounce
 	for p in pedestrians:
 		p.cool=maxf(0,p.cool-dt); p.change-=dt
 		if p.change<=0: p.dx=random_between(-1,1); p.dz=random_between(-1,1); p.change=random_between(1,3)
@@ -222,12 +223,14 @@ func step(dt: float) -> void:
 		if load_progress>=balance.pickup_hold:
 			load_progress=0
 			if phase==0:
-				phase=1; events.append({"type":"pickup","text":"¡Paciente a bordo! Al puesto de salud."})
+				phase=1; moment("pickup");events.append({"type":"pickup","text":"¡Paciente a bordo! Al puesto de salud."})
 			else: finish(true)
 	else: load_progress=0
+	if Vector2(x,z).distance_to(Vector2(World.data.landmarks.coast[0],World.data.landmarks.coast[1]))<16:moment("coast")
+	if phase==1 and Vector2(x,z).distance_to(Vector2(World.data.landmarks.plaza[0],World.data.landmarks.plaza[1]))<20:moment("plaza")
 
 func snapshot() -> Dictionary:
-	return {"state":state,"phase":phase,"time":time,"health":health,"x":x,"z":z,"angle":angle,"vx":vx,"vz":vz,"speed":speed,"clock":clock,"cooldown":cooldown,"siren_left":siren_left,"impact":impact,"load":load_progress,"ped_hits":ped_hits,"bumps":bumps,"cinematic_time":cinematic_time,"score":score,"stars":stars,"police":police.duplicate(true),"pedestrians":pedestrians.duplicate(true),"carts":carts.duplicate(true)}
+	return {"rules_version":2,"drift":drift_amount,"drift_hold":drift_hold,"ending_time":ending_time,"outcome":outcome,"moments":moments.duplicate(),"state":state,"phase":phase,"time":time,"health":health,"x":x,"z":z,"angle":angle,"vx":vx,"vz":vz,"speed":speed,"clock":clock,"cooldown":cooldown,"siren_left":siren_left,"impact":impact,"load":load_progress,"ped_hits":ped_hits,"bumps":bumps,"cinematic_time":cinematic_time,"score":score,"stars":stars,"police":police.duplicate(true),"pedestrians":pedestrians.duplicate(true),"carts":carts.duplicate(true)}
 
 func take_events() -> Array:
 	var result:=events.duplicate(); events.clear(); return result

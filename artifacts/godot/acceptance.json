@@ -1,7 +1,7 @@
 {
   "rules_version": 2,
-  "generated_utc": "2026-10-24T16:49:50.685222+00:00",
-  "base_commit": "22e66025dfab33302939a9f11beb90dd9566e19b",
+  "generated_utc": "2026-10-24T16:52:10.128962+00:00",
+  "base_commit": "40a5e00c893267102644c6c703a635338cf9a431",
   "working_tree": "local implementation; source-manifest.json records exact hashes",
   "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
   "physical_gpu_available": false,
@@ -117,7 +117,7 @@
     },
     {
       "check": "Publicación del paquete final en HTTPS, solo Godot en raíz de Pages",
-      "status": "pendiente",
+      "status": "aprobada",
       "evidence": "pages-audit.json"
     }
   ],

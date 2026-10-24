@@ -71,8 +71,24 @@
     {
       "name": "camera query solid uses the parcel orientation",
       "passed": true
+    },
+    {
+      "name": "widened house geometry stays inside its collision parcel",
+      "passed": true
+    },
+    {
+      "name": "widened pousada geometry stays inside its collision parcel",
+      "passed": true
+    },
+    {
+      "name": "widened shop geometry stays inside its collision parcel",
+      "passed": true
+    },
+    {
+      "name": "widened bar geometry stays inside its collision parcel",
+      "passed": true
     }
   ],
   "passed": true,
-  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b"
+  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6"
 }

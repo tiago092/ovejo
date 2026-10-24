@@ -1,18 +1,18 @@
 {
-  "active_seconds": 112.549999999995,
+  "active_seconds": 112.416666666662,
   "bumps": 5,
-  "deadline_used": 120.550000000012,
-  "health": 62.0,
-  "minimum_health": 62.0,
+  "deadline_used": 116.416666666679,
+  "health": 67.0,
+  "minimum_health": 67.0,
   "note": "Input-driven primary route, no teleports or replenishment. Full population with proximity siren.",
   "passed": true,
-  "pedestrian_hits": 2,
+  "pedestrian_hits": 1,
   "population": true,
   "position": [
-    147.645172119141,
-    205.313339233398
+    147.641616821289,
+    205.299255371094
   ],
-  "progress": 952.097425222397,
+  "progress": 952.08863401413,
   "state": "won",
-  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b"
+  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6"
 }

@@ -334,6 +334,7 @@
 <path d="M 438.7971 440.75985000000003 L 456.0 445.5" fill="none" stroke="#626e6b" stroke-width="19.5"/>
 <path d="M 141.0 700.5 L 141.0 715.5" fill="none" stroke="#626e6b" stroke-width="18.0"/>
 <path d="M 538.5 78.0 L 543.0 60.0" fill="none" stroke="#626e6b" stroke-width="18.0"/>
+<polygon points="109.86,691.29 111.06,691.29 111.06,690.09 109.86,690.09" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="84.92,602.80 86.12,602.80 86.12,601.60 84.92,601.60" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="98.79,544.33 99.99,544.33 99.99,543.13 98.79,543.13" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="88.76,498.28 89.96,498.28 89.96,497.08 88.76,497.08" fill="#4c7957" fill-opacity=".8"/>
@@ -343,49 +344,45 @@
 <polygon points="78.08,350.23 79.28,350.23 79.28,349.03 78.08,349.03" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="106.86,295.10 108.06,295.10 108.06,293.90 106.86,293.90" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="164.97,239.98 166.17,239.98 166.17,238.78 164.97,238.78" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="51.10,369.69 52.30,369.69 52.30,368.49 51.10,368.49" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="44.00,474.81 45.20,474.81 45.20,473.61 44.00,473.61" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="51.88,201.46 53.08,201.46 53.08,200.26 51.88,200.26" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="40.19,713.73 41.39,713.73 41.39,712.53 40.19,712.53" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="50.83,357.81 52.03,357.81 52.03,356.61 50.83,356.61" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="66.57,85.05 67.77,85.05 67.77,83.85 66.57,83.85" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="59.73,193.58 60.93,193.58 60.93,192.38 59.73,192.38" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="51.50,193.68 52.70,193.68 52.70,192.48 51.50,192.48" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="45.13,363.06 46.33,363.06 46.33,361.86 45.13,361.86" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="48.75,555.13 49.95,555.13 49.95,553.93 48.75,553.93" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="55.95,296.28 57.15,296.28 57.15,295.08 55.95,295.08" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="58.77,43.92 59.97,43.92 59.97,42.72 58.77,42.72" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="64.04,352.97 65.24,352.97 65.24,351.77 64.04,351.77" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="57.78,165.68 58.98,165.68 58.98,164.48 57.78,164.48" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="48.21,91.07 49.41,91.07 49.41,89.87 48.21,89.87" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="57.36,374.14 58.56,374.14 58.56,372.94 57.36,372.94" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="52.66,175.67 53.86,175.67 53.86,174.47 52.66,174.47" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="50.94,494.70 52.14,494.70 52.14,493.50 50.94,493.50" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="55.01,614.04 56.21,614.04 56.21,612.84 55.01,612.84" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="53.54,185.10 54.74,185.10 54.74,183.90 53.54,183.90" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="37.25,738.28 38.45,738.28 38.45,737.08 37.25,737.08" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="36.58,709.20 37.78,709.20 37.78,708.00 36.58,708.00" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="64.11,186.53 65.31,186.53 65.31,185.33 64.11,185.33" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="35.52,731.56 36.72,731.56 36.72,730.36 35.52,730.36" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="48.06,63.38 49.26,63.38 49.26,62.18 48.06,62.18" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="63.02,314.91 64.22,314.91 64.22,313.71 63.02,313.71" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="66.30,145.96 67.50,145.96 67.50,144.76 66.30,144.76" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="37.07,482.80 38.26,482.80 38.26,481.60 37.07,481.60" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="71.12,281.19 72.32,281.19 72.32,279.99 71.12,279.99" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="50.66,584.52 51.86,584.52 51.86,583.32 50.66,583.32" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="57.08,262.83 58.28,262.83 58.28,261.63 57.08,261.63" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="52.74,347.14 53.94,347.14 53.94,345.94 52.74,345.94" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="47.24,518.49 48.44,518.49 48.44,517.29 47.24,517.29" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="59.20,174.87 60.40,174.87 60.40,173.67 59.20,173.67" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="59.58,396.39 60.78,396.39 60.78,395.19 59.58,395.19" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="54.93,425.66 56.13,425.66 56.13,424.46 54.93,424.46" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="38.33,680.24 39.53,680.24 39.53,679.04 38.33,679.04" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="55.67,187.05 56.87,187.05 56.87,185.85 55.67,185.85" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="46.58,551.77 47.78,551.77 47.78,550.57 46.58,550.57" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="52.08,405.97 53.28,405.97 53.28,404.77 52.08,404.77" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="38.66,722.92 39.86,722.92 39.86,721.72 38.66,721.72" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="62.87,63.10 64.07,63.10 64.07,61.91 62.87,61.91" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="36.45,648.45 37.65,648.45 37.65,647.25 36.45,647.25" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="35.04,461.99 36.24,461.99 36.24,460.78 35.04,460.78" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="32.70,691.25 33.90,691.25 33.90,690.05 32.70,690.05" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="52.53,377.88 53.73,377.88 53.73,376.68 52.53,376.68" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="56.35,366.17 57.55,366.17 57.55,364.97 56.35,364.97" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="48.26,500.07 49.46,500.07 49.46,498.87 48.26,498.87" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="35.01,695.43 36.21,695.43 36.21,694.23 35.01,694.23" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="51.42,352.36 52.62,352.36 52.62,351.16 51.42,351.16" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="73.40,302.21 74.60,302.21 74.60,301.01 73.40,301.01" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="68.44,346.25 69.64,346.25 69.64,345.05 68.44,345.05" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="49.13,525.12 50.33,525.12 50.33,523.92 49.13,523.92" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="49.54,54.17 50.74,54.17 50.74,52.97 49.54,52.97" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="55.29,157.92 56.49,157.92 56.49,156.72 55.29,156.72" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="49.99,691.93 51.19,691.93 51.19,690.74 49.99,690.74" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="63.43,350.90 64.63,350.90 64.63,349.70 63.43,349.70" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="43.38,681.71 44.58,681.71 44.58,680.50 43.38,680.50" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="38.14,447.10 39.34,447.10 39.34,445.90 38.14,445.90" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="41.58,393.67 42.78,393.67 42.78,392.48 41.58,392.48" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="52.53,413.41 53.73,413.41 53.73,412.21 52.53,412.21" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="64.91,341.03 66.11,341.03 66.11,339.83 64.91,339.83" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="38.53,658.14 39.73,658.14 39.73,656.94 38.53,656.94" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="35.38,722.67 36.58,722.67 36.58,721.47 35.38,721.47" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="43.74,543.47 44.94,543.47 44.94,542.26 43.74,542.26" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="51.43,59.65 52.63,59.65 52.63,58.45 51.43,58.45" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="43.03,553.00 44.23,553.00 44.23,551.80 43.03,551.80" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="62.57,118.77 63.77,118.77 63.77,117.57 62.57,117.57" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="44.97,414.67 46.17,414.67 46.17,413.47 44.97,413.47" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="70.43,248.43 71.63,248.43 71.63,247.23 70.43,247.23" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="51.37,259.48 52.57,259.48 52.57,258.28 51.37,258.28" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="49.92,690.33 51.12,690.33 51.12,689.13 49.92,689.13" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="58.70,181.09 59.90,181.09 59.90,179.90 58.70,179.90" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="63.57,105.30 64.77,105.30 64.77,104.10 63.57,104.10" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="48.44,377.36 49.64,377.36 49.64,376.16 48.44,376.16" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="30.89,484.71 32.08,484.71 32.08,483.51 30.89,483.51" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="99.75,738.75 110.25,738.75 110.25,728.25 99.75,728.25" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="102.56,733.24 103.76,733.24 103.76,732.04 102.56,732.04" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="171.00,736.50 183.00,736.50 183.00,724.50 171.00,724.50" fill="#4c7957" fill-opacity=".8"/>
@@ -437,225 +434,266 @@
 <polygon points="196.76,632.45 197.96,632.45 197.96,631.25 196.76,631.25" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="480.00,225.00 478.59,219.75 474.75,215.91 469.50,214.50 464.25,215.91 460.41,219.75 459.00,225.00 460.41,230.25 464.25,234.09 469.50,235.50 474.75,234.09 478.59,230.25" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="154.50,693.45 160.50,693.45 160.50,692.55 154.50,692.55" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="132.60,632.02 135.00,632.02 135.00,629.62 132.60,629.62" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="131.27,615.73 133.67,615.73 133.67,613.33 131.27,613.33" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="141.61,548.46 144.01,548.46 144.01,546.06 141.61,546.06" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="143.79,533.24 146.19,533.24 146.19,530.84 143.79,530.84" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="241.02,261.49 243.42,261.49 243.42,259.09 241.02,259.09" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="256.37,260.63 258.77,260.63 258.77,258.23 256.37,258.23" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="272.70,259.71 275.10,259.71 275.10,257.31 272.70,257.31" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="365.22,321.11 367.62,321.11 367.62,318.71 365.22,318.71" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="363.85,352.80 366.25,352.80 366.25,350.40 363.85,350.40" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="412.74,375.45 415.14,375.45 415.14,373.05 412.74,373.05" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="411.55,390.77 413.95,390.77 413.95,388.37 411.55,388.37" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="556.04,285.65 558.44,285.65 558.44,283.25 556.04,283.25" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="554.03,270.41 556.43,270.41 556.43,268.01 554.03,268.01" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="427.80,243.28 430.20,243.28 430.20,240.88 427.80,240.88" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="427.80,227.91 430.20,227.91 430.20,225.51 427.80,225.51" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="427.80,211.56 430.20,211.56 430.20,209.16 427.80,209.16" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="460.86,266.70 463.26,266.70 463.26,264.30 460.86,264.30" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="508.38,106.87 510.78,106.87 510.78,104.47 508.38,104.47" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="524.70,105.91 527.10,105.91 527.10,103.51 524.70,103.51" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="141.04,609.51 150.04,609.51 150.04,600.51 141.04,600.51" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="144.94,605.61 146.14,605.61 146.14,604.41 144.94,604.41" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="153.02,546.35 162.02,546.35 162.02,537.35 153.02,537.35" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="156.92,542.45 158.12,542.45 158.12,541.25 156.92,541.25" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="129.69,461.13 138.69,461.13 138.69,452.13 129.69,452.13" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="133.59,457.23 134.79,457.23 134.79,456.03 133.59,456.03" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="135.72,370.06 144.72,370.06 144.72,361.06 135.72,361.06" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="139.62,366.16 140.82,366.16 140.82,364.96 139.62,364.96" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="171.21,312.82 180.21,312.82 180.21,303.82 171.21,303.82" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="175.11,308.92 176.31,308.92 176.31,307.72 175.11,307.72" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="191.95,209.14 200.95,209.14 200.95,200.14 191.95,200.14" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="195.85,205.24 197.05,205.24 197.05,204.04 195.85,204.04" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="261.80,277.86 270.80,277.86 270.80,268.86 261.80,268.86" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="265.70,273.96 266.90,273.96 266.90,272.76 265.70,272.76" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="369.59,218.70 378.59,218.70 378.59,209.70 369.59,209.70" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="373.49,214.80 374.69,214.80 374.69,213.60 373.49,213.60" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="346.49,348.04 355.49,348.04 355.49,339.04 346.49,339.04" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="350.39,344.14 351.59,344.14 351.59,342.94 350.39,342.94" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="422.62,387.24 431.62,387.24 431.62,378.24 422.62,378.24" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="426.52,383.34 427.72,383.34 427.72,382.14 426.52,382.14" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="411.65,488.77 420.65,488.77 420.65,479.77 411.65,479.77" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="415.55,484.87 416.75,484.87 416.75,483.67 415.55,483.67" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="447.58,394.51 456.58,394.51 456.58,385.51 447.58,385.51" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="451.48,390.61 452.68,390.61 452.68,389.41 451.48,389.41" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="558.36,391.39 567.36,391.39 567.36,382.39 558.36,382.39" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="562.26,387.49 563.46,387.49 563.46,386.29 562.26,386.29" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="565.45,279.76 574.45,279.76 574.45,270.76 565.45,270.76" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="569.35,275.86 570.55,275.86 570.55,274.66 569.35,274.66" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="410.10,223.27 419.10,223.27 419.10,214.27 410.10,214.27" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="414.00,219.38 415.20,219.38 415.20,218.17 414.00,218.17" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="498.92,163.12 507.92,163.12 507.92,154.12 498.92,154.12" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="502.82,159.22 504.02,159.22 504.02,158.02 502.82,158.02" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="167.57,687.32 166.95,686.57 165.45,687.81 166.07,688.56" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="159.13,677.07 158.51,676.32 157.01,677.56 157.63,678.31" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="150.07,666.07 149.46,665.32 147.95,666.56 148.57,667.31" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="135.73,636.54 135.59,635.57 133.66,635.85 133.79,636.81" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="133.71,622.43 133.57,621.47 131.64,621.74 131.78,622.71" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="131.56,607.36 131.42,606.39 129.49,606.67 129.62,607.64" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="91.75,677.28 92.09,678.20 93.92,677.52 93.58,676.61" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="86.48,663.00 86.82,663.91 88.65,663.24 88.31,662.32" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="138.21,559.77 138.35,558.80 136.42,558.53 136.28,559.49" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="139.96,547.59 140.10,546.63 138.17,546.35 138.03,547.32" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="141.84,534.45 141.98,533.49 140.05,533.21 139.91,534.18" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="133.95,493.14 133.53,492.26 131.77,493.10 132.19,493.98" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="128.26,481.15 127.84,480.27 126.08,481.11 126.50,481.99" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="122.14,468.28 121.72,467.40 119.96,468.23 120.38,469.11" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="117.21,395.77 117.39,394.81 115.47,394.46 115.30,395.42" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="119.80,381.76 119.98,380.80 118.06,380.44 117.88,381.40" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="122.56,366.78 122.74,365.83 120.82,365.47 120.65,366.43" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="140.93,320.90 141.42,320.06 139.74,319.07 139.25,319.91" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="148.62,307.76 149.12,306.92 147.43,305.93 146.94,306.77" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="195.53,222.13 194.60,222.39 195.13,224.27 196.07,224.00" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="207.37,218.77 206.43,219.03 206.96,220.91 207.90,220.64" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="248.32,258.01 249.30,258.01 249.28,256.06 248.31,256.06" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="261.60,257.91 262.57,257.90 262.56,255.95 261.58,255.96" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="275.85,257.79 276.82,257.78 276.81,255.83 275.83,255.84" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="344.05,224.71 343.17,224.28 342.32,226.03 343.20,226.46" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="356.87,230.93 355.99,230.51 355.14,232.26 356.01,232.69" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="370.56,237.59 369.68,237.16 368.83,238.92 369.71,239.34" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="367.63,321.33 367.59,322.30 369.54,322.39 369.58,321.41" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="366.98,336.54 366.94,337.51 368.88,337.60 368.93,336.62" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="366.45,348.83 366.41,349.80 368.35,349.89 368.40,348.91" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="412.58,356.03 412.66,355.06 410.71,354.91 410.64,355.88" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="411.62,368.29 411.70,367.32 409.76,367.17 409.68,368.14" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="410.59,381.53 410.67,380.55 408.72,380.40 408.65,381.38" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="401.30,460.69 402.22,461.02 402.88,459.19 401.96,458.86" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="413.80,465.17 414.71,465.50 415.37,463.67 414.45,463.34" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="427.21,469.98 428.13,470.31 428.79,468.48 427.87,468.15" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="475.82,396.72 475.24,397.50 476.81,398.66 477.39,397.87" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="484.27,385.25 483.69,386.03 485.26,387.19 485.84,386.40" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="538.52,383.69 538.96,382.82 537.22,381.94 536.78,382.81" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="545.37,370.10 545.81,369.23 544.07,368.35 543.63,369.22" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="559.17,297.34 559.04,296.37 557.11,296.63 557.24,297.59" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="557.56,285.15 557.43,284.18 555.50,284.43 555.63,285.40" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="555.82,271.98 555.70,271.02 553.76,271.27 553.89,272.24" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="428.03,239.74 428.03,240.71 429.97,240.71 429.97,239.74" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="428.03,226.46 428.03,227.44 429.97,227.44 429.97,226.46" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="428.03,212.21 428.03,213.19 429.97,213.19 429.97,212.21" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="500.54,179.42 499.68,178.95 498.73,180.65 499.59,181.13" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="488.09,172.49 487.24,172.01 486.29,173.71 487.14,174.19" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="462.38,266.48 463.35,266.48 463.35,264.52 462.38,264.52" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="477.60,266.48 478.58,266.48 478.58,264.52 477.60,264.52" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="469.80,143.04 470.04,142.10 468.15,141.62 467.91,142.56" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="472.81,131.11 473.05,130.17 471.16,129.69 470.92,130.64" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="461.00,62.77 460.09,63.11 460.76,64.94 461.67,64.61" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="473.46,58.19 472.55,58.53 473.22,60.36 474.13,60.02" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="515.90,105.52 516.87,105.46 516.76,103.52 515.78,103.58" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="530.12,104.69 531.10,104.63 530.98,102.68 530.01,102.74" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="164.79,663.35 173.79,663.35 173.79,654.35 164.79,654.35" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="168.69,659.45 169.89,659.45 169.89,658.25 168.69,658.25" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="140.76,617.10 149.76,617.10 149.76,608.10 140.76,608.10" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="144.66,613.20 145.86,613.20 145.86,612.00 144.66,612.00" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="59.52,684.41 68.52,684.41 68.52,675.41 59.52,675.41" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="63.42,680.51 64.62,680.51 64.62,679.31 63.42,679.31" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="149.16,546.86 158.16,546.86 158.16,537.86 149.16,537.86" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="153.06,542.96 154.26,542.96 154.26,541.76 153.06,541.76" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="132.62,473.01 141.62,473.01 141.62,464.01 132.62,464.01" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="136.52,469.11 137.72,469.11 137.72,467.91 136.52,467.91" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="129.38,380.62 138.38,380.62 138.38,371.62 129.38,371.62" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="133.28,376.72 134.48,376.72 134.48,375.52 133.28,375.52" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="157.28,328.22 166.28,328.22 166.28,319.22 157.28,319.22" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="161.18,324.32 162.38,324.32 162.38,323.12 161.18,323.12" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="192.98,212.74 201.98,212.74 201.98,203.74 192.98,203.74" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="196.88,208.84 198.08,208.84 198.08,207.64 196.88,207.64" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="264.82,275.77 273.82,275.77 273.82,266.77 264.82,266.77" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="268.72,271.87 269.92,271.87 269.92,270.67 268.72,270.67" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="367.00,221.62 376.00,221.62 376.00,212.62 367.00,212.62" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="370.90,217.72 372.10,217.72 372.10,216.52 370.90,216.52" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="348.78,347.09 357.78,347.09 357.78,338.09 348.78,338.09" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="352.68,343.19 353.88,343.19 353.88,341.99 352.68,341.99" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="419.43,379.92 428.43,379.92 428.43,370.92 419.43,370.92" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="423.33,376.02 424.53,376.02 424.53,374.82 423.33,374.82" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="411.93,484.88 420.93,484.88 420.93,475.88 411.93,475.88" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="415.83,480.98 417.03,480.98 417.03,479.78 415.83,479.78" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="460.10,384.71 469.10,384.71 469.10,375.71 460.10,375.71" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="464.00,380.81 465.20,380.81 465.20,379.61 464.00,379.61" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="555.01,389.70 564.01,389.70 564.01,380.70 555.01,380.70" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="558.91,385.80 560.11,385.80 560.11,384.60 558.91,384.60" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="564.84,280.90 573.84,280.90 573.84,271.90 564.84,271.90" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="568.74,277.00 569.94,277.00 569.94,275.80 568.74,275.80" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="410.10,224.33 419.10,224.33 419.10,215.33 410.10,215.33" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="414.00,220.42 415.20,220.42 415.20,219.23 414.00,219.23" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="498.55,163.78 507.55,163.78 507.55,154.78 498.55,154.78" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="502.45,159.88 503.65,159.88 503.65,158.68 502.45,158.68" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="465.97,284.40 474.97,284.40 474.97,275.40 465.97,275.40" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="469.88,280.50 471.08,280.50 471.08,279.30 469.88,279.30" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="480.09,144.42 489.09,144.42 489.09,135.42 480.09,135.42" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="483.99,140.52 485.19,140.52 485.19,139.32 483.99,139.32" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="457.90,53.26 466.90,53.26 466.90,44.26 457.90,44.26" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="461.80,49.36 463.00,49.36 463.00,48.16 461.80,48.16" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="513.80,123.48 522.80,123.48 522.80,114.48 513.80,114.48" fill="#4c7957" fill-opacity=".8"/>
-<polygon points="517.70,119.58 518.90,119.58 518.90,118.38 517.70,118.38" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="479.36,144.24 488.36,144.24 488.36,135.24 479.36,135.24" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="483.26,140.34 484.46,140.34 484.46,139.14 483.26,139.14" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="457.64,52.55 466.64,52.55 466.64,43.55 457.64,43.55" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="461.54,48.65 462.74,48.65 462.74,47.45 461.54,47.45" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="519.75,122.38 528.75,122.38 528.75,113.38 519.75,113.38" fill="#4c7957" fill-opacity=".8"/>
+<polygon points="523.65,118.48 524.85,118.48 524.85,117.28 523.65,117.28" fill="#4c7957" fill-opacity=".8"/>
 <polygon points="114.00,745.50 168.00,745.50 168.00,721.50 114.00,721.50" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>club · disco · landmark</title></polygon>
 <path d="M 141.0 733.5 L 141.0 721.5" stroke="#fff1d5" stroke-width="1.4"/>
 <polygon points="521.25,51.75 564.75,51.75 564.75,26.25 521.25,26.25" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>clinic · puesto · landmark</title></polygon>
 <path d="M 543.0 39.0 L 543.0 26.25" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="185.39,700.63 179.08,692.24 168.05,700.53 174.35,708.92" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-1 · disco · house</title></polygon>
-<path d="M 176.71515 700.57815 L 171.19995 704.7246" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="176.73,689.12 169.84,679.95 158.81,688.24 165.70,697.41" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-2 · disco · pousada</title></polygon>
-<path d="M 167.7687 688.6786500000001 L 162.2535 692.8251" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="167.49,676.83 160.01,666.88 148.98,675.17 156.46,685.12" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-3 · disco · shop</title></polygon>
-<path d="M 158.2362 675.9997500000001 L 152.721 680.1461999999999" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="157.67,663.76 149.60,653.03 138.57,661.32 146.64,672.05" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-4 · disco · bar</title></polygon>
-<path d="M 148.11795 662.5416 L 142.60275000000001 666.68805" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="141.19,643.93 140.25,632.50 127.70,633.52 128.63,644.96" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-1 · disco · pousada</title></polygon>
-<path d="M 134.4408 638.72775 L 128.16165 639.2397000000001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="139.94,628.61 138.92,616.20 126.37,617.23 127.38,629.63" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-2 · disco · shop</title></polygon>
-<path d="M 133.1517 622.9177500000001 L 126.87254999999999 623.4297" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="138.61,612.31 137.52,598.93 124.96,599.96 126.05,613.34" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-3 · disco · bar</title></polygon>
-<path d="M 131.78325 606.1359 L 125.5041 606.6478500000001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="137.20,595.05 136.35,584.58 123.79,585.61 124.64,596.07" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-4 · disco · house</title></polygon>
-<path d="M 130.49415 590.3259 L 124.215 590.8378499999999" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="92.00,689.70 97.12,701.05 109.70,695.37 104.58,684.02" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-1 · disco · shop</title></polygon>
-<path d="M 100.848 692.5341 L 107.13764999999998 689.697" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="84.87,673.90 90.40,686.14 102.97,680.47 97.45,668.23" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-2 · disco · bar</title></polygon>
-<path d="M 93.92475 677.1858 L 100.21439999999998 674.3487" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="78.95,660.78 83.27,670.35 95.85,664.67 91.53,655.10" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-3 · disco · house</title></polygon>
-<path d="M 87.40230000000001 662.7264 L 93.69194999999999 659.8893" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="144.78,577.87 146.69,564.58 134.22,562.79 132.31,576.08" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-1 · costa · bar</title></polygon>
-<path d="M 139.5003 570.333 L 133.26405 569.43885" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="147.24,560.72 148.73,550.33 136.26,548.54 134.77,558.93" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-2 · costa · house</title></polygon>
-<path d="M 141.75150000000002 554.6310000000001 L 135.51525 553.73685" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="149.29,546.47 150.91,535.11 138.44,533.32 136.81,544.68" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-3 · costa · pousada</title></polygon>
-<path d="M 143.86455 539.89425 L 137.6283 539.0001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="151.47,531.25 153.24,518.92 140.76,517.14 139.00,529.46" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-4 · costa · shop</title></polygon>
-<path d="M 146.11575 524.1922500000001 L 139.8795 523.2981" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="141.92,492.58 137.67,482.98 125.05,488.57 129.30,498.17" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-1 · costa · house</title></polygon>
-<path d="M 133.4838 490.5726 L 127.17525 493.36769999999996" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="136.09,479.41 131.44,468.92 118.82,474.51 123.47,485.00" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-2 · costa · pousada</title></polygon>
-<path d="M 127.45304999999999 476.9613 L 121.14450000000001 479.7564" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="129.86,465.35 124.81,453.97 112.20,459.56 117.24,470.95" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-3 · costa · shop</title></polygon>
-<path d="M 121.02735 462.45855 L 114.71879999999999 465.25365" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="123.23,450.41 117.80,438.13 105.18,443.72 110.62,456.00" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-4 · costa · bar</title></polygon>
-<path d="M 114.2067 447.06435000000005 L 107.89814999999999 449.85945" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="124.48,401.42 126.99,390.22 114.70,387.46 112.19,398.66" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-1 · costa · pousada</title></polygon>
-<path d="M 119.58974999999998 394.44 L 113.4426 393.0603" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="127.85,386.42 130.57,374.27 118.28,371.51 115.55,383.66" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-2 · costa · shop</title></polygon>
-<path d="M 123.06344999999999 378.9624 L 116.91629999999999 377.5827" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="131.43,370.46 134.37,357.36 122.07,354.60 119.13,367.70" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-3 · costa · bar</title></polygon>
-<path d="M 126.75075000000001 362.53364999999997 L 120.6036 361.15395" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="135.22,353.56 137.52,343.31 125.23,340.55 122.93,350.80" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-4 · costa · house</title></polygon>
-<path d="M 130.22445 347.0562 L 124.0773 345.6765" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="150.21,316.33 158.58,307.11 148.36,297.83 140.00,307.05" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-1 · costa · shop</title></polygon>
-<path d="M 149.28825 307.0794 L 144.17849999999999 302.44259999999997" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="161.20,304.22 170.22,294.28 160.00,285.00 150.98,294.94" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-2 · costa · bar</title></polygon>
-<path d="M 160.60305 294.61035000000004 L 155.4933 289.97355" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="172.84,291.39 179.90,283.61 169.68,274.34 162.63,282.11" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-3 · costa · house</title></polygon>
-<path d="M 171.2628 282.8634 L 166.15305 278.22659999999996" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="189.70,214.35 176.79,218.02 180.23,230.14 193.14,226.47" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-1 · costa · bar</title></polygon>
-<path d="M 184.9635 222.24315 L 186.68415000000002 228.30360000000002" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="203.55,210.42 193.45,213.28 196.89,225.41 206.99,222.54" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-2 · costa · house</title></polygon>
-<path d="M 200.22285 217.9107 L 201.9435 223.97115" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="218.34,206.22 207.30,209.35 210.75,221.47 221.78,218.34" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-3 · costa · pousada</title></polygon>
-<path d="M 214.54424999999998 213.84449999999998 L 216.2649 219.90494999999999" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="229.94,267.89 240.42,267.30 239.65,253.52 229.16,254.12" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-1 · comercio · house</title></polygon>
-<path d="M 234.79199999999997 260.70899999999995 L 234.40425 253.81995" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="244.32,267.08 255.77,266.44 255.00,252.66 243.54,253.31" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-2 · comercio · pousada</title></polygon>
-<path d="M 249.65595 259.87245 L 249.26819999999998 252.9834" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="259.67,266.22 272.10,265.52 271.32,251.74 258.89,252.44" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-3 · comercio · shop</title></polygon>
-<path d="M 265.4934 258.981 L 265.10564999999997 252.09195000000003" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="275.99,265.30 289.39,264.55 288.62,250.77 275.21,251.52" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-4 · comercio · bar</title></polygon>
-<path d="M 282.30435 258.0348 L 281.9166 251.14575" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="343.93,214.56 333.61,209.55 328.11,220.88 338.43,225.89" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-1 · comercio · pousada</title></polygon>
-<path d="M 336.01995 217.72019999999998 L 333.2667 223.38675" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="358.64,221.71 347.44,216.27 341.94,227.60 353.13,233.04" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-2 · comercio · shop</title></polygon>
-<path d="M 350.28765 224.65229999999997 L 347.5344 230.31885000000003" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="374.22,229.28 362.15,223.41 356.64,234.74 368.72,240.61" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-3 · comercio · bar</title></polygon>
-<path d="M 365.43225 232.0104 L 362.679 237.67695" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="387.18,235.57 377.73,230.98 372.22,242.31 381.67,246.90" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-4 · comercio · house</title></polygon>
-<path d="M 379.6998 238.94250000000002 L 376.94655 244.60905" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="360.16,304.98 359.62,317.42 373.41,318.01 373.95,305.57" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-1 · comercio · shop</title></polygon>
-<path d="M 366.78375 311.4951 L 373.6773 311.793" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="359.45,321.31 358.87,334.73 372.66,335.32 373.24,321.91" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-2 · comercio · bar</title></polygon>
-<path d="M 366.057 328.31685000000004 L 372.95055 328.61475" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="358.71,338.62 358.25,349.11 372.04,349.71 372.49,339.22" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-3 · comercio · house</title></polygon>
-<path d="M 365.37225 344.16465000000005 L 372.2658 344.46255" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="358.08,353.01 357.59,364.47 371.38,365.07 371.87,353.60" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-4 · comercio · pousada</title></polygon>
-<path d="M 364.72965 359.0382 L 371.6232 359.3361" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="421.51,358.19 422.56,344.81 410.00,343.83 408.95,357.21" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-1 · comercio · bar</title></polygon>
-<path d="M 415.75605 351.0108 L 409.4751 350.5209" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="420.40,372.55 421.21,362.08 408.65,361.10 407.83,371.57" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-2 · comercio · house</title></polygon>
-<path d="M 414.52245 366.82515 L 408.2415 366.33525" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="419.20,387.88 420.09,376.44 407.53,375.46 406.64,386.90" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-3 · comercio · pousada</title></polygon>
-<path d="M 413.36460000000005 381.66765 L 407.08365 381.17775" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="417.93,404.18 418.90,391.77 406.33,390.79 405.37,403.20" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-4 · comercio · shop</title></polygon>
-<path d="M 412.13100000000003 397.48199999999997 L 405.85004999999995 396.99210000000005" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="384.80,465.05 394.68,468.60 399.34,455.61 389.46,452.06" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-1 · comercio · house</title></polygon>
-<path d="M 392.06835 460.33140000000003 L 394.39725 453.83625" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="398.35,469.91 409.15,473.79 413.81,460.80 403.01,456.92" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-2 · comercio · pousada</title></polygon>
-<path d="M 406.0821 465.35625000000005 L 408.411 458.86109999999996" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="412.83,475.10 424.54,479.31 429.20,466.32 417.48,462.11" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-3 · comercio · shop</title></polygon>
-<path d="M 421.0137 470.71034999999995 L 423.34259999999995 464.21520000000004" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="428.22,480.62 440.85,485.15 445.51,472.16 432.87,467.63" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-4 · comercio · bar</title></polygon>
-<path d="M 436.86315 476.3934 L 439.19205000000005 469.89824999999996" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="455.98,406.43 448.65,415.25 458.33,423.31 465.67,414.49" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-1 · comercio · pousada</title></polygon>
-<path d="M 457.15844999999996 414.87075000000004 L 462.00195 418.89945" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="466.44,393.86 458.48,403.43 468.17,411.49 476.13,401.92" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-2 · comercio · shop</title></polygon>
-<path d="M 467.30235 402.67560000000003 L 472.14585000000005 406.7043" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="477.52,380.54 468.93,390.86 478.62,398.92 487.21,388.60" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-3 · comercio · bar</title></polygon>
-<path d="M 478.06949999999995 389.73075 L 482.913 393.75945" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="540.42,401.41 546.03,390.29 533.70,384.08 528.10,395.20" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-1 · comercio · shop</title></polygon>
-<path d="M 537.06195 392.74335 L 530.9007 389.63715" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="547.78,386.81 553.83,374.82 541.50,368.61 535.46,380.60" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-2 · comercio · bar</title></polygon>
-<path d="M 544.6420499999999 377.70855 L 538.4808 374.60235" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="555.58,371.34 560.31,361.96 547.99,355.75 543.26,365.13" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-3 · comercio · house</title></polygon>
-<path d="M 551.7831000000001 363.54435 L 545.62185 360.43815" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="567.42,313.39 565.66,300.08 553.17,301.73 554.93,315.03" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-1 · plaza · bar</title></polygon>
-<path d="M 560.2942499999999 307.5552 L 554.0483999999999 308.38005" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="565.15,296.21 563.78,285.80 551.28,287.45 552.66,297.86" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-2 · plaza · house</title></polygon>
-<path d="M 558.2175 291.8292 L 551.97165 292.65405" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="563.27,281.93 561.76,270.56 549.27,272.21 550.77,283.58" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-3 · plaza · pousada</title></polygon>
-<path d="M 556.2683999999999 277.0698 L 550.0225499999999 277.89465" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="561.25,266.69 559.62,254.35 547.13,256.00 548.76,268.34" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-4 · plaza · shop</title></polygon>
-<path d="M 554.19165 261.3438 L 547.9458 262.16865" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="422.10,244.27 422.10,254.77 435.90,254.77 435.90,244.27" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-1 · plaza · house</title></polygon>
-<path d="M 429.0 249.52499999999998 L 435.90000000000003 249.52499999999998" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="422.10,228.90 422.10,240.38 435.90,240.38 435.90,228.90" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-2 · plaza · pousada</title></polygon>
-<path d="M 429.0 234.63750000000002 L 435.90000000000003 234.63750000000002" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="422.10,212.55 422.10,225.00 435.90,225.00 435.90,212.55" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-3 · plaza · shop</title></polygon>
-<path d="M 429.0 218.77499999999998 L 435.90000000000003 218.77499999999998" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="422.10,195.23 422.10,208.65 435.90,208.65 435.90,195.23" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-4 · plaza · bar</title></polygon>
-<path d="M 429.0 201.9375 L 435.90000000000003 201.9375" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="515.71,180.93 505.69,175.34 499.55,186.35 509.58,191.93" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-1 · plaza · pousada</title></polygon>
-<path d="M 507.63210000000004 183.63825 L 504.5643 189.14085" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="502.28,173.44 491.41,167.38 485.27,178.39 496.15,184.45" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-2 · plaza · shop</title></polygon>
-<path d="M 493.77734999999996 175.91385000000002 L 490.70955000000004 181.41645" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="488.00,165.48 476.28,158.94 470.14,169.95 481.87,176.49" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-3 · plaza · bar</title></polygon>
-<path d="M 479.07105 167.7147 L 476.00325000000004 173.21729999999997" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="447.41,272.40 459.86,272.40 459.86,258.60 447.41,258.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p4-1 · plaza · shop</title></polygon>
-<path d="M 453.63750000000005 265.5 L 453.63750000000005 258.6" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="179.08,691.98 172.41,683.87 161.76,692.64 168.43,700.75" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-1 · disco · house</title></polygon>
+<path d="M 170.4192 692.3091 L 165.0927 696.6954000000001" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="171.26,682.48 163.97,673.62 153.32,682.40 160.61,691.25" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-2 · disco · pousada</title></polygon>
+<path d="M 162.29025000000001 682.4379 L 156.96375 686.8242" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="162.83,672.23 154.91,662.62 144.26,671.39 152.17,681.01" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-3 · disco · shop</title></polygon>
+<path d="M 153.54165 671.81385 L 148.21515 676.20015" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="153.77,661.23 145.23,650.87 134.58,659.64 143.11,670.01" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d1-4 · disco · bar</title></polygon>
+<path d="M 144.17325 660.4372500000001 L 138.84675 664.82355" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="142.68,647.55 141.05,636.19 128.58,637.98 130.21,649.33" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-1 · disco · pousada</title></polygon>
+<path d="M 135.63 642.7638 L 129.3933 643.6551" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="140.80,634.41 139.04,622.09 126.57,623.87 128.33,636.19" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-2 · disco · shop</title></polygon>
+<path d="M 133.683 629.13975 L 127.44630000000001 630.03105" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="138.78,620.30 136.89,607.01 124.41,608.80 126.31,622.09" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-3 · disco · bar</title></polygon>
+<path d="M 131.598 614.55045 L 125.3613 615.44175" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="136.63,605.23 135.14,594.84 122.67,596.62 124.16,607.01" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d2-4 · disco · house</title></polygon>
+<path d="M 129.651 600.9264000000001 L 123.4143 601.8177000000001" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="86.67,680.63 90.98,692.32 103.93,687.54 99.62,675.86" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-1 · disco · shop</title></polygon>
+<path d="M 95.29785000000001 684.08805 L 101.77185000000001 681.7011" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="81.40,666.35 86.05,678.95 99.00,674.17 94.35,661.58" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-2 · disco · bar</title></polygon>
+<path d="M 90.19965000000002 670.2606 L 96.67364999999998 667.87365" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="77.15,654.81 80.78,664.66 93.73,659.89 90.10,650.04" fill="#d883a6" stroke="#293d40" stroke-width=".8"><title>d3-3 · disco · house</title></polygon>
+<path d="M 85.4385 657.34785 L 91.91250000000001 654.9609" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="141.52,574.22 143.42,560.93 130.95,559.14 129.05,572.43" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-1 · costa · bar</title></polygon>
+<path d="M 136.23525 566.6826000000001 L 129.999 565.78845" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="143.68,559.15 145.17,548.76 132.70,546.97 131.21,557.36" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-2 · costa · house</title></polygon>
+<path d="M 138.18855 553.05945 L 131.95229999999998 552.1653" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="145.43,546.97 147.05,535.62 134.58,533.83 132.95,545.19" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-3 · costa · pousada</title></polygon>
+<path d="M 140.0034 540.4014 L 133.76715000000002 539.50725" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="147.31,533.83 149.08,521.51 136.60,519.72 134.84,532.05" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c1-4 · costa · shop</title></polygon>
+<path d="M 141.9567 526.77825 L 135.72045 525.8841" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="143.99,500.45 139.48,490.97 127.02,496.89 131.52,506.38" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-1 · costa · house</title></polygon>
+<path d="M 135.50295 498.67245 L 129.2706 501.6336" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="138.71,489.34 133.78,478.98 121.32,484.90 126.25,495.27" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-2 · costa · pousada</title></polygon>
+<path d="M 130.01505 487.1223 L 123.7827 490.08345" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="133.01,477.35 127.67,466.11 115.20,472.03 120.55,483.28" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-3 · costa · shop</title></polygon>
+<path d="M 124.1088 474.69165 L 117.87645000000002 477.6528" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="126.90,464.48 121.14,452.36 108.67,458.28 114.43,470.40" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c2-4 · costa · bar</title></polygon>
+<path d="M 117.78419999999998 461.38019999999995 L 111.55184999999999 464.34135000000003" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="120.29,408.43 122.38,397.14 109.98,394.85 107.90,406.14" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-1 · costa · pousada</title></polygon>
+<path d="M 115.13849999999998 401.64015 L 108.94320000000002 400.49670000000003" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="122.70,395.37 124.96,383.13 112.57,380.84 110.31,393.08" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-2 · costa · shop</title></polygon>
+<path d="M 117.63630000000002 388.10625000000005 L 111.44100000000002 386.9628" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="125.29,381.36 127.72,368.16 115.33,365.87 112.90,379.07" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-3 · costa · bar</title></polygon>
+<path d="M 120.31110000000001 373.61355000000003 L 114.11580000000001 372.4701" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="128.05,366.39 129.96,356.06 117.57,353.77 115.66,364.10" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c3-4 · costa · house</title></polygon>
+<path d="M 122.80904999999998 360.07965 L 116.61375000000001 358.9362" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="139.54,334.99 145.83,324.25 133.92,317.27 127.63,328.02" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-1 · costa · shop</title></polygon>
+<path d="M 136.73205000000002 326.13149999999996 L 130.7781 322.64430000000004" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="146.74,322.69 153.53,311.11 141.62,304.14 134.83,315.72" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-2 · costa · bar</title></polygon>
+<path d="M 144.1803 313.4145 L 138.22635 309.9273" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="154.44,309.56 159.74,300.50 147.83,293.52 142.53,302.58" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c4-3 · costa · house</title></polygon>
+<path d="M 151.13565 301.539 L 145.1817 298.0518" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="192.74,217.38 179.83,221.05 183.27,233.17 196.19,229.50" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-1 · costa · bar</title></polygon>
+<path d="M 188.0079 225.27705000000003 L 189.72854999999998 231.33749999999998" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="204.58,214.02 194.48,216.89 197.92,229.01 208.02,226.14" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-2 · costa · house</title></polygon>
+<path d="M 201.24705 221.51805 L 202.9677 227.5785" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="217.35,210.40 206.31,213.53 209.75,225.65 220.79,222.52" fill="#65a99e" stroke="#293d40" stroke-width=".8"><title>c5-3 · costa · pousada</title></polygon>
+<path d="M 213.54840000000002 218.02545 L 215.26905 224.0859" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="237.46,264.03 247.96,263.94 247.85,250.14 237.35,250.23" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-1 · comercio · house</title></polygon>
+<path d="M 242.65259999999998 257.08335 L 242.5971 250.18349999999998" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="249.76,263.93 261.23,263.83 261.12,250.03 249.65,250.13" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-2 · comercio · pousada</title></polygon>
+<path d="M 255.43965000000003 256.9806 L 255.38415 250.08075000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="263.03,263.82 275.48,263.72 275.37,249.92 262.92,250.02" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-3 · comercio · shop</title></polygon>
+<path d="M 269.2017 256.86990000000003 L 269.1462 249.97005000000001" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="277.28,263.71 290.71,263.60 290.60,249.80 277.17,249.91" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m1-4 · comercio · bar</title></polygon>
+<path d="M 283.93874999999997 256.7514 L 283.88325000000003 249.85155" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="345.13,219.31 334.81,214.30 329.30,225.63 339.62,230.64" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-1 · comercio · pousada</title></polygon>
+<path d="M 337.21455 222.46965000000003 L 334.4613 228.1362" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="357.95,225.54 346.75,220.10 341.24,231.43 352.44,236.87" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-2 · comercio · shop</title></polygon>
+<path d="M 349.5933 228.48405 L 346.84005 234.15059999999997" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="371.64,232.19 359.56,226.32 354.06,237.66 366.13,243.52" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-3 · comercio · bar</title></polygon>
+<path d="M 362.84894999999995 234.9246 L 360.0957 240.59114999999997" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="382.70,237.57 373.26,232.98 367.75,244.31 377.20,248.90" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m2-4 · comercio · house</title></polygon>
+<path d="M 375.2277 240.93900000000002 L 372.47445000000005 246.60555000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="362.27,308.22 361.73,320.66 375.52,321.26 376.06,308.82" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-1 · comercio · shop</title></polygon>
+<path d="M 368.8956 314.7393 L 375.78914999999995 315.0372" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="361.66,322.46 361.08,335.87 374.86,336.47 375.44,323.05" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-2 · comercio · bar</title></polygon>
+<path d="M 368.2596 329.46299999999997 L 375.15315 329.7609" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="361.00,337.67 360.55,348.16 374.33,348.76 374.79,338.27" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-3 · comercio · house</title></polygon>
+<path d="M 367.66544999999996 343.21275 L 374.559 343.51065" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="360.47,349.96 359.97,361.42 373.76,362.02 374.25,350.55" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m3-4 · comercio · pousada</title></polygon>
+<path d="M 367.1136 355.98825 L 374.00715 356.28615" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="418.00,355.06 419.04,341.68 406.48,340.70 405.44,354.08" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-1 · comercio · bar</title></polygon>
+<path d="M 412.23915 347.87775 L 405.95820000000003 347.38785" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="417.04,367.32 417.86,356.85 405.30,355.87 404.48,366.34" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-2 · comercio · house</title></polygon>
+<path d="M 411.16875000000005 361.59855 L 404.8878 361.10865" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="416.01,380.56 416.90,369.12 404.34,368.14 403.45,379.58" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-3 · comercio · pousada</title></polygon>
+<path d="M 410.17425000000003 374.34735 L 403.8933 373.85745000000003" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="414.90,394.76 415.87,382.35 403.31,381.37 402.34,393.78" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m4-4 · comercio · shop</title></polygon>
+<path d="M 409.104 388.06815 L 402.82304999999997 387.57825" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="389.03,462.59 398.91,466.13 403.57,453.14 393.69,449.60" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-1 · comercio · house</title></polygon>
+<path d="M 396.2991 457.86465000000004 L 398.62800000000004 451.3695" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="400.61,466.74 411.41,470.61 416.07,457.62 405.26,453.75" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-2 · comercio · pousada</title></polygon>
+<path d="M 408.33615000000003 462.18075 L 410.66505 455.68559999999997" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="413.10,471.22 424.82,475.42 429.48,462.43 417.76,458.23" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-3 · comercio · shop</title></polygon>
+<path d="M 421.29105000000004 466.82595000000003 L 423.61995 460.3308" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="426.52,476.03 439.15,480.56 443.81,467.57 431.17,463.04" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m5-4 · comercio · bar</title></polygon>
+<path d="M 435.1638 471.80025 L 437.49269999999996 465.3051" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="470.71,394.67 463.90,403.91 474.04,411.39 480.85,402.15" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-1 · comercio · pousada</title></polygon>
+<path d="M 472.3746 403.03094999999996 L 477.44625 406.76835" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="479.16,383.20 471.77,393.23 481.92,400.70 489.30,390.68" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-2 · comercio · shop</title></polygon>
+<path d="M 480.53895 391.9518 L 485.61060000000003 395.6892" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="488.19,370.95 480.23,381.75 490.37,389.23 498.34,378.42" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m6-3 · comercio · bar</title></polygon>
+<path d="M 489.28185 380.0877 L 494.35350000000005 383.8251" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="538.02,397.84 543.62,386.73 531.30,380.52 525.70,391.63" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-1 · comercio · shop</title></polygon>
+<path d="M 534.65895 389.17995 L 528.4977 386.07375" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="544.43,385.12 550.48,373.13 538.15,366.92 532.11,378.91" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-2 · comercio · bar</title></polygon>
+<path d="M 541.29345 376.02045 L 535.1322 372.91425" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="551.29,371.53 556.01,362.15 543.69,355.94 538.96,365.31" fill="#e6b86c" stroke="#293d40" stroke-width=".8"><title>m7-3 · comercio · house</title></polygon>
+<path d="M 547.4892 363.7314 L 541.3279500000001 360.6252" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="566.26,310.36 564.51,297.05 552.01,298.70 553.77,312.01" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-1 · plaza · bar</title></polygon>
+<path d="M 559.1382 304.53045 L 552.89235 305.3553" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="564.27,295.27 562.89,284.86 550.40,286.51 551.78,296.92" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-2 · plaza · house</title></polygon>
+<path d="M 557.3363999999999 290.88645 L 551.0905499999999 291.7113" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="562.66,283.07 561.16,271.70 548.67,273.35 550.17,284.72" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-3 · plaza · pousada</title></polygon>
+<path d="M 555.6623999999999 278.20889999999997 L 549.4165499999999 279.03374999999994" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="560.92,269.91 559.29,257.57 546.80,259.22 548.43,271.56" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p1-4 · plaza · shop</title></polygon>
+<path d="M 553.8606 264.56489999999997 L 547.61475 265.38975" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="422.10,241.12 422.10,251.62 435.90,251.62 435.90,241.12" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-1 · plaza · house</title></polygon>
+<path d="M 429.0 246.375 L 435.90000000000003 246.375" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="422.10,227.85 422.10,239.33 435.90,239.33 435.90,227.85" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-2 · plaza · pousada</title></polygon>
+<path d="M 429.0 233.58749999999998 L 435.90000000000003 233.58749999999998" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="422.10,213.60 422.10,226.05 435.90,226.05 435.90,213.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-3 · plaza · shop</title></polygon>
+<path d="M 429.0 219.82500000000002 L 435.90000000000003 219.82500000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="422.10,198.38 422.10,211.80 435.90,211.80 435.90,198.38" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p2-4 · plaza · bar</title></polygon>
+<path d="M 429.0 205.08749999999998 L 435.90000000000003 205.08749999999998" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="513.51,180.56 503.49,174.97 497.35,185.98 507.38,191.57" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-1 · plaza · pousada</title></polygon>
+<path d="M 505.43265 183.27075 L 502.36485 188.77335" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="501.92,174.10 491.04,168.03 484.91,179.04 495.78,185.10" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-2 · plaza · shop</title></polygon>
+<path d="M 493.41225000000003 176.5689 L 490.34445 182.07150000000001" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="489.47,167.16 477.75,160.62 471.61,171.63 483.34,178.16" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p3-3 · plaza · bar</title></polygon>
+<path d="M 480.54015 169.39245 L 477.47234999999995 174.89505" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="449.51,272.40 461.96,272.40 461.96,258.60 449.51,258.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p4-1 · plaza · shop</title></polygon>
+<path d="M 455.73749999999995 265.5 L 455.73749999999995 258.6" stroke="#fff1d5" stroke-width="1.4"/>
 <polygon points="463.76,272.40 477.19,272.40 477.19,258.60 463.76,258.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p4-2 · plaza · bar</title></polygon>
 <path d="M 470.47499999999997 265.5 L 470.47499999999997 258.6" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="481.09,272.40 491.59,272.40 491.59,258.60 481.09,258.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p4-3 · plaza · house</title></polygon>
-<path d="M 486.33750000000003 265.5 L 486.33750000000003 258.6" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="471.80,159.98 475.08,146.96 462.86,143.88 459.58,156.90" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-1 · puesto · bar</title></polygon>
-<path d="M 467.3298 151.9314 L 461.2209 150.3918" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="476.03,143.18 478.60,133.00 466.38,129.92 463.81,140.10" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-2 · puesto · house</title></polygon>
-<path d="M 471.20640000000003 136.5498 L 465.09749999999997 135.0102" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="479.55,129.22 482.36,118.09 470.14,115.01 467.33,126.14" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-3 · puesto · pousada</title></polygon>
-<path d="M 474.84479999999996 122.1138 L 468.73589999999996 120.5742" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="455.94,59.12 446.09,62.75 450.85,75.70 460.71,72.07" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-1 · puesto · house</title></polygon>
-<path d="M 453.39615 67.40969999999999 L 455.77755 73.88565000000001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="470.37,53.82 459.60,57.78 464.37,70.73 475.14,66.77" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-2 · puesto · pousada</title></polygon>
-<path d="M 467.3688 62.27144999999999 L 469.75019999999995 68.74740000000001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="485.72,48.17 474.03,52.47 478.80,65.42 490.48,61.12" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-3 · puesto · shop</title></polygon>
-<path d="M 482.25660000000005 56.796599999999984 L 484.638 63.27255000000001" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="496.30,112.76 507.76,112.09 507.02,99.51 495.56,100.18" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-1 · puesto · pousada</title></polygon>
-<path d="M 501.6597 106.13219999999998 L 501.29055000000005 99.84300000000002" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="511.65,111.86 524.08,111.13 523.34,98.55 510.91,99.28" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-2 · puesto · shop</title></polygon>
-<path d="M 517.4949 105.20264999999999 L 517.1257499999999 98.91344999999998" stroke="#fff1d5" stroke-width="1.4"/>
-<polygon points="527.97,110.90 541.37,110.11 540.64,97.53 527.23,98.32" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-3 · puesto · bar</title></polygon>
-<path d="M 534.3034500000001 104.21609999999998 L 533.9342999999999 97.92690000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="478.99,272.40 489.49,272.40 489.49,258.60 478.99,258.60" fill="#9e9ec6" stroke="#293d40" stroke-width=".8"><title>p4-3 · plaza · house</title></polygon>
+<path d="M 484.23749999999995 265.5 L 484.23749999999995 258.6" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="471.58,157.76 474.87,144.74 462.65,141.66 459.37,154.68" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-1 · puesto · bar</title></polygon>
+<path d="M 467.11575000000005 149.71169999999998 L 461.00685 148.1721" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="475.31,143.00 477.87,132.82 465.65,129.74 463.09,139.92" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-2 · puesto · house</title></polygon>
+<path d="M 470.4792 136.3665 L 464.3703 134.82690000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="478.31,131.07 481.12,119.94 468.90,116.86 466.09,127.99" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s1-3 · puesto · pousada</title></polygon>
+<path d="M 473.60429999999997 123.96674999999999 L 467.49539999999996 122.42715" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="457.65,57.69 447.80,61.32 452.56,74.27 462.42,70.64" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-1 · puesto · house</title></polygon>
+<path d="M 455.10825 65.98095 L 457.48965000000004 72.45689999999999" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="470.11,53.11 459.34,57.07 464.11,70.02 474.88,66.06" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-2 · puesto · pousada</title></polygon>
+<path d="M 467.10990000000004 61.56749999999998 L 469.49129999999997 68.04345" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="483.49,48.19 471.80,52.49 476.57,65.44 488.25,61.14" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s2-3 · puesto · shop</title></polygon>
+<path d="M 480.02669999999995 56.817449999999994 L 482.40810000000005 63.29340000000002" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="504.34,111.53 515.80,110.86 515.06,98.28 503.61,98.96" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-1 · puesto · pousada</title></polygon>
+<path d="M 509.7018 104.9088 L 509.33265000000006 98.61959999999999" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="517.60,110.76 530.02,110.03 529.29,97.45 516.86,98.18" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-2 · puesto · shop</title></polygon>
+<path d="M 523.4406 104.1024 L 523.0714499999999 97.8132" stroke="#fff1d5" stroke-width="1.4"/>
+<polygon points="531.82,109.92 545.22,109.13 544.48,96.56 531.08,97.34" fill="#b0c58c" stroke="#293d40" stroke-width=".8"><title>s3-3 · puesto · bar</title></polygon>
+<path d="M 538.15275 103.23884999999999 L 537.7836 96.94965000000002" stroke="#fff1d5" stroke-width="1.4"/>
 <circle cx="141.0" cy="700.5" r="4" fill="#fff1d5"/><text x="147.0" y="694.5" fill="#213c40" font-family="sans-serif" font-size="9">SALIDA</text>
 <circle cx="96.0" cy="385.5" r="4" fill="#fff1d5"/><text x="102.0" y="379.5" fill="#213c40" font-family="sans-serif" font-size="9">PACIENTE</text>
 <circle cx="538.5" cy="78.0" r="4" fill="#fff1d5"/><text x="544.5" y="72.0" fill="#213c40" font-family="sans-serif" font-size="9">PUESTO</text>

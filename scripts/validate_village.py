@@ -2,7 +2,7 @@
 """Validate shared village polygons and write a reproducible overhead authoring map."""
 import hashlib,html,json,math
 from pathlib import Path
-from compact_village import TARGETS,rectangle,polygon_gap,road_gap,local
+from compact_village import TARGETS,PARCEL_GAP,rectangle,polygon_gap,road_gap,local
 from runtime_fingerprint import runtime_fingerprint
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'artifacts/godot/urban';OUT.mkdir(parents=True,exist_ok=True)
 w=json.loads((ROOT/'godot/data/world.json').read_text());buildings=w['buildings'];checks=[]
@@ -25,12 +25,13 @@ for i,b in enumerate(buildings):
   gap=min(gaps)
  check(gap>=2.999,'full road width plus 3m margin '+b['id'])
  check(all(polygon_gap(b['polygon'],o['polygon'])>=.099 for o in w['open_spaces']),'protected spaces '+b['id'])
- for other in buildings[i+1:]:check(polygon_gap(b['polygon'],other['polygon'])>=1.999,'nonoverlapping parcels '+b['id']+'/'+other['id'])
+ for other in buildings[i+1:]:check(polygon_gap(b['polygon'],other['polygon'])>=PARCEL_GAP-.001,'nonoverlapping parcels '+b['id']+'/'+other['id'])
 for block in w['blocks']:
  row=[b for b in buildings if b['block']==block['id']]
  check(3<=len(row)<=5,'compact block size '+block['id'])
- check(all(abs(polygon_gap(a['polygon'],b['polygon'])-2.6)<.002 for a,b in zip(row,row[1:])),'2.6m gaps '+block['id'])
+ check(all(abs(polygon_gap(a['polygon'],b['polygon'])-PARCEL_GAP)<.002 for a,b in zip(row,row[1:])),'1.2m gaps '+block['id'])
 for o in w['obstacles']:
+ if abs(o.get('yaw',0))>.001:check('polygon' in o and max(math.dist(p,q) for p,q in zip(o['polygon'],rectangle(o)))<.001,'rotated garden serializes its collision polygon '+str(o['x']))
  poly=o.get('polygon',rectangle(o))
  check(all(polygon_gap(poly,b['polygon'])>=.15 for b in buildings),'vegetation/solid clear of houses '+o['kind']+':'+str(o['x']))
 for actor,spawn in w['scene_spawns'].items():

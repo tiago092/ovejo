@@ -1,6 +1,6 @@
 {
   "urban_extent": "reference-slice",
-  "package_sha256": "5bf344e18257ff1cf63451f26c7ffa50fd47b255096e2086d2c7883adbd81760",
+  "package_sha256": "b47db1bd9d54cf881e538b6f1a69d1269d44e1dacd780d10516959f8bd375014",
   "records": [
     {
       "name": "club",
@@ -78,8 +78,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 148,
-        "primitives": 119612
+        "calls": 149,
+        "primitives": 119630
       }
     },
     {
@@ -94,8 +94,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 143,
-        "primitives": 116312
+        "calls": 144,
+        "primitives": 116330
       }
     },
     {
@@ -126,8 +126,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 140,
-        "primitives": 118552
+        "calls": 139,
+        "primitives": 118534
       }
     },
     {

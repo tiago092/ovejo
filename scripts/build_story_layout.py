@@ -102,8 +102,11 @@ vendor=local(story_shop,0,story_shop['d']/2+1.3)
 for block in blocks:
  row=[b for b in buildings if b['block']==block['id']]
  for left,right in zip(row,row[1:]):
-  x=(left['x']+right['x'])/2;z=(left['z']+right['z'])/2;r=.8
-  bed={'kind':'pocket_garden','x':round(x,4),'z':round(z,4),'w':1.6,'d':1.6,'h':1.7,'radius':r,'seed':vrng.randrange(10000),'district':block['district']}
+  delta=[right[k]-left[k] for k in ['x','z']];distance=math.hypot(*delta)
+  shift=(left['w']-right['w'])/4
+  x=(left['x']+right['x'])/2+delta[0]/distance*shift;z=(left['z']+right['z'])/2+delta[1]/distance*shift;r=.325
+  bed={'kind':'pocket_garden','x':round(x,4),'z':round(z,4),'w':.65,'d':1.3,'h':1.25,'yaw':left['yaw'],'radius':r,'seed':vrng.randrange(10000),'district':block['district']}
+  bed['polygon']=rectangle(bed)
   if touches_building(rectangle(bed),.2) or road_gap(rectangle(bed),nodes,edges)<3:continue
   obstacles.append(bed)
 # Large green groups are relocated, not left intersecting the new parcels.
@@ -118,7 +121,7 @@ for block in blocks:
   # A contrasting round crown, with its trunk represented in the shared collision data.
   tree={'kind':'broadleaf_tree','x':x,'z':z,'w':.8,'d':.8,'h':5.5,'angle':0,'district':block['district']}
   obstacles.append(tree);break
-world={'version':2,'bounds':[-197,220,-245,245],'boundary':boundary,'start':P[0],'start_angle':math.atan2(P[1][0]-P[0][0],P[1][1]-P[0][1]),'pickup':P[5],'hospital':P[-1],'nodes':nodes,'edges':edges,'main_route':list(range(len(main))),'bypass':{'from':a,'to':b,'extra_length':round(length(bypass)-length(main[a:b+1]),3)},'plaza_paving':[[round(cx+21*math.cos(i*math.tau/24),3),round(cz+21*math.sin(i*math.tau/24),3)] for i in range(24)],'landmarks':{'club':[-115,-232],'coast':P[3],'plaza':P[15],'hospital':[153,231]},'buildings':buildings,'blocks':blocks,'open_spaces':open_spaces,'district_targets':TARGETS,'obstacles':obstacles,'route_length':round(length(main),3),'pickup_index':40,'detail_pass':'compact-village-complete' if args.complete_urban else 'compact-village-reference','urban_extent':'complete' if args.complete_urban else 'reference-slice','vegetation_clusters':len(vegetation),'story_shop':[story_shop['x'],story_shop['z'],story_shop['d']],'story_shop_id':story_shop['id'],'scene_spawns':{'3':{'point':[-122,-221.5],'role':'venue_staff','parcel_id':'club'},'4':{'point':[-129,-221],'role':'party','parcel_id':'club'},'5':{'point':[-100,-220],'role':'party','parcel_id':'club'},'6':{'point':[round(main[18][0]-5.5,3),main[18][1]],'role':'photographer'},'8':{'point':vendor,'role':'vendor','parcel_id':story_shop['id']}},'art_extent':'complete' if args.complete_urban else 'reference-slice'}
+world={'version':2,'bounds':[-197,220,-245,245],'boundary':boundary,'start':P[0],'start_angle':math.atan2(P[1][0]-P[0][0],P[1][1]-P[0][1]),'pickup':P[5],'hospital':P[-1],'nodes':nodes,'edges':edges,'main_route':list(range(len(main))),'bypass':{'from':a,'to':b,'extra_length':round(length(bypass)-length(main[a:b+1]),3)},'plaza_paving':[[round(cx+21*math.cos(i*math.tau/24),3),round(cz+21*math.sin(i*math.tau/24),3)] for i in range(24)],'landmarks':{'club':[-115,-232],'coast':P[3],'plaza':P[15],'hospital':[153,231]},'buildings':buildings,'blocks':blocks,'open_spaces':open_spaces,'district_targets':TARGETS,'obstacles':obstacles,'route_length':round(length(main),3),'pickup_index':40,'detail_pass':'compact-village-tight-complete' if args.complete_urban else 'compact-village-tight-reference','urban_extent':'complete' if args.complete_urban else 'reference-slice','vegetation_clusters':len(vegetation),'story_shop':[story_shop['x'],story_shop['z'],story_shop['d']],'story_shop_id':story_shop['id'],'scene_spawns':{'3':{'point':[-122,-221.5],'role':'venue_staff','parcel_id':'club'},'4':{'point':[-129,-221],'role':'party','parcel_id':'club'},'5':{'point':[-100,-220],'role':'party','parcel_id':'club'},'6':{'point':[round(main[18][0]-5.5,3),main[18][1]],'role':'photographer'},'8':{'point':vendor,'role':'vendor','parcel_id':story_shop['id']}},'art_extent':'complete' if args.complete_urban else 'reference-slice'}
 (ROOT/'godot/data/world.json').write_text(json.dumps(world,indent=2)+'\n')
 print('Main',world['route_length'],'m; bypass +',world['bypass']['extra_length'],'m;',len(buildings),'buildings')
 print('Blocks:',[(b['id'],b['setback'],b['along_shift']) for b in blocks])

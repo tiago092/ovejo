@@ -1,7 +1,7 @@
 {
   "branch": "feat/compact-village",
-  "base_commit": "488507a482f4a19c5ce8de8fccbf2d309ba56cea",
-  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b",
+  "base_commit": "4275b699c99512e45fcbdc83a5d7307012d8ffb8",
+  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
   "urban_extent": "reference-slice",
   "checks": [
     {

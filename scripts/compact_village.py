@@ -1,10 +1,12 @@
 """Deterministic authoring of compact blocks; common polygon geometry for validation."""
 import math
 
+PARCEL_GAP=1.2
+
 TARGETS={'disco':12,'costa':18,'comercio':26,'plaza':14,'puesto':10}
 # Curated rows: district, stable block ID, route distance, side, number of parcels.
 # Positive normal is generally inland on the coast; actual shoreline is tested below.
-BLOCKS=[('disco','d1',26,1,4),('disco','d2',62,1,4),('disco','d3',43,-1,3),
+BLOCKS=[('disco','d1',26,1,4),('disco','d2',52,1,4),('disco','d3',43,-1,3),
  ('costa','c1',112,1,4),('costa','c2',174,1,4),('costa','c3',235,1,4),('costa','c4',300,1,3),('costa','c5',350,-1,3),
  ('comercio','m1',401,1,4),('comercio','m2',446,-1,4),('comercio','m3',491,1,4),('comercio','m4',539,-1,4),('comercio','m5',590,1,4),('comercio','m6',640,-1,3),('comercio','m7',689,1,3),
  ('plaza','p1',743,1,4),('plaza','p2',778,-1,4),('plaza','p3',815,1,3),('plaza','p4',832,-1,3),
@@ -72,11 +74,11 @@ def build(main,nodes,edges,shore):
  blocks=[]
  for block_index,(district,ident,distance,side,count) in enumerate(BLOCKS):
   widths=[7.0+((block_index+j)%4)*.65 for j in range(count)];depth=8.4 if block_index%2 else 9.2
-  spacing=2.6;total=sum(widths)+spacing*(count-1)
+  spacing=PARCEL_GAP;total=sum(widths)+spacing*(count-1)
   placed=None
-  # All members move together: compact rows and 2.6m gaps are never broken by rejection.
-  for offset in ([27,29,32,35] if ident in ['p2','p4'] else [17,19,21,24,28,32]):
-   for shift in [0,-8,8,-16,16,-24,24]:
+  # All members move together: compact rows and narrow gaps are never broken by rejection.
+  for offset in ([27,29,32,35] if ident in ['p2','p4'] else [14.5,15.5,16.5,17.5,18.5,20,22,25,28,32]):
+   for shift in [0,-4,4,-8,8,-12,12,-16,16,-20,20,-24,24]:
     point,tangent=at_distance(main,distance+shift);normal=[tangent[1]*side,-tangent[0]*side]
     if ident=='p2':point=[104,107];tangent=[0,1];normal=[-1,0]
     if ident=='p4':point=[104,107];tangent=[1,0];normal=[0,-1]
@@ -90,7 +92,7 @@ def build(main,nodes,edges,shore):
      b['polygon']=rectangle(b);poly=b['polygon']
      if any(p[0]<shore(p[1])+3 or p[0]>216 or abs(p[1])>241 for p in poly):break
      if road_gap(poly,nodes,edges)<3.05:break
-     if any(polygon_gap(poly,o['polygon'])<2 for o in buildings):break
+     if any(polygon_gap(poly,o['polygon'])<PARCEL_GAP for o in buildings):break
      if any(polygon_gap(poly,o['polygon'])<.1 for o in protected):break
      row.append(b)
     if len(row)==count:placed=row;break

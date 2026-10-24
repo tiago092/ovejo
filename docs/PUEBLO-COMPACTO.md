@@ -4,7 +4,7 @@ Preferencia confirmada: **más urbano y compacto**. Se trabaja en `feat/compact-
 
 ## Datos y distribución
 
-80 edificios: disco 12, costa 18, comercio 26, plaza 14 y puesto 10. Se incluyen la disco y el puesto existentes, que conservan posición y acceso. Los otros 78 edificios forman 22 conjuntos de tres o cuatro parcelas, con huecos de 2,6 metros. Se corrige la exclusión anterior del interior de la primera curva; las aperturas al mar son polígonos reservados explícitos.
+80 edificios: disco 12, costa 18, comercio 26, plaza 14 y puesto 10. Se incluyen la disco y el puesto existentes, que conservan posición y acceso. Los otros 78 edificios forman 22 conjuntos de tres o cuatro parcelas, con huecos de 1,2 metros. Se corrige la exclusión anterior del interior de la primera curva; las aperturas al mar son polígonos reservados explícitos.
 
 `scripts/build_story_layout.py` usa la biblioteca local `compact_village.py` para componer los conjuntos. El orden, las anclas de recorrido, el lado, el tamaño y las cuotas son explícitos y deterministas; el rechazo nunca elimina una casa suelta de un conjunto. La búsqueda mantiene el conjunto unido y prefiere los menores retiros antes de desplazarlo hacia el fondo.
 
@@ -38,3 +38,5 @@ Al resolver la revisión se podrá ejecutar `python3 scripts/build_story_layout.
 - Medición con cámaras abiertas/cerradas y perfiles Alta/Baja. El benchmark del tramo provisional no sustituye el del mundo completo; GPU y móviles físicos quedan expresamente pendientes.
 
 Se mantienen los límites de 300/150 llamadas de dibujo y 25 MiB comprimidos. Antes de publicar el mundo terminado se comprobarán el paquete real y su manifest por HTTPS.
+
+Revisión posterior solicitada por el usuario: «Acercar más las casas y cerrar huecos». Las parcelas pasan de 2,6 a 1,2 m de separación; la anchura de las fachadas aumenta dentro de la huella existente y el hueco entre los dos conjuntos interiores del primer tramo se reduce de 8,22 a 2,79 m. Los jardines estrechos se adaptan a las nuevas separaciones. Sigue pendiente la revisión del tramo antes de extenderlo.

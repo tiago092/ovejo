@@ -1,5 +1,5 @@
 {
-  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b",
+  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
   "passed": true,
   "counts": {
     "disco": 12,
@@ -13647,7 +13647,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps d1",
+      "name": "1.2m gaps d1",
       "passed": true
     },
     {
@@ -13655,7 +13655,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps d2",
+      "name": "1.2m gaps d2",
       "passed": true
     },
     {
@@ -13663,7 +13663,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps d3",
+      "name": "1.2m gaps d3",
       "passed": true
     },
     {
@@ -13671,7 +13671,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps c1",
+      "name": "1.2m gaps c1",
       "passed": true
     },
     {
@@ -13679,7 +13679,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps c2",
+      "name": "1.2m gaps c2",
       "passed": true
     },
     {
@@ -13687,7 +13687,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps c3",
+      "name": "1.2m gaps c3",
       "passed": true
     },
     {
@@ -13695,7 +13695,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps c4",
+      "name": "1.2m gaps c4",
       "passed": true
     },
     {
@@ -13703,7 +13703,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps c5",
+      "name": "1.2m gaps c5",
       "passed": true
     },
     {
@@ -13711,7 +13711,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m1",
+      "name": "1.2m gaps m1",
       "passed": true
     },
     {
@@ -13719,7 +13719,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m2",
+      "name": "1.2m gaps m2",
       "passed": true
     },
     {
@@ -13727,7 +13727,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m3",
+      "name": "1.2m gaps m3",
       "passed": true
     },
     {
@@ -13735,7 +13735,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m4",
+      "name": "1.2m gaps m4",
       "passed": true
     },
     {
@@ -13743,7 +13743,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m5",
+      "name": "1.2m gaps m5",
       "passed": true
     },
     {
@@ -13751,7 +13751,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m6",
+      "name": "1.2m gaps m6",
       "passed": true
     },
     {
@@ -13759,7 +13759,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps m7",
+      "name": "1.2m gaps m7",
       "passed": true
     },
     {
@@ -13767,7 +13767,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps p1",
+      "name": "1.2m gaps p1",
       "passed": true
     },
     {
@@ -13775,7 +13775,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps p2",
+      "name": "1.2m gaps p2",
       "passed": true
     },
     {
@@ -13783,7 +13783,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps p3",
+      "name": "1.2m gaps p3",
       "passed": true
     },
     {
@@ -13791,7 +13791,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps p4",
+      "name": "1.2m gaps p4",
       "passed": true
     },
     {
@@ -13799,7 +13799,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps s1",
+      "name": "1.2m gaps s1",
       "passed": true
     },
     {
@@ -13807,7 +13807,7 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps s2",
+      "name": "1.2m gaps s2",
       "passed": true
     },
     {
@@ -13815,7 +13815,11 @@
       "passed": true
     },
     {
-      "name": "2.6m gaps s3",
+      "name": "1.2m gaps s3",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses palm:-135.363",
       "passed": true
     },
     {
@@ -13855,99 +13859,95 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.532",
+      "name": "vegetation/solid clear of houses palm:-176.561",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-179.267",
+      "name": "vegetation/solid clear of houses palm:-166.586",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.016",
+      "name": "vegetation/solid clear of houses palm:-164.402",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-181.804",
+      "name": "vegetation/solid clear of houses palm:-183.89",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.714",
+      "name": "vegetation/solid clear of houses palm:-161.186",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-164.218",
+      "name": "vegetation/solid clear of houses palm:-174.829",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-168.783",
+      "name": "vegetation/solid clear of houses palm:-170.549",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.265",
+      "name": "vegetation/solid clear of houses palm:-173.439",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-178.513",
+      "name": "vegetation/solid clear of houses palm:-177.108",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-176.099",
+      "name": "vegetation/solid clear of houses palm:-169.131",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-171.297",
+      "name": "vegetation/solid clear of houses palm:-168.882",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-169.418",
+      "name": "vegetation/solid clear of houses palm:-171.98",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-165.906",
+      "name": "vegetation/solid clear of houses palm:-183.046",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-170.077",
+      "name": "vegetation/solid clear of houses palm:-171.489",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-176.459",
+      "name": "vegetation/solid clear of houses palm:-177.545",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-170.361",
+      "name": "vegetation/solid clear of houses palm:-173.883",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-173.493",
+      "name": "vegetation/solid clear of houses palm:-182.827",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.637",
+      "name": "vegetation/solid clear of houses palm:-166.689",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-171.924",
+      "name": "vegetation/solid clear of houses palm:-184.3",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-172.905",
+      "name": "vegetation/solid clear of houses palm:-185.243",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-183.764",
+      "name": "vegetation/solid clear of houses palm:-186.802",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-184.214",
+      "name": "vegetation/solid clear of houses palm:-173.581",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-165.86",
-      "passed": true
-    },
-    {
-      "name": "vegetation/solid clear of houses palm:-184.921",
+      "name": "vegetation/solid clear of houses palm:-171.033",
       "passed": true
     },
     {
@@ -13963,27 +13963,27 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-159.665",
+      "name": "vegetation/solid clear of houses palm:-166.314",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-162.976",
+      "name": "vegetation/solid clear of houses palm:-179.681",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-175.844",
+      "name": "vegetation/solid clear of houses palm:-183.171",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-175.574",
+      "name": "vegetation/solid clear of houses palm:-180.877",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-171.741",
+      "name": "vegetation/solid clear of houses palm:-173.579",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-175.276",
+      "name": "vegetation/solid clear of houses palm:-165.325",
       "passed": true
     },
     {
@@ -13991,23 +13991,19 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-185.011",
+      "name": "vegetation/solid clear of houses palm:-178.618",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-179.439",
+      "name": "vegetation/solid clear of houses palm:-161.649",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-174.314",
+      "name": "vegetation/solid clear of houses palm:-174.352",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses palm:-179.911",
-      "passed": true
-    },
-    {
-      "name": "vegetation/solid clear of houses palm:-166.889",
+      "name": "vegetation/solid clear of houses palm:-175.322",
       "passed": true
     },
     {
@@ -14016,14 +14012,6 @@
     },
     {
       "name": "vegetation/solid clear of houses palm:-166.218",
-      "passed": true
-    },
-    {
-      "name": "vegetation/solid clear of houses palm:-176.305",
-      "passed": true
-    },
-    {
-      "name": "vegetation/solid clear of houses palm:-188.01",
       "passed": true
     },
     {
@@ -14231,55 +14219,351 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-119.8025",
+      "name": "rotated garden serializes its collision polygon -97.9935",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-120.6883",
+      "name": "vegetation/solid clear of houses pocket_garden:-97.9935",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-113.7946",
+      "name": "rotated garden serializes its collision polygon -103.6194",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-112.3399",
+      "name": "vegetation/solid clear of houses pocket_garden:-103.6194",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-47.5174",
+      "name": "rotated garden serializes its collision polygon -109.6584",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-37.2835",
+      "name": "vegetation/solid clear of houses pocket_garden:-109.6584",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:-26.4007",
+      "name": "rotated garden serializes its collision polygon -119.206",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:35.2802",
+      "name": "vegetation/solid clear of houses pocket_garden:-119.206",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:34.3673",
+      "name": "rotated garden serializes its collision polygon -120.55",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:66.9624",
+      "name": "vegetation/solid clear of houses pocket_garden:-120.55",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:66.1652",
+      "name": "rotated garden serializes its collision polygon -121.986",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:162.4953",
+      "name": "vegetation/solid clear of houses pocket_garden:-121.986",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:161.1533",
+      "name": "rotated garden serializes its collision polygon -147.1113",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-147.1113",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -150.6226",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-150.6226",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -117.4562",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-117.4562",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -116.2924",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-116.2924",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -115.0364",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-115.0364",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -120.4243",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-120.4243",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -124.2223",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-124.2223",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -128.2993",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-128.2993",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -131.4379",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-131.4379",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -129.7137",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-129.7137",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -127.8715",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-127.8715",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -115.4447",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-115.4447",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -110.315",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-110.315",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -78.7794",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-78.7794",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -70.8912",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-70.8912",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -43.1317",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-43.1317",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -34.282",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-34.282",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -24.7823",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:-24.7823",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 19.7898",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:19.7898",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 28.3346",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:28.3346",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 37.464",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:37.464",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 36.7254",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:36.7254",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 36.2873",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:36.2873",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 35.9334",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:35.9334",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 65.4314",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:65.4314",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 64.7936",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:64.7936",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 64.1054",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:64.1054",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 59.0588",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:59.0588",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 67.3894",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:67.3894",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 76.332",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:76.332",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 108.5414",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:108.5414",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 114.1772",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:114.1772",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 149.5776",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:149.5776",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 154.147",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:154.147",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 163.0944",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:163.0944",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 162.0209",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:162.0209",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 160.8623",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses pocket_garden:160.8623",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon 77.0",
       "passed": true
     },
     {
@@ -14287,7 +14571,7 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:77.0",
+      "name": "rotated garden serializes its collision polygon 77.0",
       "passed": true
     },
     {
@@ -14295,127 +14579,211 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:99.0375",
+      "name": "rotated garden serializes its collision polygon 77.0",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:130.7182",
+      "name": "vegetation/solid clear of houses pocket_garden:77.0",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses pocket_garden:141.5994",
+      "name": "rotated garden serializes its collision polygon 124.0902",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-111.9749",
+      "name": "vegetation/solid clear of houses pocket_garden:124.0902",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-111.9749",
+      "name": "rotated garden serializes its collision polygon 115.7927",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-103.9834",
+      "name": "vegetation/solid clear of houses pocket_garden:115.7927",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-103.9834",
+      "name": "vegetation/solid clear of houses pocket_garden:99.575",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-119.538",
+      "name": "vegetation/solid clear of houses pocket_garden:109.725",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-119.538",
+      "name": "rotated garden serializes its collision polygon 103.6508",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-115.5228",
+      "name": "vegetation/solid clear of houses pocket_garden:103.6508",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-115.5228",
+      "name": "rotated garden serializes its collision polygon 105.6548",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-91.8598",
+      "name": "vegetation/solid clear of houses pocket_garden:105.6548",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-91.8598",
+      "name": "rotated garden serializes its collision polygon 98.2535",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-78.0309",
+      "name": "vegetation/solid clear of houses pocket_garden:98.2535",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-78.0309",
+      "name": "rotated garden serializes its collision polygon 106.5597",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:-31.4649",
+      "name": "vegetation/solid clear of houses pocket_garden:106.5597",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:-31.4649",
+      "name": "rotated garden serializes its collision polygon 135.2186",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:40.3901",
+      "name": "vegetation/solid clear of houses pocket_garden:135.2186",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:40.3901",
+      "name": "rotated garden serializes its collision polygon 144.7022",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:24.9904",
+      "name": "vegetation/solid clear of houses pocket_garden:144.7022",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:24.9904",
+      "name": "vegetation/solid clear of houses tropical_garden:-96.1404",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:75.7485",
+      "name": "vegetation/solid clear of houses broadleaf_tree:-96.1404",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:75.7485",
+      "name": "vegetation/solid clear of houses tropical_garden:-112.1605",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:68.4355",
+      "name": "vegetation/solid clear of houses broadleaf_tree:-112.1605",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:68.4355",
+      "name": "vegetation/solid clear of houses tropical_garden:-166.3185",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:92.3867",
+      "name": "vegetation/solid clear of houses broadleaf_tree:-166.3185",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:92.3867",
+      "name": "vegetation/solid clear of houses tropical_garden:-106.5575",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:166.2386",
+      "name": "vegetation/solid clear of houses broadleaf_tree:-106.5575",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:166.2386",
+      "name": "vegetation/solid clear of houses tropical_garden:-117.5898",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:170.9664",
+      "name": "vegetation/solid clear of houses broadleaf_tree:-117.5898",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:170.9664",
+      "name": "vegetation/solid clear of houses tropical_garden:-119.7454",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:-119.7454",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-101.1444",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:-101.1444",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-77.3481",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:-77.3481",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-29.455",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:-29.455",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:38.6679",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:38.6679",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:26.5192",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:26.5192",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:73.6216",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:73.6216",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:68.6204",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:68.6204",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:100.7329",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:100.7329",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:164.0062",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:164.0062",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:170.5624",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses broadleaf_tree:170.5624",
       "passed": true
     },
     {
@@ -14427,11 +14795,11 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:126.6127",
+      "name": "vegetation/solid clear of houses tropical_garden:126.3693",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:126.6127",
+      "name": "vegetation/solid clear of houses broadleaf_tree:126.3693",
       "passed": true
     },
     {
@@ -14443,27 +14811,27 @@
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:114.0586",
+      "name": "vegetation/solid clear of houses tropical_garden:113.5738",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:114.0586",
+      "name": "vegetation/solid clear of houses broadleaf_tree:113.5738",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:99.2659",
+      "name": "vegetation/solid clear of houses tropical_garden:99.0933",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:99.2659",
+      "name": "vegetation/solid clear of houses broadleaf_tree:99.0933",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses tropical_garden:136.5357",
+      "name": "vegetation/solid clear of houses tropical_garden:140.4995",
       "passed": true
     },
     {
-      "name": "vegetation/solid clear of houses broadleaf_tree:136.5357",
+      "name": "vegetation/solid clear of houses broadleaf_tree:140.4995",
       "passed": true
     },
     {

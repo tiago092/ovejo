@@ -235,11 +235,11 @@ func build_house(b: Dictionary) -> void:
 
 func build_compact_house(b: Dictionary) -> void:
 	building_frame=Transform3D(Basis(Vector3.UP,b.yaw),Vector3(b.x,World.height_at(b.x,b.z),b.z))
-	var w: float=b.w-1.4;var d: float=b.d-1.4;var h: float=b.h;var front: float=d*.5
+	var w: float=b.w-.6;var d: float=b.d-.6;var h: float=b.h;var front: float=d*.5
 	shape_at("SoftBox",Vector3(0,.04,0),Vector3(b.w,.08,b.d),"b7a78c",0,false,false)
 	shape_at("SoftBox",Vector3(0,h*.5,0),Vector3(w,h,d),b.color)
 	shape_at("SoftBox",Vector3(0,.22,0),Vector3(w+.12,.44,d+.12),"b4a186")
-	shape_at("Roof",Vector3(0,h+.65,0),Vector3(w+.9,1.4,d+.9),"936b5b" if b.family in ["house","shop"] else "78716a")
+	shape_at("Roof",Vector3(0,h+.65,0),Vector3(w+.4,1.4,d+.4),"936b5b" if b.family in ["house","shop"] else "78716a")
 	shape_at("SoftBox",Vector3(0,h,0),Vector3(w+.5,.18,d+.4),"e1caab",0,false,false)
 	shape_at("SoftBox",Vector3(0,1.5,front+.08),Vector3(1.2,3,.12),"395d60",0,false,false)
 	shape_at("SoftBox",Vector3(0,3.06,front+.09),Vector3(1.5,.14,.14),"ddcbb1",0,false,false)
@@ -252,26 +252,27 @@ func build_compact_house(b: Dictionary) -> void:
 			shape_at("SoftBox",Vector3(x,h-1.15,front+.08),Vector3(1.05,1.3,.12),"d9c5a8",0,false,false)
 			shape_at("SoftBox",Vector3(x,h-1.15,front+.16),Vector3(.8,1.1,.08),"416969",0,false,false)
 		# All accessories, including the awning below, fit the polygonal parcel.
-		shape_at("Pole",Vector3(side*(w*.5-.35),.42,front+.25),Vector3(.42,.8,.42),"a38367",0,true,false)
-		shape_at("Shrub",Vector3(side*(w*.5-.35),.95,front+.25),Vector3(.65,.7,.6),"62815b",0,true,false)
+		shape_at("Pole",Vector3(side*(w*.5-.35),.42,front-.1),Vector3(.42,.8,.42),"a38367",0,true,false)
+		shape_at("Shrub",Vector3(side*(w*.5-.35),.95,front-.1),Vector3(.65,.7,.6),"62815b",0,true,false)
 	if b.family in ["bar","shop"]:
-		shape_at("SoftBox",Vector3(0,3.55,front-.05),Vector3(w-.5,.22,1.2),"cfac7a" if b.family=="bar" else "819d96",0,false,false)
-		for x in [-1.2,0,1.2]:shape_at("SoftBox",Vector3(x,3.58,front-.04),Vector3(.45,.25,1.2),"bc827f",0,true,false)
+		shape_at("SoftBox",Vector3(0,3.55,front-.35),Vector3(w-.5,.22,1.2),"cfac7a" if b.family=="bar" else "819d96",0,false,false)
+		for x in [-1.2,0,1.2]:shape_at("SoftBox",Vector3(x,3.58,front-.34),Vector3(.45,.25,1.2),"bc827f",0,true,false)
 		sign_at(b.title,Vector3(0,h-.35,front+.22),.34,"f4e4c6")
 	elif b.family=="pousada":
-		shape_at("SoftBox",Vector3(0,3.7,front),Vector3(w-.8,.18,.95),"c0a180",0,false,false)
-		shape_at("SoftBox",Vector3(0,4.15,front+.35),Vector3(w-.8,.10,.08),"dbc9ab",0,true,false)
-		for i in range(5):shape_at("Pole",Vector3((i-2)*(w-.9)/4,3.95,front+.35),Vector3(.07,.5,.07),"dbc9ab",0,true,false)
+		shape_at("SoftBox",Vector3(0,3.7,front-.25),Vector3(w-.8,.18,.95),"c0a180",0,false,false)
+		shape_at("SoftBox",Vector3(0,4.15,front+.2),Vector3(w-.8,.10,.08),"dbc9ab",0,true,false)
+		for i in range(5):shape_at("Pole",Vector3((i-2)*(w-.9)/4,3.95,front+.2),Vector3(.07,.5,.07),"dbc9ab",0,true,false)
 	else:
 		for i in range(3):shape_at("SoftBox",Vector3((i-1)*.8,h-.7,front+.15),Vector3(.55,.65,.05),["d6bf9d","b78e9e","8cab9c"][i],0,true,false)
 	building_frame=Transform3D.IDENTITY
 	camera_blocker(Vector3(b.x,World.height_at(b.x,b.z),b.z),b)
 
 func build_pocket_garden(b: Dictionary) -> void:
-	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
-	shape_at("SoftBox",center+Vector3(0,.12,0),Vector3(1.5,.24,1.5),"a49c7e",0,false,false)
-	for i in range(3):shape_at("Shrub",center+Vector3((i-1)*.35,.6,0),Vector3(.75,1,.85),["5d8056","779363","48764f"][i],0,false,false)
-	for i in range(4):shape_at("TropicalLeaf",center+Vector3(0,1,0),Vector3(.25,.25,.25),"71965f",i*TAU/4,true,false)
+	building_frame=Transform3D(Basis(Vector3.UP,b.get("yaw",0)),Vector3(b.x,World.height_at(b.x,b.z),b.z))
+	shape_at("SoftBox",Vector3(0,.1,0),Vector3(b.w,.2,b.d),"a49c7e",0,false,false)
+	for i in range(2):shape_at("Shrub",Vector3(0,.55,(i-.5)*.5),Vector3(.5,.85,.65),["5d8056","779363"][i],0,false,false)
+	for i in range(2):shape_at("TropicalLeaf",Vector3(0,.85,0),Vector3(.12,.12,.12),"71965f",i*PI,true,false)
+	building_frame=Transform3D.IDENTITY
 
 func build_broadleaf_tree(b: Dictionary) -> void:
 	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)

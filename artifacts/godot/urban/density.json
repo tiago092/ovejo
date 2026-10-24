@@ -1,0 +1,19 @@
+{
+  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
+  "request": "Acercar más las casas y cerrar huecos",
+  "parcel_gap_m": {
+    "before": 2.6,
+    "after": 1.2
+  },
+  "wall_gap_first_row_m": {
+    "before": 3.999902761318085,
+    "after": 1.799959675820134
+  },
+  "inland_block_gap_m": {
+    "before": 8.21717067432608,
+    "after": 2.79108551821688
+  },
+  "building_count": 80,
+  "scope": "First-slice density revision; remaining district art is provisional.",
+  "baseline_world_sha256": "813c17f0ab1b6b1cf053e12ecd799be55feb3d0f763a25fe5d06a198a0586ece"
+}

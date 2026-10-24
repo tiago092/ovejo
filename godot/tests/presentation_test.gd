@@ -47,6 +47,19 @@ func run_checks() -> void:
 	art.building_frame=Transform3D.IDENTITY
 	art.camera_blocker(Vector3(13,2,-30),{"w":8,"d":9,"h":6,"yaw":.7})
 	check(is_equal_approx(art.get_child(art.get_child_count()-1).rotation.y,.7),"camera query solid uses the parcel orientation")
+	for family in ["house","pousada","shop","bar"]:
+		var data: Dictionary=preload("res://scripts/world_data.gd").data
+		var home: Dictionary=data.buildings.filter(func(b):return b.family==family)[0]
+		art.batches.clear();art.build_compact_house(home)
+		var inverse:=Transform3D(Basis(Vector3.UP,home.yaw),Vector3(home.x,preload("res://scripts/world_data.gd").height_at(home.x,home.z),home.z)).affine_inverse()
+		var within:=true
+		for batch in art.batches.values():
+			var mesh: Mesh=preload("res://scripts/visual_kit.gd").mesh(batch.shape)
+			for transform in batch.transforms:
+				for vertex in mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]:
+					var point: Vector3=inverse*(transform*vertex)
+					if absf(point.x)>home.w*.5+.002 or absf(point.z)>home.d*.5+.002:within=false
+		check(within,"widened "+family+" geometry stays inside its collision parcel")
 	art.free()
 	vehicle.free();actors.free()
 	var passed: bool=checks.all(func(c):return c.passed)

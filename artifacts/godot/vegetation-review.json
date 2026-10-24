@@ -1,0 +1,19 @@
+{
+  "scope": "Disco y primera curva costera",
+  "user_request": "Quiero que haya mas vegetación",
+  "approved_by_user": false,
+  "status": "Pasada de vegetación preparada; revisión artística pendiente",
+  "implemented": [
+    "19 grupos irregulares de vegetación",
+    "32 palmeras nuevas de alturas variadas",
+    "Arbustos, hojas anchas con nervadura y plantas bajas",
+    "Huellas sólidas compartidas y tres metros de margen con la carretera",
+    "Instancias por sector; detalle secundario solo en Alta"
+  ],
+  "baseline_sha256": {
+    "shop.png": "2a31649311929234414aac0a92d0fa435a6cfac2494cbcde21801c5a2216379f",
+    "coast.png": "c3cd9133abede71289a6b053956548eaf54040faeda2e4628f13171077d64f3d",
+    "club.png": "46d87513af50a86223dea3ba0c3af60adb964de77b1fe06fe0d79c9d0ddca725"
+  },
+  "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85"
+}

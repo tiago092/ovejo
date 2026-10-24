@@ -60,6 +60,7 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 	for obstacle in World.data.obstacles:
 		if not detailed(obstacle.x,obstacle.z):continue
 		if obstacle.kind=="palm":palm(obstacle.x,obstacle.z,obstacle.h,obstacle.angle)
+		elif obstacle.kind=="tropical_garden":build_tropical_garden(obstacle)
 		elif obstacle.kind=="plaza_garden":build_plaza(obstacle)
 		elif obstacle.kind=="sign":build_road_sign(obstacle)
 		camera_blocker(Vector3(obstacle.x,World.height_at(obstacle.x,obstacle.z),obstacle.z),obstacle)
@@ -301,6 +302,32 @@ func build_coast() -> void:
 	for building in World.data.buildings:
 		if not detailed(building.x,building.z):continue
 		for side in [-1,1]:shape_at("Round",Vector3(building.x+side*(building.w/2-1.2),World.height_at(building.x,building.z)+.7,building.z),Vector3(1.7,1.4,2.3),"668b68",0,true,false)
+
+# Layers stay inside the registered garden footprint: dark shrubs, broad leaves,
+# low ground cover, and tall palms. Repeated shapes use the existing sector batches.
+func build_tropical_garden(b: Dictionary) -> void:
+	var rng:=RandomNumberGenerator.new();rng.seed=int(b.seed)
+	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
+	var radius: float=b.radius
+	for i in range(9):
+		var angle:=rng.randf_range(0,TAU);var distance:=rng.randf_range(.2,radius*.62)
+		var at:=center+Vector3(cos(angle)*distance,.65,sin(angle)*distance)
+		var size:=rng.randf_range(1.1,1.9)
+		shape_at("Shrub",at,Vector3(size,1.5+size*.25,size*.85),["426c50","527b52","638653"][i%3],angle,false,false)
+	# Broad, curved leaves on three separate plants create a layered silhouette.
+	for i in range(3):
+		var angle: float=i*TAU/3+.4
+		var at:=center+Vector3(cos(angle)*radius*.45,1.3+i*.35,sin(angle)*radius*.45)
+		for j in range(7):
+			var yaw: float=j*TAU/7+angle
+			var size:=rng.randf_range(.55,.95)*radius/4.5
+			shape_at("TropicalLeaf",at,Vector3(size,size,size),["4e8050","6b9859","3d754e"][j%3],yaw,false,false)
+	# Smaller low leaf fans and flowers are secondary detail on Alta only.
+	for i in range(5):
+		var angle: float=i*TAU/5+.1
+		var at:=center+Vector3(cos(angle)*radius*.77,.18,sin(angle)*radius*.77)
+		for j in range(5):shape_at("TropicalLeaf",at,Vector3(.28,.28,.28),"799761",angle+j*TAU/5,true,false)
+		if i%2==0:shape_at("Round",at+Vector3(0,.48,0),Vector3(.18,.32,.18),"c78483",0,true,false)
 
 func build_landmark(b: Dictionary) -> void:
 	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)

@@ -38,3 +38,5 @@ El nuevo pueblo reutiliza las mallas editables de `tropical-kit.blend` y la ambu
 `pedestrians.blend` contiene tres arquetipos editables, cada uno con una sola superficie y un esqueleto de once huesos. `scripts/build_pedestrians.py` exporta `pedestrian-0/1/2.glb`; no abre ni modifica el protagonista. Los colores de vértice `Region` seleccionan piel, ropa, pantalón, pelo y calzado en el material local de Godot. Los modelos se conservan en el origen como biblioteca: seleccionar el rig del arquetipo en el Outliner para editarlo.
 
 El kit incorpora también `Bird`, una silueta costera original de cuatro triángulos. Los objetos nuevos, carteles, mostrador y escenas de este pase se concentran en disco y primera curva.
+
+La biblioteca `tropical-kit.blend` incluye `TropicalLeaf` (hoja ancha con nervadura y curvatura) y `Shrub` (copa baja irregular), reproducibles con `scripts/build_tropical_art.py`. La distribución de los diecinueve grupos vegetales y sus troncos sólidos vive en `scripts/build_story_layout.py`; los colores y capas se componen con instancias en Godot. No modifica el protagonista aprobado.

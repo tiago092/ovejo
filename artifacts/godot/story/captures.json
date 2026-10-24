@@ -13,8 +13,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 148,
-        "primitives": 112202
+        "calls": 151,
+        "primitives": 121322
       }
     },
     {
@@ -29,8 +29,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 143,
-        "primitives": 133716
+        "calls": 146,
+        "primitives": 142836
       }
     },
     {
@@ -45,8 +45,24 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 160,
-        "primitives": 109576
+        "calls": 163,
+        "primitives": 118696
+      }
+    },
+    {
+      "name": "first-curve",
+      "x": -132,
+      "z": -185,
+      "angle": -0.2,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 168,
+        "primitives": 131848
       }
     },
     {
@@ -77,8 +93,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 165,
-        "primitives": 95466
+        "calls": 168,
+        "primitives": 100032
       }
     },
     {
@@ -99,5 +115,5 @@
     }
   ],
   "errors": [],
-  "package_sha256": "9e2591a88b2926b585476118e71fe3297ed8e2c32b6270ac51de806af011b4ef"
+  "package_sha256": "94e4ce70cebdaea765449e952083319397cf2e824c97f0cf5d094d31077794b4"
 }

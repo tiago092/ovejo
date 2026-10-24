@@ -46,3 +46,5 @@ Three.js r160 conserva su licencia MIT en `vendor/THREE-LICENSE.txt`. `music.js`
 Trazado, colocación y polígonos originales en `scripts/build_story_layout.py`. El kit Blender local añade `Ring`, aro de 24×6 segmentos para la fuente, sin modificar el protagonista aprobado. Grafo, superficies y sólidos comparten `godot/data/world.json`. No se descargaron recursos de terceros nuevos para esta etapa.
 
 Peatones: modelos originales locales `pedestrian-0.glb`, `pedestrian-1.glb`, `pedestrian-2.glb`, con fuente `art-source/pedestrians.blend` y generador `scripts/build_pedestrians.py`. Una superficie por persona, once huesos y paleta por región; el protagonista aprobado se conserva por separado. `Bird` añade fauna costera decorativa al kit local.
+
+- Vegetación tropical ampliada: hojas curvas `TropicalLeaf` y arbustos `Shrub`, geometría original editable en `art-source/tropical-kit.blend`; GLB local y generador `scripts/build_tropical_art.py`. Sin imágenes ni recursos externos nuevos.

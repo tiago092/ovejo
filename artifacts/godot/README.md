@@ -1,6 +1,6 @@
 # Código Rosa · Evidencias de «Yo manejo» v2
 
-La nueva partida es jugable localmente: **150 segundos, ruta de 954,4 m, desvío +60 m, derrape automático y patrulla posterior a la recogida**. El parecido aprobado sigue intacto. La base del mundo completo está implementada. Tras el pedido «Añadir más detalle y vida antes de extender», la nueva pasada artística se concentra en disco y primera curva. Su revisión por el usuario y la validación física siguen pendientes.
+La nueva partida es jugable localmente: **150 segundos, ruta de 954,4 m, desvío +60 m, derrape automático y patrulla posterior a la recogida**. El parecido aprobado sigue intacto. La base del mundo completo está implementada. Tras el pedido «Quiero que haya mas vegetación», la nueva pasada añade 19 grupos vegetales y 32 palmeras en disco y primera curva. Su revisión por el usuario y la validación física siguen pendientes.
 
 - [Galería del tramo de referencia](story-review.html).
 - [Reglas, arquitectura y reproducción](../../docs/YO-MANEJO.md).
@@ -10,7 +10,7 @@ La nueva partida es jugable localmente: **150 segundos, ruta de 954,4 m, desvío
 
 ## Estado artístico y publicación
 
-`world.json` marca `art_extent: complete`: disco, costa, comercio, plaza y puesto tienen el acabado implementado. `story-reference/` conserva capturas y revisión técnica anteriores a extenderlo, sin atribuir aprobación al usuario. La galería compara el antes y después del nuevo detalle en disco y costa. El resto del pueblo conserva la base anterior; no se atribuye aprobación artística a su extensión.
+`world.json` marca `art_extent: complete`: disco, costa, comercio, plaza y puesto tienen el acabado implementado. `story-reference/` conserva capturas y revisión técnica anteriores a extenderlo, sin atribuir aprobación al usuario. La galería compara el antes y después de la vegetación nueva en disco y costa. El resto del pueblo conserva la base anterior; no se atribuye aprobación artística a su extensión.
 
 El workflow impide publicar por accidente una exportación `reference-slice` provisional. La exportación local está en `http://127.0.0.1:8767/dist/godot/`. El estado público se comprueba por HTTPS en `pages-audit.json`, verificando la huella de fuentes y el hash real del PCK servido. La caché de importación y una exportación limpia pueden producir PCK distintos; esto no cambia las fuentes ni las reglas.
 
@@ -18,7 +18,7 @@ El workflow impide publicar por accidente una exportación `reference-slice` pro
 
 | Informe | Verificación | Límite |
 |---|---|---|
-| `simulation.json` | 470 comprobaciones: grafo, despeje de caminos, barrido/esquinas, derrape a 30/60/120 FPS, reloj, misión, daños, estrellas, diálogos y reinicios. | Reglas v2; las referencias Three.js quedan archivadas. |
+| `simulation.json` | 508 comprobaciones: grafo, despeje de caminos, barrido/esquinas, derrape a 30/60/120 FPS, reloj, misión, daños, estrellas, diálogos y reinicios. | Reglas v2; las referencias Three.js quedan archivadas. |
 | `route-drive.json` | Ruta principal completada con entradas en 108,23 s y 96% de resistencia, sin teleport ni reposición. | Se retiran peatones/carritos para aislar geometría; no certifica balance humano. |
 | `route-drive-population.json` | Recorrido con todos los actores, 112,55 s activos, 62% de resistencia y dos atropellos y sin reposición. | Control automático, no prueba con cinco personas. |
 | `hud.json` | Dos comprobaciones del primer inicio real; HUD de 440×131 px, sin crecimiento por texto oculto. | Árbol de interfaz real, sin capturas congeladas. |
@@ -60,20 +60,20 @@ Revisión artística del usuario; cinco jugadores nuevos (≥4 victorias en prim
 
 ## Resultado de la exportación final
 
-Tamaño transferible local: **15,38 MiB gzip**; carga fría local emulada a 20 Mbit/s y 100 ms: **9,68 s**. No extrapolar estas cifras a dispositivos físicos.
+Tamaño transferible local: **15,39 MiB gzip**; carga fría local emulada a 20 Mbit/s y 100 ms: **9,60 s**. No extrapolar estas cifras a dispositivos físicos.
 
 | Perfil | Recuadro | Máximo de llamadas |
 |---|---|---:|
-| Baja | Cerrado | 127 |
-| Baja | Abierto | 142 |
-| Alta | Cerrado | 169 |
-| Alta | Abierto | 185 |
+| Baja | Cerrado | 129 |
+| Baja | Abierto | 144 |
+| Alta | Cerrado | 175 |
+| Alta | Abierto | 187 |
 
 Medición por SwiftShader, cuatro recorridos de 60 s con todos los actores activos. Los FPS y p95 de software están en el JSON diagnóstico; no certifican los objetivos físicos.
 
 ## Publicación
 
-[Versión pública Godot](https://tiago092.github.io/ovejo/). `pages-audit.json` verifica por HTTPS la huella de fuentes y el hash real del PCK servido; `acceptance.json` solo aprueba la publicación si coincide con las fuentes actuales. La pasada de detalle se publicó desde `40a5e00`; la auditoría confirmó fuentes actuales y PCK coherente con su manifest.
+[Versión pública Godot](https://tiago092.github.io/ovejo/). `pages-audit.json` verifica por HTTPS la huella de fuentes y el hash real del PCK servido; `acceptance.json` solo aprueba la publicación si coincide con las fuentes actuales. La pasada de vegetación se publicará con su auditoría de fuentes y PCK antes de cerrar esta entrega.
 
 `pages-browser.json` registra el arranque público sin API de pruebas ni errores, con capturas `pages-menu.png` y `pages-playing.png`. El arranque público observado fue de 7,53 s, con WASM y PCK comprimidos. Esta conexión sin limitar ancho de banda no equivale al ensayo local de 20 Mbit/s.
 

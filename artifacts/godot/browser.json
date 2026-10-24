@@ -1,6 +1,6 @@
 {
   "part": "combined",
-  "package_sha256": "9e2591a88b2926b585476118e71fe3297ed8e2c32b6270ac51de806af011b4ef",
+  "package_sha256": "94e4ce70cebdaea765449e952083319397cf2e824c97f0cf5d094d31077794b4",
   "browser": {
     "protocolVersion": "1.3",
     "product": "Chrome/156.0.8078.47",
@@ -204,15 +204,15 @@
       "scene": "coast",
       "quality": "high",
       "panel": true,
-      "calls": 176,
-      "primitives": 157710
+      "calls": 179,
+      "primitives": 166830
     },
     {
       "scene": "club",
       "quality": "high",
       "panel": true,
-      "calls": 159,
-      "primitives": 181850
+      "calls": 162,
+      "primitives": 190970
     },
     {
       "scene": "plaza",
@@ -232,15 +232,15 @@
       "scene": "coast",
       "quality": "low",
       "panel": true,
-      "calls": 133,
-      "primitives": 91734
+      "calls": 135,
+      "primitives": 100814
     },
     {
       "scene": "club",
       "quality": "low",
       "panel": true,
-      "calls": 121,
-      "primitives": 102616
+      "calls": 123,
+      "primitives": 111696
     },
     {
       "scene": "plaza",

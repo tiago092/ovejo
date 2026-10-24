@@ -57,3 +57,5 @@ El workflow publica al subir cambios a `master` o ejecutarlo manualmente; Pages 
 Las pruebas automatizadas de navegador utilizan SwiftShader y emulación móvil. No certifican los objetivos de 60 FPS en escritorio y 30 FPS en teléfono: esas mediciones requieren GPU y dispositivos reales.
 
 La revisión solicitada de **más detalle y vida** se concentra en disco y primera curva: personajes articulados, personal de puerta, amigos con vasos, fotógrafo, mostrador de coco, carteles, banderines y aves costeras. [Comparación del pase](artifacts/godot/story-review.html). Su revisión humana sigue abierta.
+
+La revisión de **más vegetación** añade 19 grupos con arbustos, hojas tropicales y plantas bajas, y 32 palmeras en disco/primera curva. Los encuadres anteriores se guardan en `artifacts/godot/vegetation-before/`; [comparación actual](artifacts/godot/story-review.html). La extensión al resto del pueblo espera esta revisión.

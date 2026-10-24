@@ -22,6 +22,16 @@ func _init() -> void:
 		check(not World.blocked(point.x,point.y,2),"road node clearance "+str(i))
 	for edge in World.data.edges:
 		check(World.clear_segment(World.nodes()[edge.a],World.nodes()[edge.b]),"road edge clear %d/%d" % [edge.a,edge.b])
+	for bed in World.data.obstacles.filter(func(o):return o.kind=="tropical_garden"):
+		var clear:=true
+		for dx in [-bed.radius,0,bed.radius]:
+			for dz in [-bed.radius,0,bed.radius]:
+				var p:=Vector2(bed.x+dx,bed.z+dz)
+				for edge in World.data.edges:
+					var nearest:=Geometry2D.get_closest_point_to_segment(p,World.nodes()[edge.a],World.nodes()[edge.b])
+					if p.distance_to(nearest)<edge.width*.5+2.99:clear=false
+		check(clear,"tropical garden leaves road width and steering margin clear "+str(bed.seed))
+		check(bed.z< -120 and World.blocked(bed.x,bed.z),"first-slice garden shares a solid footprint "+str(bed.seed))
 	var path:=World.route(Vector2(World.data.start[0],World.data.start[1]),Vector2(World.data.hospital[0],World.data.hospital[1]))
 	check(absf(World.path_length(path)-World.data.route_length)<1,"navigation follows main route")
 	for rate in [30,60,120]:

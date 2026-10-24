@@ -1,5 +1,5 @@
 {
-  "load_seconds": 9.676,
+  "load_seconds": 9.596,
   "network": {
     "mbps": 20,
     "latency_ms": 100,
@@ -13,8 +13,8 @@
     },
     {
       "name": "index.pck",
-      "encoded": 5982219,
-      "decoded": 6084132
+      "encoded": 5989194,
+      "decoded": 6097732
     }
   ]
 }

@@ -1429,6 +1429,158 @@
       "passed": true
     },
     {
+      "name": "tropical garden leaves road width and steering margin clear 6502.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 6502.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 6743.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 6743.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 1111.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 1111.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 5875.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 5875.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 4989.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 4989.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 4384.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 4384.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 7342.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 7342.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 7611.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 7611.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 7314.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 7314.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 6674.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 6674.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 2247.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 2247.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 7417.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 7417.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 9258.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 9258.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 5731.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 5731.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 2657.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 2657.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 8049.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 8049.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 6666.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 6666.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 4605.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 4605.0",
+      "passed": true
+    },
+    {
+      "name": "tropical garden leaves road width and steering margin clear 4227.0",
+      "passed": true
+    },
+    {
+      "name": "first-slice garden shares a solid footprint 4227.0",
+      "passed": true
+    },
+    {
       "name": "navigation follows main route",
       "passed": true
     },
@@ -1883,5 +2035,5 @@
   ],
   "passed": true,
   "rules_version": 2,
-  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d"
+  "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85"
 }

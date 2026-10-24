@@ -15,7 +15,7 @@ Desde la raíz del repositorio:
 python3 scripts/setup_tools.py
 scripts/godot.sh --editor
 
-# Importa, ejecuta 470 comprobaciones de simulación y 14 de presentación, y exporta.
+# Importa, ejecuta comprobaciones de simulación, presentación e interfaz, y exporta.
 python3 scripts/build_godot.py
 python3 scripts/serve_godot.py --port 8767
 ```

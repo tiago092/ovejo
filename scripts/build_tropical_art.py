@@ -37,6 +37,24 @@ bpy.ops.mesh.primitive_torus_add(major_radius=.43,minor_radius=.07,major_segment
 finish(bpy.context.object,'Ring')
 # Four-triangle seabird, editable wings animated by the local vertex shader.
 mesh=bpy.data.meshes.new('Bird');mesh.from_pydata([(-.6,.05,.05),(-.12,0,0),(0,.18,0),(.12,0,0),(.6,.05,.05),(0,-.28,0)],[],[(0,1,2),(2,3,4),(1,5,3),(1,3,2)]);mesh.update();o=bpy.data.objects.new('Bird',mesh);bpy.context.collection.objects.link(o);finish(o,'Bird')
+# A broad curved tropical leaf, with a raised central vein and a tapered tip.
+# Blender -Y exports as Godot +Z; all dimensions are authored in metres.
+verts=[]
+for i in range(11):
+ t=i/10;w=math.sin(math.pi*t)**.72*.48
+ y=-(t*2.4);z=math.sin(t*math.pi)*.42-t*t*.28
+ verts.extend([(-w,y,z-.10*math.sin(t*math.pi)),(0,y,z+.055*math.sin(t*math.pi)),(w,y,z-.10*math.sin(t*math.pi))])
+faces=[]
+for i in range(10):
+ a=i*3;b=(i+1)*3
+ faces.extend([(a,b,a+1),(a+1,b,b+1),(a+1,b+1,a+2),(a+2,b+1,b+2)])
+mesh=bpy.data.meshes.new('TropicalLeaf');mesh.from_pydata(verts,[],faces);mesh.update();o=bpy.data.objects.new('TropicalLeaf',mesh);bpy.context.collection.objects.link(o);finish(o,'TropicalLeaf')
+# Low, irregular shrub canopy. One opaque surface supports inexpensive instances.
+bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2,radius=.5)
+o=bpy.context.object
+for v in o.data.vertices:
+ v.co*=1+.10*math.sin(v.co.x*19+v.co.y*11)*math.cos(v.co.z*13)
+finish(o,'Shrub')
 # Keep each template at the origin: this file is a library, not a composed scene.
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'art-source/tropical-kit.blend'))
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'godot/assets/tropical-kit.glb'),export_format='GLB',export_yup=True,export_animations=False)

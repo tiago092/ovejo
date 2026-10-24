@@ -69,6 +69,28 @@ for _ in range(44):
  if on_road(x,z,2) or any(abs(x-b['x'])<b['w']/2+2 and abs(z-b['z'])<b['d']/2+2 for b in buildings):continue
  if any(math.dist((x,z),(o['x'],o['z']))<3 for o in obstacles):continue
  obstacles.append({'kind':'palm','x':round(x,3),'z':round(z,3),'w':.8,'d':.8,'h':rng.uniform(6,9),'angle':rng.uniform(0,6.28)})
+# Lush first-slice gardens: irregular groups, never on the road or in camera/start space.
+vegetation=[]
+vrng=random.Random(204)
+candidates=[(-139,-232,3.5),(-91,-230,4),(-143,-217,3),(-88,-211,4.5),
+ (-157,-201,4),(-162,-186,4),(-168,-176,4.5),(-159,-163,3),
+ (-168,-148,4),(-164,-132,4),(-173,-217,4.5),(-173,-235,4),
+ (-88,-186,4.5),(-93,-151,4),(-107,-132,3.5),(-178,-195,3),
+ (-112,-186,4.5),(-116,-164,4.5),(-121,-143,4),(-115,-123,3.5),
+ (-103,-174,4),(-98,-130,4),(-79,-165,4.5),(-98,-199,4)]
+for x,z,r in candidates:
+ # Full footprint is tested, with extra clearance for steering and rear cameras.
+ if any(on_road(x+dx,z+dz,3) for dx in [-r,0,r] for dz in [-r,0,r]):continue
+ if x-r<shore(z)+2:continue
+ if any(abs(x-b['x'])<r+b['w']/2+1 and abs(z-b['z'])<r+b['d']/2+1 for b in buildings):continue
+ if any(o['kind']!='palm' and abs(x-o['x'])<r+o['w']/2+.5 and abs(z-o['z'])<r+o['d']/2+.5 for o in obstacles):continue
+ garden={'kind':'tropical_garden','x':x,'z':z,'w':r*2,'d':r*2,'h':2.5,
+         'radius':r,'seed':vrng.randrange(10000)}
+ obstacles.append(garden);vegetation.append(garden)
+ # Solid trunks are registered separately; leafy crowns are above the camera.
+ for j in range(2 if r>=4 else 1):
+  px=x+(-1 if j==0 else 1)*r*.35;pz=z+vrng.uniform(-.8,.8)
+  obstacles.append({'kind':'palm','x':round(px,3),'z':round(pz,3),'w':.8,'d':.8,'h':vrng.uniform(6.8,10.2),'angle':vrng.uniform(0,math.tau)})
 # Raised plaza garden, fountain and benches share an explicit twelve-sided footprint.
 cx,cz=104,107
 # Reserve an actual courtyard; no house may cover the fountain or its approach.
@@ -82,7 +104,7 @@ obstacles.append({'kind':'sign','x':-104,'z':-205,'w':4,'d':.6,'h':3.1})
 for source,point in [(0,[-115,-220]),(len(main)-1,[153,217])]:
  nodes.append(point);edges.append({'a':source,'b':len(nodes)-1,'width':12,'section':'acceso','surface':'stone'})
 story_shop=next(b for b in buildings if b['title']=='AÇAÍ & COCO' and b['z'] < -100)
-world={'version':2,'bounds':[-197,220,-245,245],'boundary':boundary,'start':P[0],'start_angle':math.atan2(P[1][0]-P[0][0],P[1][1]-P[0][1]),'pickup':P[5],'hospital':P[-1],'nodes':nodes,'edges':edges,'main_route':list(range(len(main))),'bypass':{'from':a,'to':b,'extra_length':round(length(bypass)-length(main[a:b+1]),3)},'plaza_paving':[[round(cx+21*math.cos(i*math.tau/24),3),round(cz+21*math.sin(i*math.tau/24),3)] for i in range(24)],'landmarks':{'club':[-115,-232],'coast':P[3],'plaza':P[15],'hospital':[153,231]},'buildings':buildings,'obstacles':obstacles,'route_length':round(length(main),3),'pickup_index':40,'detail_pass':'disco-coast-1','story_shop':[story_shop['x'],story_shop['z'],story_shop['d']],'scene_spawns':{'3':{'point':[-122,-221.5],'role':'venue_staff'},'4':{'point':[-129,-221],'role':'party'},'5':{'point':[-100,-220],'role':'party'},'6':{'point':[round(main[18][0]-5.5,3),main[18][1]],'role':'photographer'},'8':{'point':[story_shop['x'],round(story_shop['z']-story_shop['d']/2-1.5,3)],'role':'vendor'}},'art_extent':'reference-slice' if args.reference_slice else 'complete'}
+world={'version':2,'bounds':[-197,220,-245,245],'boundary':boundary,'start':P[0],'start_angle':math.atan2(P[1][0]-P[0][0],P[1][1]-P[0][1]),'pickup':P[5],'hospital':P[-1],'nodes':nodes,'edges':edges,'main_route':list(range(len(main))),'bypass':{'from':a,'to':b,'extra_length':round(length(bypass)-length(main[a:b+1]),3)},'plaza_paving':[[round(cx+21*math.cos(i*math.tau/24),3),round(cz+21*math.sin(i*math.tau/24),3)] for i in range(24)],'landmarks':{'club':[-115,-232],'coast':P[3],'plaza':P[15],'hospital':[153,231]},'buildings':buildings,'obstacles':obstacles,'route_length':round(length(main),3),'pickup_index':40,'detail_pass':'disco-coast-vegetation-2','vegetation_clusters':len(vegetation),'story_shop':[story_shop['x'],story_shop['z'],story_shop['d']],'scene_spawns':{'3':{'point':[-122,-221.5],'role':'venue_staff'},'4':{'point':[-129,-221],'role':'party'},'5':{'point':[-100,-220],'role':'party'},'6':{'point':[round(main[18][0]-5.5,3),main[18][1]],'role':'photographer'},'8':{'point':[story_shop['x'],round(story_shop['z']-story_shop['d']/2-1.5,3)],'role':'vendor'}},'art_extent':'reference-slice' if args.reference_slice else 'complete'}
 (ROOT/'godot/data/world.json').write_text(json.dumps(world,indent=2)+'\n')
 print('Main',world['route_length'],'m; bypass +',world['bypass']['extra_length'],'m;',len(buildings),'buildings')
 balance=json.loads((ROOT/'godot/data/balance.json').read_text());balance.update(version=2,duration=150,wall_damage=6,cart_damage=8,ped_penalty=4,police_damage=4,police_penalty=0,immunity=1.5,drift_entry_speed=10,drift_exit_speed=8,drift_hold=.2,drift_drag=3,drift_recovery=.35,drift_limit_degrees=18,three_star_health=75)

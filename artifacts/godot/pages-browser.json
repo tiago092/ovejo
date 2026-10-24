@@ -1,6 +1,6 @@
 {
   "url": "https://tiago092.github.io/ovejo/",
-  "load_seconds": 7.534,
+  "load_seconds": 5.993,
   "resources": [
     {
       "name": "index.wasm",
@@ -9,8 +9,8 @@
     },
     {
       "name": "index.pck",
-      "encoded": 5983008,
-      "decoded": 6084116
+      "encoded": 5990233,
+      "decoded": 6097716
     }
   ],
   "checks": [
@@ -37,6 +37,6 @@
   ],
   "errors": [],
   "passed": true,
-  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d",
+  "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85",
   "device": "Headless Chrome / SwiftShader, no physical-device performance claim"
 }

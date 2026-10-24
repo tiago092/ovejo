@@ -1,10 +1,10 @@
 {
   "rules_version": 2,
-  "generated_utc": "2026-10-24T19:44:31.854111+00:00",
-  "base_commit": "58d11af22341da94a675a46e43ffce9d6c63caf3",
+  "generated_utc": "2026-10-24T19:47:29.674733+00:00",
+  "base_commit": "c362999641f9dce03e48b355d1de9af15cb9c1bc",
   "working_tree": "local implementation; source-manifest.json records exact hashes",
   "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
-  "physical_gpu_available": true,
+  "physical_gpu_available": false,
   "art_extent": "complete",
   "tools": "4.7.2.stable.official.ed1daf0bf",
   "checks": [
@@ -117,7 +117,7 @@
     },
     {
       "check": "Publicación del paquete final en HTTPS, solo Godot en raíz de Pages",
-      "status": "pendiente",
+      "status": "aprobada",
       "evidence": "pages-audit.json"
     }
   ],

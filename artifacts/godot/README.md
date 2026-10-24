@@ -73,9 +73,9 @@ Medición por SwiftShader, cuatro recorridos de 60 s con todos los actores activ
 
 ## Publicación
 
-[Versión pública Godot](https://tiago092.github.io/ovejo/). `pages-audit.json` verifica por HTTPS la huella de fuentes y el hash real del PCK servido; `acceptance.json` solo aprueba la publicación si coincide con las fuentes actuales. La pasada de vegetación se publicará con su auditoría de fuentes y PCK antes de cerrar esta entrega.
+[Versión pública Godot](https://tiago092.github.io/ovejo/). `pages-audit.json` verifica por HTTPS la huella de fuentes y el hash real del PCK servido; `acceptance.json` solo aprueba la publicación si coincide con las fuentes actuales. La pasada de vegetación se publicó desde `c362999`; la auditoría confirmó fuentes actuales y PCK coherente con su manifest.
 
-`pages-browser.json` registra el arranque público sin API de pruebas ni errores, con capturas `pages-menu.png` y `pages-playing.png`. El arranque público observado fue de 7,53 s, con WASM y PCK comprimidos. Esta conexión sin limitar ancho de banda no equivale al ensayo local de 20 Mbit/s.
+`pages-browser.json` registra el arranque público sin API de pruebas ni errores, con capturas `pages-menu.png` y `pages-playing.png`. El arranque público observado fue de 5,99 s, con WASM y PCK comprimidos. Esta conexión sin limitar ancho de banda no equivale al ensayo local de 20 Mbit/s.
 
 La inspección pública detectó un crecimiento del HUD al iniciar desde un panel oculto. Se corrigió desactivando el ajuste automático de líneas del destino (ya usa dos líneas explícitas) y reajustando su alto. `hud-before-fix.png` conserva el fallo; `story-first-live-start.png` registra la regresión de navegador posterior.
 

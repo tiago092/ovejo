@@ -65,7 +65,13 @@ func reset(seed_number: int = 27) -> void:
 		var at:=World.point_on_main(12+i*4 if i<12 else (World.data.route_length-4 if i>=28 else 260+(i-12)*34))
 		var point: Vector2=at.point+Vector2(cos(at.heading),-sin(at.heading))*(5.4 if i%2 else -5.4)
 		if i<3:point=Vector2(World.data.start[0]+6+i*1.5,World.data.start[1]+2+i*3)
-		pedestrians.append({"x":point.x,"z":point.y,"dx":random_between(-1,1),"dz":random_between(-1,1),"change":random_between(1,4),"cool":0.0,"club":i<12,"role":"friend" if i<3 else ("staff" if i>=28 else "walker")})
+		var role: String="friend" if i<3 else ("staff" if i>=28 else "walker")
+		var scene_spawn: Dictionary=World.data.get("scene_spawns",{}).get(str(i),{})
+		if not scene_spawn.is_empty():point=Vector2(scene_spawn.point[0],scene_spawn.point[1]);role=scene_spawn.role
+		var dx:=random_between(-1,1);var dz:=random_between(-1,1);var change:=random_between(1,4)
+		if role in ["venue_staff","vendor","photographer"]:dx=0;dz=0;change=200
+		pedestrians.append({"x":point.x,"z":point.y,"dx":dx,"dz":dz,"change":change,"cool":0.0,"club":i<12,"role":role})
+
 	for i in range(5):
 		var at:=World.point_on_main(180+i*140)
 		carts.append({"x":at.point.x,"z":at.point.y,"angle":at.heading,"distance":180.0+i*140,"dir":-1 if i%2 else 1,"speed":1.1+i*.15,"stop":0.0,"next":float(3+i)})

@@ -3,22 +3,22 @@
   "staging_directory": "dist/pages",
   "runtime": "godot",
   "game_route": "/",
-  "release_package_sha256": "53e618fb224e37b370ed42b2be7359d19e57e86159405e0bef67264620c11e17",
+  "release_package_sha256": "7cb78ceffdd3fb57a606df8816c83ef1808bfd1d71b593b5dab4e351089c598e",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "host.js": "bc3fa3b9b44d34a8a84bc737835797439e95b9815691adf7f777093df15ae196",
     "index.audio.position.worklet.js": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
     "index.audio.worklet.js": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-    "index.html": "001fd156339d82529e3c675eb4a394f1199aaeffd82a682dcf8cefea317148b0",
+    "index.html": "2aa5b56ad6304b469ae7cfa807c8812dfc7a4f22eb61fecf51261b5388d02981",
     "index.js": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
-    "index.pck": "53e618fb224e37b370ed42b2be7359d19e57e86159405e0bef67264620c11e17",
+    "index.pck": "7cb78ceffdd3fb57a606df8816c83ef1808bfd1d71b593b5dab4e351089c598e",
     "index.png": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
     "index.wasm": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
     "licenses/DejaVu.txt": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
     "licenses/Godot-third-party.json": "086c25a1fcb58d51759c0d0aecabac614b9a163b42e22470fe493ab90f7198dd",
     "licenses/Godot.txt": "00ccedfc77edd09db5313b516d2897e66a34c33e2ce9cf17c7ccd22a6df18f56",
-    "manifest.json": "f4e8b757aab470391326ff765b5d858dc7c6213643a8c6e0c873b86ea83670db"
+    "manifest.json": "d8b57d2ab4b7aa690b0f6130bcaf492ac8c9509988032309edd67a40ad8b46c4"
   },
-  "bytes": 45777782,
+  "bytes": 46035090,
   "hosting_compression": "Pending measurement on deployed Pages; no assumption based on local gzip results."
 }

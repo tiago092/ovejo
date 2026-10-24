@@ -35,8 +35,28 @@
     {
       "name": "rounded actors do not mutate simulation",
       "passed": true
+    },
+    {
+      "name": "thirty articulated actors keep the logical population",
+      "passed": true
+    },
+    {
+      "name": "townsperson uses one skinned surface",
+      "passed": true
+    },
+    {
+      "name": "neutral arm preserves imported rest rotation",
+      "passed": true
+    },
+    {
+      "name": "editable townsperson skeleton keeps eleven bones",
+      "passed": true
+    },
+    {
+      "name": "leaning trunk preserves length along its own axis",
+      "passed": true
     }
   ],
   "passed": true,
-  "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf"
+  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d"
 }

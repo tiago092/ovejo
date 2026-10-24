@@ -1,0 +1,18 @@
+{
+  "scope": "Disco y primera curva costera",
+  "user_request": "Añadir más detalle y vida antes de extender",
+  "implemented": [
+    "Tres arquetipos de peatón con una malla articulada y once huesos",
+    "Personal en la puerta, amigos con vasos y fotógrafo",
+    "Mostrador de coco, menú y cocos",
+    "Carteles, banderines y rastros de fiesta",
+    "Aves costeras y movimiento ambiental respetando movimiento reducido"
+  ],
+  "approved_by_user": false,
+  "status": "Nueva revisión preparada; no se atribuye aprobación al usuario",
+  "baseline_sha256": {
+    "club.png": "6364805592f3ab68123b9656a3ed055c22ee9a73fd84bd4d49f1b8bdc103c669",
+    "coast.png": "e62d74caf73d38d0327154a777a74b791f6764e93c76852534969e8b2a657405"
+  },
+  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d"
+}

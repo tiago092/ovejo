@@ -3156,5 +3156,48 @@
   ],
   "route_length": 954.4,
   "pickup_index": 40,
+  "detail_pass": "disco-coast-1",
+  "story_shop": [
+    -159.27,
+    -113.52,
+    11.65
+  ],
+  "scene_spawns": {
+    "3": {
+      "point": [
+        -122,
+        -221.5
+      ],
+      "role": "venue_staff"
+    },
+    "4": {
+      "point": [
+        -129,
+        -221
+      ],
+      "role": "party"
+    },
+    "5": {
+      "point": [
+        -100,
+        -220
+      ],
+      "role": "party"
+    },
+    "6": {
+      "point": [
+        -143.609,
+        -133.2031
+      ],
+      "role": "photographer"
+    },
+    "8": {
+      "point": [
+        -159.27,
+        -120.845
+      ],
+      "role": "vendor"
+    }
+  },
   "art_extent": "complete"
 }

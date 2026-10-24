@@ -9,6 +9,10 @@ func check(ok: bool,name: String) -> void:
 func fresh():
 	var s=Sim.new();s.start(false,true,27);s.pedestrians.clear();s.carts.clear();return s
 func _init() -> void:
+	var populated=Sim.new()
+	for i in range(populated.pedestrians.size()):
+		var p: Dictionary=populated.pedestrians[i]
+		check(not World.blocked(p.x,p.z,.4),"staged person spawns outside solids "+str(i))
 	var s=fresh()
 	check(s.time==150 and s.health==100,"v2 initial balance")
 	check(World.data.route_length>930 and World.data.route_length<970,"main route 950m")

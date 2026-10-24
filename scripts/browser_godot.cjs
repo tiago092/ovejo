@@ -9,9 +9,9 @@ const check=(name,ok)=>{checks.push({name,passed:!!ok});if(!ok)console.error('FA
 const command=async message=>c.evaluate(`__rosa.command(${JSON.stringify(message)})`);
 const snapshot=()=>c.evaluate('__rosa.snapshot()');
 const shot=async name=>{await c.sleep(700);await c.shot(path.join(out,(process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png'));captures.push((process.env.GODOT_CAPTURE_PREFIX||'story-')+name+'.png');};
-const load=async(freeze=true)=>{await c.call('Page.navigate',{url:base});let ready=false;for(let i=0;i<120;i++){ready=await c.evaluate('!!window.__rosa?.snapshot()');if(ready)break;await c.sleep(500);}if(!ready)throw Error('Godot failed to initialize');if(freeze)await command({command:'freeze',value:true});};
+const load=async(freeze=true)=>{await c.call('Page.navigate',{url:base});let ready=false;for(let i=0;i<120;i++){ready=await c.evaluate('!!window.__rosa?.snapshot()');if(ready)break;await c.sleep(500);}if(!ready)throw Error('Godot failed to initialize');if((await snapshot()).detail_pass!==world.detail_pass)throw Error('Stale presentation package');if(freeze)await command({command:'freeze',value:true});};
 try{
- await c.call('Network.enable');await c.call('Network.setBlockedURLs',{urls:['*soundcloud.com*']});
+ await c.call('Network.enable');await c.call('Network.setCacheDisabled',{cacheDisabled:true});await c.call('Network.setBlockedURLs',{urls:['*soundcloud.com*']});
  await c.call('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});await load(false);check('export initializes',true);
  await c.call('Input.dispatchMouseEvent',{type:'mousePressed',x:950,y:474,button:'left',clickCount:1});await c.call('Input.dispatchMouseEvent',{type:'mouseReleased',x:950,y:474,button:'left',clickCount:1});await c.sleep(700);
  await c.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await c.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await c.sleep(2200);
@@ -42,9 +42,9 @@ try{
  }
  if(part!=='flow'){
  for(const quality of ['high','low']){
-  await command({command:'quality',value:quality});await command({command:'start'});await command({command:'panel',value:quality==='high'});
+  await command({command:'quality',value:quality});await command({command:'start'});check('inset starts closed '+quality,!(await snapshot()).panel_open);await command({command:'panel',value:true});
   for(const [name,x,z,angle] of [['coast',-140,-145,0],['club',...world.start,Math.PI],['plaza',...world.landmarks.plaza,0],['hospital',hx,hz,0]]){
-   await command({command:'set',values:{x,z,angle}});await shot(name+'-'+quality);const s=await snapshot();counts.push({scene:name,quality,...s.render});check('draw budget '+name+' '+quality,s.render.calls<=(quality==='high'?300:150));
+   await command({command:'set',values:{x,z,angle}});await shot(name+'-'+quality);const s=await snapshot();counts.push({scene:name,quality,panel:true,...s.render});check('draw budget '+name+' '+quality,s.render.calls<=(quality==='high'?300:150));
   }
  }
  await command({command:'panel',value:true});await c.sleep(800);check('low inset draw budget',(await snapshot()).render.calls<=150);await command({command:'panel',value:false});check('closed inset stops rendering',!(await snapshot()).inset_rendering);

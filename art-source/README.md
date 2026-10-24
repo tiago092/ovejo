@@ -32,3 +32,9 @@ La revisión tropical de la ambulancia añade tapicería, costuras, estribos, de
 ## Escenario «Yo manejo»
 
 El nuevo pueblo reutiliza las mallas editables de `tropical-kit.blend` y la ambulancia revisada. Las posiciones, trazado y dimensiones se editan en `scripts/build_story_layout.py`, que produce el único `world.json` compartido por presentación y simulación. No ejecutar el generador de personaje para modificar el mundo. El kit incorpora `Ring`, un aro de 24×6 segmentos para la fuente. La extensión artística está implementada; la revisión humana del mundo sigue pendiente.
+
+## Peatones articulados y detalle de disco
+
+`pedestrians.blend` contiene tres arquetipos editables, cada uno con una sola superficie y un esqueleto de once huesos. `scripts/build_pedestrians.py` exporta `pedestrian-0/1/2.glb`; no abre ni modifica el protagonista. Los colores de vértice `Region` seleccionan piel, ropa, pantalón, pelo y calzado en el material local de Godot. Los modelos se conservan en el origen como biblioteca: seleccionar el rig del arquetipo en el Outliner para editarlo.
+
+El kit incorpora también `Bird`, una silueta costera original de cuatro triángulos. Los objetos nuevos, carteles, mostrador y escenas de este pase se concentran en disco y primera curva.

@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "name": "first real start keeps HUD below 180px",
+      "passed": true
+    },
+    {
+      "name": "HUD keeps a usable width",
+      "passed": true
+    }
+  ],
+  "hud_size": [
+    440.0,
+    131.0
+  ],
+  "passed": true,
+  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d"
+}

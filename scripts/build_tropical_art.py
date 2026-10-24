@@ -35,6 +35,8 @@ mesh=bpy.data.meshes.new('Hull');mesh.from_pydata(verts,[],faces);mesh.update();
 # Plaza fountain rim: unit outer diameter, low polygon count, opaque material.
 bpy.ops.mesh.primitive_torus_add(major_radius=.43,minor_radius=.07,major_segments=24,minor_segments=6)
 finish(bpy.context.object,'Ring')
+# Four-triangle seabird, editable wings animated by the local vertex shader.
+mesh=bpy.data.meshes.new('Bird');mesh.from_pydata([(-.6,.05,.05),(-.12,0,0),(0,.18,0),(.12,0,0),(.6,.05,.05),(0,-.28,0)],[],[(0,1,2),(2,3,4),(1,5,3),(1,3,2)]);mesh.update();o=bpy.data.objects.new('Bird',mesh);bpy.context.collection.objects.link(o);finish(o,'Bird')
 # Keep each template at the origin: this file is a library, not a composed scene.
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'art-source/tropical-kit.blend'))
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'godot/assets/tropical-kit.glb'),export_format='GLB',export_yup=True,export_animations=False)

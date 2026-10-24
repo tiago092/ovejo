@@ -1,6 +1,126 @@
 {
   "checks": [
     {
+      "name": "staged person spawns outside solids 0",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 1",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 2",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 3",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 4",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 5",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 6",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 7",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 8",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 9",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 10",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 11",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 12",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 13",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 14",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 15",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 16",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 17",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 18",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 19",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 20",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 21",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 22",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 23",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 24",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 25",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 26",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 27",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 28",
+      "passed": true
+    },
+    {
+      "name": "staged person spawns outside solids 29",
+      "passed": true
+    },
+    {
       "name": "v2 initial balance",
       "passed": true
     },
@@ -1763,5 +1883,5 @@
   ],
   "passed": true,
   "rules_version": 2,
-  "runtime_source_sha256": "cdfc606b30ff6ace442461722061a1d32c6c2ad7deb17f8324d6b14cfc9e2cdf"
+  "runtime_source_sha256": "708e9305e5dd1683e056d092a095b6c5797910004258b4ef4aeac358be864f1d"
 }

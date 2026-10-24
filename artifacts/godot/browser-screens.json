@@ -1,6 +1,6 @@
 {
   "part": "screens",
-  "package_sha256": "edea626d3346a3bc6d8f58be76ea46c8cb07f95e4b06cd5b984d81e7794f0ebb",
+  "package_sha256": "9e2591a88b2926b585476118e71fe3297ed8e2c32b6270ac51de806af011b4ef",
   "browser": {
     "protocolVersion": "1.3",
     "product": "Chrome/156.0.8078.47",
@@ -15,6 +15,14 @@
       "passed": true
     },
     {
+      "name": "first live start keeps compact HUD",
+      "passed": true
+    },
+    {
+      "name": "inset starts closed high",
+      "passed": true
+    },
+    {
       "name": "draw budget coast high",
       "passed": true
     },
@@ -23,7 +31,15 @@
       "passed": true
     },
     {
+      "name": "draw budget plaza high",
+      "passed": true
+    },
+    {
       "name": "draw budget hospital high",
+      "passed": true
+    },
+    {
+      "name": "inset starts closed low",
       "passed": true
     },
     {
@@ -32,6 +48,10 @@
     },
     {
       "name": "draw budget club low",
+      "passed": true
+    },
+    {
+      "name": "draw budget plaza low",
       "passed": true
     },
     {
@@ -91,53 +111,76 @@
     {
       "scene": "coast",
       "quality": "high",
-      "calls": 171,
-      "primitives": 169522
+      "panel": true,
+      "calls": 176,
+      "primitives": 157710
     },
     {
       "scene": "club",
       "quality": "high",
-      "calls": 150,
-      "primitives": 208446
+      "panel": true,
+      "calls": 159,
+      "primitives": 181850
+    },
+    {
+      "scene": "plaza",
+      "quality": "high",
+      "panel": true,
+      "calls": 138,
+      "primitives": 134540
     },
     {
       "scene": "hospital",
       "quality": "high",
-      "calls": 136,
-      "primitives": 165496
+      "panel": true,
+      "calls": 131,
+      "primitives": 147218
     },
     {
       "scene": "coast",
       "quality": "low",
-      "calls": 119,
-      "primitives": 84990
+      "panel": true,
+      "calls": 133,
+      "primitives": 91734
     },
     {
       "scene": "club",
       "quality": "low",
-      "calls": 105,
-      "primitives": 96792
+      "panel": true,
+      "calls": 121,
+      "primitives": 102616
+    },
+    {
+      "scene": "plaza",
+      "quality": "low",
+      "panel": true,
+      "calls": 106,
+      "primitives": 72792
     },
     {
       "scene": "hospital",
       "quality": "low",
-      "calls": 95,
-      "primitives": 81776
+      "panel": true,
+      "calls": 104,
+      "primitives": 76928
     }
   ],
   "captures": [
-    "tropical-menu-desktop.png",
-    "tropical-coast-high.png",
-    "tropical-club-high.png",
-    "tropical-hospital-high.png",
-    "tropical-coast-low.png",
-    "tropical-club-low.png",
-    "tropical-hospital-low.png",
-    "tropical-desktop-1920.png",
-    "tropical-mobile-390x844.png",
-    "tropical-mobile-844x390.png",
-    "tropical-mobile-dpr3.png",
-    "tropical-character-three-views.png"
+    "story-first-live-start.png",
+    "story-menu-desktop.png",
+    "story-coast-high.png",
+    "story-club-high.png",
+    "story-plaza-high.png",
+    "story-hospital-high.png",
+    "story-coast-low.png",
+    "story-club-low.png",
+    "story-plaza-low.png",
+    "story-hospital-low.png",
+    "story-desktop-1920.png",
+    "story-mobile-390x844.png",
+    "story-mobile-844x390.png",
+    "story-mobile-dpr3.png",
+    "story-character-three-views.png"
   ],
   "errors": [],
   "passed": true

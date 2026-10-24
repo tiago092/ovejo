@@ -55,3 +55,5 @@ Movimiento reducido omite la introducción y desactiva oscilaciones y animación
 El workflow publica al subir cambios a `master` o ejecutarlo manualmente; Pages debe usar **GitHub Actions** como fuente. `python3 scripts/prepare_pages.py` prepara únicamente Godot en `dist/pages/`.
 
 Las pruebas automatizadas de navegador utilizan SwiftShader y emulación móvil. No certifican los objetivos de 60 FPS en escritorio y 30 FPS en teléfono: esas mediciones requieren GPU y dispositivos reales.
+
+La revisión solicitada de **más detalle y vida** se concentra en disco y primera curva: personajes articulados, personal de puerta, amigos con vasos, fotógrafo, mostrador de coco, carteles, banderines y aves costeras. [Comparación del pase](artifacts/godot/story-review.html). Su revisión humana sigue abierta.

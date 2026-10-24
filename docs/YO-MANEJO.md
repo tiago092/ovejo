@@ -38,3 +38,9 @@ La revisión humana del mundo sigue abierta. El parecido aprobado se conserva po
 - Referencias históricas v1 bajo `artifacts/godot/archive-v1/` y `godot/tests/archive-v1/`; no se usan como expectativas de las reglas nuevas.
 
 Pendientes externos: revisión artística, prueba con cinco jugadores nuevos (≥4 victorias iniciales, mediana 90–130 s), GPU física, Android/iPhone, SoundCloud real y comprobación del paquete final en HTTPS.
+
+## Revisión de detalle y vida
+
+El usuario pidió «Añadir más detalle y vida antes de extender». El nuevo pase de escenas y objetos se concentra en disco y primera curva. La revisión está registrada en `artifacts/godot/detail-review.json` sin atribuir aprobación al usuario. Se mantienen los 30 peatones, cinco carritos, patrulla y reglas de la misión.
+
+Cada peatón utiliza una sola malla articulada con once huesos y tres arquetipos locales editables en Blender. Las poses conservan las rotaciones de reposo importadas; caminar, esperar, saludar y sostener objetos son presentación. Baja desactiva sus sombras proyectadas y utiliza contacto suave; Alta mantiene sombras. Las posiciones de las escenas se comparten con los datos del mundo y se comprueba que nazcan fuera de los sólidos.

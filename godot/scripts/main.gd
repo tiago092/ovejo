@@ -225,6 +225,7 @@ func apply_quality() -> void:
 	if quality_select:quality_select.select(["auto","high","low"].find(quality))
 	RenderingServer.directional_shadow_atlas_set_size(512 if low else 1024,true)
 	if world_art:world_art.quality(low)
+	if actors:actors.quality(low)
 	panel_open=false;panel_manual=false;panel_remaining=0
 	if dust:dust.amount=18 if low else 48
 	apply_resolution();layout_if_ready()
@@ -462,6 +463,7 @@ func test_snapshot() -> Dictionary:
 	var data: Dictionary=sim.snapshot();data["low"]=low;data["panel_open"]=panel_open;data["inset_rendering"]=inset.render_target_update_mode!=SubViewport.UPDATE_DISABLED;data["quality"]=quality;data["best"]=best;data["legacy_best"]=legacy_best;data["touch"]=touch;data["reduced"]=reduced
 	data["ui_size"]=[last_size.x,last_size.y];data["inputs"]=sim.keys.duplicate();data["touch_inputs"]=touch_pointers.duplicate();data["music_local"]=music.playing if music else false
 	data["presentation"]={"panel_manual":panel_manual,"panel_remaining":panel_remaining,"notice":notice_label.text,"settings_visible":settings_panel.visible,"suspension":vehicle.model.position.y,"braking_pitch":vehicle.model.rotation.x,"objective_visible":objective_label.visible,"camera_position":[camera.position.x,camera.position.y,camera.position.z],"camera_fov":camera.fov,"story_speaker":story.speaker,"story_remaining":story.remaining,"story_queue":story.queue.size(),"hud_rect":[hud.position.x,hud.position.y,hud.size.x,hud.size.y],"pickup_visual_progress":sim.load_progress/1.3}
+	data["detail_pass"]=World.data.get("detail_pass","baseline")
 	data["audio"]={}
 	for name in driving_audio.players:
 		var player: AudioStreamPlayer=driving_audio.players[name];data["audio"][name]={"playing":player.playing,"pitch":player.pitch_scale,"db":player.volume_db}

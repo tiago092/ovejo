@@ -9,6 +9,9 @@ var leaf_material: ShaderMaterial
 var palms: Array = []
 var static_batch_nodes: Array = []
 var foam_material: ShaderMaterial
+var bird_material: ShaderMaterial
+var bird_instances: MultiMesh
+var cloth_flags: Array=[]
 
 func material(color: String) -> StandardMaterial3D:
 	if materials.has(color): return materials[color]
@@ -19,13 +22,13 @@ func shape_at(shape: String,pos: Vector3,size: Vector3,color: String,rotation_y:
 	var key:="%s:%s:%s:%s:%s" % [shape,shadow,detail,floori((pos.x+220)/220),floori((pos.z+250)/250)]
 	if not batches.has(key):batches[key]={"shape":shape,"shadow":shadow,"detail":detail,"colors":[],"transforms":[]}
 	var rotation:=Basis(Vector3.UP,rotation_y) if axis==Vector3.ZERO else Basis(Quaternion(Vector3.UP,axis.normalized()))
-	batches[key].transforms.append(Transform3D(rotation.scaled(size),pos));batches[key].colors.append(Color(color))
+	batches[key].transforms.append(Transform3D(rotation.scaled_local(size),pos));batches[key].colors.append(Color(color))
 
 func cube_at(pos: Vector3,size: Vector3,color: String,rotation_y: float=0) -> void:
 	shape_at("SoftBox",pos,size,color,rotation_y,color in ["d9c7a5","f0dfbb"],color.begins_with("#") or color=="9b8260")
 
-func sign_at(text: String,pos: Vector3,size: float,color: String="fff0d3",back: bool=false) -> void:
-	var sign:=Label3D.new();sign.text=text;sign.font_size=64;sign.pixel_size=size/64;sign.position=pos;sign.modulate=Color(color);sign.outline_size=0;sign.rotation.y=PI if back else 0;sign.no_depth_test=false;add_child(sign)
+func sign_at(text: String,pos: Vector3,size: float,color: String="fff0d3",back: bool=false) -> Label3D:
+	var sign:=Label3D.new();sign.text=text;sign.font_size=64;sign.pixel_size=size/64;sign.position=pos;sign.modulate=Color(color);sign.outline_size=0;sign.rotation.y=PI if back else 0;sign.no_depth_test=false;add_child(sign);return sign
 
 func build() -> void:
 	var environment:=WorldEnvironment.new(); var env:=Environment.new(); environment.environment=env; add_child(environment)
@@ -51,6 +54,7 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 			shape_at("SoftBox",Vector3(building.x,World.height_at(building.x,building.z)+building.h/2,building.z),Vector3(building.w,building.h,building.d),"9daaa8")
 			camera_blocker(Vector3(building.x,World.height_at(building.x,building.z),building.z),building)
 	build_coast()
+	build_story_birds()
 	if World.data.art_extent=="complete":
 		for i in range(12):shape_at("SoftBox",Vector3(122-i*2.1,World.height_at(122-i*2.1,121)+5.2,121),Vector3(.7,.6,.05),["c79879","88aaa0","bd8ea5"][i%3],0,true,false)
 	for obstacle in World.data.obstacles:
@@ -63,7 +67,7 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 	for key in batches:
 		var batch: Dictionary=batches[key];var mm:=MultiMesh.new();mm.transform_format=MultiMesh.TRANSFORM_3D;mm.use_colors=true;mm.mesh=Kit.mesh(batch.shape);mm.instance_count=batch.transforms.size()
 		for i in range(mm.instance_count):mm.set_instance_transform(i,batch.transforms[i]);mm.set_instance_color(i,batch.colors[i])
-		var node:=MultiMeshInstance3D.new();node.multimesh=mm;node.set_meta("small_detail",batch.detail);node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if batch.shadow else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node);static_batch_nodes.append(node)
+		var node:=MultiMeshInstance3D.new();node.multimesh=mm;node.set_meta("small_detail",batch.detail);node.set_meta("source_shadow",batch.shadow);node.set_meta("round_decor",batch.shape in ["Round","Ring"]);node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if batch.shadow else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node);static_batch_nodes.append(node)
 	batches.clear()
 	water_material=ShaderMaterial.new();var shader:=Shader.new();shader.code="""shader_type spatial;
 render_mode cull_disabled;
@@ -165,10 +169,11 @@ func build_house(b: Dictionary) -> void:
 	var base:=World.height_at(b.x,b.z);var c:=Vector3(b.x,base,b.z)
 	var club: bool=b.title=="LUAU DO MORRO";var clinic: bool=b.title=="POSTO DE SAÚDE"
 	var family:=0 if "POUSADA" in b.title else (1 if "COCO" in b.title else (2 if "ARTESANATO" in b.title else 3))
+	var story_shop: bool=family==1 and b.z< -100
 	var wall: String=b.color
 	if club:wall="#b86476"
 	if clinic:wall="#e0dfc8"
-	shape_at("SoftBox",c+Vector3(0,b.h/2,-.9 if club else (.9 if clinic else 0)),Vector3(b.w,b.h,b.d-1.8 if club or clinic else b.d),wall)
+	shape_at("SoftBox",c+Vector3(0,b.h/2,-.9 if club else (.9 if clinic or story_shop else 0)),Vector3(b.w,b.h,b.d-1.8 if club or clinic or story_shop else b.d),wall)
 	shape_at("SoftBox",c+Vector3(0,.27,0),Vector3(b.w,.54,b.d),"bcab8f",0,false,false)
 	if not clinic:
 		shape_at("Roof",c+Vector3(0,b.h+1.1,0),Vector3(b.w+1.0,2.3,b.d-2.2 if club else b.d+.8),"a46c59" if family%2==0 else "876451")
@@ -177,7 +182,7 @@ func build_house(b: Dictionary) -> void:
 	# Side façades share the same kit but vary openings, trim and shutters.
 	for side in [-1,1]:
 		for ix in range(int(-b.w/2+4),int(b.w/2-2),7):
-			if club and side==1:continue
+			if (club and side==1) or (story_shop and side==-1):continue
 			if clinic and side==-1 and absf(ix)<6:continue
 			var z: float=side*(b.d/2+.05)
 			shape_at("SoftBox",c+Vector3(ix,3.0,z),Vector3(2.6,3,.16),"e8d7b5",0,false,false)
@@ -207,6 +212,7 @@ func build_house(b: Dictionary) -> void:
 	elif clinic:build_clinic(b,c)
 	else:
 		for side in [-1,1]:
+			if story_shop and side==-1:build_story_shop(b,c);continue
 			var z: float=side*(b.d/2+.15)
 			shape_at("SoftBox",c+Vector3(0,1.7,z),Vector3(3,3.4,.2),"34494d",0,false,false)
 			# Awnings and upper balconies distinguish bars, shops, houses and inns.
@@ -242,8 +248,34 @@ func build_club(b: Dictionary,c: Vector3) -> void:
 	sign_at("LUAU",c+Vector3(0,7.7,front-.06),1.5,"ffa2c9")
 	sign_at("DO MORRO",c+Vector3(0,6.35,front-.04),.65,"f4dca9")
 	sign_at("ATÉ O SOL CHEGAR",c+Vector3(0,4.25,front-.85),.43,"f6ccae")
+	# Party traces and posters stay inside the club's existing solid footprint.
+	for side in [-1,1]:
+		shape_at("SoftBox",c+Vector3(side*9.4,3.0,front-.12),Vector3(2.8,2.2,.12),"d4b99a",0,true,false)
+		sign_at("ÚLTIMA\nDANÇA" if side<0 else "HOJE\nATÉ O SOL",c+Vector3(side*9.4,3.0,front-.04),.36,"644556").set_meta("small_detail",true)
+		shape_at("Pole",c+Vector3(side*16.5,.6,front-.7),Vector3(.65,1.2,.65),"516763",0,true,false)
+		for j in range(4):
+			shape_at("SoftBox",c+Vector3(side*(10+j*.4),.04,front-.4-j*.2),Vector3(.11,.012,.22),["c7a88b","bc8b9b","81aaa4"][j%3],j*.6,true,false)
+	for i in range(3):
+		var flag:=MeshInstance3D.new();flag.mesh=Kit.mesh("SoftBox");flag.material_override=material(["c796aa","d8bf8d","7fa9a2"][i]);flag.scale=Vector3(.7,.75,.045);flag.position=c+Vector3([-11,-7,10][i],5.1,front-.12);flag.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;flag.set_meta("small_detail",i>0);add_child(flag);cloth_flags.append(flag)
 	# Local pink fill, no extra shadow maps.
 	var glow:=OmniLight3D.new();glow.position=c+Vector3(0,3.4,front+.5);glow.light_color=Color("ff78af");glow.light_energy=.9;glow.omni_range=12;glow.shadow_enabled=false;add_child(glow)
+
+func build_story_shop(b: Dictionary,c: Vector3) -> void:
+	var front: float=-b.d/2
+	for side in [-1,1]:shape_at("SoftBox",c+Vector3(side*(b.w*.5-.25),b.h*.5,front+.8),Vector3(.5,b.h,1.6),"c5ad89")
+	shape_at("SoftBox",c+Vector3(0,1,front+.7),Vector3(5.4,1.2,1.2),"9d7858")
+	shape_at("SoftBox",c+Vector3(0,1.65,front+.7),Vector3(5.8,.18,1.4),"c6ab7f")
+	shape_at("SoftBox",c+Vector3(0,3,front+1.5),Vector3(3.5,2,.12),"365851")
+	for i in range(7):shape_at("Round",c+Vector3(-1.7+i*.5,1.95+(i%2)*.1,front+.65),Vector3(.44,.42,.44),"83976b" if i%2 else "b2ac74",0,true,false)
+	shape_at("SoftBox",c+Vector3(0,4.15,front+.3),Vector3(7,.25,1.8),"8cac9d")
+	sign_at("AÇAÍ & COCO",c+Vector3(0,4.6,front+.1),.55,"f1dfbc",true)
+	sign_at("COCO GELADO\nAÇAÍ DO DIA",c+Vector3(0,3,front+1.40),.29,"e8dfb9",true).set_meta("small_detail",true)
+
+func build_story_birds() -> void:
+	bird_material=ShaderMaterial.new();var shader:=Shader.new();shader.code="shader_type spatial;render_mode cull_disabled;uniform float clock=0.0;void vertex(){VERTEX.y+=abs(VERTEX.x)*sin(clock*6.0)*.30;}void fragment(){ALBEDO=vec3(.27,.30,.30);ROUGHNESS=1.0;}";bird_material.shader=shader
+	var mesh: Mesh=Kit.mesh("Bird").duplicate();mesh.surface_set_material(0,bird_material)
+	bird_instances=MultiMesh.new();bird_instances.transform_format=MultiMesh.TRANSFORM_3D;bird_instances.mesh=mesh;bird_instances.instance_count=5
+	var node:=MultiMeshInstance3D.new();node.multimesh=bird_instances;node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node)
 
 func build_clinic(b: Dictionary,c: Vector3) -> void:
 	var front: float=-b.d/2
@@ -323,9 +355,17 @@ func patch(x0: float,x1: float,z0: float,z1: float,nx: int,nz: int,mat: Material
 
 func animate(t: float) -> void:
 	water_material.set_shader_parameter("clock",t);leaf_material.set_shader_parameter("clock",t);foam_material.set_shader_parameter("clock",t)
+	if bird_material:bird_material.set_shader_parameter("clock",t)
+	if bird_instances:
+		for i in range(5):
+			var phase:=t*.13+i*1.2;var z: float=-175+sin(phase)*55;var x:=World.shore_at(z)-14+cos(phase)*9
+			bird_instances.set_instance_transform(i,Transform3D(Basis(Vector3.UP,phase+PI*.5),Vector3(x,10+i*.7+sin(phase*2)*.3,z)))
+	for i in range(cloth_flags.size()):cloth_flags[i].rotation.z=sin(t*.9+i)*.04
 
 func quality(is_low: bool) -> void:
 	sun.directional_shadow_max_distance=40 if is_low else 65
+	if bird_instances:bird_instances.visible_instance_count=3 if is_low else 5
 	for n in get_children():
-		if n is Label3D:n.visibility_range_end=60 if is_low else 120
+		if n is Label3D:n.visibility_range_end=40 if is_low else 120
 		if n.get_meta("small_detail",false):n.visible=not is_low
+		if n.has_meta("source_shadow"):n.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if n.get_meta("source_shadow") and not (is_low and n.get_meta("round_decor",false)) else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

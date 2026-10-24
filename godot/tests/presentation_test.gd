@@ -1,6 +1,7 @@
 extends SceneTree
 const Sim=preload("res://scripts/simulation.gd")
 const Vehicle=preload("res://scripts/vehicle_visual.gd")
+const Art=preload("res://scripts/world_visual.gd")
 const Actors=preload("res://scripts/actors_visual.gd")
 var checks: Array=[]
 func check(value: bool,title: String) -> void:
@@ -25,6 +26,17 @@ func run_checks() -> void:
 	check(vehicle.model.position.y==0 and vehicle.model.rotation.x==0 and vehicle.head.rotation.x==0 and vehicle.head.rotation.z==0,"reduced motion removes secondary vehicle and head movement")
 	var actors=Actors.new();root.add_child(actors);actors.update(sim,.7,false)
 	check(before==sim.snapshot(),"rounded actors do not mutate simulation")
+	check(actors.humans.size()==30,"thirty articulated actors keep the logical population")
+	var person=actors.humans[0]
+	check(person.body.mesh.get_surface_count()==1 and person.body.skin!=null,"townsperson uses one skinned surface")
+	person.pose("ArmR",Vector3.ZERO)
+	check(person.skeleton.get_bone_pose_rotation(person.bones.ArmR).is_equal_approx(person.skeleton.get_bone_rest(person.bones.ArmR).basis.get_rotation_quaternion()),"neutral arm preserves imported rest rotation")
+	check(person.skeleton.get_bone_count()==11,"editable townsperson skeleton keeps eleven bones")
+	var art=Art.new();var axis:=Vector3(.2,8,.3).normalized()
+	art.shape_at("Pole",Vector3.ZERO,Vector3(.4,8,.4),"9b8260",0,false,true,axis)
+	var trunk: Transform3D=art.batches.values()[0].transforms[0]
+	check((trunk.basis*Vector3.UP).distance_to(axis*8)<.001,"leaning trunk preserves length along its own axis")
+	art.free()
 	vehicle.free();actors.free()
 	var passed: bool=checks.all(func(c):return c.passed)
 	var output=FileAccess.open("res://../artifacts/godot/presentation.json",FileAccess.WRITE)

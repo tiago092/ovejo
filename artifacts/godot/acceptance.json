@@ -1,13 +1,19 @@
 {
   "rules_version": 2,
-  "generated_utc": "2026-10-24T14:46:59.634735+00:00",
-  "base_commit": "a124df827bc0bacd561c0fc0f2dbc5a4de17d849",
+  "generated_utc": "2026-10-24T16:49:50.685222+00:00",
+  "base_commit": "22e66025dfab33302939a9f11beb90dd9566e19b",
   "working_tree": "local implementation; source-manifest.json records exact hashes",
   "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
   "physical_gpu_available": false,
   "art_extent": "complete",
   "tools": "4.7.2.stable.official.ed1daf0bf",
   "checks": [
+    {
+      "check": "HUD compacto al primer arranque real",
+      "status": "aprobada",
+      "evidence": "hud.json",
+      "matches_current_package": true
+    },
     {
       "check": "Simulación v2: reglas, colisiones continuas y trazas 30/60/120 FPS",
       "status": "aprobada",

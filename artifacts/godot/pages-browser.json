@@ -1,0 +1,42 @@
+{
+  "url": "https://tiago092.github.io/ovejo/",
+  "load_seconds": 5.06,
+  "resources": [
+    {
+      "name": "index.wasm",
+      "encoded": 10248949,
+      "decoded": 39514754
+    },
+    {
+      "name": "index.pck",
+      "encoded": 5728324,
+      "decoded": 5826936
+    }
+  ],
+  "checks": [
+    {
+      "name": "public release starts",
+      "passed": true
+    },
+    {
+      "name": "story title",
+      "passed": true
+    },
+    {
+      "name": "no instrumented API",
+      "passed": true
+    },
+    {
+      "name": "Godot runtime only",
+      "passed": true
+    },
+    {
+      "name": "no runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "runtime_source_sha256": "d6872f6c27f22dd8fc66fc10df885586f3a2083eccc9544deb388a2518a3080e",
+  "device": "Headless Chrome / SwiftShader, no physical-device performance claim"
+}

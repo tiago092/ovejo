@@ -27,5 +27,5 @@ func _init() -> void:
 		s.advance(1.0/60,inputs);minimum_health=minf(minimum_health,s.health)
 	var passed: bool=s.state==Sim.WON
 	var f=FileAccess.open("res://../artifacts/godot/route-drive-population.json" if population else "res://../artifacts/godot/route-drive.json",FileAccess.WRITE)
-	f.store_string(JSON.stringify({"passed":passed,"state":s.state,"active_seconds":150-s.time,"health":s.health,"minimum_health":minimum_health,"position":[s.x,s.z],"progress":best_progress,"population":population,"pedestrian_hits":s.ped_hits,"bumps":s.bumps,"note":"Input-driven primary route, no teleports or replenishment. Full population with proximity siren." if population else "Input-driven route with pedestrians/carts removed to isolate geometry. Neither mode certifies five-player balance."},"  "))
-	print("Input-driven route: ",s.state," in ",150-s.time," s; health ",s.health);quit(0 if passed else 1)
+	f.store_string(JSON.stringify({"passed":passed,"state":s.state,"active_seconds":s.clock,"deadline_used":150-s.time,"health":s.health,"minimum_health":minimum_health,"position":[s.x,s.z],"progress":best_progress,"population":population,"pedestrian_hits":s.ped_hits,"bumps":s.bumps,"note":"Input-driven primary route, no teleports or replenishment. Full population with proximity siren." if population else "Input-driven route with pedestrians/carts removed to isolate geometry. Neither mode certifies five-player balance."},"  "))
+	print("Input-driven route: ",s.state," in ",s.clock," s; health ",s.health);quit(0 if passed else 1)

@@ -2,6 +2,22 @@
   "art_extent": "complete",
   "records": [
     {
+      "name": "shop",
+      "x": -145.27,
+      "z": -127.52,
+      "angle": -0.65,
+      "seed": 27,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "render": {
+        "calls": 148,
+        "primitives": 112202
+      }
+    },
+    {
       "name": "club",
       "x": -115,
       "z": -210,
@@ -13,8 +29,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 128,
-        "primitives": 99974
+        "calls": 143,
+        "primitives": 133716
       }
     },
     {
@@ -29,8 +45,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 148,
-        "primitives": 101588
+        "calls": 160,
+        "primitives": 109576
       }
     },
     {
@@ -45,8 +61,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 126,
-        "primitives": 86368
+        "calls": 122,
+        "primitives": 86406
       }
     },
     {
@@ -61,8 +77,8 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 154,
-        "primitives": 92482
+        "calls": 165,
+        "primitives": 95466
       }
     },
     {
@@ -77,11 +93,11 @@
       ],
       "quality": "high",
       "render": {
-        "calls": 121,
-        "primitives": 84138
+        "calls": 119,
+        "primitives": 100466
       }
     }
   ],
   "errors": [],
-  "package_sha256": "d1c011d0c45e5edba0eeeb0066331e65709cb24dd227a49565f61334d406de06"
+  "package_sha256": "9e2591a88b2926b585476118e71fe3297ed8e2c32b6270ac51de806af011b4ef"
 }

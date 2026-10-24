@@ -1,8 +1,8 @@
 {
-  "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85",
+  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "rules_version": 2,
-  "art_extent": "complete",
+  "art_extent": "reference-slice",
   "verification": false,
   "files": {
     "index.wasm": {
@@ -23,12 +23,12 @@
     "index.html": {
       "bytes": 3900,
       "gzip_bytes": 2017,
-      "sha256": "a6229ef01fa9430a627cb63d805c8fb8c482f5b6c98f62011dc1b60f7989f194"
+      "sha256": "caeeb50a4b5b9b3dbb3b00f7864283e8893e48ceeed34fe43d2624c3f90ee961"
     },
     "index.pck": {
-      "bytes": 6097732,
-      "gzip_bytes": 5989194,
-      "sha256": "baebef0a0f43aa930a1afbb9c1d748d4dd4a8a18c0c3ebc5d3eafad139e8c4c5"
+      "bytes": 6168484,
+      "gzip_bytes": 6001101,
+      "sha256": "ee100bf7df1b6d7d934e39939e11918ff607aad430d7dcd115842e5e80a05b33"
     },
     "index.audio.worklet.js": {
       "bytes": 7298,
@@ -46,5 +46,5 @@
       "sha256": "bc3fa3b9b44d34a8a84bc737835797439e95b9815691adf7f777093df15ae196"
     }
   },
-  "gzip_mib": 15.391206741333008
+  "gzip_mib": 15.402562141418457
 }

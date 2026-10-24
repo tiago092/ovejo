@@ -13,6 +13,9 @@ func _init() -> void:
 	for i in range(populated.pedestrians.size()):
 		var p: Dictionary=populated.pedestrians[i]
 		check(not World.blocked(p.x,p.z,.4),"staged person spawns outside solids "+str(i))
+	check(World.data.buildings.size()==80,"compact village has eighty buildings")
+	for district in World.data.district_targets:
+		check(World.data.buildings.filter(func(b):return b.district==district).size()==int(World.data.district_targets[district]),"district parcel count "+district)
 	var s=fresh()
 	check(s.time==150 and s.health==100,"v2 initial balance")
 	check(World.data.route_length>930 and World.data.route_length<970,"main route 950m")
@@ -31,7 +34,7 @@ func _init() -> void:
 					var nearest:=Geometry2D.get_closest_point_to_segment(p,World.nodes()[edge.a],World.nodes()[edge.b])
 					if p.distance_to(nearest)<edge.width*.5+2.99:clear=false
 		check(clear,"tropical garden leaves road width and steering margin clear "+str(bed.seed))
-		check(bed.z< -120 and World.blocked(bed.x,bed.z),"first-slice garden shares a solid footprint "+str(bed.seed))
+		check(World.blocked(bed.x,bed.z),"planted garden shares a solid footprint "+str(bed.seed))
 	var path:=World.route(Vector2(World.data.start[0],World.data.start[1]),Vector2(World.data.hospital[0],World.data.hospital[1]))
 	check(absf(World.path_length(path)-World.data.route_length)<1,"navigation follows main route")
 	for rate in [30,60,120]:
@@ -55,7 +58,10 @@ func _init() -> void:
 	s=fresh();s.angle=0;s.vz=6;s.advance(.25,{"left":true});check(s.drift_amount==0,"no low speed drift")
 	var garden: Dictionary=World.data.obstacles.filter(func(o):return o.kind=="plaza_garden")[0]
 	check(World.surface_at(Vector2(garden.x+10,garden.z))=="stone","plaza pavement uses shared surface")
-	for building in World.data.buildings:check(not (absf(building.x-garden.x)<building.w/2+7 and absf(building.z-garden.z)<building.d/2+7),"garden not hidden in building "+str(building.x))
+	for i in range(World.data.buildings.size()):
+		var garden_polygon:=PackedVector2Array()
+		for p in garden.polygon:garden_polygon.append(Vector2(p[0],p[1]))
+		check(Geometry2D.intersect_polygons(World.polygons()[i],garden_polygon).is_empty(),"garden not hidden in building "+str(i))
 	check(World.blocked(garden.x,garden.z),"raised plaza has polygon collision")
 	var garden_hit:=World.move_circle(Vector2(garden.x+20,garden.z),Vector2(-40,0))
 	check(garden_hit.position.x>garden.x+8.4,"sweep hits plaza polygon before crossing")

@@ -1,0 +1,1304 @@
+{
+  "package_sha256": "5bf344e18257ff1cf63451f26c7ffa50fd47b255096e2086d2c7883adbd81760",
+  "checks": [
+    {
+      "name": "1280x720 rear node 0",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 8",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 16",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 24",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 32",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 40",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 48",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 56",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 64",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 72",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 80",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 88",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 96",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 104",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 112",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 120",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 128",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 136",
+      "passed": true
+    },
+    {
+      "name": "1280x720 rear node 144",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 0",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 8",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 16",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 24",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 32",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 40",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 48",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 56",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 64",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 72",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 80",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 88",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 96",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 104",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 112",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 120",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 128",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 136",
+      "passed": true
+    },
+    {
+      "name": "1280x720 front node 144",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 0",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 8",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 16",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 24",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 32",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 40",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 48",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 56",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 64",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 72",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 80",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 88",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 96",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 104",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 112",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 120",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 128",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 136",
+      "passed": true
+    },
+    {
+      "name": "390x844 rear node 144",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 0",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 8",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 16",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 24",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 32",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 40",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 48",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 56",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 64",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 72",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 80",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 88",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 96",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 104",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 112",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 120",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 128",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 136",
+      "passed": true
+    },
+    {
+      "name": "390x844 front node 144",
+      "passed": true
+    },
+    {
+      "name": "no runtime errors",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 0,
+      "camera": [
+        -106.887336730957,
+        3.87034153938293,
+        -220.790496826172
+      ],
+      "distance": 13.500004706388335,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 8,
+      "camera": [
+        -127.329772949219,
+        3.84270668029785,
+        -197.666458129883
+      ],
+      "distance": 13.500006750440015,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 16,
+      "camera": [
+        -141.35009765625,
+        3.86120653152466,
+        -158.432327270508
+      ],
+      "distance": 13.500006651237063,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 24,
+      "camera": [
+        -127.767562866211,
+        3.98814153671265,
+        -108.31413269043
+      ],
+      "distance": 13.499996476099424,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 32,
+      "camera": [
+        -146.40397644043,
+        4.20500659942627,
+        -58.4053230285645
+      ],
+      "distance": 13.499999137143094,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 40,
+      "camera": [
+        -147.450241088867,
+        4.4436092376709,
+        -13.2757797241211
+      ],
+      "distance": 13.500000321368775,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 48,
+      "camera": [
+        -138.106567382812,
+        4.68709230422974,
+        32.960075378418
+      ],
+      "distance": 13.499998151636904,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 56,
+      "camera": [
+        -116.494148254395,
+        4.87308645248413,
+        72.9194259643555
+      ],
+      "distance": 13.499998991416803,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 64,
+      "camera": [
+        -63.4262542724609,
+        5.11673784255981,
+        98.5908584594727
+      ],
+      "distance": 13.499999395185702,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 72,
+      "camera": [
+        -2.43189907073975,
+        5.55942964553833,
+        100.262878417969
+      ],
+      "distance": 13.500000138791991,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 80,
+      "camera": [
+        47.1426620483398,
+        5.60055732727051,
+        73.1941528320312
+      ],
+      "distance": 13.500001819444115,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 88,
+      "camera": [
+        45.2464447021484,
+        4.6382360458374,
+        -8.31070995330811
+      ],
+      "distance": 13.50000040580849,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 96,
+      "camera": [
+        83.2528839111328,
+        4.48130989074707,
+        -46.652458190918
+      ],
+      "distance": 13.499997643971447,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 104,
+      "camera": [
+        135.091583251953,
+        5.08160305023193,
+        2.42393589019775
+      ],
+      "distance": 13.499997906161482,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 112,
+      "camera": [
+        147.494827270508,
+        5.75053596496582,
+        56.7325286865234
+      ],
+      "distance": 13.499998450503426,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 120,
+      "camera": [
+        134.641235351562,
+        6.26785564422607,
+        105.550323486328
+      ],
+      "distance": 13.49999278952596,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 128,
+      "camera": [
+        87.3780288696289,
+        6.37496328353882,
+        131.711090087891
+      ],
+      "distance": 13.500005479885461,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 136,
+      "camera": [
+        88.7192687988281,
+        6.12017059326172,
+        187.584136962891
+      ],
+      "distance": 13.499997074749789,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "rear",
+      "node": 144,
+      "camera": [
+        149.9677734375,
+        5.76382827758789,
+        192.443099975586
+      ],
+      "distance": 12.556941378156507,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 0,
+      "camera": [
+        -121.910789489746,
+        3.87034153938293,
+        -200.80810546875
+      ],
+      "distance": 11.499997236747815,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 8,
+      "camera": [
+        -135.97834777832,
+        3.84270668029785,
+        -174.210052490234
+      ],
+      "distance": 11.500009491681695,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 16,
+      "camera": [
+        -138.849914550781,
+        3.86120653152466,
+        -133.557647705078
+      ],
+      "distance": 11.50000532963406,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 24,
+      "camera": [
+        -131.901702880859,
+        3.98814153671265,
+        -83.6583251953125
+      ],
+      "distance": 11.500002661841025,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 32,
+      "camera": [
+        -149.359573364258,
+        4.20500659942627,
+        -33.5806503295898
+      ],
+      "distance": 11.499999418604219,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 40,
+      "camera": [
+        -142.91276550293,
+        4.4436092376709,
+        11.3089981079102
+      ],
+      "distance": 11.499999393498921,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 48,
+      "camera": [
+        -126.798110961914,
+        4.68709230422974,
+        55.256233215332
+      ],
+      "distance": 11.499998666601602,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 56,
+      "camera": [
+        -95.2086868286133,
+        4.87308645248413,
+        86.0316009521484
+      ],
+      "distance": 11.50000102896205,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 64,
+      "camera": [
+        -38.5628204345703,
+        5.11673784255981,
+        101.200378417969
+      ],
+      "distance": 11.499999337313394,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 72,
+      "camera": [
+        20.5901355743408,
+        5.55942964553833,
+        90.5168075561523
+      ],
+      "distance": 11.499999390064836,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 80,
+      "camera": [
+        52.4340286254883,
+        5.60055732727051,
+        48.7605361938477
+      ],
+      "distance": 11.50000182606525,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 88,
+      "camera": [
+        57.7530288696289,
+        4.6382360458374,
+        -29.9575424194336
+      ],
+      "distance": 11.499999661287086,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 96,
+      "camera": [
+        105.006805419922,
+        4.48130989074707,
+        -34.3330917358398
+      ],
+      "distance": 11.50000017332989,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 104,
+      "camera": [
+        144.181243896484,
+        5.08160305023193,
+        25.7129440307617
+      ],
+      "distance": 11.499998709918081,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 112,
+      "camera": [
+        142.874771118164,
+        5.75053596496582,
+        81.3019256591797
+      ],
+      "distance": 11.50000527851246,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 120,
+      "camera": [
+        116.787086486816,
+        6.26785564422607,
+        123.049728393555
+      ],
+      "distance": 11.500003286305878,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 128,
+      "camera": [
+        82.9742660522461,
+        6.37496328353882,
+        156.320175170898
+      ],
+      "distance": 11.49999843160417,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 136,
+      "camera": [
+        109.609512329102,
+        6.12017059326172,
+        201.31721496582
+      ],
+      "distance": 11.499997049023255,
+      "interior": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "front",
+      "node": 144,
+      "camera": [
+        150,
+        5.8338794708252,
+        216.5
+      ],
+      "distance": 11.5,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 0,
+      "camera": [
+        -104.474319458008,
+        5.25693798065186,
+        -223.449996948242
+      ],
+      "distance": 17.07900374084472,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 8,
+      "camera": [
+        -125.695198059082,
+        5.38270664215088,
+        -202.099716186523
+      ],
+      "distance": 18.22500538199757,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 16,
+      "camera": [
+        -141.822631835938,
+        5.40120649337769,
+        -163.133636474609
+      ],
+      "distance": 18.22500366536712,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 24,
+      "camera": [
+        -126.986206054688,
+        5.52814149856567,
+        -112.974082946777
+      ],
+      "distance": 18.22499963573166,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 32,
+      "camera": [
+        -145.845367431641,
+        5.7450065612793,
+        -63.0971870422363
+      ],
+      "distance": 18.224999872326986,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 40,
+      "camera": [
+        -148.307815551758,
+        5.98360919952393,
+        -17.9223041534424
+      ],
+      "distance": 18.225000134237334,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 48,
+      "camera": [
+        -140.243865966797,
+        6.22709226608276,
+        28.7460994720459
+      ],
+      "distance": 18.224999545984634,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 56,
+      "camera": [
+        -120.517105102539,
+        6.41308641433716,
+        70.4412231445312
+      ],
+      "distance": 18.22500386106648,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 64,
+      "camera": [
+        -68.1254425048828,
+        6.65673780441284,
+        98.09765625
+      ],
+      "distance": 18.224998703456087,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 72,
+      "camera": [
+        -6.7830638885498,
+        7.09942960739136,
+        102.104888916016
+      ],
+      "distance": 18.22500150880848,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 80,
+      "camera": [
+        46.1425933837891,
+        7.14055728912354,
+        77.8121032714844
+      ],
+      "distance": 18.224999554370722,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 88,
+      "camera": [
+        42.8827018737793,
+        6.17823600769043,
+        -4.21945858001709
+      ],
+      "distance": 18.22499966063604,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 96,
+      "camera": [
+        79.1413879394531,
+        6.0213098526001,
+        -48.9808158874512
+      ],
+      "distance": 18.225000150650743,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 104,
+      "camera": [
+        133.373626708984,
+        6.62160301208496,
+        -1.97768783569336
+      ],
+      "distance": 18.22500225619027,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 112,
+      "camera": [
+        148.368011474609,
+        7.29053592681885,
+        52.0889129638672
+      ],
+      "distance": 18.224997671029268,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 120,
+      "camera": [
+        138.015670776367,
+        7.8078556060791,
+        102.242935180664
+      ],
+      "distance": 18.224993513401145,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 128,
+      "camera": [
+        88.2103424072266,
+        7.91496324539185,
+        127.059982299805
+      ],
+      "distance": 18.22499748847575,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 136,
+      "camera": [
+        84.7710113525391,
+        7.66017055511475,
+        184.988571166992
+      ],
+      "distance": 18.225004869762778,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "rear",
+      "node": 144,
+      "camera": [
+        149.9677734375,
+        6.26721096038818,
+        192.443099975586
+      ],
+      "distance": 12.556941378156507,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 0,
+      "camera": [
+        -124.329559326172,
+        5.41034126281738,
+        -197.590942382812
+      ],
+      "distance": 15.524992372534513,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 8,
+      "camera": [
+        -137.370758056641,
+        5.38270664215088,
+        -170.433578491211
+      ],
+      "distance": 15.525001696447092,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 16,
+      "camera": [
+        -138.447387695312,
+        5.40120649337769,
+        -129.552825927734
+      ],
+      "distance": 15.525005371578954,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 24,
+      "camera": [
+        -132.567306518555,
+        5.52814149856567,
+        -79.6887435913086
+      ],
+      "distance": 15.525000340512353,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 32,
+      "camera": [
+        -149.835433959961,
+        5.7450065612793,
+        -29.5838775634766
+      ],
+      "distance": 15.525000766481725,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 40,
+      "camera": [
+        -142.182220458984,
+        5.98360919952393,
+        15.2671461105347
+      ],
+      "distance": 15.525000222292531,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 48,
+      "camera": [
+        -124.977447509766,
+        6.22709226608276,
+        58.8459167480469
+      ],
+      "distance": 15.52500093629426,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 56,
+      "camera": [
+        -91.7817230224609,
+        6.41308641433716,
+        88.1426544189453
+      ],
+      "distance": 15.525001360428597,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 64,
+      "camera": [
+        -34.5598068237305,
+        6.65673780441284,
+        101.620513916016
+      ],
+      "distance": 15.52500018268988,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 72,
+      "camera": [
+        24.2966842651367,
+        7.09942960739136,
+        88.9476928710938
+      ],
+      "distance": 15.524999277282305,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 80,
+      "camera": [
+        53.2859382629395,
+        7.14055728912354,
+        44.8267288208008
+      ],
+      "distance": 15.524997537692782,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 88,
+      "camera": [
+        59.7665863037109,
+        6.17823600769043,
+        -33.442684173584
+      ],
+      "distance": 15.524999858412736,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 96,
+      "camera": [
+        108.509185791016,
+        6.0213098526001,
+        -32.3496742248535
+      ],
+      "distance": 15.524998718262726,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 104,
+      "camera": [
+        145.644683837891,
+        6.62160301208496,
+        29.462474822998
+      ],
+      "distance": 15.525000278119123,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 112,
+      "camera": [
+        142.130950927734,
+        7.29053592681885,
+        85.2575912475586
+      ],
+      "distance": 15.52499704530236,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 120,
+      "camera": [
+        113.912574768066,
+        7.8078556060791,
+        125.867134094238
+      ],
+      "distance": 15.524999249464612,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 128,
+      "camera": [
+        82.265266418457,
+        7.91496324539185,
+        160.282241821289
+      ],
+      "distance": 15.525001863007091,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 136,
+      "camera": [
+        112.972839355469,
+        7.66017055511475,
+        203.528244018555
+      ],
+      "distance": 15.524996199124322,
+      "interior": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "front",
+      "node": 144,
+      "camera": [
+        150,
+        7.37387943267822,
+        220.524993896484
+      ],
+      "distance": 15.524993896484006,
+      "interior": []
+    }
+  ],
+  "passed": true
+}

@@ -13,6 +13,10 @@ def godot(arguments,log):
  result=subprocess.run([str(ROOT/'scripts/godot.sh'),'--headless',*arguments],cwd=ROOT,capture_output=True,text=True)
  (logs/log).write_text(result.stdout+result.stderr)
  if result.returncode or 'SCRIPT ERROR' in result.stderr or 'ERROR:' in result.stderr:raise SystemExit('Failed: '+log+'\n'+result.stderr)
+world=json.loads((ROOT/'godot/data/world.json').read_text())
+if world.get('urban_extent'):
+ subprocess.run(['python3','scripts/validate_village.py'],cwd=ROOT,check=True)
+ subprocess.run(['python3','tests/godot/release_guard.py'],cwd=ROOT,check=True)
 for script in ['tests/godot/host.cjs']:
  subprocess.run(['node',script],cwd=ROOT,check=True)
 godot(['--editor','--import'],'import.log')

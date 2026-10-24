@@ -55,8 +55,24 @@
     {
       "name": "leaning trunk preserves length along its own axis",
       "passed": true
+    },
+    {
+      "name": "oriented fa\u00e7ade uses parcel translation and rotation",
+      "passed": true
+    },
+    {
+      "name": "oriented fa\u00e7ade preserves local axes",
+      "passed": true
+    },
+    {
+      "name": "shop lettering follows its parcel",
+      "passed": true
+    },
+    {
+      "name": "camera query solid uses the parcel orientation",
+      "passed": true
     }
   ],
   "passed": true,
-  "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85"
+  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b"
 }

@@ -1,125 +1,111 @@
 {
-  "rules_version": 2,
-  "generated_utc": "2026-10-24T19:47:29.674733+00:00",
-  "base_commit": "c362999641f9dce03e48b355d1de9af15cb9c1bc",
-  "working_tree": "local implementation; source-manifest.json records exact hashes",
-  "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
-  "physical_gpu_available": false,
-  "art_extent": "complete",
-  "tools": "4.7.2.stable.official.ed1daf0bf",
+  "branch": "feat/compact-village",
+  "base_commit": "488507a482f4a19c5ce8de8fccbf2d309ba56cea",
+  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b",
+  "urban_extent": "reference-slice",
   "checks": [
     {
-      "check": "HUD compacto al primer arranque real",
+      "check": "80 parcelas, orientación, separación y márgenes",
       "status": "aprobada",
-      "evidence": "hud.json",
-      "matches_current_package": true
+      "evidence": "layout.json"
     },
     {
-      "check": "Simulación v2: reglas, colisiones continuas y trazas 30/60/120 FPS",
+      "check": "simulation",
       "status": "aprobada",
-      "evidence": "simulation.json",
-      "matches_current_package": true
+      "evidence": "../simulation.json"
     },
     {
-      "check": "Recorrido con entradas, sin teletransportes ni reposición",
+      "check": "presentation",
       "status": "aprobada",
-      "evidence": "route-drive.json",
-      "matches_current_package": true
+      "evidence": "../presentation.json"
     },
     {
-      "check": "Recorrido con toda la población y entradas sin reposición",
+      "check": "hud",
       "status": "aprobada",
-      "evidence": "route-drive-population.json",
-      "matches_current_package": true
+      "evidence": "../hud.json"
     },
     {
-      "check": "Migración v2, récord separado y audio externo",
+      "check": "route-drive",
       "status": "aprobada",
-      "evidence": "host.json",
-      "matches_current_package": true
+      "evidence": "../route-drive.json"
     },
     {
-      "check": "Presentación sin modificar simulación y reinicios",
+      "check": "route-drive-population",
       "status": "aprobada",
-      "evidence": "presentation.json",
-      "matches_current_package": true
+      "evidence": "../route-drive-population.json"
     },
     {
-      "check": "Chrome: flujo y cuatro resoluciones",
+      "check": "host",
       "status": "aprobada",
-      "evidence": "browser.json",
-      "matches_current_package": true
+      "evidence": "../host.json"
     },
     {
-      "check": "Audio, reacciones, pausa y animación de recogida",
+      "check": "browser",
       "status": "aprobada",
-      "evidence": "story-tests.json",
-      "matches_current_package": true
+      "evidence": "../browser.json"
     },
     {
-      "check": "Firefox: arranque de la versión actual",
+      "check": "story-tests",
       "status": "aprobada",
-      "evidence": "firefox.json",
-      "matches_current_package": true
+      "evidence": "../story-tests.json"
     },
     {
-      "check": "Distribución sin API de pruebas y fallos de carga",
+      "check": "captures",
       "status": "aprobada",
-      "evidence": "distribution.json",
-      "matches_current_package": true
+      "evidence": "captures.json"
     },
     {
-      "check": "Importación y exportación desde fuentes sin caché",
+      "check": "cameras",
       "status": "aprobada",
-      "evidence": "clean-import.json",
-      "matches_current_package": true
+      "evidence": "cameras.json"
     },
     {
-      "check": "Descarga comprimida ≤25 MiB",
+      "check": "Importación y exportación limpias",
       "status": "aprobada",
-      "evidence": "release-build.json"
+      "evidence": "../clean-import.json"
     },
     {
-      "check": "Presupuesto de render de la versión actual",
+      "check": "El tramo provisional no se puede publicar",
       "status": "aprobada",
-      "evidence": "benchmark.json",
-      "matches_current_package": true
+      "evidence": "release-guard.json"
     },
     {
-      "check": "Protagonista aprobado conservado exactamente",
+      "check": "Protagonista aprobado intacto",
       "status": "aprobada",
-      "evidence": "art-review.json"
+      "evidence": "../art-review.json"
     },
     {
-      "check": "Extensión artística tras revisión técnica del primer tramo",
+      "check": "Presupuesto del prototipo con el tramo de referencia",
       "status": "aprobada",
-      "evidence": "story/captures.json"
+      "evidence": "../benchmark.json"
     },
     {
-      "check": "Revisión visual del usuario del mundo nuevo",
+      "check": "Descarga del prototipo ≤25 MiB",
+      "status": "aprobada",
+      "evidence": "../release-build.json"
+    },
+    {
+      "check": "Revisión artística del tramo por el usuario",
+      "status": "pendiente",
+      "evidence": "review.json"
+    },
+    {
+      "check": "Extensión del acabado a costa, comercio, plaza y puesto",
       "status": "pendiente"
     },
     {
-      "check": "Cinco jugadores nuevos: ≥4 victorias iniciales; mediana 90–130 s",
+      "check": "Validación final de rendimiento del mundo completo",
       "status": "pendiente"
     },
     {
-      "check": "Android Chrome e iPhone Safari reales",
+      "check": "GPU física y teléfonos Android/iPhone",
       "status": "pendiente"
     },
     {
-      "check": "GPU física: tres recorridos por configuración y objetivos 58/29 FPS, p95 33,3/50 ms",
+      "check": "Publicación final y auditoría HTTPS",
       "status": "pendiente"
-    },
-    {
-      "check": "SoundCloud real disponible, bloqueado y lento",
-      "status": "pendiente"
-    },
-    {
-      "check": "Publicación del paquete final en HTTPS, solo Godot en raíz de Pages",
-      "status": "aprobada",
-      "evidence": "pages-audit.json"
     }
   ],
-  "complete": false
+  "complete": false,
+  "note": "Prototype draw-call results do not certify completed-world cost or physical-device FPS."
 }

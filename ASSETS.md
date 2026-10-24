@@ -48,3 +48,5 @@ Trazado, colocación y polígonos originales en `scripts/build_story_layout.py`.
 Peatones: modelos originales locales `pedestrian-0.glb`, `pedestrian-1.glb`, `pedestrian-2.glb`, con fuente `art-source/pedestrians.blend` y generador `scripts/build_pedestrians.py`. Una superficie por persona, once huesos y paleta por región; el protagonista aprobado se conserva por separado. `Bird` añade fauna costera decorativa al kit local.
 
 - Vegetación tropical ampliada: hojas curvas `TropicalLeaf` y arbustos `Shrub`, geometría original editable en `art-source/tropical-kit.blend`; GLB local y generador `scripts/build_tropical_art.py`. Sin imágenes ni recursos externos nuevos.
+
+- Pueblo compacto: composición procedural original de fachadas, balcones y toldos a partir de la biblioteca editable `art-source/tropical-kit.blend`. No incorpora recursos externos ni modifica al protagonista aprobado.

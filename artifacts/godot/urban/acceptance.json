@@ -1,0 +1,111 @@
+{
+  "branch": "feat/compact-village",
+  "base_commit": "488507a482f4a19c5ce8de8fccbf2d309ba56cea",
+  "runtime_source_sha256": "792910a30fc09298c497bc34a4da4d3bcd7107dd2fcd32c08ad55e8cc638724b",
+  "urban_extent": "reference-slice",
+  "checks": [
+    {
+      "check": "80 parcelas, orientación, separación y márgenes",
+      "status": "aprobada",
+      "evidence": "layout.json"
+    },
+    {
+      "check": "simulation",
+      "status": "aprobada",
+      "evidence": "../simulation.json"
+    },
+    {
+      "check": "presentation",
+      "status": "aprobada",
+      "evidence": "../presentation.json"
+    },
+    {
+      "check": "hud",
+      "status": "aprobada",
+      "evidence": "../hud.json"
+    },
+    {
+      "check": "route-drive",
+      "status": "aprobada",
+      "evidence": "../route-drive.json"
+    },
+    {
+      "check": "route-drive-population",
+      "status": "aprobada",
+      "evidence": "../route-drive-population.json"
+    },
+    {
+      "check": "host",
+      "status": "aprobada",
+      "evidence": "../host.json"
+    },
+    {
+      "check": "browser",
+      "status": "aprobada",
+      "evidence": "../browser.json"
+    },
+    {
+      "check": "story-tests",
+      "status": "aprobada",
+      "evidence": "../story-tests.json"
+    },
+    {
+      "check": "captures",
+      "status": "aprobada",
+      "evidence": "captures.json"
+    },
+    {
+      "check": "cameras",
+      "status": "aprobada",
+      "evidence": "cameras.json"
+    },
+    {
+      "check": "Importación y exportación limpias",
+      "status": "aprobada",
+      "evidence": "../clean-import.json"
+    },
+    {
+      "check": "El tramo provisional no se puede publicar",
+      "status": "aprobada",
+      "evidence": "release-guard.json"
+    },
+    {
+      "check": "Protagonista aprobado intacto",
+      "status": "aprobada",
+      "evidence": "../art-review.json"
+    },
+    {
+      "check": "Presupuesto del prototipo con el tramo de referencia",
+      "status": "aprobada",
+      "evidence": "../benchmark.json"
+    },
+    {
+      "check": "Descarga del prototipo ≤25 MiB",
+      "status": "aprobada",
+      "evidence": "../release-build.json"
+    },
+    {
+      "check": "Revisión artística del tramo por el usuario",
+      "status": "pendiente",
+      "evidence": "review.json"
+    },
+    {
+      "check": "Extensión del acabado a costa, comercio, plaza y puesto",
+      "status": "pendiente"
+    },
+    {
+      "check": "Validación final de rendimiento del mundo completo",
+      "status": "pendiente"
+    },
+    {
+      "check": "GPU física y teléfonos Android/iPhone",
+      "status": "pendiente"
+    },
+    {
+      "check": "Publicación final y auditoría HTTPS",
+      "status": "pendiente"
+    }
+  ],
+  "complete": false,
+  "note": "Prototype draw-call results do not certify completed-world cost or physical-device FPS."
+}

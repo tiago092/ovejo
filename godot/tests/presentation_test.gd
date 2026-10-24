@@ -36,6 +36,17 @@ func run_checks() -> void:
 	art.shape_at("Pole",Vector3.ZERO,Vector3(.4,8,.4),"9b8260",0,false,true,axis)
 	var trunk: Transform3D=art.batches.values()[0].transforms[0]
 	check((trunk.basis*Vector3.UP).distance_to(axis*8)<.001,"leaning trunk preserves length along its own axis")
+	var frame:=Transform3D(Basis(Vector3.UP,.7),Vector3(13,2,-30))
+	art.building_frame=frame;art.batches.clear()
+	art.shape_at("SoftBox",Vector3(2,1,3),Vector3(4,2,5),"e8d7b5")
+	var facade: Transform3D=art.batches.values()[0].transforms[0]
+	check(facade.origin.distance_to(frame*Vector3(2,1,3))<.001,"oriented façade uses parcel translation and rotation")
+	check(facade.basis.z.normalized().distance_to(frame.basis.z)<.001,"oriented façade preserves local axes")
+	var label=art.sign_at("TEST",Vector3(0,3,4),.3)
+	check(label.position.distance_to(frame*Vector3(0,3,4))<.001 and label.basis.is_equal_approx(frame.basis),"shop lettering follows its parcel")
+	art.building_frame=Transform3D.IDENTITY
+	art.camera_blocker(Vector3(13,2,-30),{"w":8,"d":9,"h":6,"yaw":.7})
+	check(is_equal_approx(art.get_child(art.get_child_count()-1).rotation.y,.7),"camera query solid uses the parcel orientation")
 	art.free()
 	vehicle.free();actors.free()
 	var passed: bool=checks.all(func(c):return c.passed)

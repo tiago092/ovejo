@@ -1,0 +1,22 @@
+{
+  "guard_source_sha256": "ca03314485d4da0987ed8d91e5ddcc8310dd08a89ed6daa34c6f6e5e23db5722",
+  "checks": [
+    {
+      "name": "reference art is refused",
+      "passed": true
+    },
+    {
+      "name": "urban review cannot be bypassed by the old complete flag",
+      "passed": true
+    },
+    {
+      "name": "completed urban world is accepted",
+      "passed": true
+    },
+    {
+      "name": "pre-urban complete exports remain compatible",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

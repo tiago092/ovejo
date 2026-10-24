@@ -1,0 +1,197 @@
+{
+  "urban_extent": "reference-slice",
+  "package_sha256": "5bf344e18257ff1cf63451f26c7ffa50fd47b255096e2086d2c7883adbd81760",
+  "records": [
+    {
+      "name": "club",
+      "x": -115,
+      "z": -210,
+      "angle": 3.141592653589793,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 147,
+        "primitives": 130380
+      }
+    },
+    {
+      "name": "first-curve",
+      "x": -132,
+      "z": -185,
+      "angle": -0.2,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 146,
+        "primitives": 116598
+      }
+    },
+    {
+      "name": "street",
+      "x": -115,
+      "z": -210,
+      "angle": -0.5971766580926775,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 160,
+        "primitives": 135930
+      }
+    },
+    {
+      "name": "tour-0",
+      "x": -115,
+      "z": -210,
+      "angle": -0.6446740979785218,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 160,
+        "primitives": 135930
+      }
+    },
+    {
+      "name": "tour-1",
+      "x": -124.30419515757205,
+      "z": -198.23799229765885,
+      "angle": -0.6371838038322036,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 148,
+        "primitives": 119612
+      }
+    },
+    {
+      "name": "tour-2",
+      "x": -131.8534121171695,
+      "z": -185.32497088390872,
+      "angle": -0.4237517341832334,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 143,
+        "primitives": 116312
+      }
+    },
+    {
+      "name": "tour-3",
+      "x": -136.56113534643455,
+      "z": -171.09199161099187,
+      "angle": -0.24372982864597773,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 146,
+        "primitives": 129128
+      }
+    },
+    {
+      "name": "tour-4",
+      "x": -139.42986475362815,
+      "z": -156.38172417249484,
+      "angle": -0.1419495191249823,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 140,
+        "primitives": 118552
+      }
+    },
+    {
+      "name": "tour-5",
+      "x": -139.64034837054865,
+      "z": -141.42177317810965,
+      "angle": 0.10017469841066,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 142,
+        "primitives": 105474
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "current compact-village package",
+      "passed": true
+    },
+    {
+      "name": "draw budget club",
+      "passed": true
+    },
+    {
+      "name": "draw budget first-curve",
+      "passed": true
+    },
+    {
+      "name": "draw budget street",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-0",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-1",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-2",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-3",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-4",
+      "passed": true
+    },
+    {
+      "name": "draw budget tour-5",
+      "passed": true
+    },
+    {
+      "name": "no rendering errors",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

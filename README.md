@@ -1,5 +1,7 @@
 # Código Rosa · Yo manejo
 
+En la rama `feat/compact-village` está en revisión el **pueblo compacto de 80 parcelas**. [Plano, comparativas y recorrido del primer tramo](artifacts/godot/urban-review.html). El acabado nuevo se concentra en disco/primera curva; el resto son volúmenes provisionales. Pages conserva la versión publicada anterior hasta resolver la revisión y completar la extensión.
+
 Morro de São Paulo, 05:47. Salió de la disco, vio una ambulancia y dijo «yo manejo». Un arcade de conducción con humor, amanecer tropical y 150 segundos para recoger al paciente y llegar al puesto de salud.
 
 La versión actual se desarrolla en **Godot 4.7.2**, GDScript y Compatibility. El despliegue de GitHub Pages está configurado para distribuir únicamente el paquete Godot en la dirección principal. El HTML Three.js de la raíz se conserva como fuente histórica de las regresiones; abrir ese archivo muestra el juego anterior.

@@ -12,6 +12,7 @@ var foam_material: ShaderMaterial
 var bird_material: ShaderMaterial
 var bird_instances: MultiMesh
 var cloth_flags: Array=[]
+var building_frame:=Transform3D.IDENTITY
 
 func material(color: String) -> StandardMaterial3D:
 	if materials.has(color): return materials[color]
@@ -19,16 +20,17 @@ func material(color: String) -> StandardMaterial3D:
 	materials[color]=m; return m
 
 func shape_at(shape: String,pos: Vector3,size: Vector3,color: String,rotation_y: float=0,detail: bool=false,shadow: bool=true,axis: Vector3=Vector3.ZERO) -> void:
+	var rotation:=Basis(Vector3.UP,rotation_y) if axis==Vector3.ZERO else Basis(Quaternion(Vector3.UP,axis.normalized()))
+	pos=building_frame*pos;rotation=building_frame.basis*rotation
 	var key:="%s:%s:%s:%s:%s" % [shape,shadow,detail,floori((pos.x+220)/220),floori((pos.z+250)/250)]
 	if not batches.has(key):batches[key]={"shape":shape,"shadow":shadow,"detail":detail,"colors":[],"transforms":[]}
-	var rotation:=Basis(Vector3.UP,rotation_y) if axis==Vector3.ZERO else Basis(Quaternion(Vector3.UP,axis.normalized()))
 	batches[key].transforms.append(Transform3D(rotation.scaled_local(size),pos));batches[key].colors.append(Color(color))
 
 func cube_at(pos: Vector3,size: Vector3,color: String,rotation_y: float=0) -> void:
 	shape_at("SoftBox",pos,size,color,rotation_y,color in ["d9c7a5","f0dfbb"],color.begins_with("#") or color=="9b8260")
 
 func sign_at(text: String,pos: Vector3,size: float,color: String="fff0d3",back: bool=false) -> Label3D:
-	var sign:=Label3D.new();sign.text=text;sign.font_size=64;sign.pixel_size=size/64;sign.position=pos;sign.modulate=Color(color);sign.outline_size=0;sign.rotation.y=PI if back else 0;sign.no_depth_test=false;add_child(sign);return sign
+	var sign:=Label3D.new();sign.text=text;sign.font_size=64;sign.pixel_size=size/64;sign.position=building_frame*pos;sign.modulate=Color(color);sign.outline_size=0;sign.basis=building_frame.basis*Basis(Vector3.UP,PI if back else 0);sign.no_depth_test=false;add_child(sign);return sign
 
 func build() -> void:
 	var environment:=WorldEnvironment.new(); var env:=Environment.new(); environment.environment=env; add_child(environment)
@@ -49,9 +51,9 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 	build_terrain(sand_material())
 	build_roads(paving)
 	for building in World.data.buildings:
-		if detailed(building.x,building.z):build_house(building)
+		if building.get("landmark",false) or World.data.get("urban_extent", "complete")=="complete" or building.get("district", "")=="disco":build_house(building)
 		else:
-			shape_at("SoftBox",Vector3(building.x,World.height_at(building.x,building.z)+building.h/2,building.z),Vector3(building.w,building.h,building.d),"9daaa8")
+			shape_at("SoftBox",Vector3(building.x,World.height_at(building.x,building.z)+building.h/2,building.z),Vector3(building.w,building.h,building.d),"9daaa8",building.get("yaw",0))
 			camera_blocker(Vector3(building.x,World.height_at(building.x,building.z),building.z),building)
 	build_coast()
 	build_story_birds()
@@ -61,6 +63,8 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 		if not detailed(obstacle.x,obstacle.z):continue
 		if obstacle.kind=="palm":palm(obstacle.x,obstacle.z,obstacle.h,obstacle.angle)
 		elif obstacle.kind=="tropical_garden":build_tropical_garden(obstacle)
+		elif obstacle.kind=="pocket_garden":build_pocket_garden(obstacle)
+		elif obstacle.kind=="broadleaf_tree":build_broadleaf_tree(obstacle)
 		elif obstacle.kind=="plaza_garden":build_plaza(obstacle)
 		elif obstacle.kind=="sign":build_road_sign(obstacle)
 		camera_blocker(Vector3(obstacle.x,World.height_at(obstacle.x,obstacle.z),obstacle.z),obstacle)
@@ -87,7 +91,7 @@ void fragment(){float band=sin(p.y*.5+clock)*.12;ALBEDO=mix(vec3(.41,.64,.60),ve
 	build_shore(foam_material)
 
 func detailed(x: float,z: float) -> bool:
-	return World.data.art_extent=="complete" or z< -100
+	return World.data.get("urban_extent", "complete")=="complete" or (z< -145 and x< -60)
 
 func road_mesh(width_extra: float,lift: float,mat: Material) -> void:
 	var tool:=SurfaceTool.new();tool.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -167,6 +171,8 @@ func sand_material() -> ShaderMaterial:
 	mat.shader=sh;return mat
 
 func build_house(b: Dictionary) -> void:
+	if b.has("family") and not b.get("landmark",false):
+		build_compact_house(b);return
 	var base:=World.height_at(b.x,b.z);var c:=Vector3(b.x,base,b.z)
 	var club: bool=b.title=="LUAU DO MORRO";var clinic: bool=b.title=="POSTO DE SAÚDE"
 	var family:=0 if "POUSADA" in b.title else (1 if "COCO" in b.title else (2 if "ARTESANATO" in b.title else 3))
@@ -227,9 +233,54 @@ func build_house(b: Dictionary) -> void:
 			sign_at(b.title,c+Vector3(0,b.h-.6,z+.25*side),.58,"fff1d3",side==-1)
 	camera_blocker(c,b)
 
+func build_compact_house(b: Dictionary) -> void:
+	building_frame=Transform3D(Basis(Vector3.UP,b.yaw),Vector3(b.x,World.height_at(b.x,b.z),b.z))
+	var w: float=b.w-1.4;var d: float=b.d-1.4;var h: float=b.h;var front: float=d*.5
+	shape_at("SoftBox",Vector3(0,.04,0),Vector3(b.w,.08,b.d),"b7a78c",0,false,false)
+	shape_at("SoftBox",Vector3(0,h*.5,0),Vector3(w,h,d),b.color)
+	shape_at("SoftBox",Vector3(0,.22,0),Vector3(w+.12,.44,d+.12),"b4a186")
+	shape_at("Roof",Vector3(0,h+.65,0),Vector3(w+.9,1.4,d+.9),"936b5b" if b.family in ["house","shop"] else "78716a")
+	shape_at("SoftBox",Vector3(0,h,0),Vector3(w+.5,.18,d+.4),"e1caab",0,false,false)
+	shape_at("SoftBox",Vector3(0,1.5,front+.08),Vector3(1.2,3,.12),"395d60",0,false,false)
+	shape_at("SoftBox",Vector3(0,3.06,front+.09),Vector3(1.5,.14,.14),"ddcbb1",0,false,false)
+	for side in [-1,1]:
+		var x: float=side*w*.30
+		shape_at("SoftBox",Vector3(x,2.35,front+.08),Vector3(1.25,1.8,.12),"ddcbb1",0,false,false)
+		shape_at("SoftBox",Vector3(x,2.35,front+.16),Vector3(.95,1.5,.08),"4f7677",0,false,false)
+		shape_at("SoftBox",Vector3(x+side*.7,2.35,front+.18),Vector3(.28,1.75,.09),"7d9f8b",0,true,false)
+		if h>5:
+			shape_at("SoftBox",Vector3(x,h-1.15,front+.08),Vector3(1.05,1.3,.12),"d9c5a8",0,false,false)
+			shape_at("SoftBox",Vector3(x,h-1.15,front+.16),Vector3(.8,1.1,.08),"416969",0,false,false)
+		# All accessories, including the awning below, fit the polygonal parcel.
+		shape_at("Pole",Vector3(side*(w*.5-.35),.42,front+.25),Vector3(.42,.8,.42),"a38367",0,true,false)
+		shape_at("Shrub",Vector3(side*(w*.5-.35),.95,front+.25),Vector3(.65,.7,.6),"62815b",0,true,false)
+	if b.family in ["bar","shop"]:
+		shape_at("SoftBox",Vector3(0,3.55,front-.05),Vector3(w-.5,.22,1.2),"cfac7a" if b.family=="bar" else "819d96",0,false,false)
+		for x in [-1.2,0,1.2]:shape_at("SoftBox",Vector3(x,3.58,front-.04),Vector3(.45,.25,1.2),"bc827f",0,true,false)
+		sign_at(b.title,Vector3(0,h-.35,front+.22),.34,"f4e4c6")
+	elif b.family=="pousada":
+		shape_at("SoftBox",Vector3(0,3.7,front),Vector3(w-.8,.18,.95),"c0a180",0,false,false)
+		shape_at("SoftBox",Vector3(0,4.15,front+.35),Vector3(w-.8,.10,.08),"dbc9ab",0,true,false)
+		for i in range(5):shape_at("Pole",Vector3((i-2)*(w-.9)/4,3.95,front+.35),Vector3(.07,.5,.07),"dbc9ab",0,true,false)
+	else:
+		for i in range(3):shape_at("SoftBox",Vector3((i-1)*.8,h-.7,front+.15),Vector3(.55,.65,.05),["d6bf9d","b78e9e","8cab9c"][i],0,true,false)
+	building_frame=Transform3D.IDENTITY
+	camera_blocker(Vector3(b.x,World.height_at(b.x,b.z),b.z),b)
+
+func build_pocket_garden(b: Dictionary) -> void:
+	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
+	shape_at("SoftBox",center+Vector3(0,.12,0),Vector3(1.5,.24,1.5),"a49c7e",0,false,false)
+	for i in range(3):shape_at("Shrub",center+Vector3((i-1)*.35,.6,0),Vector3(.75,1,.85),["5d8056","779363","48764f"][i],0,false,false)
+	for i in range(4):shape_at("TropicalLeaf",center+Vector3(0,1,0),Vector3(.25,.25,.25),"71965f",i*TAU/4,true,false)
+
+func build_broadleaf_tree(b: Dictionary) -> void:
+	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
+	shape_at("Pole",center+Vector3(0,2.5,0),Vector3(.55,5,.55),"8b7760")
+	for i in range(3):shape_at("Shrub",center+Vector3(cos(i*TAU/3)*.7,4.5+i*.45,sin(i*TAU/3)*.7),Vector3(3.5,2.7,3.1),["4d7958","608660","739463"][i],0,false,false)
+
 func camera_blocker(c: Vector3,b: Dictionary) -> void:
 	var body:=StaticBody3D.new();body.collision_layer=2;body.collision_mask=0
-	var shape:=CollisionShape3D.new();var box:=BoxShape3D.new();box.size=Vector3(b.w,b.h+3,b.d);shape.shape=box;body.add_child(shape);body.position=c+Vector3(0,(b.h+3)/2,0);add_child(body)
+	var shape:=CollisionShape3D.new();var box:=BoxShape3D.new();box.size=Vector3(b.w,b.h+3,b.d);shape.shape=box;body.add_child(shape);body.position=c+Vector3(0,(b.h+3)/2,0);body.rotation.y=b.get("yaw",0);add_child(body)
 
 func build_club(b: Dictionary,c: Vector3) -> void:
 	var front: float=b.d/2
@@ -299,9 +350,6 @@ func build_coast() -> void:
 		if not detailed(x,z):continue
 		# Boats sit beyond the land boundary; shrubs stay inside registered footprints.
 		shape_at("Hull",Vector3(x-12,World.height_at(x,z)-.5,z),Vector3(2.5,1,5.2),"ba8671" if i%2 else "6e9c9e",rng.randf())
-	for building in World.data.buildings:
-		if not detailed(building.x,building.z):continue
-		for side in [-1,1]:shape_at("Round",Vector3(building.x+side*(building.w/2-1.2),World.height_at(building.x,building.z)+.7,building.z),Vector3(1.7,1.4,2.3),"668b68",0,true,false)
 
 # Layers stay inside the registered garden footprint: dark shrubs, broad leaves,
 # low ground cover, and tall palms. Repeated shapes use the existing sector batches.

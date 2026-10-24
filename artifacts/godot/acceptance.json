@@ -1,8 +1,8 @@
 {
   "branch": "feat/compact-village",
-  "base_commit": "4275b699c99512e45fcbdc83a5d7307012d8ffb8",
-  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
-  "urban_extent": "reference-slice",
+  "base_commit": "c34e6625cd0f313109135cc97d74d5c143dcb9c4",
+  "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
+  "urban_extent": "complete",
   "checks": [
     {
       "check": "80 parcelas, orientación, separación y márgenes",
@@ -75,37 +75,43 @@
       "evidence": "../art-review.json"
     },
     {
-      "check": "Presupuesto del prototipo con el tramo de referencia",
+      "check": "Presupuesto de render del mundo completo",
       "status": "aprobada",
       "evidence": "../benchmark.json"
     },
     {
-      "check": "Descarga del prototipo ≤25 MiB",
+      "check": "Descarga del mundo completo ≤25 MiB",
       "status": "aprobada",
       "evidence": "../release-build.json"
     },
     {
-      "check": "Revisión artística del tramo por el usuario",
-      "status": "pendiente",
+      "check": "Dirección visual revisada y continuación autorizada por el usuario",
+      "status": "aprobada",
       "evidence": "review.json"
     },
     {
-      "check": "Extensión del acabado a costa, comercio, plaza y puesto",
-      "status": "pendiente"
-    },
-    {
-      "check": "Validación final de rendimiento del mundo completo",
-      "status": "pendiente"
-    },
-    {
-      "check": "GPU física y teléfonos Android/iPhone",
-      "status": "pendiente"
+      "check": "Acabado extendido a los 80 edificios y paseo costero",
+      "status": "aprobada",
+      "evidence": "captures.json"
     },
     {
       "check": "Publicación final y auditoría HTTPS",
+      "status": "pendiente",
+      "evidence": "../pages-audit.json"
+    },
+    {
+      "check": "Rendimiento en GPU física: objetivos 58/29 FPS y p95 33,3/50 ms",
+      "status": "pendiente"
+    },
+    {
+      "check": "Chrome Android y Safari iPhone en teléfonos reales",
+      "status": "pendiente"
+    },
+    {
+      "check": "Prueba humana de balance con cinco jugadores nuevos",
       "status": "pendiente"
     }
   ],
   "complete": false,
-  "note": "Prototype draw-call results do not certify completed-world cost or physical-device FPS."
+  "note": "Draw calls include all active views and shadows. SwiftShader does not certify physical-device FPS; human playtests remain separate."
 }

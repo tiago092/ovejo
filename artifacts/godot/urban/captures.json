@@ -1,6 +1,6 @@
 {
-  "urban_extent": "reference-slice",
-  "package_sha256": "b47db1bd9d54cf881e538b6f1a69d1269d44e1dacd780d10516959f8bd375014",
+  "urban_extent": "complete",
+  "package_sha256": "ad2cb4a50e8ced6903f450dd8c9b9dd2e755a55af6486654b4aefefae90b5254",
   "records": [
     {
       "name": "club",
@@ -14,8 +14,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 147,
-        "primitives": 130380
+        "calls": 145,
+        "primitives": 134056
       }
     },
     {
@@ -30,8 +30,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 146,
-        "primitives": 116598
+        "calls": 174,
+        "primitives": 121780
       }
     },
     {
@@ -46,8 +46,24 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 160,
-        "primitives": 135930
+        "calls": 174,
+        "primitives": 140356
+      }
+    },
+    {
+      "name": "coast",
+      "x": -140,
+      "z": -145,
+      "angle": 0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 168,
+        "primitives": 106840
       }
     },
     {
@@ -62,8 +78,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 160,
-        "primitives": 135930
+        "calls": 174,
+        "primitives": 140356
       }
     },
     {
@@ -78,8 +94,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 149,
-        "primitives": 119630
+        "calls": 164,
+        "primitives": 124074
       }
     },
     {
@@ -94,8 +110,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 144,
-        "primitives": 116330
+        "calls": 162,
+        "primitives": 120858
       }
     },
     {
@@ -110,8 +126,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 146,
-        "primitives": 129128
+        "calls": 174,
+        "primitives": 134394
       }
     },
     {
@@ -126,8 +142,8 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 139,
-        "primitives": 118534
+        "calls": 168,
+        "primitives": 123946
       }
     },
     {
@@ -142,8 +158,72 @@
       "quality": "high",
       "seed": 27,
       "render": {
-        "calls": 142,
-        "primitives": 105474
+        "calls": 172,
+        "primitives": 110896
+      }
+    },
+    {
+      "name": "commerce",
+      "x": 50,
+      "z": 60,
+      "angle": 3.141592653589793,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 181,
+        "primitives": 111840
+      }
+    },
+    {
+      "name": "plaza",
+      "x": 125,
+      "z": 115,
+      "angle": 0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 121,
+        "primitives": 78336
+      }
+    },
+    {
+      "name": "plaza-detail",
+      "x": 125,
+      "z": 115,
+      "angle": -1.6,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 176,
+        "primitives": 94464
+      }
+    },
+    {
+      "name": "hospital",
+      "x": 150,
+      "z": 205,
+      "angle": 0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality": "high",
+      "seed": 27,
+      "render": {
+        "calls": 123,
+        "primitives": 94582
       }
     }
   ],
@@ -162,6 +242,10 @@
     },
     {
       "name": "draw budget street",
+      "passed": true
+    },
+    {
+      "name": "draw budget coast",
       "passed": true
     },
     {
@@ -186,6 +270,22 @@
     },
     {
       "name": "draw budget tour-5",
+      "passed": true
+    },
+    {
+      "name": "draw budget commerce",
+      "passed": true
+    },
+    {
+      "name": "draw budget plaza",
+      "passed": true
+    },
+    {
+      "name": "draw budget plaza-detail",
+      "passed": true
+    },
+    {
+      "name": "draw budget hospital",
       "passed": true
     },
     {

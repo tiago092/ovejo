@@ -60,6 +60,28 @@ func run_checks() -> void:
 					var point: Vector3=inverse*(transform*vertex)
 					if absf(point.x)>home.w*.5+.002 or absf(point.z)>home.d*.5+.002:within=false
 		check(within,"widened "+family+" geometry stays inside its collision parcel")
+	for kind in ["coastal_lamp","coastal_rope","coastal_sign"]:
+		var items: Array=preload("res://scripts/world_data.gd").data.obstacles.filter(func(b):return b.kind==kind)
+		if items.is_empty():continue
+		var item: Dictionary=items[0];art.batches.clear()
+		preload("res://scripts/coast_presentation.gd").build_obstacle(art,item)
+		var inverse:=Transform3D(Basis(Vector3.UP,item.yaw),Vector3(item.x,preload("res://scripts/world_data.gd").height_at(item.x,item.z),item.z)).affine_inverse()
+		var within:=true
+		for batch in art.batches.values():
+			for transform in batch.transforms:
+				for vertex in preload("res://scripts/visual_kit.gd").mesh(batch.shape).surface_get_arrays(0)[Mesh.ARRAY_VERTEX]:
+					var point: Vector3=inverse*(transform*vertex)
+					if absf(point.x)>item.w*.5+.002 or absf(point.z)>item.d*.5+.002 or point.y>item.h+.002:within=false
+		check(within,kind+" visible solid fits the shared collision footprint")
+		if kind=="coastal_sign":
+			var projection: Dictionary=preload("res://scripts/world_data.gd").road_projection(Vector2(item.x,item.z))
+			var edge: Dictionary=preload("res://scripts/world_data.gd").data.edges[projection.edge]
+			var nodes: Array=preload("res://scripts/world_data.gd").nodes()
+			var direction: Vector2=(nodes[edge.b]-nodes[edge.a]).normalized()
+			var arrow: Vector3=Basis(Vector3.UP,item.yaw)*Vector3.LEFT
+			var labels=art.find_children("*","Label3D",true,false)
+			check(Vector2(arrow.x,arrow.z).dot(direction)>.9 and labels[-1].text.contains("← 2ª PRAIA"),"coastal guide arrow points forward along the road")
+
 	art.free()
 	vehicle.free();actors.free()
 	var passed: bool=checks.all(func(c):return c.passed)

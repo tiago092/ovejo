@@ -56,6 +56,13 @@ func _init() -> void:
 		check(absf(s.vz)<5,"braking "+str(rate))
 	s=fresh();s.angle=0;s.vz=15;s.advance(.175,{"left":true});check(s.drift_amount==0,"drift requires .2 seconds")
 	s=fresh();s.angle=0;s.vz=6;s.advance(.25,{"left":true});check(s.drift_amount==0,"no low speed drift")
+	if World.data.has("coastal_promenade"):
+		var coast_point: Vector2=World.nodes()[8]
+		var tangent: Vector2=(World.nodes()[9]-World.nodes()[7]).normalized()
+		var normal:=Vector2(tangent.y,-tangent.x)
+		check(World.surface_at(coast_point)=="wood","wood surface follows promenade data")
+		check(World.surface_at(coast_point+normal*5)=="stone","promenade keeps its paved shoulders")
+		check(World.surface_at(coast_point+normal*16)=="sand","beach remains sand outside the promenade")
 	var garden: Dictionary=World.data.obstacles.filter(func(o):return o.kind=="plaza_garden")[0]
 	check(World.surface_at(Vector2(garden.x+10,garden.z))=="stone","plaza pavement uses shared surface")
 	for i in range(World.data.buildings.size()):

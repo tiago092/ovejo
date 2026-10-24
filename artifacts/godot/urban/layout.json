@@ -1,5 +1,5 @@
 {
-  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
+  "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
   "passed": true,
   "counts": {
     "disco": 12,
@@ -8,7 +8,7 @@
     "plaza": 14,
     "puesto": 10
   },
-  "urban_extent": "reference-slice",
+  "urban_extent": "complete",
   "checks": [
     {
       "name": "80 buildings",
@@ -14832,6 +14832,334 @@
     },
     {
       "name": "vegetation/solid clear of houses broadleaf_tree:140.4995",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -150.063",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-150.063",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -141.733",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-141.733",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -158.9511",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-158.9511",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -155.6448",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-155.6448",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -139.5266",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-139.5266",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -89.8362",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_lamp:-89.8362",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -143.26",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_sign:-143.26",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -147.97",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_sign:-147.97",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -152.9031",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_rope:-152.9031",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -150.1939",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_rope:-150.1939",
+      "passed": true
+    },
+    {
+      "name": "rotated garden serializes its collision polygon -116.3357",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses coastal_rope:-116.3357",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-151.1004",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-121.4802",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-146.1497",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-116.5484",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-159.4649",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-160.0582",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-135.3391",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-118.9352",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-142.6284",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-111.5084",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-95.2493",
+      "passed": true
+    },
+    {
+      "name": "vegetation/solid clear of houses tropical_garden:-67.2666",
+      "passed": true
+    },
+    {
+      "name": "promenade follows the shared coastal road",
+      "passed": true
+    },
+    {
+      "name": "wood strip retains the full playable road width",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-2",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-2",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-3",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-3",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-4",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-4",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-5",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-5",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-lamp-6",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-lamp-6",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-guide-0",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-guide-0",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-guide-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-guide-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-rope-0",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-rope-0",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-rope-2",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-rope-2",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-rope-3",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-rope-3",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-0--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-0--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-0-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-0-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-1--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-1--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-1-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-1-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-2--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-2--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-3--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-3--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-3-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-3-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-4-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-4-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-5--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-5--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-6--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-6--1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-6-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-6-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting clears road and camera margin coast-green-7-1",
+      "passed": true
+    },
+    {
+      "name": "coastal fitting preserves protected spaces coast-green-7-1",
       "passed": true
     },
     {

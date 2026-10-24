@@ -1,0 +1,10 @@
+{
+  "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
+  "passed": false,
+  "returncode": -6,
+  "cache_present_before": false,
+  "clean_export_passed": false,
+  "clean_package_sha256": null,
+  "matches_previous_package_bytes": false,
+  "engine": "4.7.2.stable.official.ed1daf0bf"
+}

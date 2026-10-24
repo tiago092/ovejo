@@ -40,3 +40,5 @@ El nuevo pueblo reutiliza las mallas editables de `tropical-kit.blend` y la ambu
 El kit incorpora también `Bird`, una silueta costera original de cuatro triángulos. Los objetos nuevos, carteles, mostrador y escenas de este pase se concentran en disco y primera curva.
 
 La biblioteca `tropical-kit.blend` incluye `TropicalLeaf` (hoja ancha con nervadura y curvatura) y `Shrub` (copa baja irregular), reproducibles con `scripts/build_tropical_art.py`. La distribución de los diecinueve grupos vegetales y sus troncos sólidos vive en `scripts/build_story_layout.py`; los colores y capas se componen con instancias en Godot. No modifica el protagonista aprobado.
+
+El paseo y los 80 edificios reutilizan las plantillas editables de `tropical-kit.blend`/GLB. La composición se conserva en los datos de parcelas y en `coast_presentation.gd`; el patrón de tablas es un shader original local.

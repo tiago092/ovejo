@@ -111,6 +111,8 @@ static func surface_at(p: Vector2) -> String:
 	for point in data.plaza_paving:plaza.append(Vector2(point[0],point[1]))
 	if Geometry2D.is_point_in_polygon(p,plaza):return "stone"
 	var projection:=road_projection(p);var edge: Dictionary=data.edges[projection.edge]
+	var coast: Dictionary=data.get("coastal_promenade",{})
+	if coast.get("wood_edges",[]).has(edge.a) and edge.b==edge.a+1 and projection.distance<=float(coast.wood_width)*.5:return "wood"
 	return edge.surface if projection.distance<=edge.width*.5 else "sand"
 
 static func route(a: Vector2,b: Vector2) -> Array:

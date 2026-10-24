@@ -51,7 +51,8 @@ func update(sim, t: float,reduced: bool) -> void:
 		if displacement.length()>.001 and displacement.length()<2:headings[i]=atan2(displacement.x,displacement.y)
 		if not headings.has(i):headings[i]=atan2(p.dx,p.dz)
 		if not last_ground_positions.has(i) or last_ground_positions[i].distance_to(position2)>1.5:
-			ground_lifts[i]=.08 if World.surface_at(position2)=="stone" else .01;last_ground_positions[i]=position2
+			var surface: String=World.surface_at(position2)
+			ground_lifts[i]=.1 if surface=="wood" else (.08 if surface=="stone" else .01);last_ground_positions[i]=position2
 		var origin:=Vector3(p.x,World.height_at(p.x,p.z)+ground_lifts[i],p.z)
 		human.position=origin;human.rotation.y=headings[i];human.visible=not (p.cool>0 and int(sim.clock*8)%2!=0)
 		var near: bool=(position2.distance_to(Vector2(sim.x,sim.z))<20 and sim.siren_left>0) or (i<3 and sim.state=="cinematic" and not reduced)

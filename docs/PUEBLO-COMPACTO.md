@@ -1,42 +1,52 @@
-# Pueblo compacto · implementación por revisión
+# Pueblo compacto y paseo costero
 
-Preferencia confirmada: **más urbano y compacto**. Se trabaja en `feat/compact-village`; no se actualiza master ni Pages con el tramo provisional.
+La dirección **más urbana y compacta** se revisó en disco/primera curva. Después de pedir casas más próximas y aportar una fotografía de playa, el usuario indicó «Perfecto, continua». El acabado se extendió a todo el pueblo y se preparó su publicación.
 
-## Datos y distribución
+## Distribución
 
-80 edificios: disco 12, costa 18, comercio 26, plaza 14 y puesto 10. Se incluyen la disco y el puesto existentes, que conservan posición y acceso. Los otros 78 edificios forman 22 conjuntos de tres o cuatro parcelas, con huecos de 1,2 metros. Se corrige la exclusión anterior del interior de la primera curva; las aperturas al mar son polígonos reservados explícitos.
+80 edificios: disco 12, costa 18, comercio 26, plaza 14 y puesto 10. Disco y puesto conservan posición y acceso. Los otros 78 edificios forman 22 conjuntos de tres o cuatro parcelas. La separación entre parcelas es 1,2 m; entre paredes de la primera hilera, aproximadamente 1,8 m. El hueco entre los dos conjuntos interiores del primer tramo se redujo de 8,22 a 2,79 m.
 
-`scripts/build_story_layout.py` usa la biblioteca local `compact_village.py` para componer los conjuntos. El orden, las anclas de recorrido, el lado, el tamaño y las cuotas son explícitos y deterministas; el rechazo nunca elimina una casa suelta de un conjunto. La búsqueda mantiene el conjunto unido y prefiere los menores retiros antes de desplazarlo hacia el fondo.
+La autoría determinista vive en `scripts/build_story_layout.py` y la biblioteca `compact_village.py`. Cada edificio tiene ID estable, parcela, zona, conjunto, familia, orientación y polígono. Presentación, colisiones y cámara consumen esos datos. Los conjuntos mantienen sus casas juntas al buscar un lugar válido. Los retiros respetan el ancho de carretera y al menos tres metros de margen.
 
-Cada edificio entrega `id`, `parcel_id`, `district`, `block`, `family`, `yaw`, dimensiones y `polygon`. Las coordenadas locales se transforman con el mismo convenio de rotación de Godot. La simulación ya consume esos polígonos; no se cambia la autoridad ni las ecuaciones del movimiento. Los sólidos de cámara y las fachadas aplican la misma orientación.
+Se conservan el grafo, desvío, destinos, 150 segundos, manejo, daños, puntuación y reparto de actores. El vendedor usa un ancla local de su parcela. Los jardines estrechos almacenan su polígono girado y las fachadas, toldos y techos se comprueban contra su huella.
 
-Las parcelas reservan al menos tres metros respecto del ancho completo de las carreteras. Los extremos de acceso de los dos hitos antiguos se comprueban como cintas con extremo plano, coincidiendo con el pavimento, y no como cápsulas que sobresalgan dentro de la entrada. Plaza, recogida, llegada, amigos de la salida y tres aperturas al mar tienen áreas protegidas.
+## Referencia de playa
 
-## Presentación
+La fotografía nocturna aportada en la conversación guía el paseo: arena abierta, madera, postes con estructura triangular, cuerdas, cartelería rústica y plantas agrupadas. Se conserva el amanecer. La foto no se copia como textura ni se incorpora un logotipo municipal.
 
-La primera revisión incluye disco y primera curva, con casas más estrechas, puertas y ventanas dirigidas al camino, cubiertas variadas, balcones, toldos y plantas dentro de las parcelas. Las cuatro familias utilizan las mallas editables existentes de Blender. Las viviendas no llevan rótulos; comercio y bar tienen un solo cartel frontal.
+`coastal_layout.py` coloca los sólidos del paseo fuera del margen vial y de las áreas protegidas. La presentación usa las mallas editables existentes de Blender y un módulo local de Godot, `coast_presentation.gd`, sin backend ni API pública nueva.
 
-Los espacios entre parcelas pueden tener jardines pequeños. Los grupos verdes que interfieren con las nuevas casas se recolocan; detrás de los conjuntos se añaden arbustos y árboles de copa redondeada con troncos registrados. Los adornos se agrupan mediante instancias; Baja conserva los edificios y masas verdes y omite accesorios pequeños.
+La franja de madera mide 7,5 m, dentro del ancho transitable existente. Tablas, juntas y vetas se generan mediante shader siguiendo la longitud del camino. `surface_at` distingue madera, piedra y arena; cambia el apoyo visual y el tono de rodadura, sin modificar fricción, velocidad o reglas. Los peatones conservan contacto con el piso.
 
-La escena del vendedor usa un ancla local de su parcela, sin depender de la antigua orientación o de coordenadas absolutas del local. Los 30 peatones, cinco carritos, patrulla y reglas de la partida permanecen.
+El escenario completo incluye seis postes de luz, tres tramos de cuerda, dos guías de madera y grupos verdes adicionales en la costa. Las áreas verdes detrás de los edificios usan copas redondeadas agrupadas. Los nuevos sólidos comparten sus huellas con simulación y consultas de cámara; no se ocupan la plaza, recogida, llegada ni las aperturas reservadas al mar.
 
-## Revisión y extensión
+## Calidad
 
-`urban_extent: reference-slice` y `art_extent: reference-slice` identifican el estado actual. Las 80 parcelas y colisiones están completas, pero el resto del pueblo muestra volúmenes provisionales. La revisión artística no se atribuye al usuario por el hecho de pasar pruebas técnicas.
+Alta y Baja mantienen las mismas casas, masas verdes y simulación. Baja omite accesorios pequeños, acorta la distancia de rótulos y reduce sombras de elementos finos y techos. Las siluetas, los cuerpos de los edificios y las sombras principales de palmeras permanecen. El terreno suave, el agua y la orilla no generan sombras que no aportan una silueta útil. Las pequeñas bombillas siguen visibles; los rellenos cálidos adicionales se reservan para Alta.
 
-[Galería de revisión](../artifacts/godot/urban-review.html), con antes/después, plano superior y seis puntos de un recorrido de 75 m. Esos puntos de presentación no certifican fluidez; la conducción real se prueba por separado.
+Se mantienen los presupuestos de 300/150 llamadas por cuadro, contando cámaras y sombras, y 25 MiB comprimidos. Los resultados actuales están en `artifacts/godot/benchmark.json`; SwiftShader se identifica como software y no certifica FPS físicos.
 
-Al resolver la revisión se podrá ejecutar `python3 scripts/build_story_layout.py --complete-urban`, extender los acabados y validar el mundo completo. El guardia de publicación rechaza explícitamente el estado provisional. La rama solo se incorpora a master al completar esa fase y las verificaciones finales.
+## Reproducción y publicación
 
-## Validación
+```bash
+python3 scripts/build_story_layout.py --complete-urban
+python3 scripts/build_godot.py --all
+node scripts/capture_urban.cjs
+GODOT_TEST_PART=flow node scripts/browser_godot.cjs
+GODOT_TEST_PART=screens node scripts/browser_godot.cjs
+node scripts/test_urban_cameras.cjs
+node tests/godot/story.cjs
+node scripts/distribution_godot.cjs
+python3 scripts/clean_import.py
+node scripts/benchmark_godot.cjs
+python3 scripts/package_godot.py
+python3 scripts/prepare_pages.py
+```
 
-- `python3 scripts/validate_village.py`: cuotas, IDs, rotaciones, huellas, separaciones, carretera, zonas protegidas, vegetación y anclas de actores. Genera el plano desde los datos compartidos.
-- `python3 scripts/build_godot.py --all`: incluye la validación del plano antes de las regresiones y exportaciones. Las pruebas de simulación cubren también las cuotas y los actores fuera de sólidos.
-- Presentación: contratos de transformación de geometría, carteles y consultas de cámara, además de reinicio y movimiento reducido.
-- Navegador: flujo y cuatro resoluciones, en secuencia, con la exportación detenida durante las pruebas.
-- `node scripts/capture_urban.cjs`: encuadres controlados y cámara alternativa, sin sobrescribir las imágenes aprobadas del protagonista.
-- Medición con cámaras abiertas/cerradas y perfiles Alta/Baja. El benchmark del tramo provisional no sustituye el del mundo completo; GPU y móviles físicos quedan expresamente pendientes.
+Las pruebas nativas se ejecutan en procesos independientes tras importar; la exportación web sigue sin hilos. Ejecutar los corredores de navegador en secuencia, sin exportar durante su carga. El benchmark requiere el resto de las pestañas del juego inactivas y ninguna importación/modelado concurrente.
 
-Se mantienen los límites de 300/150 llamadas de dibujo y 25 MiB comprimidos. Antes de publicar el mundo terminado se comprobarán el paquete real y su manifest por HTTPS.
+La galería `artifacts/godot/urban-review.html` contiene comparativas, vistas de las cinco zonas, plano superior y recorrido visual controlado. Los informes se enlazan al SHA del paquete o a su huella de fuentes. Los originales aprobados del protagonista permanecen intactos.
 
-Revisión posterior solicitada por el usuario: «Acercar más las casas y cerrar huecos». Las parcelas pasan de 2,6 a 1,2 m de separación; la anchura de las fachadas aumenta dentro de la huella existente y el hueco entre los dos conjuntos interiores del primer tramo se reduce de 8,22 a 2,79 m. Los jardines estrechos se adaptan a las nuevas separaciones. Sigue pendiente la revisión del tramo antes de extenderlo.
+`urban_extent: complete` y `art_extent: complete` habilitan la publicación. El guardia y el preparador rechazan exportaciones provisionales. Pages distribuye únicamente Godot en la raíz; la auditoría HTTPS comprueba HTML, WebAssembly, PCK real, huella de fuentes, 80 edificios y estilo costero actual.
+
+Pendientes externos: GPU física, Chrome Android y Safari iPhone reales, y la prueba humana de balance con cinco jugadores. Las pruebas de software y la conducción automática no sustituyen esas comprobaciones.

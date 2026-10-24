@@ -1,51 +1,54 @@
-# Código Rosa · Evidencias del pueblo compacto
+# Código Rosa · Pueblo completo y paseo costero
 
-La rama `feat/compact-village` contiene el **plano de 80 parcelas y el acabado de disco/primera curva**. El resto del pueblo tiene volúmenes provisionales. La revisión visual del usuario precede a la extensión del acabado y a la publicación, según el plan.
+La dirección compacta se extendió a las cinco zonas tras la indicación «Perfecto, continua». Hay **80 edificios terminados**, con sus parcelas y colisiones, y un paseo costero inspirado en la fotografía aportada. El protagonista aprobado conserva todos sus archivos originales.
 
-- [Comparativas, plano superior y recorrido visual](urban-review.html).
+- [Antes/después, vistas de las cinco zonas y plano superior](urban-review.html).
 - [Implementación y reproducción](../../docs/PUEBLO-COMPACTO.md).
-- [Aceptación del estado actual](urban/acceptance.json).
-- [Comprobaciones del plano](urban/layout.json).
-- [Protagonista aprobado: archivos conservados](art-review.json).
+- [Aceptación actual](urban/acceptance.json).
+- [Comprobaciones geométricas](urban/layout.json).
+- [Auditoría del paquete real en Pages](pages-audit.json).
 
-## Comprobaciones del tramo provisional
+## Evidencias
 
-| Informe | Resultado | Alcance |
-|---|---|---|
-| `urban/layout.json` | 3.715 comprobaciones aprobadas. | 80 edificios, cuotas por zona, huellas orientadas, separación, carretera completa y espacios protegidos. |
-| `simulation.json` | 595 comprobaciones aprobadas. | Reglas, reloj, colisiones, misión, población, estrellas y reinicios. |
-| `presentation.json` | 22 contratos aprobados. | Animación sin mutación lógica, articulación, reinicio y transformaciones de fachadas/carteles/cámara. |
-| `hud.json` | Dos comprobaciones aprobadas. | Primer inicio real y HUD compacto. |
-| `host.json` | 15 contratos aprobados. | Persistencia y prioridad de audio. |
-| `route-drive-population.json` | Victoria en 112,42 s activos y 67% de resistencia. | Recorrido con entradas y todos los actores, sin teleport ni reposición; no certifica balance humano. |
-| `browser.json` | 47 comprobaciones aprobadas. | Chrome, flujo, cuatro resoluciones, calidad y multitáctil con emulación. |
-| `story-tests.json` | 16 comprobaciones aprobadas. | Audio, reacciones, pausa y recogida cancelable. |
-| `urban/cameras.json` | Ambas cámaras fuera de fachadas en escritorio y vertical. | Muestras cada ocho nodos a lo largo del grafo principal. |
-| `urban/release-guard.json` | Cuatro casos aprobados. | La bandera antigua de mundo completo no permite publicar el tramo urbano provisional. |
-| `clean-import.json` | Aprobada. | Importación y exportación desde fuentes sin caché. |
-| `urban/captures.json` | Aprobada. | Capturas ligadas al PCK; galería sin sustituir aprobación artística humana. |
+| Informe | Comprobación |
+|---|---|
+| `urban/layout.json` | 3.797 comprobaciones del plano, cuotas, orientaciones, márgenes y elementos costeros. |
+| `simulation.json` | 622 comprobaciones de reglas, superficies, colisiones, misión y reinicios. |
+| `presentation.json` | 26 contratos: articulación, reinicios, transformaciones y geometría dentro de las huellas. |
+| `hud.json`, `host.json` | Primer inicio real, HUD compacto, persistencia y prioridad de audio. |
+| `route-drive-population.json` | Victoria con entradas y toda la población: 112,42 s activos y 67% de resistencia; sin teleport ni reposición. No certifica balance humano. |
+| `browser.json` | 47 comprobaciones en Chrome: flujo y cuatro resoluciones, calidad y multitáctil. |
+| `urban/cameras.json` | 77 comprobaciones de ambas cámaras en escritorio y vertical. |
+| `story-tests.json` | 16 contratos de audio, reacciones, pausa y recogida cancelable. |
+| `distribution.json`, `download.json` | Release sin API de pruebas, recursos comprimidos y errores legibles ante fallos de carga. |
+| `firefox.json` | Arranque de la exportación actual sin errores. |
+| `clean-import.json` | Importación y exportación desde fuentes sin caché. |
+| `urban/release-guard.json` | La bandera antigua no permite publicar una revisión urbana provisional. |
+| `urban/captures.json` | Capturas actuales ligadas al SHA del PCK. |
 
-El `runtime_source_sha256` o SHA del paquete de cada informe debe coincidir con la exportación actual. `source-manifest.json` registra las fuentes exactas. `acceptance.json` refleja esta fase; no declara el mundo completo aceptado.
+Los informes deben coincidir con la huella de fuentes o el SHA del paquete actual. `source-manifest.json` registra las fuentes exactas. Las capturas y mediciones históricas no se transfieren a esta exportación.
 
-## Render y descarga del prototipo
+## Render y descarga
 
-| Perfil | Recuadro | Máximo de llamadas |
+| Perfil | Recuadro | Máximo de llamadas observado |
 |---|---|---:|
-| Baja | Cerrado | 120 |
-| Baja | Abierto | 137 |
-| Alta | Cerrado | 157 |
-| Alta | Abierto | 172 |
+| Baja | Cerrado | 135 |
+| Baja | Abierto | 150 |
+| Alta | Cerrado | 184 |
+| Alta | Abierto | 198 |
 
-Cuatro recorridos de 60 s tras calentamiento. El contador `RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME` incluye cámaras y sombras. Los recorridos de render reponen tiempo/resistencia únicamente en Verification; no son pruebas de balance.
+Cuatro recorridos de 60 s tras calentamiento, con todos los actores activos. El contador `RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME` incluye cámaras y sombras. El recuadro cerrado usa `UPDATE_DISABLED`. La instrumentación de render repone tiempo y resistencia; ese recorrido no es una prueba de balance.
 
-Exportación: **15,41 MiB gzip**. Son mediciones del prototipo: el coste debe comprobarse otra vez al terminar el resto del pueblo. El render usa SwiftShader y no certifica FPS en GPU ni teléfonos reales.
+Exportación local: **15.41 MiB gzip**. Se conservan los límites de 300/150 llamadas y 25 MiB comprimidos. Las cifras de FPS y p95 de `benchmark.json` corresponden a SwiftShader y no certifican fluidez en GPU o teléfono real.
 
-## Revisión y publicación
+## Publicación y pendientes
 
-La [galería nueva](urban-review.html) está preparada para resolver la revisión artística prevista antes de extender el acabado. `urban/review.json` no atribuye aprobación al usuario. La rama y el guardia de exportación impiden que este tramo sustituya la versión pública.
+El preparador acepta únicamente el mundo completo de 80 edificios y coloca Godot en la raíz de Pages. La auditoría comprueba por HTTPS el HTML, el tipo WebAssembly, el PCK servido, su manifest, la huella de fuentes y el estilo costero actual. La publicación se marca aprobada solamente al coincidir con las fuentes actuales.
 
-`pages-audit.json`, `pages-browser.json` y las capturas `pages-*.png` documentan la versión publicada anterior de vegetación, con su propia huella de fuentes. No son evidencia de publicación de este prototipo.
+`pages-browser.json` y `pages-*.png` documentan el arranque real desde el enlace público; su huella identifica la versión a la que pertenecen. Una importación limpia puede producir PCK distintos de la caché local, por lo que también se verifica la huella de fuentes.
 
-Las galerías `comparison.html`, `story-review.html` y `tropical-comparison.html` conservan las revisiones anteriores. Las imágenes aprobadas del protagonista siguen intactas. `urban-before/` guarda las comparativas previas a densificar el pueblo; `urban-spaced/` conserva la revisión anterior de 80 parcelas, antes de acercar más las casas.
+Pendientes externos: GPU física, Chrome Android y Safari iPhone reales, y cinco jugadores nuevos para el protocolo de balance. No se simulan participantes ni se declara compatibilidad física a partir de emulación.
 
-Pendientes: revisión del tramo, extensión del acabado, validación final del mundo completo, GPU/móviles reales y publicación final por HTTPS.
+`urban-before/`, `urban-spaced/` y `urban-reference/` conservan las etapas visuales anteriores. La aprobación del rostro permanece en `art-review.json`; la dirección y continuación del escenario se registran en `urban/review.json`.
+
+La primera importación limpia de esta revisión terminó con SIGABRT del editor, sin errores de importación registrados. La repetición aislada completó importación y exportación. Se conservan `clean-import-first-attempt.json` y su log; `clean-import.json` corresponde a la ejecución aprobada.

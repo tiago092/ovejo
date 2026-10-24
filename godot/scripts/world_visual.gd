@@ -1,4 +1,5 @@
 extends Node3D
+const Coast=preload("res://scripts/coast_presentation.gd")
 const Kit=preload("res://scripts/visual_kit.gd")
 const World = preload("res://scripts/world_data.gd")
 var materials: Dictionary = {}
@@ -50,6 +51,7 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 """;paving.shader=paving_shader
 	build_terrain(sand_material())
 	build_roads(paving)
+	Coast.build_walkway(self)
 	for building in World.data.buildings:
 		if building.get("landmark",false) or World.data.get("urban_extent", "complete")=="complete" or building.get("district", "")=="disco":build_house(building)
 		else:
@@ -57,8 +59,6 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 			camera_blocker(Vector3(building.x,World.height_at(building.x,building.z),building.z),building)
 	build_coast()
 	build_story_birds()
-	if World.data.art_extent=="complete":
-		for i in range(12):shape_at("SoftBox",Vector3(122-i*2.1,World.height_at(122-i*2.1,121)+5.2,121),Vector3(.7,.6,.05),["c79879","88aaa0","bd8ea5"][i%3],0,true,false)
 	for obstacle in World.data.obstacles:
 		if not detailed(obstacle.x,obstacle.z):continue
 		if obstacle.kind=="palm":palm(obstacle.x,obstacle.z,obstacle.h,obstacle.angle)
@@ -67,12 +67,13 @@ void fragment(){vec2 p=world.xz*vec2(1.05,1.55);p.x+=mod(floor(p.y),2.0)*.5;vec2
 		elif obstacle.kind=="broadleaf_tree":build_broadleaf_tree(obstacle)
 		elif obstacle.kind=="plaza_garden":build_plaza(obstacle)
 		elif obstacle.kind=="sign":build_road_sign(obstacle)
+		elif obstacle.kind.begins_with("coastal_"):Coast.build_obstacle(self,obstacle)
 		camera_blocker(Vector3(obstacle.x,World.height_at(obstacle.x,obstacle.z),obstacle.z),obstacle)
 	build_leaves()
 	for key in batches:
 		var batch: Dictionary=batches[key];var mm:=MultiMesh.new();mm.transform_format=MultiMesh.TRANSFORM_3D;mm.use_colors=true;mm.mesh=Kit.mesh(batch.shape);mm.instance_count=batch.transforms.size()
 		for i in range(mm.instance_count):mm.set_instance_transform(i,batch.transforms[i]);mm.set_instance_color(i,batch.colors[i])
-		var node:=MultiMeshInstance3D.new();node.multimesh=mm;node.set_meta("small_detail",batch.detail);node.set_meta("source_shadow",batch.shadow);node.set_meta("round_decor",batch.shape in ["Round","Ring"]);node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if batch.shadow else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node);static_batch_nodes.append(node)
+		var node:=MultiMeshInstance3D.new();node.multimesh=mm;node.set_meta("small_detail",batch.detail);node.set_meta("source_shadow",batch.shadow);node.set_meta("round_decor",batch.shape in ["Round","Ring"]);node.set_meta("roof_decor",batch.shape=="Roof");node.set_meta("thin_decor",batch.shape=="Pole");node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if batch.shadow else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node);static_batch_nodes.append(node)
 	batches.clear()
 	water_material=ShaderMaterial.new();var shader:=Shader.new();shader.code="""shader_type spatial;
 render_mode cull_disabled;
@@ -81,7 +82,7 @@ varying vec3 world;
 void vertex(){world=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz;VERTEX.y+=sin(world.z*.22+clock)*.10+sin(world.x*.31+clock*1.2)*.06;}
 void fragment(){float ripple=pow(max(0.0,sin(world.z*.36+clock+sin(world.x*.15))),14.0);ALBEDO=mix(vec3(.08,.39,.46),vec3(.41,.72,.70),ripple*.35);ROUGHNESS=.29;METALLIC=.13;}
 """;water_material.shader=shader
-	var sea:=MeshInstance3D.new();var plane:=PlaneMesh.new();plane.size=Vector2(850,1100);plane.subdivide_width=30;plane.subdivide_depth=55;sea.mesh=plane;sea.material_override=water_material;sea.position=Vector3(-595,-1.1,0);add_child(sea)
+	var sea:=MeshInstance3D.new();var plane:=PlaneMesh.new();plane.size=Vector2(850,1100);plane.subdivide_width=30;plane.subdivide_depth=55;sea.mesh=plane;sea.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;sea.material_override=water_material;sea.position=Vector3(-595,-1.1,0);add_child(sea)
 	foam_material=ShaderMaterial.new();var foam_shader:=Shader.new()
 	foam_shader.code="""shader_type spatial; render_mode unshaded,cull_disabled;
 uniform float clock=0.0;varying vec2 p;
@@ -155,7 +156,7 @@ func build_terrain(mat: Material) -> void:
 			for ij in [Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,0),Vector2(1,1),Vector2(0,1)]:
 				var z: float=-245+(zi+ij.y)*7;var shore:=World.shore_at(z);var x:=lerpf(shore,225,(xi+ij.x)/40.0)
 				tool.add_vertex(Vector3(x,World.height_at(x,z),z))
-	tool.generate_normals();var node:=MeshInstance3D.new();node.mesh=tool.commit();node.material_override=mat;add_child(node)
+	tool.generate_normals();var node:=MeshInstance3D.new();node.mesh=tool.commit();node.material_override=mat;node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node)
 
 func build_shore(mat: Material) -> void:
 	var tool:=SurfaceTool.new();tool.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -163,7 +164,7 @@ func build_shore(mat: Material) -> void:
 		for ij in [Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,0),Vector2(1,1),Vector2(0,1)]:
 			var z: float=-245+(zi+ij.y)*7;var shore:=World.shore_at(z);var x: float=shore-ij.x*8
 			tool.add_vertex(Vector3(x,lerpf(World.height_at(shore,z),-1.1,ij.x)+.025,z))
-	tool.generate_normals();var node:=MeshInstance3D.new();node.mesh=tool.commit();node.material_override=mat;add_child(node)
+	tool.generate_normals();var node:=MeshInstance3D.new();node.mesh=tool.commit();node.material_override=mat;node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;add_child(node)
 
 func sand_material() -> ShaderMaterial:
 	var mat:=ShaderMaterial.new();var sh:=Shader.new()
@@ -263,6 +264,7 @@ func build_compact_house(b: Dictionary) -> void:
 		shape_at("SoftBox",Vector3(0,4.15,front+.2),Vector3(w-.8,.10,.08),"dbc9ab",0,true,false)
 		for i in range(5):shape_at("Pole",Vector3((i-2)*(w-.9)/4,3.95,front+.2),Vector3(.07,.5,.07),"dbc9ab",0,true,false)
 	else:
+		shape_at("SoftBox",Vector3(0,h-.35,front+.15),Vector3(2.8,.025,.025),"7a7564",0,true,false)
 		for i in range(3):shape_at("SoftBox",Vector3((i-1)*.8,h-.7,front+.15),Vector3(.55,.65,.05),["d6bf9d","b78e9e","8cab9c"][i],0,true,false)
 	building_frame=Transform3D.IDENTITY
 	camera_blocker(Vector3(b.x,World.height_at(b.x,b.z),b.z),b)
@@ -276,8 +278,12 @@ func build_pocket_garden(b: Dictionary) -> void:
 
 func build_broadleaf_tree(b: Dictionary) -> void:
 	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
-	shape_at("Pole",center+Vector3(0,2.5,0),Vector3(.55,5,.55),"8b7760")
-	for i in range(3):shape_at("Shrub",center+Vector3(cos(i*TAU/3)*.7,4.5+i*.45,sin(i*TAU/3)*.7),Vector3(3.5,2.7,3.1),["4d7958","608660","739463"][i],0,false,false)
+	var offsets: Array=[Vector3.ZERO]
+	if b.get("grove",false):offsets=[Vector3(-1.1,0,-.7),Vector3(1.1,0,-.6),Vector3(0,0,.7)]
+	for j in range(offsets.size()):
+		var root: Vector3=center+offsets[j];var height: float=4.5+j*.4
+		shape_at("Pole",root+Vector3(0,height*.5,0),Vector3(.5,height,.5),"8b7760")
+		for i in range(3):shape_at("Shrub",root+Vector3(cos(i*TAU/3)*.5,height+i*.4,sin(i*TAU/3)*.5),Vector3(2.7,2.5,2.6),["4d7958","608660","739463"][i],0,false,false)
 
 func camera_blocker(c: Vector3,b: Dictionary) -> void:
 	var body:=StaticBody3D.new();body.collision_layer=2;body.collision_mask=0
@@ -358,10 +364,11 @@ func build_tropical_garden(b: Dictionary) -> void:
 	var rng:=RandomNumberGenerator.new();rng.seed=int(b.seed)
 	var center:=Vector3(b.x,World.height_at(b.x,b.z),b.z)
 	var radius: float=b.radius
+	shape_at("SoftBox",center+Vector3(0,.025,0),Vector3(radius*1.96,.05,radius*1.96),"8a956b",0,false,false)
 	for i in range(9):
 		var angle:=rng.randf_range(0,TAU);var distance:=rng.randf_range(.2,radius*.62)
 		var at:=center+Vector3(cos(angle)*distance,.65,sin(angle)*distance)
-		var size:=rng.randf_range(1.1,1.9)
+		var size:=rng.randf_range(1.1,1.9)*minf(1.0,radius/3.0)
 		shape_at("Shrub",at,Vector3(size,1.5+size*.25,size*.85),["426c50","527b52","638653"][i%3],angle,false,false)
 	# Broad, curved leaves on three separate plants create a layered silhouette.
 	for i in range(3):
@@ -442,6 +449,7 @@ func quality(is_low: bool) -> void:
 	sun.directional_shadow_max_distance=40 if is_low else 65
 	if bird_instances:bird_instances.visible_instance_count=3 if is_low else 5
 	for n in get_children():
-		if n is Label3D:n.visibility_range_end=40 if is_low else 120
+		if n is Label3D:n.visibility_range_end=22 if is_low else 90
+		if n is OmniLight3D and n.get_meta("coast_fill",false):n.visible=not is_low
 		if n.get_meta("small_detail",false):n.visible=not is_low
-		if n.has_meta("source_shadow"):n.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if n.get_meta("source_shadow") and not (is_low and n.get_meta("round_decor",false)) else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		if n.has_meta("source_shadow"):n.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_ON if n.get_meta("source_shadow") and not (is_low and (n.get_meta("round_decor",false) or n.get_meta("roof_decor",false) or n.get_meta("thin_decor",false))) else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

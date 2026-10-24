@@ -34,6 +34,15 @@ for o in w['obstacles']:
  if abs(o.get('yaw',0))>.001:check('polygon' in o and max(math.dist(p,q) for p,q in zip(o['polygon'],rectangle(o)))<.001,'rotated garden serializes its collision polygon '+str(o['x']))
  poly=o.get('polygon',rectangle(o))
  check(all(polygon_gap(poly,b['polygon'])>=.15 for b in buildings),'vegetation/solid clear of houses '+o['kind']+':'+str(o['x']))
+coast=w.get('coastal_promenade',{})
+if coast:
+ check(coast['path']==w['main_route'][:65],'promenade follows the shared coastal road')
+ check(0<coast['wood_width']<13,'wood strip retains the full playable road width')
+ for o in w['obstacles']:
+  if o.get('id') not in coast['obstacle_ids']:continue
+  poly=o.get('polygon',rectangle(o))
+  check(road_gap(poly,w['nodes'],w['edges'])>=3,'coastal fitting clears road and camera margin '+o['id'])
+  check(all(polygon_gap(poly,p['polygon'])>=.099 for p in w['open_spaces']),'coastal fitting preserves protected spaces '+o['id'])
 for actor,spawn in w['scene_spawns'].items():
  point=spawn['point'];body=rectangle({'x':point[0],'z':point[1],'w':.8,'d':.8})
  check(all(polygon_gap(body,b['polygon'])>.001 for b in buildings),'scene actor outside buildings '+actor)

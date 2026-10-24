@@ -1,12 +1,15 @@
 {
   "file": "codigo-rosa-web.zip",
-  "bytes": 32346671,
-  "sha256": "4a3201fdf64dbdf8beb087836ffc3e9c0d3a02c99ae276546a32a3902e3cd4c6",
+  "bytes": 32395376,
+  "sha256": "07591a0c1c352c286dbafb81fedddeca4948ddc2802b123a67e64c0a1ea79b94",
   "runtime_manifest": {
-    "runtime_source_sha256": "c07320bad70bab64dbff1b17e438c7f1baeed18330405e14b1ceedb0d0d1cc85",
+    "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
     "engine": "4.7.2.stable.official.ed1daf0bf",
     "rules_version": 2,
     "art_extent": "complete",
+    "urban_extent": "complete",
+    "building_count": 80,
+    "coast_style": "warm-tropical-promenade",
     "verification": false,
     "files": {
       "index.wasm": {
@@ -27,12 +30,12 @@
       "index.html": {
         "bytes": 3900,
         "gzip_bytes": 2017,
-        "sha256": "a6229ef01fa9430a627cb63d805c8fb8c482f5b6c98f62011dc1b60f7989f194"
+        "sha256": "647c319e1fc2b6c97b183bfe02c64d205906b23c03e34b5e9d3d9cc1ffca7bbc"
       },
       "index.pck": {
-        "bytes": 6097732,
-        "gzip_bytes": 5989194,
-        "sha256": "baebef0a0f43aa930a1afbb9c1d748d4dd4a8a18c0c3ebc5d3eafad139e8c4c5"
+        "bytes": 6212936,
+        "gzip_bytes": 6013187,
+        "sha256": "6cfd8d8ea3fce5f3d1646731732734c393f14075d3e7ef73160c314c1471f287"
       },
       "index.audio.worklet.js": {
         "bytes": 7298,
@@ -50,7 +53,7 @@
         "sha256": "bc3fa3b9b44d34a8a84bc737835797439e95b9815691adf7f777093df15ae196"
       }
     },
-    "gzip_mib": 15.391206741333008
+    "gzip_mib": 15.414088249206543
   },
   "note": "ZIP includes normal and precompressed alternatives; the network budget counts the gzip transfer, not both copies."
 }

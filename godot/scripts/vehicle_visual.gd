@@ -56,7 +56,7 @@ func reset() -> void:
 func update(sim,dt: float,t: float,reduced: bool) -> void:
 	if beacon_material:
 		beacon_material.emission_energy_multiplier=(.7 if reduced else (.9 if int(sim.clock*8)%2 else .12)) if sim.siren_left>0 else 0.0
-	position=Vector3(sim.x,World.height_at(sim.x,sim.z)+.04,sim.z)
+	position=Vector3(sim.x,World.height_at(sim.x,sim.z)+.04+(.05 if World.surface_at(Vector2(sim.x,sim.z))=="wood" else 0),sim.z)
 	var slope: float=(World.height_at(sim.x+sin(sim.angle)*2,sim.z+cos(sim.angle)*2)-World.height_at(sim.x-sin(sim.angle)*2,sim.z-cos(sim.angle)*2))/4
 	var turn: int=int(sim.keys.left)-int(sim.keys.right)
 	var acceleration: float=clampf((sim.speed-previous_speed)/maxf(dt,.001),-34,16) if dt>0 else 0.0

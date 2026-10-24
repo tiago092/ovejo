@@ -1,9 +1,12 @@
 {
   "user_preference": "Más urbano y compacto",
   "scope": "Disco y primera curva; plano completo de 80 parcelas",
-  "approved_by_user": false,
-  "status": "Nueva compactación preparada para revisión; no implica aprobación de la extensión",
+  "approved_by_user": true,
+  "status": "Dirección resuelta por el usuario; extensión y validación autorizadas",
   "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
   "gallery": "../urban-review.html",
-  "user_feedback": "Acercar más las casas y cerrar huecos"
+  "user_feedback": "Acercar más las casas y cerrar huecos",
+  "user_response": "Perfecto, continua",
+  "approval_scope": "Dirección compacta del tramo y continuación del acabado costero según la fotografía aportada; no implica certificación técnica ni de dispositivos.",
+  "approved_review_runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6"
 }

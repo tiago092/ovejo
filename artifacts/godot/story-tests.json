@@ -1,5 +1,5 @@
 {
-  "package_sha256": "b47db1bd9d54cf881e538b6f1a69d1269d44e1dacd780d10516959f8bd375014",
+  "package_sha256": "ad2cb4a50e8ced6903f450dd8c9b9dd2e755a55af6486654b4aefefae90b5254",
   "checks": [
     {
       "name": "inset initially closed",

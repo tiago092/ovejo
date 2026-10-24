@@ -1,8 +1,11 @@
 {
-  "runtime_source_sha256": "6d5d0c03b97f7c734333ca347cef88025c79b3d388d370da80b98098412070e6",
+  "runtime_source_sha256": "9f0ef28306531a3b6f85a0071fe0c797e21078728b1ffda08dbe6c272760af11",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "rules_version": 2,
-  "art_extent": "reference-slice",
+  "art_extent": "complete",
+  "urban_extent": "complete",
+  "building_count": 80,
+  "coast_style": "warm-tropical-promenade",
   "verification": true,
   "files": {
     "index.wasm": {
@@ -22,13 +25,13 @@
     },
     "index.html": {
       "bytes": 3900,
-      "gzip_bytes": 2017,
-      "sha256": "8e3ef65763726a7a2cf76fde5e90eb7093c43b4f54f78c5a0fba6b810e7ff893"
+      "gzip_bytes": 2016,
+      "sha256": "28a3d465bba33102c6ca080fa03abb9f22a26db5345dd7a8e1ebf8b85a7f7079"
     },
     "index.pck": {
-      "bytes": 6195252,
-      "gzip_bytes": 6006227,
-      "sha256": "b47db1bd9d54cf881e538b6f1a69d1269d44e1dacd780d10516959f8bd375014"
+      "bytes": 6215608,
+      "gzip_bytes": 6014856,
+      "sha256": "ad2cb4a50e8ced6903f450dd8c9b9dd2e755a55af6486654b4aefefae90b5254"
     },
     "index.audio.worklet.js": {
       "bytes": 7298,
@@ -46,5 +49,5 @@
       "sha256": "bc3fa3b9b44d34a8a84bc737835797439e95b9815691adf7f777093df15ae196"
     }
   },
-  "gzip_mib": 15.407450675964355
+  "gzip_mib": 15.415678977966309
 }

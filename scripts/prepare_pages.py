@@ -6,6 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 release=ROOT/'dist/godot';out=ROOT/'dist/pages'
 manifest=json.loads((release/'manifest.json').read_text())
 if manifest.get('verification') is not False:raise SystemExit('Pages requires the release export, not Verification')
+if manifest.get('art_extent')!='complete' or manifest.get('urban_extent')!='complete' or manifest.get('building_count')!=80:raise SystemExit('Pages requires the completed eighty-building world')
 for name,entry in manifest['files'].items():
  if Path(name).name!=name:raise SystemExit('Unexpected runtime path')
  if hashlib.sha256((release/name).read_bytes()).hexdigest()!=entry['sha256']:raise SystemExit('Export hash mismatch: '+name)

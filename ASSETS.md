@@ -50,3 +50,5 @@ Peatones: modelos originales locales `pedestrian-0.glb`, `pedestrian-1.glb`, `pe
 - Vegetación tropical ampliada: hojas curvas `TropicalLeaf` y arbustos `Shrub`, geometría original editable en `art-source/tropical-kit.blend`; GLB local y generador `scripts/build_tropical_art.py`. Sin imágenes ni recursos externos nuevos.
 
 - Pueblo compacto: composición procedural original de fachadas, balcones y toldos a partir de la biblioteca editable `art-source/tropical-kit.blend`. No incorpora recursos externos ni modifica al protagonista aprobado.
+
+- Paseo costero: diseño original basado en la fotografía de contexto del usuario. Tablas y vetas procedurales en `godot/scripts/coast_presentation.gd`; postes, cuerdas y guías construidos con la biblioteca local editable de Blender. No incorpora fotos, logos ni texturas externas nuevas.

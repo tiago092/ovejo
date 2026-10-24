@@ -76,4 +76,4 @@ La primera medición de Baja alcanzaba 181 llamadas. Agrupar las piezas por geom
 
 ## Alojamiento de prueba preparado
 
-Se preparó un [workflow manual para GitHub Pages](../../docs/GITHUB-PAGES.md). `pages-package.json` registra el sitio local: únicamente Godot en la raíz. La publicación HTTPS continúa pendiente; este paquete no constituye un despliegue remoto.
+Se preparó un [workflow para GitHub Pages](../../docs/GITHUB-PAGES.md). `pages-package.json` registra el sitio local: únicamente Godot en la raíz. La publicación HTTPS continúa pendiente; este paquete no constituye un despliegue remoto.

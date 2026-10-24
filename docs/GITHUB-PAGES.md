@@ -20,7 +20,7 @@ Solo se copian recursos de ejecución y licencias. Se excluyen herramientas, fue
 
 1. Subir los cambios a la rama predeterminada, incluyendo `godot/`, `scripts/`, `tests/godot/` y `.github/workflows/pages.yml`. No subir `.tools/`, `godot/.godot/` ni `dist/`.
 2. En Settings → Pages → Build and deployment → Source, seleccionar **GitHub Actions**. Publicar desde la raíz de la rama seguiría mostrando el HTML histórico de Three.js.
-3. En Actions, elegir **Publicar Godot en Pages → Run workflow** sobre la rama revisada. El flujo es manual.
+3. En Actions, elegir **Publicar Godot en Pages → Run workflow** sobre la rama revisada. También se ejecuta automáticamente con cada push a `master`.
 4. Revisar el resultado del despliegue y abrir la dirección principal. Godot sustituye al juego anterior.
 
 El flujo descarga Godot y plantillas con versiones/hashes fijados, ejecuta pruebas de reglas y del puente web, exporta y prepara el sitio antes de desplegar. Las regresiones de navegador y mediciones físicas son comprobaciones separadas.

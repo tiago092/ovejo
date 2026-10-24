@@ -70,4 +70,4 @@ El entorno automatizado utiliza **SwiftShader, renderizado por software**, y emu
 
 ## Publicar en GitHub Pages
 
-GitHub Pages publicará únicamente Godot en la dirección principal. Seguir [la guía de Pages](docs/GITHUB-PAGES.md): el workflow se ejecuta manualmente y el paquete local se prepara con `python3 scripts/prepare_pages.py`. No utilizar la publicación desde la raíz de la rama, porque allí permanece el HTML histórico de Three.js.
+GitHub Pages publicará únicamente Godot en la dirección principal. Seguir [la guía de Pages](docs/GITHUB-PAGES.md): el workflow se ejecuta con cada push a `master` o manualmente y el paquete local se prepara con `python3 scripts/prepare_pages.py`. No utilizar la publicación desde la raíz de la rama, porque allí permanece el HTML histórico de Three.js.
